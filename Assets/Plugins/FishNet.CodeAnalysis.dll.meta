@@ -2,9 +2,9 @@ fileFormatVersion: 2
 guid: 49c30506b4154038b80e62f075869db8
 PluginImporter:
   serializedVersion: 3
-  externalObjects: {{}}
-  iconMap: {{}}
-  executionOrder: {{}}
+  externalObjects: {}
+  iconMap: {}
+  executionOrder: {}
   defineConstraints: []
   isPreloaded: 0
   isOverridable: 0
@@ -13,7 +13,7 @@ PluginImporter:
   platformData:
     Any:
       enabled: 1
-      settings: {{}}
+      settings: {}
     Editor:
       enabled: 0
       settings:
