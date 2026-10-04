@@ -1179,21 +1179,18 @@ public class ButtonManager : MonoBehaviour
 		_alwaysMicInputType.SetActive(_audioInputType == 2);
 	}
 
+	// 语音聊天在 WebGL 版已剥离：没有麦克风设备枚举，也拿不到 MetaVoiceChat
+	// 的 Micro 响应式字段。原实现会写 Micro.Value，现改为无操作。
+	// 方法本身必须保留 —— Game.unity / CanvasHolder.prefab 里有 4 个按钮
+	// 通过 UnityEvent 绑定到它，删掉会导致运行时 MissingMethodException。
 	public void ChangeMicrophone(int amount)
 	{
-		int num = Microphone.devices.Length - 1;
-		_microphoneIndex += amount;
-		if (_microphoneIndex < 0)
+		_microphoneIndex = 0;
+		if (_microphoneText != null)
 		{
-			_microphoneIndex = num;
+			_microphoneText.text = string.Empty;
 		}
-		else if (_microphoneIndex > num)
-		{
-			_microphoneIndex = 0;
-		}
-		Micro.Value = Microphone.devices[_microphoneIndex];
-		_microphoneText.text = Micro.Value;
-		PlayerPrefs.SetString("Microphone", Micro.Value);
+		PlayerPrefs.DeleteKey("Microphone");
 	}
 
 	public void SetColoringIndex(int index)

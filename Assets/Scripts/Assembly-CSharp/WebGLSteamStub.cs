@@ -21,7 +21,10 @@ using UnityEngine;
 
 namespace Steamworks
 {
-	/// <summary>Steam 网络可用性状态（原Steamworks 枚举，桩实现保留全部成员）</summary>
+	/// <summary>
+	/// Steam 网络可用性状态（对齐 Steamworks.NET 原枚举，含 CanvasManager 用到的
+	/// Retrying —— 早期桩里漏了这个成员，导致 switch 分支编译不过）
+	/// </summary>
 	public enum ESteamNetworkingAvailability
 	{
 		k_ESteamNetworkingAvailability_Unknown = 0,
@@ -29,15 +32,19 @@ namespace Steamworks
 		k_ESteamNetworkingAvailability_Failed = 2,
 		k_ESteamNetworkingAvailability_NeverTried = 3,
 		k_ESteamNetworkingAvailability_Waiting = 4,
-		k_ESteamNetworkingAvailability_Attempting = 5,
-		k_ESteamNetworkingAvailability_Current = 6,
-		k_ESteamNetworkingAvailability_CannotTry = 7
+		k_ESteamNetworkingAvailability_Retrying = 6,
+		k_ESteamNetworkingAvailability_Attempting = 7,
+		k_ESteamNetworkingAvailability_Current = 8,
+		k_ESteamNetworkingAvailability_CannotTry = 9
 	}
 
-	/// <summary>Steam Relay 网络状态回调</summary>
+	/// <summary>
+	/// Steam Relay 网络状态回调。字段名必须是 m_eAvail —— Steamworks 原结构如此，
+	/// 早期桩写成了 m_eStatus，与 CanvasManager.OnRelayStatus 的读取不匹配。
+	/// </summary>
 	public struct SteamRelayNetworkStatus_t
 	{
-		public ESteamNetworkingAvailability m_eStatus;
+		public ESteamNetworkingAvailability m_eAvail;
 	}
 
 	/// <summary>Steam 大厅创建回调</summary>
@@ -136,19 +143,33 @@ namespace Steamworks
 	{
 		public ulong m_gameID;
 
-		public AppId AppID()
+		public AppId_t AppID()
 		{
-			return (AppId)m_gameID;
+			return (AppId_t)m_gameID;
 		}
 	}
 
-	public struct AppId
+	/// <summary>
+	/// Steam AppID。类型名必须是 AppId_t —— Steamworks.NET 就是这个拼写，
+	/// ButtonManager.WishlistButton 按 new AppId_t(4001890u) 调用。
+	/// </summary>
+	public struct AppId_t
 	{
 		public ulong m_AppId;
+
+		public AppId_t(ulong id)
+		{
+			m_AppId = id;
+		}
 
 		public uint AppID()
 		{
 			return (uint)m_AppId;
+		}
+
+		public static implicit operator AppId_t(ulong value)
+		{
+			return new AppId_t(value);
 		}
 	}
 
@@ -202,7 +223,7 @@ namespace Steamworks
 
 	public static class SteamUtils
 	{
-		public static AppId GetAppID()
+		public static AppId_t GetAppID()
 		{
 			return default;
 		}
@@ -266,31 +287,41 @@ namespace Steamworks
 		}
 
 		// ---- WebGL 桩：Steam 覆盖层不可用 ----
+		// 签名对齐 Steamworks.NET，否则调用方编译不过：
+		//   ActivateGameOverlay(string)            —— JoinFriendButton 传的 "Friends"
+		//   ActivateGameOverlayInviteDialog(CSteamID)
+		//   ActivateGameOverlayToStore(AppId, EOverlayToStoreFlag)
 
 		public static void ActivateGameOverlay()
 		{
 		}
 
-		public static bool ActivateGameOverlayInviteDialog(SteamAPICall_t callResult, string steamID)
+		public static void ActivateGameOverlay(string pchOverlayName)
+		{
+		}
+
+		public static bool ActivateGameOverlayInviteDialog(SteamAPICall_t callResult, CSteamID steamIDFriend)
 		{
 			return false;
 		}
 
-		public static bool ActivateGameOverlayToStore(SteamAPICall_t callResult, AppID gameID)
+		public static bool ActivateGameOverlayInviteDialog(SteamAPICall_t callResult, CSteamID steamIDFriend, string pchConnectionMsg)
+		{
+			return false;
+		}
+
+		public static bool ActivateGameOverlayToStore(SteamAPICall_t callResult, AppId_t gameID, EOverlayToStoreFlag flag)
 		{
 			return false;
 		}
 	}
 
-	/// <summary>Steam AppID（配合 SteamFriends 商店跳转 API 使用）</summary>
-	public struct AppID
+	/// <summary>商店页跳转标志（SteamFriends.ActivateGameOverlayToStore 用）</summary>
+	public enum EOverlayToStoreFlag
 	{
-		public uint m_AppId;
-
-		public AppID(uint id)
-		{
-			m_AppId = id;
-		}
+		k_EOverlayToStoreFlag_None = 0,
+		k_EOverlayToStoreFlag_DepositOnly = 1,
+		k_EOverlayToStoreFlag_FinalReleaseOnly = 2
 	}
 
 	public static class SteamMatchmaking
@@ -304,9 +335,9 @@ namespace Steamworks
 		{
 		}
 
-		public static bool GetLobbyData(CSteamID lobbyID, string key)
+		public static string GetLobbyData(CSteamID lobbyID, string key)
 		{
-			return null;
+			return string.Empty;
 		}
 
 		public static bool SetLobbyData(CSteamID lobbyID, string key, string value)
@@ -373,7 +404,14 @@ namespace Steamworks
 		}
 
 		/// <summary>WebGL 桩：不重置任何统计</summary>
+		// 签名对齐 Steamworks.NET：AchievementManager 用命名参数
+		// ResetAllStats(bAchievementsToo: true) 调用。
 		public static bool ResetAllStats()
+		{
+			return true;
+		}
+
+		public static bool ResetAllStats(bool bAchievementsToo)
 		{
 			return true;
 		}
