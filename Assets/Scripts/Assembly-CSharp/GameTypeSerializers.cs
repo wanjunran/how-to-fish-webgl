@@ -88,15 +88,21 @@ namespace FishNet.Serializing.Generated
 
 		// WeaponInfo is a plain class, not a NetworkBehaviour, so its fields are
 		// written out one by one. Field order must match the reader below.
+		//
+		// The leading bool is FishNet's null marker, and its polarity is the
+		// opposite of what it looks like: true means "this reference is null".
+		// Confirmed from the generated IL for LoadQueueData, which branches on
+		// brtrue to write `true` and return, and whose reader does brfalse ->
+		// ldnull.
 		public static void GWrite___WeaponInfoFishNet_002ESerializing_002EGenerated(Writer writer, WeaponInfo value)
 		{
 			if (value == null)
 			{
-				writer.WriteBoolean(false);
+				writer.WriteBoolean(true);
 				return;
 			}
 
-			writer.WriteBoolean(true);
+			writer.WriteBoolean(false);
 			writer.WriteNetworkBehaviour(value.Weapon);
 			writer.WriteByte(value.ProjectileType);
 			writer.WriteInt32(value.ProjectileDamage);
@@ -153,10 +159,10 @@ namespace FishNet.Serializing.Generated
 		public static Explosive GRead___ExplosiveFishNet_002ESerializing_002EGenerateds(Reader reader) =>
 			reader.ReadNetworkBehaviour() as Explosive;
 
-		// Mirror of the writer: leading bool says whether the instance is null.
+		// Mirror of the writer: a leading true means the reference was null.
 		public static WeaponInfo GRead___WeaponInfoFishNet_002ESerializing_002EGenerateds(Reader reader)
 		{
-			if (!reader.ReadBoolean())
+			if (reader.ReadBoolean())
 				return null;
 
 			return new WeaponInfo
