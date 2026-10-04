@@ -300,12 +300,24 @@ namespace Steamworks
 		{
 		}
 
+		// Steamworks.NET exposes both a callResult form and a convenience form
+		// that takes only the interesting argument; the game uses the latter.
+		public static bool ActivateGameOverlayInviteDialog(CSteamID steamIDFriend)
+		{
+			return false;
+		}
+
 		public static bool ActivateGameOverlayInviteDialog(SteamAPICall_t callResult, CSteamID steamIDFriend)
 		{
 			return false;
 		}
 
 		public static bool ActivateGameOverlayInviteDialog(SteamAPICall_t callResult, CSteamID steamIDFriend, string pchConnectionMsg)
+		{
+			return false;
+		}
+
+		public static bool ActivateGameOverlayToStore(AppId_t gameID, EOverlayToStoreFlag flag)
 		{
 			return false;
 		}
