@@ -274,8 +274,6 @@ public class ButtonManager : MonoBehaviour
 
 	private byte _cheatButtonPressedAmount;
 
-	public static MetaSerializableReactiveProperty<string> Micro { get; } = new MetaSerializableReactiveProperty<string>();
-
 	private void Awake()
 	{
 		Setter.SetSingleInstance(ref _instance, this);

@@ -19,6 +19,7 @@
 // ============================================================
 
 using System;
+using Steamworks;
 using UnityEngine;
 
 public class SteamManager : MonoBehaviour
