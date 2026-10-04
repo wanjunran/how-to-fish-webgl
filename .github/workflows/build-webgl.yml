@@ -14,7 +14,6 @@ jobs:
     timeout-minutes: 150
 
     env:
-      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
       UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
       UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
 
@@ -38,83 +37,35 @@ jobs:
           restore-keys: |
             Library-WebGL-
 
-      # 直接调用 unityci/editor 容器，绕开 game-ci/unity-builder 的许可证激活逻辑。
-      # 原因：v4 的 activate.sh 只支持 serial 模式与许可服务器两种策略，
-      # 且 Unity 6000.4 已不接受 F 开头的人工哨兵序列号（Code 20110 serial invalid），
-      # 官方文档所述的 UNITY_LICENSE(ULF) 分支在 v4 脚本中根本不存在。
-      # 这里改为自行写入 .ulf 并用 -manualLicenseFile 导入。
+      # 使用 game-ci/unity-builder v6 —— 这是首个内置 `personal` 授权策略的版本。
+      #
+      # 为什么必须用 v6 而不是 v4：
+      #   v4 的 activate.sh 只有两条分支（serial / 许可服务器），Unity Personal
+      #   根本走不通，导致 7 次构建全部失败在授权阶段。
+      #
+      #   v6 委托给 game-ci/cli，其激活链为 file -> serial -> floating -> personal。
+      #   本仓库只提供 UNITY_EMAIL + UNITY_PASSWORD（不提供 UNITY_LICENSE /
+      #   UNITY_SERIAL），因此自动解析到 `personal` 分支。该分支直接调用
+      #   Unity.Licensing.Client 的 --activate-all --include-personal，
+      #   正是 Unity 6 entitlement 体系下 Personal 账号唯一可行的激活路径。
+      #
+      #   关键背景：Unity 已取消 Personal 的离线（人工）激活，
+      #   license.unity3d.com/manual 现在只对 Enterprise / Industry 开放。
+      #   所以任何 .ulf 文件对免费账号都不可能存在 —— 之前 34 字节的
+      #   UNITY_LICENSE 是死路，不是配置问题。
+      #
+      # 注意：personal 授权会占用一个 Personal seat，v6 会在 build 结束
+      # （含失败/取消）时自动归还。若频繁失败导致 seat 被泄漏，
+      # 到 https://id.unity.com 手动释放。
       - name: Build WebGL
+        uses: game-ci/unity-builder@v6
         env:
-          BUILD_PATH: /github/workspace/build/WebGL
-        run: |
-          set -o pipefail
-          IMAGE="unityci/editor:ubuntu-6000.4.4f1-webgl-3"
-          LICENSE_DIR="/root/.local/share/unity3d/Unity"
-
-          if [ -z "$UNITY_LICENSE" ]; then
-            echo "::error::UNITY_LICENSE secret is empty — .ulf file required"
-            exit 1
-          fi
-
-          docker pull "$IMAGE"
-
-          # shellcheck disable=SC2086
-          docker run --rm \
-            --volume "$GITHUB_WORKSPACE:/github/workspace" \
-            --cpus 4 --memory 15g --shm-size 1025m \
-            --env UNITY_EMAIL="$UNITY_EMAIL" \
-            --env UNITY_PASSWORD="$UNITY_PASSWORD" \
-            --env UNITY_LICENSE="$UNITY_LICENSE" \
-            --env BUILD_PATH="$BUILD_PATH" \
-            "$IMAGE" \
-            bash -c '
-              set -o pipefail
-              LICENSE_DIR="/root/.local/share/unity3d/Unity"
-              mkdir -p "$LICENSE_DIR"
-
-              # 随机化 machine-id，避免与 ULF 中的机器绑定冲突
-              dbus-uuidgen > /etc/machine-id 2>/dev/null || true
-              mkdir -p /var/lib/dbus && ln -sf /etc/machine-id /var/lib/dbus/machine-id 2>/dev/null || true
-
-              printf "%s" "$UNITY_LICENSE" > "$LICENSE_DIR/Unity_lic.ulf"
-              ULF_SIZE=$(wc -c < "$LICENSE_DIR/Unity_lic.ulf")
-              echo "--- ULF 大小: ${ULF_SIZE} 字节 ---"
-
-              # --- 路线 A: 导入 .ulf 许可证文件（仅当内容看起来是有效 ULF 时尝试）---
-              if [ "$ULF_SIZE" -gt 200 ]; then
-                echo "=== 路线 A: -manualLicenseFile 导入许可证 ==="
-                unity-editor -batchmode -nographics -quit \
-                  -manualLicenseFile "$LICENSE_DIR/Unity_lic.ulf" \
-                  -logFile /dev/stdout 2>&1 | tail -30
-              else
-                echo "=== 路线 A 跳过: ULF 仅 ${ULF_SIZE} 字节，不是有效许可证文件 ==="
-              fi
-
-              # --- 路线 B: 邮箱密码登录激活（Unity 官方 CI 常用方式，不需要 serial）---
-              if [ ! -f /usr/share/unity3d/config/services-config.json ]; then
-                echo "=== 路线 B: 用户名密码登录激活 ==="
-                unity-editor -batchmode -nographics -quit \
-                  -username "$UNITY_EMAIL" \
-                  -password "$UNITY_PASSWORD" \
-                  -logFile /dev/stdout 2>&1 | tail -40
-              else
-                echo "=== 路线 B 跳过: 路线 A 已生成许可证配置 ==="
-              fi
-
-              echo "=== 许可证落地检查 ==="
-              ls -la "$LICENSE_DIR" 2>/dev/null || echo "无 $LICENSE_DIR"
-              ls -la /usr/share/unity3d/config/ 2>/dev/null || echo "无 services-config.json"
-              echo "--- services-config.json 内容 ---"
-              cat /usr/share/unity3d/config/services-config.json 2>/dev/null || echo "(不存在)"
-
-              echo "=== 步骤 2/2: 构建 WebGL ==="
-              unity-editor -batchmode -nographics -quit \
-                -projectPath /github/workspace \
-                -buildTarget WebGL \
-                -executeMethod CloudWebGLBuild.Perform \
-                -buildPath "$BUILD_PATH" \
-                -logFile /dev/stdout 2>&1 | tail -400
-            '
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: WebGL
+          buildMethod: WebGLCloudBuild.CloudWebGLBuild.Perform
+          dockerMemoryLimit: 15g
 
       - name: Save Library cache
         if: always()
