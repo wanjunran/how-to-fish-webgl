@@ -71,6 +71,16 @@ namespace WebGLCloudBuild
 
         private static string ResolveOutputDir()
         {
+            // unity-builder v6 通过 -customBuildPath 传入输出目录，不设 BUILD_PATH
+            // 环境变量，所以两处都要看。v6 传入的值形如
+            // /github/workspace/build/WebGL，此时直接采用，不要再追加 WebGL，
+            // 否则产物会落到 build/WebGL/WebGL，与 artifact 收集路径脱节。
+            string customBuildPath = ReadCommandLineValue("-customBuildPath");
+            if (!string.IsNullOrEmpty(customBuildPath))
+            {
+                return customBuildPath;
+            }
+
             string buildPath = Environment.GetEnvironmentVariable("BUILD_PATH");
             if (!string.IsNullOrEmpty(buildPath))
             {
@@ -78,6 +88,24 @@ namespace WebGLCloudBuild
             }
 
             return Path.Combine(Directory.GetCurrentDirectory(), "build", "WebGL");
+        }
+
+        /// <summary>
+        /// 从 -key value 形式的命令行参数里取值。Unity 的 -customBuildPath 与
+        /// -buildPath 都以空格分隔，GetCommandLineArgs 里是相邻两个元素。
+        /// </summary>
+        private static string ReadCommandLineValue(string key)
+        {
+            string[] args = Environment.GetCommandLineArgs();
+            for (int i = 0; i < args.Length - 1; i++)
+            {
+                if (string.Equals(args[i], key, StringComparison.OrdinalIgnoreCase))
+                {
+                    return args[i + 1];
+                }
+            }
+
+            return null;
         }
 
         private static string[] ResolveScenes()
