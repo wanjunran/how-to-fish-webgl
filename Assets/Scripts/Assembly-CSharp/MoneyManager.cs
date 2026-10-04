@@ -163,7 +163,7 @@ public class MoneyManager : NetworkBehaviour
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
 		pooledWriter.WriteBoolean(increase);
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		SendObserversRpc(0u, pooledWriter, channel, DataOrderType.Default, bufferLast: false, excludeServer: true, excludeOwner: false);
 		pooledWriter.Store();
 	}
@@ -176,7 +176,7 @@ public class MoneyManager : NetworkBehaviour
 	private void RpcReader___ObserverMoneySound___4168932475(PooledReader PooledReader0, Channel channel)
 	{
 		bool flag = PooledReader0.ReadBoolean();
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsClientInitialized)
 		{
 			RpcLogic___ObserverMoneySound___4168932475(flag, player);

@@ -452,7 +452,7 @@ public class Creature : Item
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoHit);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoHit);
 		pooledWriter.WriteVector3(pos);
 		pooledWriter.WriteVector3(dir);
 		pooledWriter.WriteInt32(damage);
@@ -475,7 +475,7 @@ public class Creature : Item
 
 	private void RpcReader___ObserverHit___701300449(PooledReader PooledReader0, Channel channel)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Vector3 vector = PooledReader0.ReadVector3();
 		Vector3 vector2 = PooledReader0.ReadVector3();
 		int num = PooledReader0.ReadInt32();
@@ -495,7 +495,7 @@ public class Creature : Item
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteVector3(dir);
 		pooledWriter.WriteInt32(damage);
 		SendObserversRpc(3u, pooledWriter, channel, DataOrderType.Default, bufferLast: false, excludeServer: false, excludeOwner: false);
@@ -515,7 +515,7 @@ public class Creature : Item
 
 	private void RpcReader___ObserverExplosionHit___2627372740(PooledReader PooledReader0, Channel channel)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Vector3 vector = PooledReader0.ReadVector3();
 		int num = PooledReader0.ReadInt32();
 		if (base.IsClientInitialized)

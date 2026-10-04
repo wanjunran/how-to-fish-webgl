@@ -33,8 +33,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: Library
-          key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}
+          key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/manifest.json', 'Assets/**') }}
           restore-keys: |
+            Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-
             Library-WebGL-
 
       # 使用 game-ci/unity-builder v6 —— 这是首个内置 `personal` 授权策略的版本。
@@ -72,7 +73,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: Library
-          key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}
+          key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/manifest.json', 'Assets/**') }}
 
       - name: Upload WebGL build
         uses: actions/upload-artifact@v4

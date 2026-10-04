@@ -567,8 +567,8 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
-		GeneratedWriters___Internal.GWrite___DeadPlayerFishNet_002ESerializing_002EGenerated(pooledWriter, deadPlayer);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___DeadPlayerFishNet_002ESerializing_002EGenerated(pooledWriter, deadPlayer);
 		SendServerRpc(1u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -584,8 +584,8 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___ResurrectPlayer___2247010027(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		DeadPlayer deadPlayer = GeneratedReaders___Internal.GRead___DeadPlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		DeadPlayer deadPlayer = GameTypeSerializers.GRead___DeadPlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___ResurrectPlayer___2247010027(player, deadPlayer);
@@ -602,7 +602,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel2 = channel;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___DeadPlayerFishNet_002ESerializing_002EGenerated(pooledWriter, deadPlayer);
+		GameTypeSerializers.GWrite___DeadPlayerFishNet_002ESerializing_002EGenerated(pooledWriter, deadPlayer);
 		pooledWriter.WriteSingle(resurrectPercent);
 		SendServerRpc(2u, pooledWriter, channel2, DataOrderType.Default);
 		pooledWriter.Store();
@@ -618,7 +618,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___UpdateDeadPlayerResurrectPercent___3918731242(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		DeadPlayer deadPlayer = GeneratedReaders___Internal.GRead___DeadPlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		DeadPlayer deadPlayer = GameTypeSerializers.GRead___DeadPlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		float num = PooledReader0.ReadSingle();
 		if (base.IsServerInitialized)
 		{
@@ -636,7 +636,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteVector3(deathPos);
 		pooledWriter.WriteQuaternion32(deathRot);
 		SendServerRpc(3u, pooledWriter, channel, DataOrderType.Default);
@@ -675,7 +675,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___RespawnPlayer___2210451296(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Vector3 vector = PooledReader0.ReadVector3();
 		Quaternion quaternion2 = PooledReader0.ReadQuaternion32();
 		if (base.IsServerInitialized)
@@ -694,7 +694,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteVector3(pos);
 		pooledWriter.WriteSingle(rot);
 		SendServerRpc(4u, pooledWriter, channel, DataOrderType.Default);
@@ -711,7 +711,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___TeleportPlayer___3852204532(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Vector3 vector = PooledReader0.ReadVector3();
 		float num = PooledReader0.ReadSingle();
 		if (base.IsServerInitialized)
@@ -730,9 +730,9 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, replacedItem);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, replacedItem);
 		SendServerRpc(5u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -775,9 +775,9 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___SetItemHolder___3876263354(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		Item item2 = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item2 = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___SetItemHolder___3876263354(item, player, item2);
@@ -794,8 +794,8 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, attemptedItem);
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, authoritativeHeldItem);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, attemptedItem);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, authoritativeHeldItem);
 		SendTargetRpc(6u, pooledWriter, channel, DataOrderType.Default, connection, excludeServer: false);
 		pooledWriter.Store();
 	}
@@ -814,8 +814,8 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___TargetReconcileRejectedItemPickup___3695777406(PooledReader PooledReader0, Channel channel)
 	{
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		Item item2 = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item2 = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsClientInitialized)
 		{
 			RpcLogic___TargetReconcileRejectedItemPickup___3695777406(base.LocalConnection, item, item2);
@@ -832,7 +832,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
 		SendServerRpc(7u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -847,7 +847,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___HandOverItemSimulation___2875874600(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___HandOverItemSimulation___2875874600(item);
@@ -864,13 +864,13 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel2 = channel;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
 		pooledWriter.WriteNetworkConnection(netCon);
 		pooledWriter.WriteVector3(pos);
 		pooledWriter.WriteQuaternion32(rot);
 		pooledWriter.WriteBoolean(onBoat);
-		GeneratedWriters___Internal.GWrite___System_002ESingle_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, extraHingeAngles);
-		GeneratedWriters___Internal.GWrite___UnityEngine_002EQuaternion_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, extraHingeRots);
+		GameTypeSerializers.GWrite___System_002ESingle_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, extraHingeAngles);
+		GameTypeSerializers.GWrite___UnityEngine_002EQuaternion_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, extraHingeRots);
 		SendServerRpc(8u, pooledWriter, channel2, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -885,13 +885,13 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___UpdateItemPosRot___3673846853(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		NetworkConnection networkConnection = PooledReader0.ReadNetworkConnection();
 		Vector3 vector = PooledReader0.ReadVector3();
 		Quaternion quaternion2 = PooledReader0.ReadQuaternion32();
 		bool flag = PooledReader0.ReadBoolean();
-		float[] array = GeneratedReaders___Internal.GRead___System_002ESingle_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		Quaternion[] array2 = GeneratedReaders___Internal.GRead___UnityEngine_002EQuaternion_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		float[] array = GameTypeSerializers.GRead___System_002ESingle_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Quaternion[] array2 = GameTypeSerializers.GRead___UnityEngine_002EQuaternion_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___UpdateItemPosRot___3673846853(item, networkConnection, vector, quaternion2, flag, array, array2, channel);
@@ -908,7 +908,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
 		pooledWriter.WriteNetworkConnection(newSimulator);
 		SendServerRpc(9u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -925,7 +925,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___SetSyncedSimulator___1559681479(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		NetworkConnection networkConnection = PooledReader0.ReadNetworkConnection();
 		if (base.IsServerInitialized)
 		{
@@ -943,7 +943,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel2 = channel;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ToolFishNet_002ESerializing_002EGenerated(pooledWriter, tool);
+		GameTypeSerializers.GWrite___ToolFishNet_002ESerializing_002EGenerated(pooledWriter, tool);
 		pooledWriter.WriteVector3(pos);
 		pooledWriter.WriteQuaternion32(rot);
 		SendServerRpc(10u, pooledWriter, channel2, DataOrderType.Default);
@@ -960,7 +960,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___UpdateHeldToolPosRot___3161606994(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Tool tool = GeneratedReaders___Internal.GRead___ToolFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Tool tool = GameTypeSerializers.GRead___ToolFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Vector3 vector = PooledReader0.ReadVector3();
 		Quaternion quaternion2 = PooledReader0.ReadQuaternion32();
 		if (base.IsServerInitialized)
@@ -979,7 +979,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel2 = channel;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteVector3(pos);
 		pooledWriter.WriteVector2(rot);
 		pooledWriter.WriteBoolean(onBoat);
@@ -1017,7 +1017,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___UpdatePlayerPosRot___2142082744(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Vector3 vector = PooledReader0.ReadVector3();
 		Vector2 vector2 = PooledReader0.ReadVector2();
 		bool flag = PooledReader0.ReadBoolean();
@@ -1038,7 +1038,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel2 = channel;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteBoolean(isCrouching);
 		SendServerRpc(12u, pooledWriter, channel2, DataOrderType.Default);
 		pooledWriter.Store();
@@ -1054,7 +1054,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___UpdatePlayerCrouching___1562565462(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		bool flag = PooledReader0.ReadBoolean();
 		if (base.IsServerInitialized)
 		{
@@ -1072,7 +1072,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteInt32(slot);
 		SendServerRpc(13u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -1100,7 +1100,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___SelectInvSlot___3709775007(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		int num = PooledReader0.ReadInt32();
 		if (base.IsServerInitialized)
 		{
@@ -1118,8 +1118,8 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
 		pooledWriter.WriteUInt8Unpacked(slot);
 		SendServerRpc(14u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -1135,8 +1135,8 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___PutItemInInventory___3873472972(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		byte b = PooledReader0.ReadUInt8Unpacked();
 		if (base.IsServerInitialized)
 		{
@@ -1154,8 +1154,8 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
 		SendServerRpc(15u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -1171,8 +1171,8 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___RemoveItemFromInventory___241039439(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___RemoveItemFromInventory___241039439(player, item);
@@ -1189,7 +1189,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteVector3(pos);
 		pooledWriter.WriteQuaternion32(rot);
 		SendServerRpc(16u, pooledWriter, channel, DataOrderType.Default);
@@ -1206,7 +1206,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___DropAllItems___2210451296(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Vector3 vector = PooledReader0.ReadVector3();
 		Quaternion quaternion2 = PooledReader0.ReadQuaternion32();
 		if (base.IsServerInitialized)
@@ -1225,7 +1225,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel2 = channel;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
 		pooledWriter.WriteUInt8Unpacked(vel);
 		SendServerRpc(17u, pooledWriter, channel2, DataOrderType.Default);
 		pooledWriter.Store();
@@ -1241,7 +1241,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___PlayImpactSound___413717140(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		byte b = PooledReader0.ReadUInt8Unpacked();
 		if (base.IsServerInitialized)
 		{
@@ -1259,7 +1259,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel2 = channel;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___FishingRodFishNet_002ESerializing_002EGenerated(pooledWriter, rod);
+		GameTypeSerializers.GWrite___FishingRodFishNet_002ESerializing_002EGenerated(pooledWriter, rod);
 		pooledWriter.WriteVector3(baitPos);
 		pooledWriter.WriteInt32(curLineLengthMulti);
 		pooledWriter.WriteSingle(curBaitForce);
@@ -1277,7 +1277,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___UpdateBaitPosAndLineLength___2349636148(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		FishingRod fishingRod = GeneratedReaders___Internal.GRead___FishingRodFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		FishingRod fishingRod = GameTypeSerializers.GRead___FishingRodFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Vector3 vector = PooledReader0.ReadVector3();
 		int num = PooledReader0.ReadInt32();
 		float num2 = PooledReader0.ReadSingle();
@@ -1297,7 +1297,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___FishingRodFishNet_002ESerializing_002EGenerated(pooledWriter, rod);
+		GameTypeSerializers.GWrite___FishingRodFishNet_002ESerializing_002EGenerated(pooledWriter, rod);
 		SendServerRpc(19u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -1316,7 +1316,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___ReleaseItemFromBait___2725923288(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		FishingRod fishingRod = GeneratedReaders___Internal.GRead___FishingRodFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		FishingRod fishingRod = GameTypeSerializers.GRead___FishingRodFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___ReleaseItemFromBait___2725923288(fishingRod);
@@ -1333,7 +1333,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel2 = channel;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___FishingRodFishNet_002ESerializing_002EGenerated(pooledWriter, rod);
+		GameTypeSerializers.GWrite___FishingRodFishNet_002ESerializing_002EGenerated(pooledWriter, rod);
 		pooledWriter.WriteSingle(rot);
 		pooledWriter.WriteBoolean(additionalState);
 		SendServerRpc(20u, pooledWriter, channel2, DataOrderType.Default);
@@ -1350,7 +1350,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___UpdateRodPullBack___2928850743(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		FishingRod fishingRod = GeneratedReaders___Internal.GRead___FishingRodFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		FishingRod fishingRod = GameTypeSerializers.GRead___FishingRodFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		float num = PooledReader0.ReadSingle();
 		bool flag = PooledReader0.ReadBoolean();
 		if (base.IsServerInitialized)
@@ -1369,8 +1369,8 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___CreatureFishNet_002ESerializing_002EGenerated(pooledWriter, creature);
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoHit);
+		GameTypeSerializers.GWrite___CreatureFishNet_002ESerializing_002EGenerated(pooledWriter, creature);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoHit);
 		pooledWriter.WriteInt32(damage);
 		pooledWriter.WriteVector3(hitPoint);
 		pooledWriter.WriteVector3(dir);
@@ -1389,8 +1389,8 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___HitCreature___215526726(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Creature creature = GeneratedReaders___Internal.GRead___CreatureFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Creature creature = GameTypeSerializers.GRead___CreatureFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		int num = PooledReader0.ReadInt32();
 		Vector3 vector = PooledReader0.ReadVector3();
 		Vector3 vector2 = PooledReader0.ReadVector3();
@@ -1410,8 +1410,8 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, owner);
-		GeneratedWriters___Internal.GWrite___WeaponInfoFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, owner);
+		GameTypeSerializers.GWrite___WeaponInfoFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
 		pooledWriter.WriteUInt32(tick);
 		pooledWriter.WriteUInt32(id);
 		pooledWriter.WriteVector3(pos);
@@ -1430,8 +1430,8 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___AddProjectile___3746676724(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		WeaponInfo weaponInfo = GeneratedReaders___Internal.GRead___WeaponInfoFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		WeaponInfo weaponInfo = GameTypeSerializers.GRead___WeaponInfoFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		uint num = PooledReader0.ReadUInt32();
 		uint num2 = PooledReader0.ReadUInt32();
 		Vector3 vector = PooledReader0.ReadVector3();
@@ -1452,12 +1452,12 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, owner);
-		GeneratedWriters___Internal.GWrite___WeaponInfoFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, owner);
+		GameTypeSerializers.GWrite___WeaponInfoFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
 		pooledWriter.WriteUInt32(tick);
 		pooledWriter.WriteUInt32(id);
 		pooledWriter.WriteVector3(pos);
-		GeneratedWriters___Internal.GWrite___UnityEngine_002EVector3_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, velocities);
+		GameTypeSerializers.GWrite___UnityEngine_002EVector3_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, velocities);
 		SendServerRpc(23u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -1472,12 +1472,12 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___AddProjectiles___1894401688(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		WeaponInfo weaponInfo = GeneratedReaders___Internal.GRead___WeaponInfoFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		WeaponInfo weaponInfo = GameTypeSerializers.GRead___WeaponInfoFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		uint num = PooledReader0.ReadUInt32();
 		uint num2 = PooledReader0.ReadUInt32();
 		Vector3 vector = PooledReader0.ReadVector3();
-		Vector3[] array = GeneratedReaders___Internal.GRead___UnityEngine_002EVector3_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Vector3[] array = GameTypeSerializers.GRead___UnityEngine_002EVector3_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___AddProjectiles___1894401688(player, weaponInfo, num, num2, vector, array);
@@ -1525,7 +1525,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___WeaponFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
+		GameTypeSerializers.GWrite___WeaponFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
 		SendServerRpc(25u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -1540,7 +1540,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___ReloadWeapon___1996094309(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Weapon weapon = GeneratedReaders___Internal.GRead___WeaponFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Weapon weapon = GameTypeSerializers.GRead___WeaponFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___ReloadWeapon___1996094309(weapon);
@@ -1558,8 +1558,8 @@ public class Server : NetworkBehaviour
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
 		pooledWriter.WriteUInt8Unpacked(itemID);
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, replacedItem);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, replacedItem);
 		pooledWriter.WriteVector3(pos);
 		pooledWriter.WriteQuaternion32(rot);
 		pooledWriter.WriteBoolean(isFree);
@@ -1603,8 +1603,8 @@ public class Server : NetworkBehaviour
 	private void RpcReader___BuyItem___4197152275(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
 		byte b = PooledReader0.ReadUInt8Unpacked();
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Vector3 vector = PooledReader0.ReadVector3();
 		Quaternion quaternion2 = PooledReader0.ReadQuaternion32();
 		bool flag = PooledReader0.ReadBoolean();
@@ -1624,7 +1624,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteUInt8Unpacked(slotIndex);
 		SendServerRpc(27u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -1645,7 +1645,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___UnlockPocket___1382779195(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		byte b = PooledReader0.ReadUInt8Unpacked();
 		if (base.IsServerInitialized)
 		{
@@ -1663,7 +1663,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteUInt8Unpacked(baitIndex);
 		pooledWriter.WriteInt32(cost);
 		SendServerRpc(28u, pooledWriter, channel, DataOrderType.Default);
@@ -1685,7 +1685,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___BuyBait___4169050770(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		byte b = PooledReader0.ReadUInt8Unpacked();
 		int num = PooledReader0.ReadInt32();
 		if (base.IsServerInitialized)
@@ -1704,7 +1704,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteUInt8Unpacked(npcID);
 		SendServerRpc(29u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -1749,7 +1749,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___TakeItemFromNpc___1382779195(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		byte b = PooledReader0.ReadUInt8Unpacked();
 		if (base.IsServerInitialized)
 		{
@@ -1767,7 +1767,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteUInt8Unpacked(to);
 		SendServerRpc(30u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -1783,7 +1783,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___ChangeBait___1382779195(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		byte b = PooledReader0.ReadUInt8Unpacked();
 		if (base.IsServerInitialized)
 		{
@@ -1865,7 +1865,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteTransform(target);
 		pooledWriter.WriteBoolean(right);
 		pooledWriter.WriteVector3(targetHitPoint);
@@ -1883,7 +1883,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___Punch___1201658259(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Transform transform = PooledReader0.ReadTransform();
 		bool flag = PooledReader0.ReadBoolean();
 		Vector3 vector = PooledReader0.ReadVector3();
@@ -1903,7 +1903,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___MeleeFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
+		GameTypeSerializers.GWrite___MeleeFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
 		pooledWriter.WriteTransform(target);
 		pooledWriter.WriteBoolean(right);
 		pooledWriter.WriteVector3(targetHitPoint);
@@ -1921,7 +1921,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___MeleeAttack___1137909598(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Melee melee = GeneratedReaders___Internal.GRead___MeleeFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Melee melee = GameTypeSerializers.GRead___MeleeFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Transform transform = PooledReader0.ReadTransform();
 		bool flag = PooledReader0.ReadBoolean();
 		Vector3 vector = PooledReader0.ReadVector3();
@@ -1941,7 +1941,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ToolFishNet_002ESerializing_002EGenerated(pooledWriter, tool);
+		GameTypeSerializers.GWrite___ToolFishNet_002ESerializing_002EGenerated(pooledWriter, tool);
 		SendServerRpc(35u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -1956,7 +1956,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___InspectTool___625650179(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Tool tool = GeneratedReaders___Internal.GRead___ToolFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Tool tool = GameTypeSerializers.GRead___ToolFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___InspectTool___625650179(tool);
@@ -1973,12 +1973,12 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteInt32(damage);
 		pooledWriter.WriteVector3(force);
 		pooledWriter.WriteVector3(pos);
 		pooledWriter.WriteUInt8Unpacked(damageType);
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoHit);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoHit);
 		SendServerRpc(36u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -1997,12 +1997,12 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___HitPlayer___2449261505(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		int num = PooledReader0.ReadInt32();
 		Vector3 vector = PooledReader0.ReadVector3();
 		Vector3 vector2 = PooledReader0.ReadVector3();
 		byte b = PooledReader0.ReadUInt8Unpacked();
-		Player player2 = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player2 = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___HitPlayer___2449261505(player, num, vector, vector2, b, player2);
@@ -2019,11 +2019,11 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ExplosiveFishNet_002ESerializing_002EGenerated(pooledWriter, explosive);
+		GameTypeSerializers.GWrite___ExplosiveFishNet_002ESerializing_002EGenerated(pooledWriter, explosive);
 		pooledWriter.WriteUInt32(tick);
 		pooledWriter.WriteBoolean(forced);
 		pooledWriter.WriteBoolean(instant);
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoForced);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoForced);
 		SendServerRpc(37u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -2038,11 +2038,11 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___ActivateExplosive___1390675745(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Explosive explosive = GeneratedReaders___Internal.GRead___ExplosiveFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Explosive explosive = GameTypeSerializers.GRead___ExplosiveFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		uint num = PooledReader0.ReadUInt32();
 		bool flag = PooledReader0.ReadBoolean();
 		bool flag2 = PooledReader0.ReadBoolean();
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___ActivateExplosive___1390675745(explosive, num, flag, flag2, player);
@@ -2059,7 +2059,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
 		SendServerRpc(38u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -2074,7 +2074,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___GrillItemInLava___2875874600(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___GrillItemInLava___2875874600(item);
@@ -2091,7 +2091,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
 		pooledWriter.WriteUInt8Unpacked(toIndex);
 		SendServerRpc(39u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -2107,7 +2107,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___SetItemSkin___2384767125(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		byte b = PooledReader0.ReadUInt8Unpacked();
 		if (base.IsServerInitialized)
 		{
@@ -2157,8 +2157,8 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___CreatureFishNet_002ESerializing_002EGenerated(pooledWriter, creature);
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___CreatureFishNet_002ESerializing_002EGenerated(pooledWriter, creature);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		SendServerRpc(41u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -2175,8 +2175,8 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___FinishEatingCreature___1039939981(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Creature creature = GeneratedReaders___Internal.GRead___CreatureFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Creature creature = GameTypeSerializers.GRead___CreatureFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___FinishEatingCreature___1039939981(creature, player);
@@ -2193,7 +2193,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteBoolean(isEating);
 		SendServerRpc(42u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -2209,7 +2209,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___ToggleEatCreature___2104815579(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		bool flag = PooledReader0.ReadBoolean();
 		if (base.IsServerInitialized)
 		{
@@ -2227,7 +2227,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
 		pooledWriter.WriteSingle(multiplier);
 		SendServerRpc(43u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -2243,7 +2243,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___SetItemMultiplier___755958659(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Item item = GeneratedReaders___Internal.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		float num = PooledReader0.ReadSingle();
 		if (base.IsServerInitialized)
 		{
@@ -2290,7 +2290,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___RadioFishNet_002ESerializing_002EGenerated(pooledWriter, radio);
+		GameTypeSerializers.GWrite___RadioFishNet_002ESerializing_002EGenerated(pooledWriter, radio);
 		pooledWriter.WriteSingle(frequency);
 		SendServerRpc(45u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -2306,7 +2306,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___SetRadioFrequency___1599952821(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Radio radio = GeneratedReaders___Internal.GRead___RadioFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Radio radio = GameTypeSerializers.GRead___RadioFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		float num = PooledReader0.ReadSingle();
 		if (base.IsServerInitialized)
 		{
@@ -2324,7 +2324,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___WeaponFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
+		GameTypeSerializers.GWrite___WeaponFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
 		pooledWriter.WriteUInt8Unpacked(attachmentIndex);
 		SendServerRpc(46u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -2350,7 +2350,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___BuyAttachment___2937188526(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Weapon weapon = GeneratedReaders___Internal.GRead___WeaponFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Weapon weapon = GameTypeSerializers.GRead___WeaponFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		byte b = PooledReader0.ReadUInt8Unpacked();
 		if (base.IsServerInitialized)
 		{
@@ -2368,7 +2368,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___WeaponFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
+		GameTypeSerializers.GWrite___WeaponFishNet_002ESerializing_002EGenerated(pooledWriter, weapon);
 		SendServerRpc(47u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -2388,7 +2388,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___BuyBulletUpgrade___1996094309(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Weapon weapon = GeneratedReaders___Internal.GRead___WeaponFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Weapon weapon = GameTypeSerializers.GRead___WeaponFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___BuyBulletUpgrade___1996094309(weapon);
@@ -2405,7 +2405,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___MeleeFishNet_002ESerializing_002EGenerated(pooledWriter, melee);
+		GameTypeSerializers.GWrite___MeleeFishNet_002ESerializing_002EGenerated(pooledWriter, melee);
 		SendServerRpc(48u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -2425,7 +2425,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___BuySharpnessUpgrade___680780043(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Melee melee = GeneratedReaders___Internal.GRead___MeleeFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Melee melee = GameTypeSerializers.GRead___MeleeFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___BuySharpnessUpgrade___680780043(melee);
@@ -2473,7 +2473,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, driver);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, driver);
 		SendServerRpc(50u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -2488,7 +2488,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___SetDriver___3849956746(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___SetDriver___3849956746(player);
@@ -2505,8 +2505,8 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___Unity_002EMathematics_002EhalfFishNet_002ESerializing_002EGenerated(pooledWriter, x);
-		GeneratedWriters___Internal.GWrite___Unity_002EMathematics_002EhalfFishNet_002ESerializing_002EGenerated(pooledWriter, y);
+		GameTypeSerializers.GWrite___Unity_002EMathematics_002EhalfFishNet_002ESerializing_002EGenerated(pooledWriter, x);
+		GameTypeSerializers.GWrite___Unity_002EMathematics_002EhalfFishNet_002ESerializing_002EGenerated(pooledWriter, y);
 		SendServerRpc(51u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -2521,8 +2521,8 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___SendBoatInput___1949707525(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		half half5 = GeneratedReaders___Internal.GRead___Unity_002EMathematics_002EhalfFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		half half6 = GeneratedReaders___Internal.GRead___Unity_002EMathematics_002EhalfFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		half half5 = GameTypeSerializers.GRead___Unity_002EMathematics_002EhalfFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		half half6 = GameTypeSerializers.GRead___Unity_002EMathematics_002EhalfFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___SendBoatInput___1949707525(half5, half6);
@@ -2539,7 +2539,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteBoolean(isAfk);
 		pooledWriter.WriteBoolean(fromPause);
 		SendServerRpc(52u, pooledWriter, channel, DataOrderType.Default);
@@ -2556,7 +2556,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___SetIsAfk___3651916454(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		bool flag = PooledReader0.ReadBoolean();
 		bool flag2 = PooledReader0.ReadBoolean();
 		if (base.IsServerInitialized)
@@ -2575,7 +2575,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteUInt8Unpacked(motorIndex);
 		pooledWriter.WriteInt32(cost);
 		SendServerRpc(53u, pooledWriter, channel, DataOrderType.Default);
@@ -2593,7 +2593,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___BuyBoatMotor___4169050770(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		byte b = PooledReader0.ReadUInt8Unpacked();
 		int num = PooledReader0.ReadInt32();
 		if (base.IsServerInitialized)
@@ -2612,7 +2612,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		pooledWriter.WriteInt32(cost);
 		SendServerRpc(54u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
@@ -2629,7 +2629,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___BuyBoatRadar___3709775007(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		int num = PooledReader0.ReadInt32();
 		if (base.IsServerInitialized)
 		{
@@ -2677,7 +2677,7 @@ public class Server : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GeneratedWriters___Internal.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		SendServerRpc(56u, pooledWriter, channel, DataOrderType.Default);
 		pooledWriter.Store();
 	}
@@ -2692,7 +2692,7 @@ public class Server : NetworkBehaviour
 
 	private void RpcReader___SendFinishedTutorial___3849956746(PooledReader PooledReader0, Channel channel, NetworkConnection conn)
 	{
-		Player player = GeneratedReaders___Internal.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsServerInitialized)
 		{
 			RpcLogic___SendFinishedTutorial___3849956746(player);
