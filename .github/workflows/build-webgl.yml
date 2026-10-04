@@ -11,16 +11,12 @@ jobs:
   build-webgl:
     name: Build WebGL
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 150
 
     env:
       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
       UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
       UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-      # GameCI 约定：以 F 开头的哨兵序列号 = 个人许可证。
-      # entrypoint.sh 检测到 F* 会随机化 machine-id，随后
-      # activate.sh 用 -serial F... -username -password 走登录激活。
-      UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
 
     steps:
       - name: Checkout
@@ -34,7 +30,7 @@ jobs:
           sudo rm -rf /usr/local/share/boost "$AGENT_TOOLSDIRECTORY"
           df -h
 
-      - name: Cache Unity Library
+      - name: Restore Library cache
         uses: actions/cache@v4
         with:
           path: Library
@@ -42,15 +38,72 @@ jobs:
           restore-keys: |
             Library-WebGL-
 
+      # 直接调用 unityci/editor 容器，绕开 game-ci/unity-builder 的许可证激活逻辑。
+      # 原因：v4 的 activate.sh 只支持 serial 模式与许可服务器两种策略，
+      # 且 Unity 6000.4 已不接受 F 开头的人工哨兵序列号（Code 20110 serial invalid），
+      # 官方文档所述的 UNITY_LICENSE(ULF) 分支在 v4 脚本中根本不存在。
+      # 这里改为自行写入 .ulf 并用 -manualLicenseFile 导入。
       - name: Build WebGL
-        uses: game-ci/unity-builder@v4
+        env:
+          BUILD_PATH: /github/workspace/build/WebGL
+        run: |
+          set -o pipefail
+          IMAGE="unityci/editor:ubuntu-6000.4.4f1-webgl-3"
+          LICENSE_DIR="/root/.local/share/unity3d/Unity"
+
+          if [ -z "$UNITY_LICENSE" ]; then
+            echo "::error::UNITY_LICENSE secret is empty — .ulf file required"
+            exit 1
+          fi
+
+          docker pull "$IMAGE"
+
+          # shellcheck disable=SC2086
+          docker run --rm \
+            --volume "$GITHUB_WORKSPACE:/github/workspace" \
+            --cpus 4 --memory 15g --shm-size 1025m \
+            --env UNITY_EMAIL="$UNITY_EMAIL" \
+            --env UNITY_PASSWORD="$UNITY_PASSWORD" \
+            --env UNITY_LICENSE="$UNITY_LICENSE" \
+            --env BUILD_PATH="$BUILD_PATH" \
+            "$IMAGE" \
+            bash -c '
+              set -o pipefail
+              LICENSE_DIR="/root/.local/share/unity3d/Unity"
+              mkdir -p "$LICENSE_DIR"
+
+              # 随机化 machine-id，避免与 ULF 中的机器绑定冲突
+              dbus-uuidgen > /etc/machine-id 2>/dev/null || true
+              mkdir -p /var/lib/dbus && ln -sf /etc/machine-id /var/lib/dbus/machine-id 2>/dev/null || true
+
+              printf "%s" "$UNITY_LICENSE" > "$LICENSE_DIR/Unity_lic.ulf"
+              echo "--- 写入 ULF，大小: $(wc -c < "$LICENSE_DIR/Unity_lic.ulf") 字节 ---"
+              head -c 120 "$LICENSE_DIR/Unity_lic.ulf"; echo
+
+              echo "=== 步骤 1/2: 导入许可证 ==="
+              unity-editor -batchmode -nographics -quit \
+                -manualLicenseFile "$LICENSE_DIR/Unity_lic.ulf" \
+                -logFile /dev/stdout 2>&1 | tail -40
+
+              echo "=== 许可证文件状态 ==="
+              ls -la "$LICENSE_DIR" || true
+              ls -la /usr/share/unity3d/config/ 2>/dev/null || true
+
+              echo "=== 步骤 2/2: 构建 WebGL ==="
+              unity-editor -batchmode -nographics -quit \
+                -projectPath /github/workspace \
+                -buildTarget WebGL \
+                -executeMethod CloudWebGLBuild.Perform \
+                -buildPath "$BUILD_PATH" \
+                -logFile /dev/stdout 2>&1 | tail -400
+            '
+
+      - name: Save Library cache
+        if: always()
+        uses: actions/cache/save@v4
         with:
-          projectPath: .
-          targetPlatform: WebGL
-          buildMethod: CloudWebGLBuild.Perform
-          buildName: HowToFish
-          buildsPath: build
-          customParameters: -nographics -silent-crashes
+          path: Library
+          key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}
 
       - name: Upload WebGL build
         uses: actions/upload-artifact@v4
@@ -60,15 +113,13 @@ jobs:
           retention-days: 30
           if-no-files-found: error
 
-      # game-ci/unity-builder 会自动把 Unity 编译/构建日志上传为 game-ci-unity-log artifact，
-      # 构建失败时在 Actions 页面下载该 artifact 即可看到具体报错行。
       - name: Summary
         if: always()
         run: |
-          echo "### 构建完成 ###" >> "$GITHUB_STEP_SUMMARY"
+          echo "### 构建结果 ###" >> "$GITHUB_STEP_SUMMARY"
           if [ -d build ]; then
             du -sh build | tee -a "$GITHUB_STEP_SUMMARY"
             find build -maxdepth 2 -type f | head -50 | tee -a "$GITHUB_STEP_SUMMARY"
           else
-            echo "未生成 build 目录，构建可能失败，请查看 game-ci-unity-log artifact。" | tee -a "$GITHUB_STEP_SUMMARY"
+            echo "**未生成 build 目录，构建失败。**" | tee -a "$GITHUB_STEP_SUMMARY"
           fi
