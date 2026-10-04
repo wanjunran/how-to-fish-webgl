@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Menu Labels_es-ES
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: 8706af56178d519419d04ab944843ca7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 145510453248
+    m_Localized: Crear partida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 540202848256
+    m_Localized: Unirme a partida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 611896086528
+    m_Localized: Personaje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 662856880128
+    m_Localized: Opciones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 712303529984
+    m_Localized: Créditos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 825704927232
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4535533260800
+    m_Localized: Unirme al Discord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4734813032448
+    m_Localized: Versión
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6814114074624
+    m_Localized: Partida nueva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7015633604608
+    m_Localized: Nombre del archivo de guardado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7610180390912
+    m_Localized: Tipo de sesión
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7789121982464
+    m_Localized: Crear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37245739945984
+    m_Localized: Multijugador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37324198596608
+    m_Localized: En solitario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39184305311744
+    m_Localized: Cargar partida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39423271587840
+    m_Localized: Información de partida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39599050674176
+    m_Localized: Nombre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39755464658944
+    m_Localized: Última sesión
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39959710486528
+    m_Localized: Tiempo de juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40071824232448
+    m_Localized: Isla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40212325027840
+    m_Localized: Borrar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40331548119040
+    m_Localized: Cargar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40489782431744
+    m_Localized: ¿Borrar archivo de guardado?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40707345174528
+    m_Localized: Sí
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40755344789504
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40935997657088
+    m_Localized: Atrás
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41700023685120
+    m_Localized: ID de sesión
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41873382658048
+    m_Localized: Unirme por ID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42034817224704
+    m_Localized: Buscar amigos de Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42733596659712
+    m_Localized: Personalización de personaje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42928711487488
+    m_Localized: Piel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43025155313664
+    m_Localized: Sombrero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43107774713856
+    m_Localized: Atuendo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43263270146048
+    m_Localized: Accesorio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44845541969920
+    m_Localized: Color
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46104130965504
+    m_Localized: Restablecer selección
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46266576359424
+    m_Localized: Aleatorizar selección
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46447279558656
+    m_Localized: Restablecer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46522399543296
+    m_Localized: Aleatorizar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47508979535872
+    m_Localized: Diseño de juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47642547146752
+    m_Localized: Programación
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47748591734784
+    m_Localized: Gráficos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47903944560640
+    m_Localized: Música
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50236178911232
+    m_Localized: Saltando...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50502492049408
+    m_Localized: ¡Gracias por jugar!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3931751522586624
+    m_Localized: "How to\nFish"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3952311279374336
+    m_Localized: Inserta nombre de partida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3953281396723712
+    m_Localized: Escribe aquí
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5068142029656064
+    m_Localized: Básico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121082929369088
+    m_Localized: Dificultad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121140584271872
+    m_Localized: Fácil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121160876314624
+    m_Localized: Predeterminada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121201640755200
+    m_Localized: Difícil
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

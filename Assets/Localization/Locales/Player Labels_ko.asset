@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Player Labels_ko
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: b427f6794c848584880a67957c113a3a, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 7505268736
+    m_Localized: 경고
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118708850688
+    m_Localized: 친구 없이 떠나면 진행 불가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 332651909120
+    m_Localized: 흠... 뭘 잡았더라?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71293791195136
+    m_Localized: 인벤토리 추가 슬롯
+    m_Metadata:
+      m_Items: []
+  - m_Id: 500237266931712
+    m_Localized: 신규 생명체 발견
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3372479931830272
+    m_Localized: 사망
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3372914465918976
+    m_Localized: 보스 전투 중 리스폰 불가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3374238083403776
+    m_Localized: 친구들이 부활시킬 수 있음
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3378622573924352
+    m_Localized: '{0} 후 리스폰'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

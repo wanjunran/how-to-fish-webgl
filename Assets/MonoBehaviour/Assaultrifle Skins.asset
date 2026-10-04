@@ -1,0 +1,253 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 925a66ba88a42ac69cd04f2e0b336f75, type: 3}
+  m_Name: Assaultrifle Skins
+  m_EditorClassIdentifier:
+  _skins:
+  - _name: Default
+    _rarity: 0
+    _useSkin: 0
+    _isRainbowSkin: 0
+    _colorOffset: {x: 0, y: 0}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0, y: 0}
+    _skinNoiseScale: 0
+    _noiseRotation: 0
+    _uvRotation: 0
+    _skinUVScale: {x: 0, y: 0}
+    _metallicMetallicness: 0
+    _metallicSmoothness: 0
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: White
+    _rarity: 1
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 0, y: 0.56}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0, y: 1}
+    _skinNoiseScale: 11.19
+    _noiseRotation: 0
+    _uvRotation: -89.44
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 0.02
+    _metallicSmoothness: 0.02
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Orange
+    _rarity: 0
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 1.1, y: 0.35}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0.5, y: 0.5}
+    _skinNoiseScale: 0.5
+    _noiseRotation: 0
+    _uvRotation: -89.44
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 0.02
+    _metallicSmoothness: 0.02
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0.643
+  - _name: Blue
+    _rarity: 0
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 1.62, y: 0.35}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0.5, y: 0.5}
+    _skinNoiseScale: 0.5
+    _noiseRotation: 0
+    _uvRotation: -89.44
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 0.02
+    _metallicSmoothness: 0.02
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0.643
+  - _name: Tiger
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: -2.8, y: 0.66}
+    _colorOffset2: {x: 0, y: 0.67}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0.5, y: 0.5}
+    _skinNoiseScale: 5.23
+    _noiseRotation: 0
+    _uvRotation: 140.96
+    _skinUVScale: {x: 18.79, y: 1}
+    _metallicMetallicness: 0.02
+    _metallicSmoothness: 0.02
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Hazard
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 1.31, y: 18.33}
+    _colorOffset2: {x: 0, y: 2.08}
+    _skinAffects: 0
+    _noiseType: 1
+    _skinSmoothStep: {x: 0.3, y: 0.3}
+    _skinNoiseScale: 33.22
+    _noiseRotation: 0
+    _uvRotation: 45
+    _skinUVScale: {x: 0.001, y: 1}
+    _metallicMetallicness: 0.02
+    _metallicSmoothness: 0.02
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Wood
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: -5.88, y: 3.02}
+    _colorOffset2: {x: 0, y: -2.11}
+    _skinAffects: 2
+    _noiseType: 0
+    _skinSmoothStep: {x: -2.3, y: 2.7}
+    _skinNoiseScale: 15
+    _noiseRotation: 0
+    _uvRotation: 90
+    _skinUVScale: {x: 7.11, y: 1}
+    _metallicMetallicness: 0.02
+    _metallicSmoothness: 0.02
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Emerald
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 2.39, y: 1.32}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0, y: 1}
+    _skinNoiseScale: 0.36
+    _noiseRotation: 0
+    _uvRotation: 0
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 1
+    _metallicSmoothness: 0.5
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Ruby
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: -5.96, y: 1.35}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0.4, y: 0.61}
+    _skinNoiseScale: 0.73
+    _noiseRotation: 0
+    _uvRotation: -118.83
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 1
+    _metallicSmoothness: 0.4
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Pink
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 1.96, y: 0.35}
+    _colorOffset2: {x: 0, y: 0.03}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0.5, y: 0.5}
+    _skinNoiseScale: 0.5
+    _noiseRotation: 0
+    _uvRotation: -89.44
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 0
+    _metallicSmoothness: 0
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Cow
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: -2.8, y: 1.59}
+    _colorOffset2: {x: 0, y: 0.04}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0.4, y: 0.4}
+    _skinNoiseScale: 42.8
+    _noiseRotation: 0
+    _uvRotation: 40.24
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 0.02
+    _metallicSmoothness: 0.02
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Rainbow
+    _rarity: 3
+    _useSkin: 1
+    _isRainbowSkin: 1
+    _colorOffset: {x: -1.81, y: -1.13}
+    _colorOffset2: {x: 8.82, y: 0.44}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0, y: 1}
+    _skinNoiseScale: 0.27
+    _noiseRotation: 0
+    _uvRotation: -301.4
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 1
+    _metallicSmoothness: 0.5
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Diamond
+    _rarity: 3
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 0.58, y: 0.1}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 2
+    _noiseType: 0
+    _skinSmoothStep: {x: 0, y: 1}
+    _skinNoiseScale: 29.6
+    _noiseRotation: 0
+    _uvRotation: 0
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 1
+    _metallicSmoothness: 0.5
+    _plasticMetallicness: 1
+    _plasticSmoothness: 0.5
+  - _name: Gold
+    _rarity: 3
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 3.23, y: 0.1}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 2
+    _noiseType: 0
+    _skinSmoothStep: {x: 0, y: 1}
+    _skinNoiseScale: 11.19
+    _noiseRotation: 0
+    _uvRotation: -89.44
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 1
+    _metallicSmoothness: 0.5
+    _plasticMetallicness: 1
+    _plasticSmoothness: 0.5

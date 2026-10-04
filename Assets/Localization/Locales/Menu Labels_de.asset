@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Menu Labels_de
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 8706af56178d519419d04ab944843ca7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 145510453248
+    m_Localized: Spiel hosten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 540202848256
+    m_Localized: Spiel beitreten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 611896086528
+    m_Localized: Charakter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 662856880128
+    m_Localized: Optionen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 712303529984
+    m_Localized: Mitwirkende
+    m_Metadata:
+      m_Items: []
+  - m_Id: 825704927232
+    m_Localized: Verlassen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4535533260800
+    m_Localized: Zum Discord-Kanal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4734813032448
+    m_Localized: Version
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6814114074624
+    m_Localized: Neues Spiel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7015633604608
+    m_Localized: Speicherstand-Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7610180390912
+    m_Localized: Sitzungstyp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7789121982464
+    m_Localized: Erstellen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37245739945984
+    m_Localized: Multiplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37324198596608
+    m_Localized: Singleplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39184305311744
+    m_Localized: Spiel laden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39423271587840
+    m_Localized: Speicherstand-Infos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39599050674176
+    m_Localized: Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39755464658944
+    m_Localized: Zuletzt gespielt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39959710486528
+    m_Localized: Spielzeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40071824232448
+    m_Localized: Insel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40212325027840
+    m_Localized: Löschen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40331548119040
+    m_Localized: Laden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40489782431744
+    m_Localized: Speicherstand löschen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40707345174528
+    m_Localized: Ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40755344789504
+    m_Localized: Nein
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40935997657088
+    m_Localized: Zurück
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41700023685120
+    m_Localized: Sitzungs-ID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41873382658048
+    m_Localized: Mit ID beitreten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42034817224704
+    m_Localized: Steam-Freunde finden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42733596659712
+    m_Localized: Charakteranpassung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42928711487488
+    m_Localized: Haut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43025155313664
+    m_Localized: Hut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43107774713856
+    m_Localized: Outfit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43263270146048
+    m_Localized: Accessoire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44845541969920
+    m_Localized: Farbe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46104130965504
+    m_Localized: Auswahl zurücksetzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46266576359424
+    m_Localized: Zufällige Auswahl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46447279558656
+    m_Localized: Zurücksetzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46522399543296
+    m_Localized: Zufällig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47508979535872
+    m_Localized: Spieldesign
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47642547146752
+    m_Localized: Programmierung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47748591734784
+    m_Localized: Grafik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47903944560640
+    m_Localized: Musik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50236178911232
+    m_Localized: Überspringe …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50502492049408
+    m_Localized: Danke fürs Spielen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3931751522586624
+    m_Localized: "How to\nFish"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3952311279374336
+    m_Localized: Spielnamen eingeben
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3953281396723712
+    m_Localized: Text eingeben
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5068142029656064
+    m_Localized: Bohne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121082929369088
+    m_Localized: Schwierigkeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121140584271872
+    m_Localized: Leicht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121160876314624
+    m_Localized: Standard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121201640755200
+    m_Localized: Schwer
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

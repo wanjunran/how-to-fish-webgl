@@ -1,0 +1,651 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Item Labels_ru
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ru
+  m_SharedData: {fileID: 11400000, guid: 91f07ee2427a9af42971d9afa13db604, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16543993856
+    m_Localized: Супер
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517595549696
+    m_Localized: Сначала уберите предмет из рук
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1074867556352
+    m_Localized: Автомат
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1256535445504
+    m_Localized: Пляжный мяч
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397812187136
+    m_Localized: Пиво
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440275320832
+    m_Localized: Кастет
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1604490711040
+    m_Localized: Удочка на краба
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1700359917568
+    m_Localized: Динамит
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1755171082240
+    m_Localized: Удочка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833763950592
+    m_Localized: Летающий диск
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1918321119232
+    m_Localized: Нож
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001888432128
+    m_Localized: Радар
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061577572352
+    m_Localized: Пистолет
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125578457088
+    m_Localized: Радио
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2198542569472
+    m_Localized: Дробовик
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2265022287872
+    m_Localized: Пистолет-пулемёт
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2319141392384
+    m_Localized: Снайперская винтовка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2558585819136
+    m_Localized: Снежок
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2793194213376
+    m_Localized: Скалярия
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2919820251136
+    m_Localized: Удильщик
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3094898888704
+    m_Localized: Сибас
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3400911114240
+    m_Localized: Рыба-Капля
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3487762567168
+    m_Localized: Солнечник
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3901354496000
+    m_Localized: Рыба-в-Аквариуме
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4022288863232
+    m_Localized: Сом
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4084528140288
+    m_Localized: Мидия
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4144091451392
+    m_Localized: Рыба-Клоун
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4213171638272
+    m_Localized: Треска
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4305442131968
+    m_Localized: Овальный Краб
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4358051287040
+    m_Localized: Сникер
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4451802370048
+    m_Localized: Угорь
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4503895625728
+    m_Localized: Летучая Рыба
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4570647973888
+    m_Localized: Брюхоног
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756732465152
+    m_Localized: Панцирник
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878249840640
+    m_Localized: Бычок
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4952019259392
+    m_Localized: Золотая Рыбка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012891193344
+    m_Localized: Палтус
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5111486697472
+    m_Localized: Пиявка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5182122971136
+    m_Localized: Омар
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5235017338880
+    m_Localized: Скумбрия
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5332526518272
+    m_Localized: Рыба-Игла
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613381308416
+    m_Localized: Ремнетел
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5705463058432
+    m_Localized: Рыба-Попугай
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6025832386560
+    m_Localized: Окунь
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7383742500864
+    m_Localized: Пайк
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7444769624064
+    m_Localized: Пиранья
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517343666176
+    m_Localized: Луциан
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7692686544896
+    m_Localized: Лосось
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7754799992832
+    m_Localized: Морской Ёж
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7821640421376
+    m_Localized: Чайка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7968906629120
+    m_Localized: Морской Конь
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8022753103872
+    m_Localized: Сенгарат
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8279654223872
+    m_Localized: Креветка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8336688369664
+    m_Localized: Рыба-Камень
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8397388337152
+    m_Localized: Мини-Карлик
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8622110756864
+    m_Localized: Тигровая Рыба
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8700179337216
+    m_Localized: Спинорог
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8798422519808
+    m_Localized: Воксель-Рыба
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8910662094848
+    m_Localized: Кузовок
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004824219648
+    m_Localized: Альбатрос
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9060998533120
+    m_Localized: Синяя Акула
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9125917970432
+    m_Localized: Полярный Кит
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9245774401536
+    m_Localized: Старый Пайк
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9401873813504
+    m_Localized: Гигантская Пиранья
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9471960633344
+    m_Localized: Акула-Домовой
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9624083845120
+    m_Localized: Полярный Кит-Мутант
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9726227730432
+    m_Localized: Иглобрюх
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9790161506304
+    m_Localized: Краб-Паук
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853273198592
+    m_Localized: Луна-Рыба
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9947020087296
+    m_Localized: Тунец
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10032218984448
+    m_Localized: Голова Альбатроса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10092432412672
+    m_Localized: Голова Гигантской Пираньи
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10272070258688
+    m_Localized: Хвост Иглобрюха
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10429339881472
+    m_Localized: Панцирь Краба-Паука
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10533899685888
+    m_Localized: Хвост Полярного Кита
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11671877275648
+    m_Localized: Банка из-под пива
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11769382260736
+    m_Localized: Стартовая приманка на босса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11915486646272
+    m_Localized: Стартовая приманка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994754797568
+    m_Localized: Пиявочная приманка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12079676870656
+    m_Localized: Морковь
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135154929664
+    m_Localized: Стандартная приманка на босса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12269896945664
+    m_Localized: Стандартная приманка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12358149296128
+    m_Localized: Профессиональная приманка на босса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12527846641664
+    m_Localized: Профессиональная приманка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12624521154560
+    m_Localized: Ведёрко с потрохами
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12704154210304
+    m_Localized: Научная приманка на босса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12876342972416
+    m_Localized: Научная приманка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14071937716224
+    m_Localized: Лодочный радар
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16484916613120
+    m_Localized: Уже куплено
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20829980676096
+    m_Localized: Компенсатор
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21003675193344
+    m_Localized: Увеличенный магазин
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21707294855168
+    m_Localized: Механический прицел
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413609025536
+    m_Localized: Лазерный прицел
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487277780992
+    m_Localized: Прицел с красной точкой
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23593548861440
+    m_Localized: Снайперский прицел
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23718690115584
+    m_Localized: Глушитель
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35635374673920
+    m_Localized: Умеренно снижает отдачу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36427158605824
+    m_Localized: Увеличивает количество патронов в магазине
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36631865806848
+    m_Localized: Снимает другой прицел с оружия
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36777357824000
+    m_Localized: Показывает, куда смотрит оружие, что упрощает стрельбу от бедра
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37000025034752
+    m_Localized: Упрощает попадание при прицеливании
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37211061440512
+    m_Localized: Упрощает попадание при прицеливании с расстояния
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343916019712
+    m_Localized: Значительно снижает отдачу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38419088101376
+    m_Localized: Нельзя установить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38503880151040
+    m_Localized: Возьмите в руки оружие дальнего боя
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38906973736960
+    m_Localized: Стоимость
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39035646595072
+    m_Localized: Приготовление
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40700424572928
+    m_Localized: Возьмите в руки оружие ближнего боя
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51375519649792
+    m_Localized: Заточить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51811857289216
+    m_Localized: Увеличивает урон
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51930019221504
+    m_Localized: Макс. на этом острове
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55632947924992
+    m_Localized: Улучшить пули
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55678741336064
+    m_Localized: Увеличивает урон от пуль
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91764200919040
+    m_Localized: Большой мотор
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91838939222016
+    m_Localized: Двойной мотор
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099514359926784
+    m_Localized: Урон
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099545099980800
+    m_Localized: Боеприпасы
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099588062236672
+    m_Localized: Обвесы
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483887722713088
+    m_Localized: Предмет задания
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1533629789982720
+    m_Localized: Хот-дог
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536930950500352
+    m_Localized: Каменный Краб
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828526547881984
+    m_Localized: Управлять
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828554834268160
+    m_Localized: Нельзя управлять
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828599990145024
+    m_Localized: Нет ключей
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828643153727488
+    m_Localized: Вернуться на материк
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830646902771712
+    m_Localized: Существа
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830821041885184
+    m_Localized: Супер-существа
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186154683748352
+    m_Localized: Вставьте <color=#FFEF4D><b>супер-существо</color></b>, чтобы играть
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186243099676672
+    m_Localized: вращается...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186429616181248
+    m_Localized: Образы для этого
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291237806854144
+    m_Localized: Используется для поимки босса-ракообразного
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291869334818816
+    m_Localized: Приманка на крупных ракообразных
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291948657496064
+    m_Localized: Ловит стартовых мини-боссов
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292204136747008
+    m_Localized: Ловит стартовую рыбу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292316321796096
+    m_Localized: Приманка на босса 2-го острова
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293021463990272
+    m_Localized: Приманка на босса 3-го острова
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293207191965696
+    m_Localized: Ловит стандартного мини-босса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293390399164416
+    m_Localized: Ловит стандартную рыбу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293514412150784
+    m_Localized: Ловит профессионального мини-босса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293643345055744
+    m_Localized: Ловит профессиональную рыбу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293763109212160
+    m_Localized: Приманка на большого босса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293878242856960
+    m_Localized: Ловит научного мини-босса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3294053837393920
+    m_Localized: Ловит научную рыбу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3322076229881856
+    m_Localized: Вес
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616357117153280
+    m_Localized: Радар
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3984920650797056
+    m_Localized: Лодка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4754946219659264
+    m_Localized: Bing Bong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755687046991872
+    m_Localized: Морская Звезда
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755941158899712
+    m_Localized: Губка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756916259082240
+    m_Localized: Кальмар
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758365198176256
+    m_Localized: Манта
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758665606811648
+    m_Localized: Акула-Молот
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758953906491392
+    m_Localized: Нарвал
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4759131669483520
+    m_Localized: Равноног
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762162721017856
+    m_Localized: Рак-Отшельник
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764482083049472
+    m_Localized: Парусник
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764811897950208
+    m_Localized: Устрица
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

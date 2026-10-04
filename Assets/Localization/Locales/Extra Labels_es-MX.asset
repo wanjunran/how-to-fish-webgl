@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Extra Labels_es-MX
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: es-MX
+  m_SharedData: {fileID: 11400000, guid: 83bdd48c2610b4148b90a5f6ab829ced, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 38058826747904
+    m_Localized: h
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38117194682368
+    m_Localized: m
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38134177419264
+    m_Localized: s
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52920734797824
+    m_Localized: Desplazar hacia abajo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52877269225472
+    m_Localized: Desplazar hacia arriba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13746393088
+    m_Localized: Afilado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16779126067200
+    m_Localized: Arriba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16823489220608
+    m_Localized: Izquierda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16856720691200
+    m_Localized: Derecha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16897468354560
+    m_Localized: Abajo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16943060439040
+    m_Localized: Negativo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16982876966912
+    m_Localized: Positivo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17428832145408
+    m_Localized: Esperando comando...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21937234989056
+    m_Localized: Asignando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413193789440
+    m_Localized: Trozo de carne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24825348837376
+    m_Localized: Cambiar espacio de inventario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38381570052096
+    m_Localized: Resolución de pantalla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53831062343680
+    m_Localized: Rueda de desplazamiento
+    m_Metadata:
+      m_Items: []
+  - m_Id: 281734836473856
+    m_Localized: 'Desconectado: versión incompatible'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 285459105796096
+    m_Localized: Aplicar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342617595924480
+    m_Localized: Mostrar puntos de objeto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 373258983133184
+    m_Localized: Cerrar {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694893553692672
+    m_Localized: Cámara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702431045136384
+    m_Localized: Jefe saliendo en...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 761753506721792
+    m_Localized: Jefe salió
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630278305730560
+    m_Localized: Solo por invitación
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630332928151552
+    m_Localized: Pública
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3648836913942528
+    m_Localized: Requiere reiniciar el servidor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652878016794624
+    m_Localized: Invertir eje X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652892701052928
+    m_Localized: Invertir eje Y
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

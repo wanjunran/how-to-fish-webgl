@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -299433217, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Steam Table Shared Data
+  m_EditorClassIdentifier:
+  m_TableCollectionName: Steam Table
+  m_TableCollectionNameGuidString: 3a115fe9e25d27641a8af572a0db4a4a
+  m_Entries:
+  - m_Id: 7551406080
+    m_Key: steam.relayReady
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101193437184
+    m_Key: steam.waiting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114493575168
+    m_Key: steam.connecting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 134856921088
+    m_Key: steam.reconnecting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 156595998720
+    m_Key: steam.connectionLost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 174954467328
+    m_Key: steam.connectionFailed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196311863296
+    m_Key: steam.relayUnavailable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 222941499392
+    m_Key: steam.checking
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2116460382826266702
+  references:
+    version: 2
+    RefIds:
+    - rid: 2116460382826266702
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1787582915044

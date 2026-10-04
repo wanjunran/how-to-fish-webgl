@@ -1,0 +1,656 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -299433217, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Item Labels Shared Data
+  m_EditorClassIdentifier:
+  m_TableCollectionName: Item Labels
+  m_TableCollectionNameGuidString: a2fb6c2a7ccc9b145aa3cd1df802bdbb
+  m_Entries:
+  - m_Id: 16543993856
+    m_Key: item.drip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517595549696
+    m_Key: item.unequipItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1074867556352
+    m_Key: item.assaultRifle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1256535445504
+    m_Key: item.badBall
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397812187136
+    m_Key: item.beer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440275320832
+    m_Key: item.brassKnuckles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1604490711040
+    m_Key: item.crabFishingRod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1700359917568
+    m_Key: item.dynamite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1755171082240
+    m_Key: item.fishingRod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833763950592
+    m_Key: item.frisbee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1918321119232
+    m_Key: item.knife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001888432128
+    m_Key: item.map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061577572352
+    m_Key: item.pistol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125578457088
+    m_Key: item.radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2198542569472
+    m_Key: item.shotgun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2265022287872
+    m_Key: item.smg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2319141392384
+    m_Key: item.sniper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2558585819136
+    m_Key: item.snowball
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2793194213376
+    m_Key: item.angelfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2919820251136
+    m_Key: item.anglerfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3094898888704
+    m_Key: item.bass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3400911114240
+    m_Key: item.blobfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3487762567168
+    m_Key: item.bluegill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3901354496000
+    m_Key: item.bowlfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4022288863232
+    m_Key: item.catfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4084528140288
+    m_Key: item.clam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4144091451392
+    m_Key: item.clownfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4213171638272
+    m_Key: item.cod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4305442131968
+    m_Key: item.brownCrab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4358051287040
+    m_Key: item.dripper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4451802370048
+    m_Key: item.eel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4503895625728
+    m_Key: item.flyingFish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4570647973888
+    m_Key: item.footsnail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756732465152
+    m_Key: item.gar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878249840640
+    m_Key: item.goby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4952019259392
+    m_Key: item.goldfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012891193344
+    m_Key: item.halibut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5111486697472
+    m_Key: item.leech
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5182122971136
+    m_Key: item.lobster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5235017338880
+    m_Key: item.mackerel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5332526518272
+    m_Key: item.needlefish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613381308416
+    m_Key: item.oarfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5705463058432
+    m_Key: item.parrotfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6025832386560
+    m_Key: item.perch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7383742500864
+    m_Key: item.pike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7444769624064
+    m_Key: item.piranha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517343666176
+    m_Key: item.redSnapper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7692686544896
+    m_Key: item.salmon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7754799992832
+    m_Key: item.seaUrchin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7821640421376
+    m_Key: item.seagull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7968906629120
+    m_Key: item.seahorse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8022753103872
+    m_Key: item.sengarat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8279654223872
+    m_Key: item.shrimp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8336688369664
+    m_Key: item.stonefish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8397388337152
+    m_Key: item.superdwarfFish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8622110756864
+    m_Key: item.tigerfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8700179337216
+    m_Key: item.triggerfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8798422519808
+    m_Key: item.voxelfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8910662094848
+    m_Key: item.yellowBoxfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004824219648
+    m_Key: item.albatross
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9060998533120
+    m_Key: item.blueShark
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9125917970432
+    m_Key: item.bowheadWhale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9245774401536
+    m_Key: item.theOldPike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9401873813504
+    m_Key: item.giantPiranha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9471960633344
+    m_Key: item.goblinShark
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9624083845120
+    m_Key: item.mutatedBowheadWhale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9726227730432
+    m_Key: item.pufferfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9790161506304
+    m_Key: item.spidercrab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853273198592
+    m_Key: item.Sunfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9947020087296
+    m_Key: item.tuna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10032218984448
+    m_Key: item.albatrossHead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10092432412672
+    m_Key: item.giantPiranhaSkeleton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10272070258688
+    m_Key: item.pufferfishFin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10429339881472
+    m_Key: item.spidercrabShell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10533899685888
+    m_Key: item.whaleFin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11671877275648
+    m_Key: item.emptyBeerCan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11769382260736
+    m_Key: item.beginnerBossLure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11915486646272
+    m_Key: item.beginnerLure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994754797568
+    m_Key: item.leechBait
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12079676870656
+    m_Key: item.carrot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135154929664
+    m_Key: item.standardBossLure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12269896945664
+    m_Key: item.standardLure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12358149296128
+    m_Key: item.professionalBossLure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12527846641664
+    m_Key: item.professionalLure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12624521154560
+    m_Key: item.fishBucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12704154210304
+    m_Key: item.scientificBossLure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12876342972416
+    m_Key: item.scientificLure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14071937716224
+    m_Key: item.boatRadar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16484916613120
+    m_Key: item.alreadyBought
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20829980676096
+    m_Key: item.compensatorAttachment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21003675193344
+    m_Key: item.extendedMagAttachment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21707294855168
+    m_Key: item.ironSightAttachment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413609025536
+    m_Key: item.laserSightAttachment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487277780992
+    m_Key: item.redDotSightAttachment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23593548861440
+    m_Key: item.sniperScopeAttachment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23718690115584
+    m_Key: item.suppressorAttachment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35635374673920
+    m_Key: item.compensatorDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36427158605824
+    m_Key: item.extendedMagDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36631865806848
+    m_Key: item.ironSightDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36777357824000
+    m_Key: item.laserSightDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37000025034752
+    m_Key: item.redDotSightDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37211061440512
+    m_Key: item.sniperScopeDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343916019712
+    m_Key: item.suppressorDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38419088101376
+    m_Key: item.cantAttach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38503880151040
+    m_Key: item.equipRangedWeapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38906973736960
+    m_Key: item.worth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39035646595072
+    m_Key: item.cooking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40700424572928
+    m_Key: item.equipMeleeWeapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51375519649792
+    m_Key: item.upgradeSharpness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51811857289216
+    m_Key: item.sharpnessDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51930019221504
+    m_Key: item.maxedOnIsland
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55632947924992
+    m_Key: item.upgradeBullets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55678741336064
+    m_Key: item.bulletDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91764200919040
+    m_Key: item.bigMotor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91838939222016
+    m_Key: item.dualMotors
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099514359926784
+    m_Key: item.damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099545099980800
+    m_Key: item.ammo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099588062236672
+    m_Key: item.attachments
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483887722713088
+    m_Key: item.questItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1533629789982720
+    m_Key: item.hotDog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536930950500352
+    m_Key: item.rockCrab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828526547881984
+    m_Key: item.drive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828554834268160
+    m_Key: item.cantDrive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828599990145024
+    m_Key: item.noKeys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828643153727488
+    m_Key: item.getBack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830646902771712
+    m_Key: item.creatures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830821041885184
+    m_Key: item.dripCreatures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186154683748352
+    m_Key: item.insertDrip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186243099676672
+    m_Key: item.isRolling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186429616181248
+    m_Key: item.prizes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291237806854144
+    m_Key: item.emptyBeerCanDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291869334818816
+    m_Key: item.hotDogDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291948657496064
+    m_Key: item.beginnerBossLureDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292204136747008
+    m_Key: item.beginnerLureDescrption
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292316321796096
+    m_Key: item.leechBaitDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293021463990272
+    m_Key: item.carrotDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293207191965696
+    m_Key: item.standardBossLureDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293390399164416
+    m_Key: item.standardLureDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293514412150784
+    m_Key: item.professionalBossLureDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293643345055744
+    m_Key: item.professionalLureDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293763109212160
+    m_Key: item.fishBucketDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293878242856960
+    m_Key: item.scientificBossLureDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3294053837393920
+    m_Key: item.scientificLureDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3322076229881856
+    m_Key: item.weight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616357117153280
+    m_Key: item.radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3984920650797056
+    m_Key: item.boat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4754946219659264
+    m_Key: item.bingBong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755687046991872
+    m_Key: item.starfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755941158899712
+    m_Key: item.sponge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756916259082240
+    m_Key: item.squid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758365198176256
+    m_Key: item.manta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758665606811648
+    m_Key: item.hammerShark
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758953906491392
+    m_Key: item.narwhal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4759131669483520
+    m_Key: item.isopod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762162721017856
+    m_Key: item.hermitCrab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764482083049472
+    m_Key: item.sailfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764811897950208
+    m_Key: item.oyster
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8744106305720418386
+  references:
+    version: 2
+    RefIds:
+    - rid: 8744106305720418386
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1784276825857

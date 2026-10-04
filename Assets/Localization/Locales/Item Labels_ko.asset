@@ -1,0 +1,651 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Item Labels_ko
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: 91f07ee2427a9af42971d9afa13db604, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16543993856
+    m_Localized: 힙간지
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517595549696
+    m_Localized: 먼저 아이템 장착 해제
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1074867556352
+    m_Localized: 돌격소총
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1256535445504
+    m_Localized: 비치볼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397812187136
+    m_Localized: 맥주
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440275320832
+    m_Localized: 황동 너클
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1604490711040
+    m_Localized: 게 낚싯대
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1700359917568
+    m_Localized: 다이너마이트
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1755171082240
+    m_Localized: 낚싯대
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833763950592
+    m_Localized: 원반
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1918321119232
+    m_Localized: 칼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001888432128
+    m_Localized: 레이더
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061577572352
+    m_Localized: 권총
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125578457088
+    m_Localized: 무전기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2198542569472
+    m_Localized: 산탄총
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2265022287872
+    m_Localized: 기관단총
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2319141392384
+    m_Localized: 저격총
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2558585819136
+    m_Localized: 눈덩이
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2793194213376
+    m_Localized: 엔젤피시
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2919820251136
+    m_Localized: 아귀
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3094898888704
+    m_Localized: 배스
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3400911114240
+    m_Localized: 블롭피시
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3487762567168
+    m_Localized: 블루길
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3901354496000
+    m_Localized: 물고기 사발
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4022288863232
+    m_Localized: 메기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4084528140288
+    m_Localized: 조개
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4144091451392
+    m_Localized: 흰동가리
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4213171638272
+    m_Localized: 대구
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4305442131968
+    m_Localized: 갈색게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4358051287040
+    m_Localized: 힙간지어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4451802370048
+    m_Localized: 장어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4503895625728
+    m_Localized: 날치
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4570647973888
+    m_Localized: 비늘발 고둥
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756732465152
+    m_Localized: 가아
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878249840640
+    m_Localized: 고비
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4952019259392
+    m_Localized: 금붕어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012891193344
+    m_Localized: 광어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5111486697472
+    m_Localized: 거머리
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5182122971136
+    m_Localized: 바닷가재
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5235017338880
+    m_Localized: 고등어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5332526518272
+    m_Localized: 동갈치
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613381308416
+    m_Localized: 산갈치
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5705463058432
+    m_Localized: 앵무고기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6025832386560
+    m_Localized: 농어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7383742500864
+    m_Localized: 민물꼬치고기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7444769624064
+    m_Localized: 피라냐
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517343666176
+    m_Localized: 붉은퉁돔
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7692686544896
+    m_Localized: 연어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7754799992832
+    m_Localized: 성게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7821640421376
+    m_Localized: 갈매기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7968906629120
+    m_Localized: 해마
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8022753103872
+    m_Localized: 주걱메기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8279654223872
+    m_Localized: 새우
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8336688369664
+    m_Localized: 쑤기미
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8397388337152
+    m_Localized: 초미니 잉어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8622110756864
+    m_Localized: 타이거피시
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8700179337216
+    m_Localized: 쥐치
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8798422519808
+    m_Localized: 복셀피시
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8910662094848
+    m_Localized: 보랑거북복
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004824219648
+    m_Localized: 알바트로스
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9060998533120
+    m_Localized: 청새리상어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9125917970432
+    m_Localized: 북극고래
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9245774401536
+    m_Localized: 늙은 강꼬치고기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9401873813504
+    m_Localized: 거대 피라냐
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9471960633344
+    m_Localized: 고블린상어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9624083845120
+    m_Localized: 변종 북극고래
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9726227730432
+    m_Localized: 복어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9790161506304
+    m_Localized: 거미게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853273198592
+    m_Localized: 개복치
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9947020087296
+    m_Localized: 참치
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10032218984448
+    m_Localized: 알바트로스 헤드
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10092432412672
+    m_Localized: 거대 피라냐 뼈
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10272070258688
+    m_Localized: 복어 지느러미
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10429339881472
+    m_Localized: 거미게 껍질
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10533899685888
+    m_Localized: 고래 지느러미
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11671877275648
+    m_Localized: 빈 맥주캔
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11769382260736
+    m_Localized: 초보 보스 루어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11915486646272
+    m_Localized: 초보 루어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994754797568
+    m_Localized: 거머리 미끼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12079676870656
+    m_Localized: 당근
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135154929664
+    m_Localized: 기본 보스 루어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12269896945664
+    m_Localized: 표준 루어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12358149296128
+    m_Localized: 프로 보스 루어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12527846641664
+    m_Localized: 프로 루어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12624521154560
+    m_Localized: 생선 양동이
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12704154210304
+    m_Localized: 과학 보스 루어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12876342972416
+    m_Localized: 과학 루어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14071937716224
+    m_Localized: 보트 레이더
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16484916613120
+    m_Localized: 이미 구매함
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20829980676096
+    m_Localized: 보정기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21003675193344
+    m_Localized: 확장 탄창
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21707294855168
+    m_Localized: 아이언 조준기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413609025536
+    m_Localized: 레이저 조준기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487277780992
+    m_Localized: 레드닷 조준기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23593548861440
+    m_Localized: 스나이퍼 조준기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23718690115584
+    m_Localized: 소음기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35635374673920
+    m_Localized: 반동을 다소 감소시킴
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36427158605824
+    m_Localized: 탄창 용량을 증가시킴
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36631865806848
+    m_Localized: 장착된 조준기를 제거함(기본 아이언 조준기로 복원)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36777357824000
+    m_Localized: 무기가 향하는 방향을 가리켜서 비조준 사격이 쉬워짐
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37000025034752
+    m_Localized: 조준 시 표적 명중이 쉬워짐
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37211061440512
+    m_Localized: 조준 시 원거리 표적 명중이 쉬워짐
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343916019712
+    m_Localized: 반동을 크게 감소시킴
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38419088101376
+    m_Localized: 장착 불가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38503880151040
+    m_Localized: 원거리 무기 장착
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38906973736960
+    m_Localized: 가치
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39035646595072
+    m_Localized: 요리 시
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40700424572928
+    m_Localized: 근접 무기 장착
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51375519649792
+    m_Localized: 연마하기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51811857289216
+    m_Localized: 데미지 증가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51930019221504
+    m_Localized: 이 섬에서 최대치
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55632947924992
+    m_Localized: 총알 업그레이드
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55678741336064
+    m_Localized: 총알 데미지 증가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91764200919040
+    m_Localized: 대형 모터
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91838939222016
+    m_Localized: 듀얼 모터
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099514359926784
+    m_Localized: 데미지
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099545099980800
+    m_Localized: 탄약
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099588062236672
+    m_Localized: 부착물
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483887722713088
+    m_Localized: 퀘스트 아이템
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1533629789982720
+    m_Localized: 핫도그
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536930950500352
+    m_Localized: 바위게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828526547881984
+    m_Localized: 운전하기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828554834268160
+    m_Localized: 운전 불가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828599990145024
+    m_Localized: 열쇠 없음
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828643153727488
+    m_Localized: 본토로 돌아가기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830646902771712
+    m_Localized: 생명체
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830821041885184
+    m_Localized: 힙간지 생명체
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186154683748352
+    m_Localized: '<color=#FFEF4D><b>힙간지 생명체</color></b> 투입으로 플레이'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186243099676672
+    m_Localized: 님이 돌리는 중...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186429616181248
+    m_Localized: 스킨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291237806854144
+    m_Localized: 갑각류 보스 잡기용
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291869334818816
+    m_Localized: 대형 갑각류용 미끼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291948657496064
+    m_Localized: 초급 미니보스 잡기용
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292204136747008
+    m_Localized: 초급 물고기 잡기용
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292316321796096
+    m_Localized: 섬2 보스용 미끼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293021463990272
+    m_Localized: 섬3 보스용 미끼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293207191965696
+    m_Localized: 일반 미니보스 잡기용
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293390399164416
+    m_Localized: 일반 물고기 잡기용
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293514412150784
+    m_Localized: 프로 미니보스 잡기용
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293643345055744
+    m_Localized: 프로 물고기 잡기용
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293763109212160
+    m_Localized: 대형 보스용 미끼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293878242856960
+    m_Localized: 과학 미니보스 잡기용
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3294053837393920
+    m_Localized: 과학 물고기 잡기용
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3322076229881856
+    m_Localized: 무게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616357117153280
+    m_Localized: 레이더
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3984920650797056
+    m_Localized: 보트
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4754946219659264
+    m_Localized: Bing Bong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755687046991872
+    m_Localized: 불가사리
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755941158899712
+    m_Localized: 해면
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756916259082240
+    m_Localized: 오징어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758365198176256
+    m_Localized: 만타가오리
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758665606811648
+    m_Localized: 망치상어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758953906491392
+    m_Localized: 일각고래
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4759131669483520
+    m_Localized: 등각류
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762162721017856
+    m_Localized: 소라게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764482083049472
+    m_Localized: 돛새치
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764811897950208
+    m_Localized: 굴
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

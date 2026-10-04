@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Menu Labels_ko
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: 8706af56178d519419d04ab944843ca7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 145510453248
+    m_Localized: 방 만들기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 540202848256
+    m_Localized: 방 참가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 611896086528
+    m_Localized: 캐릭터
+    m_Metadata:
+      m_Items: []
+  - m_Id: 662856880128
+    m_Localized: 설정
+    m_Metadata:
+      m_Items: []
+  - m_Id: 712303529984
+    m_Localized: 크레딧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 825704927232
+    m_Localized: 종료
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4535533260800
+    m_Localized: 디스코드 참여
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4734813032448
+    m_Localized: 버전
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6814114074624
+    m_Localized: 신규 게임
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7015633604608
+    m_Localized: 저장 파일명
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7610180390912
+    m_Localized: 세션 유형
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7789121982464
+    m_Localized: 생성
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37245739945984
+    m_Localized: 멀티플레이
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37324198596608
+    m_Localized: 싱글플레이
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39184305311744
+    m_Localized: 게임 불러오기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39423271587840
+    m_Localized: 저장 파일 정보
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39599050674176
+    m_Localized: 이름
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39755464658944
+    m_Localized: 마지막 플레이
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39959710486528
+    m_Localized: 플레이 시간
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40071824232448
+    m_Localized: 섬
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40212325027840
+    m_Localized: 삭제
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40331548119040
+    m_Localized: 불러오기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40489782431744
+    m_Localized: 선택한 저장 파일을 삭제할까요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40707345174528
+    m_Localized: 예
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40755344789504
+    m_Localized: 아니오
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40935997657088
+    m_Localized: 뒤로
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41700023685120
+    m_Localized: 세션 ID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41873382658048
+    m_Localized: ID로 참가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42034817224704
+    m_Localized: Steam 친구 찾기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42733596659712
+    m_Localized: 캐릭터 꾸미기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42928711487488
+    m_Localized: 스킨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43025155313664
+    m_Localized: 모자
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43107774713856
+    m_Localized: 의상
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43263270146048
+    m_Localized: 액세서리
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44845541969920
+    m_Localized: 색상
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46104130965504
+    m_Localized: 선택 항목 초기화
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46266576359424
+    m_Localized: 선택 항목 무작위화
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46447279558656
+    m_Localized: 초기화
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46522399543296
+    m_Localized: 무작위화
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47508979535872
+    m_Localized: 게임 디자인
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47642547146752
+    m_Localized: 프로그래밍
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47748591734784
+    m_Localized: 그래픽
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47903944560640
+    m_Localized: 음악
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50236178911232
+    m_Localized: 건너뛰는 중...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50502492049408
+    m_Localized: 플레이해줘서 고마워요!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3931751522586624
+    m_Localized: "낚시 \n방법"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3952311279374336
+    m_Localized: 게임 이름 입력
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3953281396723712
+    m_Localized: 텍스트 입력
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5068142029656064
+    m_Localized: 콩
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121082929369088
+    m_Localized: 난이도
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121140584271872
+    m_Localized: 쉬움
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121160876314624
+    m_Localized: 기본
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121201640755200
+    m_Localized: 어려움
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Killscore Labels_tr
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: tr
+  m_SharedData: {fileID: 11400000, guid: e2b9951c3caf12441b53d345e83c28c3, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 96034443264
+    m_Localized: 360
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177374580736
+    m_Localized: Dürbünsüz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 687435501568
+    m_Localized: Hızlı Dürbün
+    m_Metadata:
+      m_Items: []
+  - m_Id: 758537342976
+    m_Localized: Uzaktan Vuruş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1082044010496
+    m_Localized: Kafadan Vuruş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1134514753536
+    m_Localized: İt Dalaşı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1206866497536
+    m_Localized: Havada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1275401424896
+    m_Localized: Sinek Oltacılığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1360751316992
+    m_Localized: Kolsuz Leşi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1491072536576
+    m_Localized: Bir Kurşun Bir Leş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1686380302336
+    m_Localized: Çift Leş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1726347825152
+    m_Localized: Üçlü Leş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1769368801280
+    m_Localized: Dörtlü Leş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1801690107904
+    m_Localized: Beşli Leş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2729721810944
+    m_Localized: Çoklu Leş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2777788534784
+    m_Localized: Sonunda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2807245131776
+    m_Localized: Nesli Tehlikedeki Türler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2856997965824
+    m_Localized: Leş Çalma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2897351364608
+    m_Localized: Yakın Mesafeden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2932751290368
+    m_Localized: Parça Pinçik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2974270705664
+    m_Localized: Son Kurşun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3007141466112
+    m_Localized: Etkileyici
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334752579670016
+    m_Localized: 'Öldürdün:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334780551483392
+    m_Localized: Öldürme Puanı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010849860374528
+    m_Localized: Yakın Dövüş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010879283417088
+    m_Localized: Patlama
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

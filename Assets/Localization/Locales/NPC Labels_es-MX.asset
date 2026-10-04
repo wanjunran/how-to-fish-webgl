@@ -1,0 +1,807 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NPC Labels_es-MX
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: es-MX
+  m_SharedData: {fileID: 11400000, guid: fa57a2f298180434ab982cf788068735, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6662213632
+    m_Localized: Hablar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54046427271168
+    m_Localized: Tomar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54116627337216
+    m_Localized: Encendedor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54213498982400
+    m_Localized: Memoria que contiene las coordenadas de una isla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54739510841344
+    m_Localized: Llaves del bote
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81550055657472
+    m_Localized: Ah, hola.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81663972954112
+    m_Localized: ¿Acabas de llegar aquí?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81871247069184
+    m_Localized: Como sea. Necesito ayuda.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81930336423936
+    m_Localized: Hay una <color=#FFEF4D><b>criatura de patas largas</color></b> que se roba mi cerveza mientras duermo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82093876531200
+    m_Localized: Llevo una semana sin dormir.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82158628196352
+    m_Localized: ¿Podrías deshacerte de ella? Te lo suplico.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82227385421824
+    m_Localized: Apuesto a que puedes atraparla si la haces enfadar con <color=#FFEF4D><b>una lata de cerveza vacía</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82357429817344
+    m_Localized: Tengo unas de sobra, pero están llenas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82606181404672
+    m_Localized: Si <color=#FFEF4D><b>me consigues una</color></b>, la puedo vaciar por ti.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82703942242304
+    m_Localized: Si no tienes dinero, puedes atrapar unos cangrejos y vendérmelos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82801275260928
+    m_Localized: Solo toma la caña de pescar cangrejos y comienza a pescar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82976676859904
+    m_Localized: '*eructo* Aquí tienes.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83161104601088
+    m_Localized: Mmm, gracias. Toma esto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83225633968128
+    m_Localized: '*eructo* Toma.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83303882903552
+    m_Localized: Toma esta <color=#FFEF4D><b>lata de cerveza vacía</color></b> y ponla en tu caña.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84195684208640
+    m_Localized: Si logras derrotarla, te doy mi <color=#FFEF4D><b>bote</color></b>.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84399493828608
+    m_Localized: No lo uso de todos modos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84463796703232
+    m_Localized: Y así me dejarás beber cerveza en paz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84517198581760
+    m_Localized: Solo recuerda usar el <color=#FFEF4D><b>radar</color></b> mientras estás en el bote.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84616054132736
+    m_Localized: Puedes tomar el que está a mi lado, si gustas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84935181946880
+    m_Localized: Ah, qué delicia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85059324956672
+    m_Localized: Pero qué delicia.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85143248785408
+    m_Localized: Por fin. Toma las <color=#FFEF4D><b>llaves de mi bote</color></b>, y recuerda usar el radar cuando busques islas nuevas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85361503588352
+    m_Localized: Toma las llaves y vete.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85414536368128
+    m_Localized: Ahora, déjame a solas con mi cerveza.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85790471835648
+    m_Localized: Bueno, eso es todo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85863683411968
+    m_Localized: Muy bien, tengo que volver al trabajo. Nos vemos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85938941808640
+    m_Localized: Ajá.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86082663829504
+    m_Localized: Qué rico.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86182706368512
+    m_Localized: Ah, sí.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86279259246592
+    m_Localized: Me encanta el cangrejo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86320959016960
+    m_Localized: Pero qué sabroso.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86372007890944
+    m_Localized: Necesito un cangrejo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420935120801792
+    m_Localized: Hola.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420995262926848
+    m_Localized: ¿Me ayudarías con algo?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421041618374656
+    m_Localized: Me gustaría sorprender a mi papá con una cena especial, pero no me permite usar armas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421194010021888
+    m_Localized: Hay un <color=#FFEF4D><b>pez muy sabroso</color></b> que nada por aquí, pero no puedo matarlo si no tengo un arma. ¿Podrías hacerlo por mí?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421367142502400
+    m_Localized: Le gustan mucho las <color=#FFEF4D><b>sanguijuelas</color></b>. Consígueme unas cuantas y las convierto en un cebo para ti.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421496939433984
+    m_Localized: Puedes encontrarlas arrastrándose en el suelo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421662740271104
+    m_Localized: Mmm, gracias.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421704255492096
+    m_Localized: Bastará con unas cuantas más para el cebo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421753421123584
+    m_Localized: Eso estuvo muy bien.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421802796470272
+    m_Localized: Pero qué sabroso.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421838527746048
+    m_Localized: Aaaaaaammm.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422029922226176
+    m_Localized: Aquí tienes. Y asegúrate de llevar un <color=#FFEF4D><b>arma</color></b>, luchar contra esa cosa a puño limpio es peligroso.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422903297953792
+    m_Localized: Si encuentras una criatura sabrosa para mí, puedo compartirte la <color=#FFEF4D><b>ubicación</color></b> de una isla que encontré.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423099348111360
+    m_Localized: Creo que se <color=#FFEF4D><b>agregará a tu mapa</color></b> en automático una vez que te la dé.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423227211468800
+    m_Localized: Pero primero, necesito esa cena.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423390374088704
+    m_Localized: Toma. Puedes usarla para encontrar la <color=#FFEF4D><b>siguiente isla</color></b> en tu mapa.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423701432061952
+    m_Localized: Ahora puedes usar el mapa para encontrar la otra isla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424172574035968
+    m_Localized: '*Eructo*'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424223446749184
+    m_Localized: Te pago bien por lo que atrapes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424275997184000
+    m_Localized: Ajá.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424310931542016
+    m_Localized: Consigue algo de la tienda de regalos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424428346888192
+    m_Localized: Aaah.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424470780661760
+    m_Localized: Como lo que sea.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424909949456384
+    m_Localized: Bluf.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425008100364288
+    m_Localized: Pffff.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425047040282624
+    m_Localized: Ñam.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425069555306496
+    m_Localized: Achú.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425173376913408
+    m_Localized: Mmmmr.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425204075024384
+    m_Localized: Qué asco.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425625044733952
+    m_Localized: Auuugh.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425665897254912
+    m_Localized: Me tomé un descanso del trabajo para relajarme, pero ahora no puedo nadar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425774320013312
+    m_Localized: Hay un <color=#FFEF4D><b>pez espantoso</color></b> en el océano. Me da mucho miedo entrar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425851797196800
+    m_Localized: ¿Te molestaría deshacerte de él por mí?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425902661521408
+    m_Localized: Tengo unos bocadillos que puedes usar como cebo, pero quiero algo a cambio.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426008861298688
+    m_Localized: Como... algo que pueda mostrarles a mis camaradas cuando vuelva.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426140730216448
+    m_Localized: Una <color=#FFEF4D><b>criatura en peligro de extinción</color></b> estaría bien.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426302928146432
+    m_Localized: La reconocerás cuando la veas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426445853249536
+    m_Localized: Ah, gracias. Toma este cebo para atrapar al pez espantoso.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427343753072640
+    m_Localized: Qué onda, soy el parrillero.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427397419192320
+    m_Localized: Celebraré una fiesta con unos amigos al rato, pero no tengo nada para mi parrilla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427492277571584
+    m_Localized: ¿Te gustaría atrapar algo interesante para que pueda cocinarlo?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427568391606272
+    m_Localized: Creo que esta tarde nos caería bien un <color=#FFEF4D><b>tiburón</color></b>.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427626839232512
+    m_Localized: Si me lo consigues, dejaré que uses mi parrilla para <color=#FFEF4D><b>cocinar tus cosas</color></b>.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427711400595456
+    m_Localized: Así puedes cocinar criaturas y ganar más dinero que al venderlas crudas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427834952208384
+    m_Localized: Ups, me lo comí. Bueno, toma el encendedor. Sirve para prender la parrilla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427978091220992
+    m_Localized: Toma el encendedor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428033137266688
+    m_Localized: La parrilla está encendida.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428084962086912
+    m_Localized: Puedes usar la parrilla para cocinar criaturas y aumentar su precio.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428145339092992
+    m_Localized: Adelante, usa la parrilla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428776917389312
+    m_Localized: ¿Quieres algo a cambio?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428869942857728
+    m_Localized: Bueno, está bien. Puedo darte las <color=#FFEF4D><b>coordenadas</color></b> del lugar de donde provengo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428983528804352
+    m_Localized: Así puedes salir de este sitio tan peligroso una vez que me ayudes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429062327193600
+    m_Localized: Ah, gracias. Toma, estas son las coordenadas de mis tierras.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429365504069632
+    m_Localized: Ahora puedes usar el mapa para encontrar la isla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429676247470080
+    m_Localized: Te doy la bienvenida a la tienda.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429777397305344
+    m_Localized: Tenemos los objetos ideales para que tus vacaciones sean lo máximo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429888487641088
+    m_Localized: Toma un balón o disco para arrojarlos, si gustas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429947690242048
+    m_Localized: También tenemos mejoras para tu bote.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430009279401984
+    m_Localized: ¿O te interesa una radio para escuchar música?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430096915189760
+    m_Localized: ¡También tenemos armas!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430142016540672
+    m_Localized: Y si tienes algo de interés para vender, lo compramos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430235213975552
+    m_Localized: Solo arrójame lo que quieras vender y te doy el dinero.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431287153807360
+    m_Localized: ¡Eso! Disfruta de tus vacaciones.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431387955515392
+    m_Localized: Mmm...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431431949570048
+    m_Localized: Mmm... COMIDA.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431477998833664
+    m_Localized: Ñom, ñom, ñom.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431501973475328
+    m_Localized: Qué rico manjar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431549616574464
+    m_Localized: Sopa de primera.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431574971142144
+    m_Localized: ¿Eh? ¿Qué fue eso?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431605803470848
+    m_Localized: Pero qué sabroso.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431984423292928
+    m_Localized: Te doy la bienvenida a Lucky Bait Casino.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432080112144384
+    m_Localized: No te había visto antes. ¿Es tu primera vez aquí?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432134969446400
+    m_Localized: Si es así, déjame contártelo todo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432194503397376
+    m_Localized: Haz tu apuesta en la mesa de la ruleta. Puede ser cualquier objeto que tengas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432333905285120
+    m_Localized: Luego, presiona el color por el que quieras apostar y el juego comenzará.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432428646223872
+    m_Localized: Si ganas, los objetos que colocaste en la mesa valdrán más cuando los vendas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432622834110464
+    m_Localized: Si pierdes, despídete de todo lo que apostaste.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432701175320576
+    m_Localized: Buena suerte.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432857400561664
+    m_Localized: ¿Sigue ahí?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432911301562368
+    m_Localized: ¿No la has visto?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432943568343040
+    m_Localized: Hay un <color=#FFEF4D><b>ave enorme</color></b> que está aleteando y aterrorizando a toda la isla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433023109124096
+    m_Localized: Nadie se atreve a salir desde que esa ave llegó.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433114742083584
+    m_Localized: Cuando viene aquí alguien con <color=#FFEF4D><b>atún</color></b>, el ave regresa.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433223122898944
+    m_Localized: El ave puede oler el atún. <color=#FFEF4D><b>Solo déjalo en el suelo</color></b>.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433311186505728
+    m_Localized: Creo que la <color=#FFEF4D><b>carnada para jefe profesional</color></b> es la que puedes usar para atraparla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433889987874816
+    m_Localized: Tráeme la <color=#FFEF4D><b>cabeza del ave</color></b>. Cuando la tenga, les diré a los demás que estamos a salvo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434090685321216
+    m_Localized: Y hasta te daré mi memoria. Tiene las <color=#FFEF4D><b>coordenadas</color></b> de una isla atractiva que vi desde lejos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434531007549440
+    m_Localized: Gracias. Les contaré a todos que estamos a salvo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435174065655808
+    m_Localized: Toma la memoria. Iré a contarles a los demás que estamos a salvo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435379519442944
+    m_Localized: Vamos, tómala.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443520457986048
+    m_Localized: Te doy la bienvenida a Lucky Bait Casino.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443596425220096
+    m_Localized: Nuestra tragamonedas tiene muchos aspectos de armas para desbloquear.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444001943113728
+    m_Localized: Solo arroja una <color=#FFEF4D><b>criatura de lujo</color></b> o un <color=#FFEF4D><b>trofeo de jefe</color></b> en el agujero de arriba para comenzar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444269380325376
+    m_Localized: Recuerda compartir los premios. Solo la persona que arroja el objeto en el agujero se lleva el aspecto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444478231498752
+    m_Localized: Y eso es todo. Que te diviertas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444517112696832
+    m_Localized: Uf, podría comerme unos 600 rollitos primavera.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444581440737280
+    m_Localized: Ah, sigues aquí.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444785908862976
+    m_Localized: Hola, ¿qué te traigo?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444883258658816
+    m_Localized: ¿Qué?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444906302164992
+    m_Localized: Habla más fuerte. No te escucho.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444978158981120
+    m_Localized: Mejor ve a comprar algo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445032907231232
+    m_Localized: Gracias.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445180517371904
+    m_Localized: Hola, te doy la bienvenida a mi tienda de armas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445243469680640
+    m_Localized: Por increíble que parezca, tengo una amplia selección de armas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445357462474752
+    m_Localized: Y también tengo varios aditamentos nuevos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445457282715648
+    m_Localized: Puedes echar un vistazo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445558650654720
+    m_Localized: Ah, te puedo comprar cosas si tienes algo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445650417831936
+    m_Localized: Muy bien.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445687394816000
+    m_Localized: Gracias.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445710081806336
+    m_Localized: Aquí está el dinero.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446218225930240
+    m_Localized: Hola.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447747326562304
+    m_Localized: Podemos irnos cuando terminemos la misión.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454228843253760
+    m_Localized: Hola.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454260141150208
+    m_Localized: ¿Podrías contarle a la científica de nuestra misión?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454364499628032
+    m_Localized: Está por ahí.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454417670819840
+    m_Localized: Mientras tanto, sugiero que te prepares.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454499019345920
+    m_Localized: Tengo varias armas y herramientas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454568154058752
+    m_Localized: Puedes comprarme lo que gustes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454611363778560
+    m_Localized: También puedo comprarte cosas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454647212494848
+    m_Localized: Cambio y fuera.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454730767224832
+    m_Localized: Cambio y fuera.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454766502694912
+    m_Localized: Hola.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454809334927360
+    m_Localized: Muy bien.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454850141310976
+    m_Localized: Cocinado a la perfección.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454894819037184
+    m_Localized: Qué rico.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454923923312640
+    m_Localized: Gracias.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454969381179392
+    m_Localized: Delicioso.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455000880402432
+    m_Localized: Ni siquiera me gusta el pescado.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455252588974080
+    m_Localized: Perdón, ¿de casualidad te dedicas a la pesca?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455365046652928
+    m_Localized: Estamos en una misión de investigación, pero no podemos terminarla por nuestra cuenta.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455419270615040
+    m_Localized: Necesitamos que alguien nos ayude a capturar una <color=#FFEF4D><b>ballena grande</color></b>.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455461192683520
+    m_Localized: Si me traes <color=#FFEF4D><b>criaturas</color></b> pequeñas, puedo crear un buen cebo para que la atrapes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455554054574080
+    m_Localized: Una vez que la derrotes, debes <color=#FFEF4D><b>arrojarla al volcán</color></b>.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455624334331904
+    m_Localized: Así veremos cómo reacciona al calor intenso.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455687810928640
+    m_Localized: Creemos que esto podría tener algún efecto en la bestia, así que prepárate.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455804467105792
+    m_Localized: Si tienes manera de <color=#FFEF4D><b>mostrarme que la venciste</color></b>, por fin tendremos todo lo que necesitamos.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455996067106816
+    m_Localized: Y como agradecimiento, te permitiré que uses nuestro bote.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456054191771648
+    m_Localized: Tiene las <color=#FFEF4D><b>coordenadas del continente</color></b>. Así podrás volver a casa.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456126010839040
+    m_Localized: Parece que llevas rato lejos de casa.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456167941296128
+    m_Localized: Muy bien, es hora de volver al trabajo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456261805625344
+    m_Localized: Genial, solo un poco más.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456311600402432
+    m_Localized: Muy bien.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456350632595456
+    m_Localized: Esta es perfecta.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456383964729344
+    m_Localized: Qué rico.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456412515356672
+    m_Localized: Ya casi.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456436292866048
+    m_Localized: Gracias.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456481687818240
+    m_Localized: Aquí tienes. Anda, atrapa a esa ballena.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457160535920640
+    m_Localized: ¿Terminaste el trabajo?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457217314213888
+    m_Localized: ¡Solo quiero terminar esta misión!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457269168394240
+    m_Localized: Muy bien. Toma estas llaves si quieres ir a casa.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457522932174848
+    m_Localized: Completaste la misión.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457572198469632
+    m_Localized: Si me das más criaturas para el cebo, puedes completarla otra vez si gustas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 475779793768448
+    m_Localized: Toma esto.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454831413317632
+    m_Localized: Consigue la caña de pescar para atrapar peces mejores.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455008320671744
+    m_Localized: Recuerda que debes usar <color=#FFEF4D><b>enrollar con el carrete</color></b> de la caña de pescar para atrapar cosas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978330866962432
+    m_Localized: Ah, y una vez que consigas un arma, quiero ver <color=#FFEF4D><b>tiros geniales</color></b>.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978762100133888
+    m_Localized: Te daré más dinero por lo que atrapes si usas un <color=#FFEF4D><b>tiro con truco</color></b>. Cuanto más difícil, mejor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8382261860323328
+    m_Localized: También son más sabrosas si las comes <color=#FFEF4D><b>cocinadas</color></b>.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

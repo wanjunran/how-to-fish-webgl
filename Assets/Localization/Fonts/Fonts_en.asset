@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -149288805, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Fonts_en
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: e819872cf9a36c94fb8ebfba41205851, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 68775661568
+    m_Localized: 4db49d139eb54f44786f74216f197a9c
+    m_Metadata:
+      m_Items: []
+  - m_Id: 163776647168
+    m_Localized: a818dbb3be0daab47a901ba94f08ede7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12261487366144
+    m_Localized: 4db49d139eb54f44786f74216f197a9c[Underdog-Regular Atlas Material]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12680393478144
+    m_Localized: a818dbb3be0daab47a901ba94f08ede7[Underdog-Regular Atlas Material]
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

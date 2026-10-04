@@ -1,0 +1,651 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Item Labels_tr
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: tr
+  m_SharedData: {fileID: 11400000, guid: 91f07ee2427a9af42971d9afa13db604, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16543993856
+    m_Localized: Parlak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517595549696
+    m_Localized: Önce eşyayı kaldır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1074867556352
+    m_Localized: Taarruz Tüfeği
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1256535445504
+    m_Localized: Betbol Topu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397812187136
+    m_Localized: Bira
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440275320832
+    m_Localized: Muşta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1604490711040
+    m_Localized: Yengeç Oltası
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1700359917568
+    m_Localized: Dinamit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1755171082240
+    m_Localized: Olta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833763950592
+    m_Localized: Disk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1918321119232
+    m_Localized: Bıçak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001888432128
+    m_Localized: Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061577572352
+    m_Localized: Tabanca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125578457088
+    m_Localized: Radyo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2198542569472
+    m_Localized: Pompalı Tüfek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2265022287872
+    m_Localized: Hafif Makineli Tüfek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2319141392384
+    m_Localized: Keşkin Nişancı Tüfeği
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2558585819136
+    m_Localized: Kartopu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2793194213376
+    m_Localized: Melek Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2919820251136
+    m_Localized: Fener Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3094898888704
+    m_Localized: Levrek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3400911114240
+    m_Localized: Damla Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3487762567168
+    m_Localized: Ay Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3901354496000
+    m_Localized: Kase Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4022288863232
+    m_Localized: Kedi Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4084528140288
+    m_Localized: Midye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4144091451392
+    m_Localized: Palyaço Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4213171638272
+    m_Localized: Morina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4305442131968
+    m_Localized: Kahverengi Yengeç
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4358051287040
+    m_Localized: Parıldak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4451802370048
+    m_Localized: Yılanbalığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4503895625728
+    m_Localized: Uçan Balık
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4570647973888
+    m_Localized: Ayaklı Sümüklübcek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756732465152
+    m_Localized: Zargana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878249840640
+    m_Localized: Kaya Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4952019259392
+    m_Localized: Japon Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012891193344
+    m_Localized: Pisi Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5111486697472
+    m_Localized: Sülük
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5182122971136
+    m_Localized: Istakoz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5235017338880
+    m_Localized: Uskumru
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5332526518272
+    m_Localized: İğne Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613381308416
+    m_Localized: Kürek Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5705463058432
+    m_Localized: Papağan Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6025832386560
+    m_Localized: Tatlı Su Levreği
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7383742500864
+    m_Localized: Turna Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7444769624064
+    m_Localized: Pirana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517343666176
+    m_Localized: Kırmızı Levrek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7692686544896
+    m_Localized: Somon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7754799992832
+    m_Localized: Deniz Kestanesi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7821640421376
+    m_Localized: Martı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7968906629120
+    m_Localized: Denizatı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8022753103872
+    m_Localized: Sengarat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8279654223872
+    m_Localized: Karides
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8336688369664
+    m_Localized: Taş Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8397388337152
+    m_Localized: Süper Cüce Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8622110756864
+    m_Localized: Kaplan Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8700179337216
+    m_Localized: Çotira
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8798422519808
+    m_Localized: Voksel Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8910662094848
+    m_Localized: Sarı Kutu Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004824219648
+    m_Localized: Albatros
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9060998533120
+    m_Localized: Mavi Köpekbalığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9125917970432
+    m_Localized: Grönland Balinası
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9245774401536
+    m_Localized: Büyük Turna Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9401873813504
+    m_Localized: Dev Pirana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9471960633344
+    m_Localized: Goblin Köpekbalığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9624083845120
+    m_Localized: Mutant Grönland Balinası
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9726227730432
+    m_Localized: Kirpi Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9790161506304
+    m_Localized: Örümcek Yengeci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853273198592
+    m_Localized: Güneş Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9947020087296
+    m_Localized: Ton Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10032218984448
+    m_Localized: Albatros Kellesi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10092432412672
+    m_Localized: Dev Pirana İskeleti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10272070258688
+    m_Localized: Kirpi Balığı Yüzgeci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10429339881472
+    m_Localized: Örümcek Yengeci Kabuğu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10533899685888
+    m_Localized: Balina Yüzgeci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11671877275648
+    m_Localized: Boş Bira Kutusu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11769382260736
+    m_Localized: Amatör Patron Yemi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11915486646272
+    m_Localized: Amatör Yemi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994754797568
+    m_Localized: Sülük Yem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12079676870656
+    m_Localized: Havuç
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135154929664
+    m_Localized: Standart Patron Yemi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12269896945664
+    m_Localized: Standart Yem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12358149296128
+    m_Localized: Profesyonel Patron Yemi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12527846641664
+    m_Localized: Profesyonel Yem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12624521154560
+    m_Localized: Balık Kovası
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12704154210304
+    m_Localized: Bilimsel Patron Yemi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12876342972416
+    m_Localized: Bilimsel Yem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14071937716224
+    m_Localized: Tekne Radarı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16484916613120
+    m_Localized: Satın Alındı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20829980676096
+    m_Localized: Kompansatör
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21003675193344
+    m_Localized: Uzatılmış Şarjör
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21707294855168
+    m_Localized: Standart Nişangâh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413609025536
+    m_Localized: Lazer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487277780992
+    m_Localized: Kırmızı Nokta Nişangâh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23593548861440
+    m_Localized: Keskin Nişancı Dürbünü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23718690115584
+    m_Localized: Susturucu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35635374673920
+    m_Localized: Geri tepmeyi kısmen azaltır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36427158605824
+    m_Localized: Şarjördeki mermi sayısını artırır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36631865806848
+    m_Localized: Silaha takılı nişangâhları çıkarır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36777357824000
+    m_Localized: Silahı doğrulttuğun yeri gösterir ve nişan almadan ateş etmeyi kolaylaştırır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37000025034752
+    m_Localized: Hedefleri nişan alarak vurmayı kolaylaştırır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37211061440512
+    m_Localized: Uzaktaki hedefleri nişan alarak vurmayı kolaylaştırır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343916019712
+    m_Localized: Geri tepmeyi önemli ölçüde azaltır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38419088101376
+    m_Localized: Takamazsın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38503880151040
+    m_Localized: Menzilli Silahı Kuşan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38906973736960
+    m_Localized: Değer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39035646595072
+    m_Localized: Pişirme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40700424572928
+    m_Localized: Yakın Dövüş Silahını Kuşan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51375519649792
+    m_Localized: Bileme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51811857289216
+    m_Localized: Hasarı artırır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51930019221504
+    m_Localized: Bu ada için maksimuma ulaşıldı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55632947924992
+    m_Localized: Mermi Yükseltme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55678741336064
+    m_Localized: Mermi hasarını artırır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91764200919040
+    m_Localized: Büyük Motor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91838939222016
+    m_Localized: Çift Motor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099514359926784
+    m_Localized: Hasar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099545099980800
+    m_Localized: Mühimmat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099588062236672
+    m_Localized: Eklentiler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483887722713088
+    m_Localized: Görev Eşyası
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1533629789982720
+    m_Localized: Sosisli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536930950500352
+    m_Localized: Kaya Yengeci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828526547881984
+    m_Localized: Sür
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828554834268160
+    m_Localized: Süremezsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828599990145024
+    m_Localized: Anahtar Yok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828643153727488
+    m_Localized: Ana karaya dön
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830646902771712
+    m_Localized: Canlılar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830821041885184
+    m_Localized: Parlak Canlılar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186154683748352
+    m_Localized: Oynamak için <color=#FFEF4D><b>parlak canlı</color></b> at
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186243099676672
+    m_Localized: dönüyor...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186429616181248
+    m_Localized: Görünümler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291237806854144
+    m_Localized: Kabuklu patronları yakalamak için kullanılır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291869334818816
+    m_Localized: Daha büyük kabuklular için kullanılan yem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291948657496064
+    m_Localized: Amatör mini patronları yakalar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292204136747008
+    m_Localized: Amatör balıkları yakalar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292316321796096
+    m_Localized: 2. ada patronu için kullanılan yem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293021463990272
+    m_Localized: 3. ada patronu için kullanılan yem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293207191965696
+    m_Localized: Standart mini patronları yakalar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293390399164416
+    m_Localized: Standart balıkları yakalar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293514412150784
+    m_Localized: Profesyonel mini patronları yakalar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293643345055744
+    m_Localized: Profesyonel balıkları yakalar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293763109212160
+    m_Localized: Büyük patronlar için kullanılan yem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293878242856960
+    m_Localized: Bilimsel mini patronları yakalar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3294053837393920
+    m_Localized: Bilimsel balıkları yakalar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3322076229881856
+    m_Localized: Ağırlık
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616357117153280
+    m_Localized: Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3984920650797056
+    m_Localized: Tekne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4754946219659264
+    m_Localized: Bing Bong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755687046991872
+    m_Localized: Deniz Yıldızı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755941158899712
+    m_Localized: Sünger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756916259082240
+    m_Localized: Kalamar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758365198176256
+    m_Localized: Vatoz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758665606811648
+    m_Localized: Çekiç Başlı Köpek Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758953906491392
+    m_Localized: Deniz Gergedanı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4759131669483520
+    m_Localized: Tespih Böceği
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762162721017856
+    m_Localized: Keşiş Yengeci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764482083049472
+    m_Localized: Yelken Balığı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764811897950208
+    m_Localized: İstiridye
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

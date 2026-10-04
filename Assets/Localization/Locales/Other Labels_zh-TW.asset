@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Other Labels_zh-TW
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: zh-TW
+  m_SharedData: {fileID: 11400000, guid: 69a7388674ce0664ca901c74c12a0af3, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 8230883328
+    m_Localized: 將物件放置於此
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1922687389696
+    m_Localized: 黑色
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1962239676416
+    m_Localized: 紅色
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1981214707712
+    m_Localized: 綠色
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2018212663296
+    m_Localized: 你輸了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2340804972544
+    m_Localized: 我要賭
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45165538004992
+    m_Localized: 已儲存
+    m_Metadata:
+      m_Items: []
+  - m_Id: 736326678302720
+    m_Localized: 公斤
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

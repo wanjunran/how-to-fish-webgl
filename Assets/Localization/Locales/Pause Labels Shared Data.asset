@@ -1,0 +1,196 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -299433217, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Pause Labels Shared Data
+  m_EditorClassIdentifier:
+  m_TableCollectionName: Pause Labels
+  m_TableCollectionNameGuidString: cb10ead31828b33488ca41ff3d3eb4a9
+  m_Entries:
+  - m_Id: 20629245952
+    m_Key: pause.paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82843357184
+    m_Key: pause.language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 158516989952
+    m_Key: pause.currentLanguage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3477369081856
+    m_Key: pause.other
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21261289345024
+    m_Key: pause.return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21360283308032
+    m_Key: pause.copyID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21665121128448
+    m_Key: pause.inviteFriend
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21816883630080
+    m_Key: pause.serverSettings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22000791277568
+    m_Key: pause.save
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22066264363008
+    m_Key: pause.mainMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22528476663808
+    m_Key: pause.quitQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22792722010112
+    m_Key: pause.mainMenuQuestion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22969725833216
+    m_Key: pause.gameplay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23146876456960
+    m_Key: pause.audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487403610112
+    m_Key: pause.mouseSensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23735098232832
+    m_Key: pause.fullscreenMode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24746433007616
+    m_Key: pause.borderless
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25205583466496
+    m_Key: pause.windowed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25318091476992
+    m_Key: pause.fullscreen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25488485076992
+    m_Key: pause.fov
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25654873116672
+    m_Key: pause.vsync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25742496321536
+    m_Key: pause.maxFPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25881004822528
+    m_Key: pause.shadowQuality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29119686987776
+    m_Key: pause.qualityOff
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29153098813440
+    m_Key: pause.qualityLow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29187886370816
+    m_Key: pause.qualityDefault
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29465087922176
+    m_Key: pause.ambientocclusion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29691534200832
+    m_Key: pause.decorations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29876700139520
+    m_Key: pause.decals
+    m_Metadata:
+      m_Items: []
+  - m_Id: 286759499419648
+    m_Key: pause.masterVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287453128249344
+    m_Key: pause.musicVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287677561262080
+    m_Key: pause.fxVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287867676479488
+    m_Key: pause.proxyChat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287974027251712
+    m_Key: pause.proxyChatVolume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 288190411395072
+    m_Key: pause.microphoneGain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 288406728429568
+    m_Key: pause.proxyChatInput
+    m_Metadata:
+      m_Items: []
+  - m_Id: 289978195726336
+    m_Key: pause.micOff
+    m_Metadata:
+      m_Items: []
+  - m_Id: 290104767238144
+    m_Key: pause.micPushToTalk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 290299915620352
+    m_Key: pause.micAlwaysOn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 290501158326272
+    m_Key: pause.microphone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 291137778176000
+    m_Key: pause.friendlyFire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5072474192039936
+    m_Key: pause.languag
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8744106283296883020
+  references:
+    version: 2
+    RefIds:
+    - rid: 8744106283296883020
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1784205052615

@@ -1,0 +1,872 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!72 &7200000
+ComputeShader:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: VFXCopyBuffer
+  variants:
+  - serializedVersion: 2
+    targetRenderer: 2
+    targetLevel: 0
+    kernels:
+    - serializedVersion: 3
+      name: CSVFXCopyBuffer
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 00000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers:
+        - name: srcBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        outBuffers:
+        - name: dstBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243b0326f195aaff8f2d8ea5411ded7c033010000005c010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845580801000050000500420000006a08000159000004468e20000000000001000000a100000300701000000000009d00000300e01100000000005f0000021200020068000002010000009b0000044000000001000000010000004f00000712001000000000000a0002003a80200000000000000000001f0004030a001000000000001e0000073200100000000000060002001685200000000000000000002900000a320010000000000046001000000000000240000002000000020000000000000000000000a5000089c20200808399190012001000000000000a001000000000000670100000000000a600000712e01100000000001a001000000000000a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXCopyStructBuffer
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 00000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers:
+        - name: srcStructBufferUint
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        outBuffers:
+        - name: dstStructBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 4458424359d7d582afa917856c6c77623eb32bfa010000004c010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e08000000000000000800000053484558f8000000500005003e0000006a08000159000004468e20000000000001000000a20000040070100000000000040000009e00000400e0110000000000040000005f0000021200020068000002010000009b0000044000000001000000010000004f00000712001000000000000a0002003a80200000000000000000001f0004030a001000000000001e000007320010000000000006000200168520000000000000000000a700008b022300808399190012001000000000000a0010000000000001400000000000000670100000000000a800000912e01100000000001a0010000000000001400000000000000a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXInitDeadListBuffer
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 01000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers: []
+        outBuffers:
+        - name: dstStructBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243ecdf41dfee4dbebad7171cb7a4edb66201000000f0010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845589c01000050000500670000006a08000159000004468e200000000000020000009e00000400e0110000000000040000005f000002221002005f0000021200020068000002010000009b0000044000000001000000010000002600000800d0000012001000000000001a1002000a80200000000000010000002900000712001000000000000a0010000000000001400000060000001e00000612001000000000000a001000000000000a0002004f00000822001000000000000a001000000000003a80200000000000000000001f0004031a001000000000001e00000822001000000000000a001000000000000a80200000000000000000001e00000942001000000000000a00108041000000000000003a80200000000000000000001e00000742001000000000002a0010000000000001400000ffffffffa800000912e01100000000001a0010000000000001400000000000002a00100000000000150000011f0000030a00100000000000a800000b12e01100000000001a802000000000000100000001400000000000003a8020000000000000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXZeroInitBuffer
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 02000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers: []
+        outBuffers:
+        - name: dstBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243f0bea4e00df221f6d69f72014226115f0100000084010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e0800000000000000080000005348455830010000500005004c0000006a08000159000004468e200000000000020000009d00000300e01100000000005f000002221002005f0000021200020068000002010000009b0000044000000001000000010000002600000800d0000012001000000000001a1002000a80200000000000010000002900000712001000000000000a0010000000000001400000060000001e00000612001000000000000a001000000000000a0002004f00000822001000000000000a001000000000003a80200000000000000000001f0004031a001000000000001e00000812001000000000000a001000000000000a80200000000000000000002900000712001000000000000a001000000000000140000002000000a600000712e01100000000000a001000000000000140000000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXZeroInitBufferUint
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 02000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers: []
+        outBuffers:
+        - name: dstStructBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243ab3015342c7bf69f762d3ab8e4e4152c0100000074010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845582001000050000500480000006a08000159000004468e200000000000020000009e00000400e0110000000000040000005f000002221002005f0000021200020068000002010000009b0000044000000001000000010000002600000800d0000012001000000000001a1002000a80200000000000010000002900000712001000000000000a0010000000000001400000060000001e00000612001000000000000a001000000000000a0002004f00000822001000000000000a001000000000003a80200000000000000000001f0004031a001000000000001e00000812001000000000000a001000000000000a8020000000000000000000a800000912e01100000000000a0010000000000001400000000000000140000000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXBatchCopyCountUint
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 03000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers:
+        - name: srcStructBufferUint
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        outBuffers:
+        - name: dstBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243635467569518c95a8964fac83ef896d20100000058010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845580401000050000500410000006a08000159000004468e20000000000001000000a20000040070100000000000040000009d00000300e01100000000005f0000021200020068000002010000009b0000044000000001000000010000004f00000712001000000000000a0002003a80200000000000000000001f0004030a00100000000000a700008a022300808399190012001000000000000a000200014000000000000006701000000000001e00000722001000000000000a0002000a80200000000000000000002900000722001000000000001a001000000000000140000002000000a600000712e01100000000001a001000000000000a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXBatchCopyCountKvp
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 03000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers:
+        - name: srcStructBufferKvp
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        outBuffers:
+        - name: dstBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243b1e24e63af90a83b11ba6254cdbdb6a10100000058010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845580401000050000500410000006a08000159000004468e20000000000001000000a20000040070100000000000080000009d00000300e01100000000005f0000021200020068000002010000009b0000044000000001000000010000004f00000712001000000000000a0002003a80200000000000000000001f0004030a00100000000000a700008a024300808399190012001000000000000a000200014000000400000006701000000000001e00000722001000000000000a0002000a80200000000000000000002900000722001000000000001a001000000000000140000002000000a600000712e01100000000001a001000000000000a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXInitBoundsBuffer
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 04000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers: []
+        outBuffers:
+        - name: dstStructBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 445842433d87cb0bed5423eac20429e2372b04190100000090010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845583c010000500005004f0000006a08000159000004468e200000000000020000009e00000400e0110000000000040000005f000002221002005f0000021200020068000002010000009b0000044000000001000000010000002600000800d0000012001000000000001a1002000a80200000000000010000002900000712001000000000000a0010000000000001400000060000001e00000612001000000000000a001000000000000a0002004f00000822001000000000000a001000000000003a80200000000000000000001f0004031a001000000000004e00000800d0000022001000000000000a0010000000000001400000060000004f00000722001000000000001a001000000000000140000003000000a800000912e01100000000000a0010000000000001400000000000001a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXCopyStructBufferSelf
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 00000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers: []
+        outBuffers:
+        - name: dstStructBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243e92f4b0bf5dd229e699e2c97a716d3b6010000003c010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e08000000000000000800000053484558e8000000500005003a0000006a08000159000004468e200000000000010000009e00000400e0110000000000040000005f0000021200020068000002010000009b0000044000000001000000010000004f00000712001000000000000a0002003a80200000000000000000001f0004030a001000000000001e000007320010000000000006000200168520000000000000000000a700008b022300808399190012001000000000000a00100000000000014000000000000006e0110000000000a800000912e01100000000001a0010000000000001400000000000000a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    constantBuffers:
+    - name: Uniform
+      byteSize: 32
+      params:
+      - name: dstOffset
+        type: 5
+        offset: 0
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: srcOffset
+        type: 5
+        offset: 4
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: size
+        type: 5
+        offset: 12
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    - name: Uniform
+      byteSize: 32
+      params:
+      - name: dstOffset
+        type: 5
+        offset: 0
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: size
+        type: 5
+        offset: 12
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: dispatchWidth
+        type: 5
+        offset: 16
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: instanceIndex
+        type: 5
+        offset: 20
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    - name: Uniform
+      byteSize: 32
+      params:
+      - name: dstOffset
+        type: 5
+        offset: 0
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: size
+        type: 5
+        offset: 12
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: dispatchWidth
+        type: 5
+        offset: 16
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    - name: Uniform
+      byteSize: 32
+      params:
+      - name: dstOffset
+        type: 5
+        offset: 0
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: size
+        type: 5
+        offset: 12
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    - name: Uniform
+      byteSize: 32
+      params:
+      - name: size
+        type: 5
+        offset: 12
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: dispatchWidth
+        type: 5
+        offset: 16
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    resourcesResolved: 1
+    compilerPlatform: 0
+    needsReflectionData: 0
+  - serializedVersion: 2
+    targetRenderer: 18
+    targetLevel: 0
+    kernels:
+    - serializedVersion: 3
+      name: CSVFXCopyBuffer
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 00000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers:
+        - name: srcBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        outBuffers:
+        - name: dstBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243b0326f195aaff8f2d8ea5411ded7c033010000005c010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845580801000050000500420000006a08000159000004468e20000000000001000000a100000300701000000000009d00000300e01100000000005f0000021200020068000002010000009b0000044000000001000000010000004f00000712001000000000000a0002003a80200000000000000000001f0004030a001000000000001e0000073200100000000000060002001685200000000000000000002900000a320010000000000046001000000000000240000002000000020000000000000000000000a5000089c20200808399190012001000000000000a001000000000000670100000000000a600000712e01100000000001a001000000000000a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXCopyStructBuffer
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 00000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers:
+        - name: srcStructBufferUint
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        outBuffers:
+        - name: dstStructBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 4458424359d7d582afa917856c6c77623eb32bfa010000004c010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e08000000000000000800000053484558f8000000500005003e0000006a08000159000004468e20000000000001000000a20000040070100000000000040000009e00000400e0110000000000040000005f0000021200020068000002010000009b0000044000000001000000010000004f00000712001000000000000a0002003a80200000000000000000001f0004030a001000000000001e000007320010000000000006000200168520000000000000000000a700008b022300808399190012001000000000000a0010000000000001400000000000000670100000000000a800000912e01100000000001a0010000000000001400000000000000a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXInitDeadListBuffer
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 01000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers: []
+        outBuffers:
+        - name: dstStructBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243ecdf41dfee4dbebad7171cb7a4edb66201000000f0010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845589c01000050000500670000006a08000159000004468e200000000000020000009e00000400e0110000000000040000005f000002221002005f0000021200020068000002010000009b0000044000000001000000010000002600000800d0000012001000000000001a1002000a80200000000000010000002900000712001000000000000a0010000000000001400000060000001e00000612001000000000000a001000000000000a0002004f00000822001000000000000a001000000000003a80200000000000000000001f0004031a001000000000001e00000822001000000000000a001000000000000a80200000000000000000001e00000942001000000000000a00108041000000000000003a80200000000000000000001e00000742001000000000002a0010000000000001400000ffffffffa800000912e01100000000001a0010000000000001400000000000002a00100000000000150000011f0000030a00100000000000a800000b12e01100000000001a802000000000000100000001400000000000003a8020000000000000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXZeroInitBuffer
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 02000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers: []
+        outBuffers:
+        - name: dstBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243f0bea4e00df221f6d69f72014226115f0100000084010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e0800000000000000080000005348455830010000500005004c0000006a08000159000004468e200000000000020000009d00000300e01100000000005f000002221002005f0000021200020068000002010000009b0000044000000001000000010000002600000800d0000012001000000000001a1002000a80200000000000010000002900000712001000000000000a0010000000000001400000060000001e00000612001000000000000a001000000000000a0002004f00000822001000000000000a001000000000003a80200000000000000000001f0004031a001000000000001e00000812001000000000000a001000000000000a80200000000000000000002900000712001000000000000a001000000000000140000002000000a600000712e01100000000000a001000000000000140000000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXZeroInitBufferUint
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 02000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers: []
+        outBuffers:
+        - name: dstStructBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243ab3015342c7bf69f762d3ab8e4e4152c0100000074010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845582001000050000500480000006a08000159000004468e200000000000020000009e00000400e0110000000000040000005f000002221002005f0000021200020068000002010000009b0000044000000001000000010000002600000800d0000012001000000000001a1002000a80200000000000010000002900000712001000000000000a0010000000000001400000060000001e00000612001000000000000a001000000000000a0002004f00000822001000000000000a001000000000003a80200000000000000000001f0004031a001000000000001e00000812001000000000000a001000000000000a8020000000000000000000a800000912e01100000000000a0010000000000001400000000000000140000000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXBatchCopyCountUint
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 03000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers:
+        - name: srcStructBufferUint
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        outBuffers:
+        - name: dstBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243635467569518c95a8964fac83ef896d20100000058010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845580401000050000500410000006a08000159000004468e20000000000001000000a20000040070100000000000040000009d00000300e01100000000005f0000021200020068000002010000009b0000044000000001000000010000004f00000712001000000000000a0002003a80200000000000000000001f0004030a00100000000000a700008a022300808399190012001000000000000a000200014000000000000006701000000000001e00000722001000000000000a0002000a80200000000000000000002900000722001000000000001a001000000000000140000002000000a600000712e01100000000001a001000000000000a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXBatchCopyCountKvp
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 03000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers:
+        - name: srcStructBufferKvp
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        outBuffers:
+        - name: dstBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243b1e24e63af90a83b11ba6254cdbdb6a10100000058010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845580401000050000500410000006a08000159000004468e20000000000001000000a20000040070100000000000080000009d00000300e01100000000005f0000021200020068000002010000009b0000044000000001000000010000004f00000712001000000000000a0002003a80200000000000000000001f0004030a00100000000000a700008a024300808399190012001000000000000a000200014000000400000006701000000000001e00000722001000000000000a0002000a80200000000000000000002900000722001000000000001a001000000000000140000002000000a600000712e01100000000001a001000000000000a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXInitBoundsBuffer
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 04000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers: []
+        outBuffers:
+        - name: dstStructBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 445842433d87cb0bed5423eac20429e2372b04190100000090010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e080000000000000008000000534845583c010000500005004f0000006a08000159000004468e200000000000020000009e00000400e0110000000000040000005f000002221002005f0000021200020068000002010000009b0000044000000001000000010000002600000800d0000012001000000000001a1002000a80200000000000010000002900000712001000000000000a0010000000000001400000060000001e00000612001000000000000a001000000000000a0002004f00000822001000000000000a001000000000003a80200000000000000000001f0004031a001000000000004e00000800d0000022001000000000000a0010000000000001400000060000004f00000722001000000000001a001000000000000140000003000000a800000912e01100000000000a0010000000000001400000000000001a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    - serializedVersion: 3
+      name: CSVFXCopyStructBufferSelf
+      uniqueVariants:
+      - serializedVersion: 2
+        cbVariantIndices: 00000000
+        cbs:
+        - name: Uniform
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        textures: []
+        builtinSamplers: []
+        inBuffers: []
+        outBuffers:
+        - name: dstStructBuffer
+          generatedName:
+          bindPoint: 0
+          samplerBindPoint: -1
+          texDimension: -1
+          resType: 0
+        code: 44584243e92f4b0bf5dd229e699e2c97a716d3b6010000003c010000030000002c0000003c0000004c0000004953474e0800000000000000080000004f53474e08000000000000000800000053484558e8000000500005003a0000006a08000159000004468e200000000000010000009e00000400e0110000000000040000005f0000021200020068000002010000009b0000044000000001000000010000004f00000712001000000000000a0002003a80200000000000000000001f0004030a001000000000001e000007320010000000000006000200168520000000000000000000a700008b022300808399190012001000000000000a00100000000000014000000000000006e0110000000000a800000912e01100000000001a0010000000000001400000000000000a00100000000000150000013e000001
+        threadGroupSize: 400000000100000001000000
+        requirements: 50241
+        keywords: []
+        isCompiled: 0
+      variantIndices:
+      - : 0
+      globalKeywords: []
+      localKeywords: []
+      dynamicKeywords: []
+    constantBuffers:
+    - name: Uniform
+      byteSize: 32
+      params:
+      - name: dstOffset
+        type: 5
+        offset: 0
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: srcOffset
+        type: 5
+        offset: 4
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: size
+        type: 5
+        offset: 12
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    - name: Uniform
+      byteSize: 32
+      params:
+      - name: dstOffset
+        type: 5
+        offset: 0
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: size
+        type: 5
+        offset: 12
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: dispatchWidth
+        type: 5
+        offset: 16
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: instanceIndex
+        type: 5
+        offset: 20
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    - name: Uniform
+      byteSize: 32
+      params:
+      - name: dstOffset
+        type: 5
+        offset: 0
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: size
+        type: 5
+        offset: 12
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: dispatchWidth
+        type: 5
+        offset: 16
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    - name: Uniform
+      byteSize: 32
+      params:
+      - name: dstOffset
+        type: 5
+        offset: 0
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: size
+        type: 5
+        offset: 12
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    - name: Uniform
+      byteSize: 32
+      params:
+      - name: size
+        type: 5
+        offset: 12
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+      - name: dispatchWidth
+        type: 5
+        offset: 16
+        arraySize: 0
+        rowCount: 1
+        colCount: 1
+    resourcesResolved: 1
+    compilerPlatform: 0
+    needsReflectionData: 0
+  m_CompilationContext:
+    serializedVersion: 2
+    buildTarget:
+      platform: 0
+      subTarget: 0
+      extendedPlatform: 0
+      isEditor: 0
+    platformGroup: 0
+    sourceFileName:
+    source:
+    sourceFile:
+    kernels: []
+    kernelMacros: []
+    prunedKeywords: []
+    compilationFlags: 0
+    supportedAPIs: 0
+    useDxcAPIs: 0
+    neverUseDxcAPIs: 0
+    includeHash0: 0
+    includeHash1: 0
+    includeHash2: 0
+    includeHash3: 0
+    buildTargetAPIMask: 0
+  errors: []

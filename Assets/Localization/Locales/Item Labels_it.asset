@@ -1,0 +1,651 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Item Labels_it
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: it
+  m_SharedData: {fileID: 11400000, guid: 91f07ee2427a9af42971d9afa13db604, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16543993856
+    m_Localized: Turbo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517595549696
+    m_Localized: Prima rimuovi ciò che hai in mano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1074867556352
+    m_Localized: Fucile d'assalto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1256535445504
+    m_Localized: Pallone da male
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397812187136
+    m_Localized: Birra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440275320832
+    m_Localized: Tirapugni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1604490711040
+    m_Localized: Canna da granchi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1700359917568
+    m_Localized: Dinamite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1755171082240
+    m_Localized: Canna da pesca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833763950592
+    m_Localized: Disco volante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1918321119232
+    m_Localized: Coltello
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001888432128
+    m_Localized: Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061577572352
+    m_Localized: Pistola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125578457088
+    m_Localized: Radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2198542569472
+    m_Localized: Fucile a canne mozze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2265022287872
+    m_Localized: Mitra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2319141392384
+    m_Localized: Fucile di precisione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2558585819136
+    m_Localized: Palla di neve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2793194213376
+    m_Localized: Pesce angelo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2919820251136
+    m_Localized: Diavolo nero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3094898888704
+    m_Localized: Branzino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3400911114240
+    m_Localized: Pesce blob
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3487762567168
+    m_Localized: Persico branchie blu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3901354496000
+    m_Localized: Pesce nella boccia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4022288863232
+    m_Localized: Pesce gatto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4084528140288
+    m_Localized: Vongola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4144091451392
+    m_Localized: Pesce pagliaccio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4213171638272
+    m_Localized: Merluzzo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4305442131968
+    m_Localized: Granchio di mare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4358051287040
+    m_Localized: Turbine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4451802370048
+    m_Localized: Anguilla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4503895625728
+    m_Localized: Pesce volante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4570647973888
+    m_Localized: Lumaca vulcanica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756732465152
+    m_Localized: Pesce caimano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878249840640
+    m_Localized: Ghiozzo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4952019259392
+    m_Localized: Pesce rosso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012891193344
+    m_Localized: Halibut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5111486697472
+    m_Localized: Sanguisuga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5182122971136
+    m_Localized: Aragosta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5235017338880
+    m_Localized: Sgombro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5332526518272
+    m_Localized: Aguglia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613381308416
+    m_Localized: Re di aringhe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5705463058432
+    m_Localized: Pesce pappagallo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6025832386560
+    m_Localized: Persico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7383742500864
+    m_Localized: Luccio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7444769624064
+    m_Localized: Piragna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517343666176
+    m_Localized: Lutiano rosso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7692686544896
+    m_Localized: Salmone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7754799992832
+    m_Localized: Riccio di mare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7821640421376
+    m_Localized: Gabbiano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7968906629120
+    m_Localized: Cavallone marino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8022753103872
+    m_Localized: Siluro asiatico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8279654223872
+    m_Localized: Gambero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8336688369664
+    m_Localized: Pesce pietra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8397388337152
+    m_Localized: Pesce microscopico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8622110756864
+    m_Localized: Pesce tigre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8700179337216
+    m_Localized: Pesce balestra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8798422519808
+    m_Localized: Pesce voxel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8910662094848
+    m_Localized: Pesce scatola giallo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004824219648
+    m_Localized: Albatro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9060998533120
+    m_Localized: Squalo azzurro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9125917970432
+    m_Localized: Balena artica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9245774401536
+    m_Localized: Vecchio luccio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9401873813504
+    m_Localized: Piragna gigante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9471960633344
+    m_Localized: Squalo goblin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9624083845120
+    m_Localized: Balena artica mutante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9726227730432
+    m_Localized: Pesce palla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9790161506304
+    m_Localized: Granchio gigante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853273198592
+    m_Localized: Pesce luna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9947020087296
+    m_Localized: Tonno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10032218984448
+    m_Localized: Testa di albatro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10092432412672
+    m_Localized: Scheletro di piragna gigante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10272070258688
+    m_Localized: Pinna di pesce palla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10429339881472
+    m_Localized: Carapace di granchio gigante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10533899685888
+    m_Localized: Pinna di balena
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11671877275648
+    m_Localized: Lattina di birra vuota
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11769382260736
+    m_Localized: Esca da boss per principianti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11915486646272
+    m_Localized: Esca per principianti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994754797568
+    m_Localized: Sanguisuga esca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12079676870656
+    m_Localized: Carota
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135154929664
+    m_Localized: Esca da boss standard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12269896945664
+    m_Localized: Esca standard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12358149296128
+    m_Localized: Esca da boss per professionisti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12527846641664
+    m_Localized: Esca per professionisti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12624521154560
+    m_Localized: Secchio di pesce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12704154210304
+    m_Localized: Esca da boss scientifica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12876342972416
+    m_Localized: Esca scientifica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14071937716224
+    m_Localized: Radar di bordo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16484916613120
+    m_Localized: Acquisto già effettuato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20829980676096
+    m_Localized: Freno di bocca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21003675193344
+    m_Localized: Caricatore esteso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21707294855168
+    m_Localized: Mirino in ferro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413609025536
+    m_Localized: Mirino laser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487277780992
+    m_Localized: Puntatore laser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23593548861440
+    m_Localized: Mirino telescopico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23718690115584
+    m_Localized: Silenziatore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35635374673920
+    m_Localized: Riduce leggermente il rinculo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36427158605824
+    m_Localized: Aumenta le munizioni nel caricatore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36631865806848
+    m_Localized: Sostituisce il mirino equipaggiato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36777357824000
+    m_Localized: Mostra dove punta l'arma e rende più facile sparare senza mirino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37000025034752
+    m_Localized: Rende più facile colpire i bersagli usando il mirino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37211061440512
+    m_Localized: Rende più facile colpire i bersagli distanti usando il mirino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343916019712
+    m_Localized: Riduce notevolmente il rinculo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38419088101376
+    m_Localized: Impossibile applicare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38503880151040
+    m_Localized: Equipaggia su arma a distanza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38906973736960
+    m_Localized: Valore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39035646595072
+    m_Localized: Cotto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40700424572928
+    m_Localized: Equipaggia su arma da mischia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51375519649792
+    m_Localized: Affila
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51811857289216
+    m_Localized: Aumento danno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51930019221504
+    m_Localized: Al massimo su quest'isola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55632947924992
+    m_Localized: Potenzia proiettili
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55678741336064
+    m_Localized: Aumento danno proiettili
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91764200919040
+    m_Localized: Motore grande
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91838939222016
+    m_Localized: Motore doppio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099514359926784
+    m_Localized: Danni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099545099980800
+    m_Localized: Munizioni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099588062236672
+    m_Localized: Accessori
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483887722713088
+    m_Localized: Oggetto missione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1533629789982720
+    m_Localized: Hot dog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536930950500352
+    m_Localized: Granchio di scoglio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828526547881984
+    m_Localized: Naviga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828554834268160
+    m_Localized: Impossibile navigare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828599990145024
+    m_Localized: Chiavi mancanti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828643153727488
+    m_Localized: Torna sulla terraferma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830646902771712
+    m_Localized: Bestie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830821041885184
+    m_Localized: Turbo bestie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186154683748352
+    m_Localized: Inserisci una <color=#FFEF4D><b>turbo bestia</color></b> per giocare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186243099676672
+    m_Localized: sta giocando...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186429616181248
+    m_Localized: Skin per
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291237806854144
+    m_Localized: Si usa per catturare il boss crostaceo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291869334818816
+    m_Localized: Esca per crostacei grandi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291948657496064
+    m_Localized: Ideale per mini-boss da principiante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292204136747008
+    m_Localized: Ideale per pesci da principiante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292316321796096
+    m_Localized: Esca per il boss della 2ª isola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293021463990272
+    m_Localized: Esca per il boss della 3ª isola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293207191965696
+    m_Localized: Ideale per mini-boss standard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293390399164416
+    m_Localized: Ideale per pesci standard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293514412150784
+    m_Localized: Ideale per mini-boss pro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293643345055744
+    m_Localized: Ideale per pesci pro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293763109212160
+    m_Localized: Esca per boss grandi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293878242856960
+    m_Localized: Ideale per mini-boss scientifici
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3294053837393920
+    m_Localized: Ideale per pesci scientifici
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3322076229881856
+    m_Localized: Peso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616357117153280
+    m_Localized: Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3984920650797056
+    m_Localized: Barca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4754946219659264
+    m_Localized: Bing Bong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755687046991872
+    m_Localized: Stella marina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755941158899712
+    m_Localized: Spugna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756916259082240
+    m_Localized: Calamaro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758365198176256
+    m_Localized: Manta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758665606811648
+    m_Localized: Squalo martello
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758953906491392
+    m_Localized: Narvalo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4759131669483520
+    m_Localized: Isopode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762162721017856
+    m_Localized: Paguro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764482083049472
+    m_Localized: Pesce vela
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764811897950208
+    m_Localized: Ostrica
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

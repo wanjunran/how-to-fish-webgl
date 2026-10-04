@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Player Labels_es-ES
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: b427f6794c848584880a67957c113a3a, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 7505268736
+    m_Localized: AVISO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118708850688
+    m_Localized: No puedes avanzar si abandonas a tus amigos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 332651909120
+    m_Localized: Mmm... ¿Qué habrá picado?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71293791195136
+    m_Localized: Espacio de inventario adicional
+    m_Metadata:
+      m_Items: []
+  - m_Id: 500237266931712
+    m_Localized: Nueva criatura atrapada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3372479931830272
+    m_Localized: Has muerto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3372914465918976
+    m_Localized: No puedes reaparecer durante un combate de jefe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3374238083403776
+    m_Localized: Tus amigos pueden reanimarte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3378622573924352
+    m_Localized: Reaparecer {0}
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

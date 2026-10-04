@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Steam Table_ko
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: e9148f393a2404b498b59cefe0af2cc6, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 7551406080
+    m_Localized: Steam Relay 준비 완료
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101193437184
+    m_Localized: Steam 대기 중...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114493575168
+    m_Localized: Steam에 연결 중...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 134856921088
+    m_Localized: Steam에 다시 연결 중...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 156595998720
+    m_Localized: 연결 끊김
+    m_Metadata:
+      m_Items: []
+  - m_Id: 174954467328
+    m_Localized: 연결 실패
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196311863296
+    m_Localized: Steam Relay 사용 불가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 222941499392
+    m_Localized: Steam Relay 확인 중...
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

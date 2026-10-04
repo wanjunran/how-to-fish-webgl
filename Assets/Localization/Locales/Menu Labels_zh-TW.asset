@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Menu Labels_zh-TW
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: zh-TW
+  m_SharedData: {fileID: 11400000, guid: 8706af56178d519419d04ab944843ca7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 145510453248
+    m_Localized: 建立遊戲
+    m_Metadata:
+      m_Items: []
+  - m_Id: 540202848256
+    m_Localized: 加入遊戲
+    m_Metadata:
+      m_Items: []
+  - m_Id: 611896086528
+    m_Localized: 角色設定
+    m_Metadata:
+      m_Items: []
+  - m_Id: 662856880128
+    m_Localized: 選項
+    m_Metadata:
+      m_Items: []
+  - m_Id: 712303529984
+    m_Localized: 製作人員
+    m_Metadata:
+      m_Items: []
+  - m_Id: 825704927232
+    m_Localized: 離開
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4535533260800
+    m_Localized: 加入 Discord 伺服器
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4734813032448
+    m_Localized: 遊戲版本
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6814114074624
+    m_Localized: 另開新局
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7015633604608
+    m_Localized: 存檔名稱
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7610180390912
+    m_Localized: 對局類型
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7789121982464
+    m_Localized: 創建伺服器
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37245739945984
+    m_Localized: 多人模式
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37324198596608
+    m_Localized: 單人模式
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39184305311744
+    m_Localized: 載入遊戲
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39423271587840
+    m_Localized: 存檔相關資訊
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39599050674176
+    m_Localized: 名稱
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39755464658944
+    m_Localized: 最後遊玩時間
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39959710486528
+    m_Localized: 遊戲總時長
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40071824232448
+    m_Localized: 島嶼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40212325027840
+    m_Localized: 刪除
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40331548119040
+    m_Localized: 載入
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40489782431744
+    m_Localized: 是否刪除存檔？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40707345174528
+    m_Localized: 是
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40755344789504
+    m_Localized: 否
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40935997657088
+    m_Localized: 返回
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41700023685120
+    m_Localized: 對局 ID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41873382658048
+    m_Localized: 以對局 ID 參加
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42034817224704
+    m_Localized: 搜尋 Steam 好友
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42733596659712
+    m_Localized: 自訂角色
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42928711487488
+    m_Localized: 外觀
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43025155313664
+    m_Localized: 帽子
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43107774713856
+    m_Localized: 穿搭
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43263270146048
+    m_Localized: 配件
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44845541969920
+    m_Localized: 顏色
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46104130965504
+    m_Localized: 已選取重置
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46266576359424
+    m_Localized: 已選取隨機搭配
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46447279558656
+    m_Localized: 重置
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46522399543296
+    m_Localized: 隨機搭配
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47508979535872
+    m_Localized: 遊戲設計
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47642547146752
+    m_Localized: 程式設計
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47748591734784
+    m_Localized: 美術設計
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47903944560640
+    m_Localized: 音樂製作
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50236178911232
+    m_Localized: 正在跳過…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50502492049408
+    m_Localized: 感謝遊玩！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3931751522586624
+    m_Localized: "How to\nFish"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3952311279374336
+    m_Localized: 進入遊戲
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3953281396723712
+    m_Localized: 輸入文字
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5068142029656064
+    m_Localized: 豆志旺盛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121082929369088
+    m_Localized: 難度
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121140584271872
+    m_Localized: 簡單
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121160876314624
+    m_Localized: 預設
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121201640755200
+    m_Localized: 困難
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_uk
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: uk
+  m_SharedData: {fileID: 11400000, guid: 0aab1b546691bb94fb9c97d597b830b1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: Як рухатися
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: Використовуйте {0}, щоб рухатися локацією
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: Як дивитися
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: Використовуйте {0}, щоб озиратися навколо
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: Як взаємодіяти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: Ось предмет. Дивіться на нього й натискайте {0}, щоб підібрати. Як він діє? Випробуйте його на молюску.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: Як з’їсти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: Так, треба їсти, щоб потамувати голод. Тримайте будь-яку істоту й натискайте {0}. Випробуйте дію на молюску.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: Як продати
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: Гроші конче потрібні й на островах. Як заробити? Продавайте предмети. Починаємо тренування. Візьміть молюска, підіть до неігрового персонажа й утримуйте {0}, щоб кинути молюска просто продавцеві до рота.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: Як купити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: Ідіть до крамниці й придбайте вудку для крабів, натиснувши {0}. Тоді можна буде ловити цінніших істот.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: Як рибалити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: Дивіться на воду й закидайте наживку в океан, натиснувши {0}, щоб упіймати рибу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: Як убити здобич
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: Коли здобич заковтнула наживку, тягніть її, натиснувши {0}, а потім, щоби зняти з гачка, натисніть {1}. Щоб кинути предмет, натисніть {2} і почніть бити здобич, натискаючи {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: Як говорити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: Виконуйте завдання неігрових персонажів на острові й прогресуйте. Подивіться на одного з таких персонажів і натисніть {0}. Так ви побачите, чого від вас хочуть.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: Добре! Навчання завершено. Відтепер ви можете вирушати, куди забажаєте.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: Як думати
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: Ви вже впіймали істоту, але можете забути про неї. Спробуйте подумати, натиснувши {0}.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: Як інспектувати
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: Натисніть {0}, коли тримаєте предмет у руках. Щоб дізнатися про ціну, випробуйте його на будь-якій істоті.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

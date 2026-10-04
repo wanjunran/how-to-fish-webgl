@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Extra Labels_zh-CN
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: zh-CN
+  m_SharedData: {fileID: 11400000, guid: 83bdd48c2610b4148b90a5f6ab829ced, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 38058826747904
+    m_Localized: 时
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38117194682368
+    m_Localized: 分
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38134177419264
+    m_Localized: 秒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52920734797824
+    m_Localized: 向下滚动
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52877269225472
+    m_Localized: 向上滚动
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13746393088
+    m_Localized: 锋利度
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16779126067200
+    m_Localized: 上
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16823489220608
+    m_Localized: 左
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16856720691200
+    m_Localized: 右
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16897468354560
+    m_Localized: 下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16943060439040
+    m_Localized: 负向
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16982876966912
+    m_Localized: 正向
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17428832145408
+    m_Localized: 等待输入...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21937234989056
+    m_Localized: 绑定
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413193789440
+    m_Localized: 肉块
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24825348837376
+    m_Localized: 更改物品栏位
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38381570052096
+    m_Localized: 屏幕分辨率
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53831062343680
+    m_Localized: 滚轮
+    m_Metadata:
+      m_Items: []
+  - m_Id: 281734836473856
+    m_Localized: 已断开连接：版本不匹配
+    m_Metadata:
+      m_Items: []
+  - m_Id: 285459105796096
+    m_Localized: 应用
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342617595924480
+    m_Localized: 显示物品标记
+    m_Metadata:
+      m_Items: []
+  - m_Id: 373258983133184
+    m_Localized: 关闭
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694893553692672
+    m_Localized: 相机
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702431045136384
+    m_Localized: 怪物即将离开...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 761753506721792
+    m_Localized: 怪物已离开
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630278305730560
+    m_Localized: 仅限邀请
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630332928151552
+    m_Localized: 公开
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3648836913942528
+    m_Localized: 需要重启服务器
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652878016794624
+    m_Localized: 反转 X 轴
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652892701052928
+    m_Localized: 反转 Y 轴
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -299433217, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Fishing Labels Shared Data
+  m_EditorClassIdentifier:
+  m_TableCollectionName: Fishing Labels
+  m_TableCollectionNameGuidString: 15ce2129eade61a4dacadbd839fd521b
+  m_Entries:
+  - m_Id: 1277389524992
+    m_Key: fishing.drop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1356275994624
+    m_Key: fishing.pullBack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1522550788096
+    m_Key: fishing.throw
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2505989246976
+    m_Key: fishing.reel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2665037254656
+    m_Key: fishing.reelOrDrop
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3708898856960
+    m_Key: fishing.releaseLine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 364734592929792
+    m_Key: fishing.endangered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983238841028608
+    m_Key: fishing.creatureCaught
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8744106492881535063
+  references:
+    version: 2
+    RefIds:
+    - rid: 8744106492881535063
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1784991947083

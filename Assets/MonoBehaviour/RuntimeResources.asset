@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 361006317, guid: 8b25d78d443c80b6b3b8c89d3a3cdab7, type: 3}
+  m_Name: RuntimeResources
+  m_EditorClassIdentifier:
+  m_SDFRayMapCS: {fileID: 7200000, guid: 902d76685fe1f7440be61dad785e6c9c, type: 2}
+  m_SDFNormalsCS: {fileID: 0}
+  m_SDFRayMapShader: {fileID: 4800000, guid: 4c891403408d4e6429f49e5b2cfc7daa, type: 3}

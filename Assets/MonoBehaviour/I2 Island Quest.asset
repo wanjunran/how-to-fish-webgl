@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f79baa68a44440685de84457223eca, type: 3}
+  m_Name: I2 Island Quest
+  m_EditorClassIdentifier:
+  _questItems:
+  - {fileID: 114618682377417806, guid: 1562e5a08dcccb94fae4d0cb8ea98721, type: 2}
+  _onlyCreatures: 0
+  _totalItems: 1
+  _interactableMesh: {fileID: 4300000, guid: bdb625794d79d7c438418ece594810aa, type: 2}
+  _baitToReceive: {fileID: 0}
+  _type: 3
+  _islandToUnlock: 3
+  _linesLocalized:
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 422903297953792
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 423099348111360
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 423227211468800
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _onItemReceivedLinesLocalized: []
+  _onQuestCompletedLinesLocalized:
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 423390374088704
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _holdingItemLinesLocalized:
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 475779793768448
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _alreadyCompletedLinesLocalized:
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 423701432061952
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []

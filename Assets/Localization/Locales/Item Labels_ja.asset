@@ -1,0 +1,651 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Item Labels_ja
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: 91f07ee2427a9af42971d9afa13db604, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16543993856
+    m_Localized: クールな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517595549696
+    m_Localized: 先にアイテムの装備を解除
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1074867556352
+    m_Localized: アサルトライフル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1256535445504
+    m_Localized: ビーチボール
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397812187136
+    m_Localized: ビール
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440275320832
+    m_Localized: メリケンサック
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1604490711040
+    m_Localized: カニ専用ロッド
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1700359917568
+    m_Localized: ダイナマイト
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1755171082240
+    m_Localized: 釣竿
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833763950592
+    m_Localized: ディスク
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1918321119232
+    m_Localized: ナイフ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001888432128
+    m_Localized: 探知機
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061577572352
+    m_Localized: ピストル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125578457088
+    m_Localized: ラジオ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2198542569472
+    m_Localized: ショットガン
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2265022287872
+    m_Localized: サブマシンガン（SMG)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2319141392384
+    m_Localized: スナイパーライフル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2558585819136
+    m_Localized: 雪玉
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2793194213376
+    m_Localized: エンゼルフィッシュ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2919820251136
+    m_Localized: チョウチンアンコウ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3094898888704
+    m_Localized: バス
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3400911114240
+    m_Localized: ニュウドウカジカ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3487762567168
+    m_Localized: ブルーギル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3901354496000
+    m_Localized: ボウルフィッシュ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4022288863232
+    m_Localized: ナマズ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4084528140288
+    m_Localized: 二枚貝
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4144091451392
+    m_Localized: クマノミ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4213171638272
+    m_Localized: タラ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4305442131968
+    m_Localized: ブラウンクラブ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4358051287040
+    m_Localized: ちょいワルフィッシュ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4451802370048
+    m_Localized: ウツボ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4503895625728
+    m_Localized: トビウオ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4570647973888
+    m_Localized: ウロコフネタマガイ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756732465152
+    m_Localized: ガー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878249840640
+    m_Localized: ハゼ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4952019259392
+    m_Localized: 金魚
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012891193344
+    m_Localized: オヒョウ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5111486697472
+    m_Localized: ヒル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5182122971136
+    m_Localized: ロブスター
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5235017338880
+    m_Localized: サバ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5332526518272
+    m_Localized: ニードルフィッシュ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613381308416
+    m_Localized: リュウグウノツカイ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5705463058432
+    m_Localized: パロットフィッシュ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6025832386560
+    m_Localized: パーチ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7383742500864
+    m_Localized: パイク
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7444769624064
+    m_Localized: ピラニア
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517343666176
+    m_Localized: タイ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7692686544896
+    m_Localized: サーモン
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7754799992832
+    m_Localized: ウニ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7821640421376
+    m_Localized: カモメ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7968906629120
+    m_Localized: シーホース
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8022753103872
+    m_Localized: パービャウ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8279654223872
+    m_Localized: エビ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8336688369664
+    m_Localized: ストーンフィッシュ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8397388337152
+    m_Localized: スーパードワーフ・フィッシュ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8622110756864
+    m_Localized: タイガーフィッシュ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8700179337216
+    m_Localized: トリガーフィッシュ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8798422519808
+    m_Localized: ボクセルフィッシュ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8910662094848
+    m_Localized: イエロー・ボックスフィッシュ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004824219648
+    m_Localized: アホウドリ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9060998533120
+    m_Localized: ブルーシャーク
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9125917970432
+    m_Localized: ホッキョククジラ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9245774401536
+    m_Localized: 大パイク
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9401873813504
+    m_Localized: 巨大ピラニア
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9471960633344
+    m_Localized: ミツクリザメ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9624083845120
+    m_Localized: 変異型ホッキョククジラ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9726227730432
+    m_Localized: フグ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9790161506304
+    m_Localized: タカアシガニ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853273198592
+    m_Localized: マンボウ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9947020087296
+    m_Localized: マグロ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10032218984448
+    m_Localized: アホウドリの頭
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10092432412672
+    m_Localized: 巨大ピラニアの骨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10272070258688
+    m_Localized: フグの尾びれ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10429339881472
+    m_Localized: タカアシガニの殻
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10533899685888
+    m_Localized: クジラの尾びれ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11671877275648
+    m_Localized: 空のビール缶
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11769382260736
+    m_Localized: 初級ボスルアー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11915486646272
+    m_Localized: 初級ルアー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994754797568
+    m_Localized: エサ用ヒル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12079676870656
+    m_Localized: ニンジン
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135154929664
+    m_Localized: 中級ボスルアー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12269896945664
+    m_Localized: 中級ルアー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12358149296128
+    m_Localized: プロ級ボスルアー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12527846641664
+    m_Localized: プロ級ルアー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12624521154560
+    m_Localized: 魚入りのバケツ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12704154210304
+    m_Localized: 科学級ボスルアー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12876342972416
+    m_Localized: 科学級ルアー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14071937716224
+    m_Localized: 船舶探知機
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16484916613120
+    m_Localized: 購入済み
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20829980676096
+    m_Localized: コンペンセイター
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21003675193344
+    m_Localized: 拡張マガジン
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21707294855168
+    m_Localized: アイアンサイト
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413609025536
+    m_Localized: レーザーサイト
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487277780992
+    m_Localized: レッドドットサイト
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23593548861440
+    m_Localized: スナイパースコープ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23718690115584
+    m_Localized: サプレッサー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35635374673920
+    m_Localized: 反動をある程度抑える
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36427158605824
+    m_Localized: 装弾数が増加
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36631865806848
+    m_Localized: 武器に装備されたサイトを外す
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36777357824000
+    m_Localized: 武器の照準位置を表示し、腰だめ撃ちしやすくなる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37000025034752
+    m_Localized: 狙った標的に対する命中精度が上がる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37211061440512
+    m_Localized: 遠くにいる標的に対する命中精度が上がる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343916019712
+    m_Localized: リコイルを大幅に軽減する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38419088101376
+    m_Localized: 装着不可
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38503880151040
+    m_Localized: 遠距離武器を装備
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38906973736960
+    m_Localized: 価格
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39035646595072
+    m_Localized: 調理
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40700424572928
+    m_Localized: 近接武器を装備
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51375519649792
+    m_Localized: 武器を研ぐ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51811857289216
+    m_Localized: ダメージを増加
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51930019221504
+    m_Localized: この島での上限に到達しています
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55632947924992
+    m_Localized: 銃弾をアップグレード
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55678741336064
+    m_Localized: 銃弾ダメージ増加
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91764200919040
+    m_Localized: 大モーター
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91838939222016
+    m_Localized: デュアルモーター
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099514359926784
+    m_Localized: ダメージ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099545099980800
+    m_Localized: 弾薬
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099588062236672
+    m_Localized: アタッチメント
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483887722713088
+    m_Localized: クエストアイテム
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1533629789982720
+    m_Localized: ホットドッグ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536930950500352
+    m_Localized: ヨーロッパイチョウガニ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828526547881984
+    m_Localized: 操縦
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828554834268160
+    m_Localized: 操縦不可
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828599990145024
+    m_Localized: カギなし
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828643153727488
+    m_Localized: 本島に戻る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830646902771712
+    m_Localized: 獲物
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830821041885184
+    m_Localized: クールな獲物
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186154683748352
+    m_Localized: '<color=#FFEF4D><b>クールな獲物</color></b>を入れてプレイ開始'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186243099676672
+    m_Localized: スピン中…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186429616181248
+    m_Localized: スキン
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291237806854144
+    m_Localized: 甲殻類のボス捕獲に使用
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291869334818816
+    m_Localized: 大型の甲殻類に使うエサ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291948657496064
+    m_Localized: 初級のミニボスを捕獲する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292204136747008
+    m_Localized: 初級の魚を捕獲する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292316321796096
+    m_Localized: 島2のボスに使うエサ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293021463990272
+    m_Localized: 島3のボスに使うエサ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293207191965696
+    m_Localized: 中級のミニボスを捕獲する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293390399164416
+    m_Localized: 中級の魚を捕獲する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293514412150784
+    m_Localized: プロ級のミニボスを捕獲する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293643345055744
+    m_Localized: プロ級の魚を捕獲する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293763109212160
+    m_Localized: 大型ボスに使うエサ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293878242856960
+    m_Localized: 科学級のミニボスを捕獲する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3294053837393920
+    m_Localized: 科学級の魚を捕獲する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3322076229881856
+    m_Localized: 重量
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616357117153280
+    m_Localized: 探知機
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3984920650797056
+    m_Localized: 船舶
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4754946219659264
+    m_Localized: Bing Bong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755687046991872
+    m_Localized: ヒトデ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755941158899712
+    m_Localized: 海綿動物
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756916259082240
+    m_Localized: イカ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758365198176256
+    m_Localized: マンタ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758665606811648
+    m_Localized: シュモクザメ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758953906491392
+    m_Localized: イッカク
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4759131669483520
+    m_Localized: ダイオウグソクムシ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762162721017856
+    m_Localized: ヤドカリ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764482083049472
+    m_Localized: バショウカジキ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764811897950208
+    m_Localized: カキ
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

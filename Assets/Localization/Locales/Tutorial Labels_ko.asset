@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_ko
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: 0aab1b546691bb94fb9c97d597b830b1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: 이동 방법
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: 주변 이동에는 {0} 사용
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: 둘러보는 방법
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: 둘러보기에는 {0} 사용
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: 상호작용 방법
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: 아이템을 바라본 상태에서 {0} 누르기로 집어 들 수 있습니다. 조개로 시도해보세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: 섭취 방법
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: 허기를 채우려면 먹어야 합니다. 손에 든 생명체는 {0} 누르기를 하면 어떤 것도 먹을 수 있습니다. 조개로 시도해보세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: 판매 방법
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: 돈을 벌려면 아이템을 팔아야 합니다. 조개를 집어 든 다음 NPC에게 가서 {0} 길게 누르기로 조개를 상점 주인의 입안에 던져넣을 수 있습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: 구매 방법
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: 상점으로 가서 {0} 누르기로 게 낚싯대를 구매할 수 있습니다. 그러면 더 가치 있는 생명체를 잡을 수 있습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: 낚시 방법
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: 물 쪽을 바라보고 {0} 이용으로 미끼를 바다에 던지면 물고기를 잡을 수 있습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: 처치 방법
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: 생명체가 미끼를 물면 {0} 이용으로 감아 올리세요. {1} 누르기로 내려놓은 후 {2} 이용으로 손을 비우고 {0} 이용으로 주먹질하세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: 대화 방법
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: 진행하려면 섬 곳곳 NPC의 퀘스트를 완료하세요. NPC를 바라본 상태에서 {0} 누르기로 NPC의 요청을 확인할 수 있습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: 잘했어요. 튜토리얼을 끝냈습니다. 이제 가서 하고 싶은 일을 해도 좋습니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: 생각 방법
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: 어떤 생물을 포획했는지 잊을 수 있습니다. {0} 누르기로 생각해 보세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: 검사 방법
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: 아이템을 들고 있는 상태에서 {0} 누르기로 아이템을 검사할 수 있습니다. 생명체를 검사하면 가치를 확인할 수 있습니다
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

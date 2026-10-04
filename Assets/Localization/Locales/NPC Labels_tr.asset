@@ -1,0 +1,807 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NPC Labels_tr
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: tr
+  m_SharedData: {fileID: 11400000, guid: fa57a2f298180434ab982cf788068735, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6662213632
+    m_Localized: Konuş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54046427271168
+    m_Localized: Al
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54116627337216
+    m_Localized: Çakmak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54213498982400
+    m_Localized: Adanın koordinatlarının bulunduğu flaş bellek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54739510841344
+    m_Localized: Tekne Anahtarı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81550055657472
+    m_Localized: selam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81663972954112
+    m_Localized: buraya mı düştün?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81871247069184
+    m_Localized: neyse. yardıma ihtiyacım var
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81930336423936
+    m_Localized: bu <color=#FFEF4D><b>uzun bacaklı canlı</color></b> ben uyurken biralarımı aşırıyor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82093876531200
+    m_Localized: tam bir haftadır uyku uyumuyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82158628196352
+    m_Localized: şu lanet olasıcanın icabına bak, NE OLURSUN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82227385421824
+    m_Localized: onu <color=#FFEF4D><b>boş bira kutusuyla</color></b> kışkırtırsan yakalayacağından eminim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82357429817344
+    m_Localized: yedekte birkaç tane kutu var ama boş değil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82606181404672
+    m_Localized: '<color=#FFEF4D><b>bana bir tane getirirsen</color></b> boşaltabilirim ama'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82703942242304
+    m_Localized: alacak paran yoksa yengeç tutup bana satabilirsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82801275260928
+    m_Localized: yengeç oltasını eline al ve birkaç tane tutmaya çalış
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82976676859904
+    m_Localized: görrt. al bakalım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83161104601088
+    m_Localized: mmm, sağ ol. bunu da al
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83225633968128
+    m_Localized: hürp. al bakalım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83303882903552
+    m_Localized: bu <color=#FFEF4D><b>boş bira kutusunu</color></b> al ve oltana tak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84195684208640
+    m_Localized: onu öldürmeyi başarırsan <color=#FFEF4D><b>teknemi</color></b> sana vereceğim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84399493828608
+    m_Localized: işime yaramıyor zaten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84463796703232
+    m_Localized: bu vesileyle ben de huzur içinde içkimi içerim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84517198581760
+    m_Localized: tekneyi kullanırken <color=#FFEF4D><b>radara</color></b> bakmayı ihmal etme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84616054132736
+    m_Localized: istersen yanımdakini alabilirsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84935181946880
+    m_Localized: nefis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85059324956672
+    m_Localized: nam nam nam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85143248785408
+    m_Localized: sonunda. işte <color=#FFEF4D><b>teknenin anahtarı</color></b>. yeni adalar ararken radara bakmayı ihmal etme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85361503588352
+    m_Localized: anahtarı al ve git
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85414536368128
+    m_Localized: şimdi git de biramı içeyim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85790471835648
+    m_Localized: neyse, hepsi bu kadar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85863683411968
+    m_Localized: tamam, şimdi işe dönmeliyim. görüşürüz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85938941808640
+    m_Localized: hmm mhm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86082663829504
+    m_Localized: enfes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86182706368512
+    m_Localized: işte bu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86279259246592
+    m_Localized: yengece bayılıyom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86320959016960
+    m_Localized: nam nam nam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86372007890944
+    m_Localized: yengeç bulmam lazım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420935120801792
+    m_Localized: selam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420995262926848
+    m_Localized: bir konuda bana yardım eder misin?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421041618374656
+    m_Localized: babama özel bir yemek sürprizi yapmak istiyorum ama silah kullanmama izin vermez
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421194010021888
+    m_Localized: buralarda dolanan <color=#FFEF4D><b>büyük nefis bir balık</color></b> var ama onu silah olmadan hayatta öldüremem. benim için öldürür müsün?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421367142502400
+    m_Localized: '<color=#FFEF4D><b>sülükleri</color></b> çok seviyor. bana birkaç tane getirirsen sana yem yaparım'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421496939433984
+    m_Localized: sülükleri yerde sürünürken görebilirsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421662740271104
+    m_Localized: mmm, sağ ol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421704255492096
+    m_Localized: birkaç tane daha getirirsen yem tamamdır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421753421123584
+    m_Localized: bu iyiydi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421802796470272
+    m_Localized: nam nam nam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421838527746048
+    m_Localized: mmmmmmmmmmmmmmmmmmmm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422029922226176
+    m_Localized: al bakalım. yanında <color=#FFEF4D><b>silah</color></b> olsun. çıplak ellerle savaşılmaz onunla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422903297953792
+    m_Localized: bana o nefis canlıyı getirirsen bulduğum adanın <color=#FFEF4D><b>yerini</color></b> sana söylerim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423099348111360
+    m_Localized: yeri sana söyleyince otomatik olarak <color=#FFEF4D><b>haritana eklenir</color></b> galiba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423227211468800
+    m_Localized: ama önce akşam yemeğimi getir lütfen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423390374088704
+    m_Localized: al bakalım. bunu kullanarak <color=#FFEF4D><b>sonraki adayı</color></b> haritadan bulabilirsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423701432061952
+    m_Localized: haritayı kullanarak diğer adayı bulabilirsin artık
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424172574035968
+    m_Localized: GÖRrrtt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424223446749184
+    m_Localized: yakaladıkların için sana iyi para veririm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424275997184000
+    m_Localized: mmmhh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424310931542016
+    m_Localized: hediye dükkânından bir şey seç
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424428346888192
+    m_Localized: oyş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424470780661760
+    m_Localized: ne olsa yerim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424909949456384
+    m_Localized: gört
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425008100364288
+    m_Localized: hurp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425047040282624
+    m_Localized: OM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425069555306496
+    m_Localized: hapşu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425173376913408
+    m_Localized: mlmmrrr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425204075024384
+    m_Localized: iğ-renç
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425625044733952
+    m_Localized: ağğhh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425665897254912
+    m_Localized: biraz kafa dağıtmak için işe ara verdim, ama yüzmek ne mümkün
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425774320013312
+    m_Localized: okyanusta <color=#FFEF4D><b>korkunç bir balık</color></b> var. suya girmeye korkuyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425851797196800
+    m_Localized: benim için icabına bakarsın değil mi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425902661521408
+    m_Localized: yem olarak kullanabileceğin birkaç atıştırmalık var yanımda ama karşılığında bir şey istiyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426008861298688
+    m_Localized: işe döndüğümde iş arkadaşlarıma gösterebileceğim bir şey olabilir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426140730216448
+    m_Localized: '<color=#FFEF4D><b>nesli tehlikede olan canlılardan</color></b> birini tutsan çok güzel olur'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426302928146432
+    m_Localized: zaten gördüğünde anlarsın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426445853249536
+    m_Localized: mmm, teşekkürler. bunu yem olarak kullanıp o korkunç balığı tutabilirsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427343753072640
+    m_Localized: selam, ben ızgaraların ustasıyım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427397419192320
+    m_Localized: birazdan birkaç arkadaşla parti vereceğim ama ızgaralık hiçbir şey yok elimde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427492277571584
+    m_Localized: pişirebileceğim güzel bir şeyler tutar mısın?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427568391606272
+    m_Localized: akşam için <color=#FFEF4D><b>köpekbalığı</color></b> güzel gider diyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427626839232512
+    m_Localized: bana bir tane getirirsen ızgarayı kullanmana müsaade ederim, sen de <color=#FFEF4D><b>kendi yakaladıklarını pişirirsin</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427711400595456
+    m_Localized: böylece pişmiş balık falan satarak daha fazla para kazanabilirsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427834952208384
+    m_Localized: ay, yedim onu. neyse, al çakmağı da ızgarayı yak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427978091220992
+    m_Localized: çakmağı al
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428033137266688
+    m_Localized: ızgarayı yaktın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428084962086912
+    m_Localized: ızgarayı kullanarak yakaladığın canlıları pişirebilir ve fiyatlarını artırabilirsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428145339092992
+    m_Localized: işe koyul ve ızgarayı kullan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428776917389312
+    m_Localized: karşılığında istediğin bir şey var mı?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428869942857728
+    m_Localized: hmm, tamam. sana memleketimin <color=#FFEF4D><b>koordinatlarını</color></b> verebilirim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428983528804352
+    m_Localized: böylece bana yardım ettikten sonra bu tehlikeli yerden gidebilirsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429062327193600
+    m_Localized: aa, teşekkürler. İşte memleketimin koordinatları
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429365504069632
+    m_Localized: haritayı kullanarak adayı bulabilirsin artık
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429676247470080
+    m_Localized: dükkânıma hoş geldin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429777397305344
+    m_Localized: elimizde tatilini en üst noktaya çıkaracak mükemmel şeyler var
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429888487641088
+    m_Localized: oraya buraya atabileceğin bir top ya da disk al istersen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429947690242048
+    m_Localized: ayrıca teknene göre yükseltmelerimiz var
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430009279401984
+    m_Localized: belki de müzik dinleyecek bir radyo arıyorsundur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430096915189760
+    m_Localized: silah da satıyoruz!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430142016540672
+    m_Localized: elinde ilgimizi çekecek bir şey varsa satın alırız
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430235213975552
+    m_Localized: satacaklarını bana ver, ben de sana para ödeyeyim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431287153807360
+    m_Localized: işte bu, iyi tatiller
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431387955515392
+    m_Localized: mmm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431431949570048
+    m_Localized: MMM. YİYECEK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431477998833664
+    m_Localized: bugün de doyduk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431501973475328
+    m_Localized: midem bayram etti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431549616574464
+    m_Localized: güzel çorba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431574971142144
+    m_Localized: hmm, o neydi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431605803470848
+    m_Localized: nam nam nam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431984423292928
+    m_Localized: Lucky Bait Casino'ya hoş geldin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432080112144384
+    m_Localized: sen yenisin galiba, daha önce hiç buraya geldin mi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432134969446400
+    m_Localized: gelmediysen nasıl çalıştığını sana anlatayım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432194503397376
+    m_Localized: neyine oynayacaksan rulet masasına koy. bu, yanındaki herhangi bir şey olabilir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432333905285120
+    m_Localized: sonra oynamak istediğin renge bas ve oyun başlasın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432428646223872
+    m_Localized: kazanırsan masaya koyduğun şeylerin değeri artar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432622834110464
+    m_Localized: ama kaybedersen koydukların tamamen gider
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432701175320576
+    m_Localized: iyi şanslar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432857400561664
+    m_Localized: hâlâ orada mı?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432911301562368
+    m_Localized: onu görmedin mi?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432943568343040
+    m_Localized: ortalıkta uçup adada terör estiren <color=#FFEF4D><b>kocaman bir kuş</color></b> var
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433023109124096
+    m_Localized: o kuş geldiğinden beri kimse dışarı çıkmaya cüret edemiyor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433114742083584
+    m_Localized: birisi ne zaman <color=#FFEF4D><b>ton balığıyla</color></b> buraya gelse kuş geri geliyor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433223122898944
+    m_Localized: kuş ton balığının kokusunu alabiliyor. <color=#FFEF4D><b>balığı çimlere koysan</color></b> yeter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433311186505728
+    m_Localized: sen onu yakalasan yakalasan <color=#FFEF4D><b>profesyonel patron yemiyle</color></b> yakalarsın. bundan adım gibi eminim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433889987874816
+    m_Localized: bana <color=#FFEF4D><b>kuşun kellesini</color></b> getirirsen diğerlerine güvende olduğumuzu söylerim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434090685321216
+    m_Localized: hatta uzaktan gördüğüm cillop gibi bir adanın <color=#FFEF4D><b>koordinatlarını</color></b> içeren flaş belleğimi de sana veririm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434531007549440
+    m_Localized: sağ ol, artık güvende olduğumuzu diğerlerine söylerim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435174065655808
+    m_Localized: flaş belleği al, ben de diğerlerine güvende olduğumuzu söyleyeyim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435379519442944
+    m_Localized: lütfen al şunu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443520457986048
+    m_Localized: Lucky Bait Casino'ya hoş geldin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443596425220096
+    m_Localized: slot makinemizde kilidi açılacak bir sürü silah görünümü var
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444001943113728
+    m_Localized: başlamak için üstündeki deliğe <color=#FFEF4D><b>parlak bir canlı</color></b> ya da <color=#FFEF4D><b>patron kellesi</color></b> atman yeterli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444269380325376
+    m_Localized: ganimeti paylaşmayı ihmal etme. görünümü sadece eşyayı deliğe atan kişi alır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444478231498752
+    m_Localized: hepsi bu kadar. iyi eğlenceler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444517112696832
+    m_Localized: dostum, şimdi bir oturuşta 600 tane çin böreğini götürebilirim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444581440737280
+    m_Localized: aa, hâlâ buradasın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444785908862976
+    m_Localized: selam, nasıl yardımcı olabilirim?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444883258658816
+    m_Localized: ne?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444906302164992
+    m_Localized: konuşsana, seni duyamıyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444978158981120
+    m_Localized: git ne alıyorsan al
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445032907231232
+    m_Localized: teşekkürler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445180517371904
+    m_Localized: selam, silah dükkânıma hoş geldin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445243469680640
+    m_Localized: ister inan ister inanma, envai çeşit silahım var
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445357462474752
+    m_Localized: ayrıca yeni eklentiler de getirttim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445457282715648
+    m_Localized: hadi şöyle bir göz at
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445558650654720
+    m_Localized: bu arada, satılık bir şeyin varsa satın alırım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445650417831936
+    m_Localized: iyi parça
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445687394816000
+    m_Localized: teşekkürler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445710081806336
+    m_Localized: işte para
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446218225930240
+    m_Localized: merhaba efendim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447747326562304
+    m_Localized: efendim, görevimizi tamamladığımızda buradan gidebiliriz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454228843253760
+    m_Localized: merhaba efendim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454260141150208
+    m_Localized: lütfen bilim adamıyla görevimiz hakkında konuşur musunuz, efendim?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454364499628032
+    m_Localized: işte orda, efendim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454417670819840
+    m_Localized: bununla birlikte yanınıza silah almanızı tavsiye ederim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454499019345920
+    m_Localized: elimde çok sayıda silah ve alet var, efendim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454568154058752
+    m_Localized: ne istiyorsanız satın alabilirsiniz, efendim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454611363778560
+    m_Localized: ayrıca sizden de bir şeyler satın alabilirim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454647212494848
+    m_Localized: tamam, efendim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454730767224832
+    m_Localized: tamam, efendim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454766502694912
+    m_Localized: efendim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454809334927360
+    m_Localized: güzel parça
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454850141310976
+    m_Localized: harika pişmiş
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454894819037184
+    m_Localized: nefis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454923923312640
+    m_Localized: teşekkürler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454969381179392
+    m_Localized: leziz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455000880402432
+    m_Localized: hiç balık sevmem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455252588974080
+    m_Localized: affedersin ama balıkçı mısın acaba?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455365046652928
+    m_Localized: bir araştırma görevindeyiz ama kendi başımıza tamamlayamıyoruz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455419270615040
+    m_Localized: bize <color=#FFEF4D><b>büyük bir balina</color></b> yakalayacak biri lazım
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455461192683520
+    m_Localized: bana birkaç tane küçük <color=#FFEF4D><b>canlı</color></b> getirirsen balina yakalayabileceğin bir yem yapabilirim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455554054574080
+    m_Localized: onu öldürdüğünde <color=#FFEF4D><b>yanardağa atmalısın</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455624334331904
+    m_Localized: böylece yoğun sıcaklığa nasıl tepki verdiğini görebiliriz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455687810928640
+    m_Localized: bunun sonucunda hayvana bir şeyler olabilir, hazır ol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455804467105792
+    m_Localized: '<color=#FFEF4D><b>onu öldürdüğünü bana kanıtlarsan</color></b> ihtiyacımız olan her şeyi bulmuş olacağız'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455996067106816
+    m_Localized: bir teşekkür hediyesi olarak teknemizi kullanmana müsaade edeceğim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456054191771648
+    m_Localized: teknede <color=#FFEF4D><b>ana karanın koordinatları</color></b> var, böylece evine dönebilirsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456126010839040
+    m_Localized: görünüşe göre bir süredir evinden uzaktasın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456167941296128
+    m_Localized: tamam, işte bu kadar. işe koyul
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456261805625344
+    m_Localized: harika, birkaç tane daha getirdin mi tamamdır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456311600402432
+    m_Localized: güzel parça
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456350632595456
+    m_Localized: bu mükemmel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456383964729344
+    m_Localized: nefis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456412515356672
+    m_Localized: çok az kaldı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456436292866048
+    m_Localized: teşekkürler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456481687818240
+    m_Localized: işte bu kadar. şimdi gidip şu balinayı yakala
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457160535920640
+    m_Localized: o iş tamam mı?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457217314213888
+    m_Localized: sadece şu görevi bitirmek istiyorum, lütfen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457269168394240
+    m_Localized: harika. eve gitmek istiyorsan bu anahtarı al
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457522932174848
+    m_Localized: görevi tamamladın
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457572198469632
+    m_Localized: istiyorsan tekrar balina öldürebilirsin, tabii yem için bana daha fazla canlı getirmen gerek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 475779793768448
+    m_Localized: al bunu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454831413317632
+    m_Localized: daha iyi balıklar tutmak için oltayı al
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455008320671744
+    m_Localized: bir şey tutmak için oltayı <color=#FFEF4D><b>sarman</color></b> gerektiğini unutma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978330866962432
+    m_Localized: ha, bir de silahın olduğunda <color=#FFEF4D><b>hünerli atışlar</color></b> yapmanı istiyorum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978762100133888
+    m_Localized: '<color=#FFEF4D><b>hünerli atışlarla</color></b> yakaladığın şeyler için fazladan para veririm, atışlar ne kadar hünerli olursa o kadar iyi'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8382261860323328
+    m_Localized: '<color=#FFEF4D><b>pişirip</color></b> yiyince lezzetleri de artıyor'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

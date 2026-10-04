@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_pt-BR
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: pt-BR
+  m_SharedData: {fileID: 11400000, guid: 0aab1b546691bb94fb9c97d597b830b1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: Como Andar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: Use {0} para andar por aí
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: Como Olhar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: Use {0} para olhar por aí
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: Como Interagir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: Aperte {0} enquanto olha para um item para pegá-lo. Tente com um marisco
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: Como Comer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: Para aliviar a fome, você precisa comer. Você pode comer qualquer criatura nas suas mãos, é só segurar {0}. Tente com um marisco
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: Como Vender
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: Para ganhar dinheiro, você precisa vender itens. Pegue um marisco, vá até um comerciante e segure {0} para jogar o marisco na boca dele
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: Como Comprar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: Vá até a loja e compre uma vara de caranguejo apertando {0}. Com ela, você pode pegar criaturas mais valiosas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: Como Pescar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: Olhe para a água e arremesse a isca no mar com {0} para pegar peixes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: Como Matar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: Quando uma criatura morder a isca, recolha a linha com {0} e depois aperte {1} para soltá-la. Então, desequipe o que estiver segurando com {2} e saia no soco com {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: Como Falar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: Conclua missões dos PNJs pela ilha para progredir. Olhe para um deles e aperte {0} para ver o que ele quer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: Muito bem, você concluiu o tutorial. Agora, você pode fazer o que quiser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: Como Pensar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: Você pode acabar esquecendo quais criaturas já pegou. Tente pensar apertando {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: Como Inspecionar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: Para inspecionar um item, aperte {0} com ele nas mãos. Tente com uma criatura para descobrir seu valor
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

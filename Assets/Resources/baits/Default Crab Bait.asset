@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d45fceec317a42238cbaccadf3ff2c, type: 3}
+  m_Name: Default Crab Bait
+  m_EditorClassIdentifier:
+  _nameLocalized:
+    m_TableReference:
+      m_TableCollectionName:
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _descriptionLocalized:
+    m_TableReference:
+      m_TableCollectionName:
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _name: Ham
+  _description: Default Crab Bait
+  _mesh: {fileID: 4300000, guid: 02547023626e0034fa9216b02fdbcc44, type: 2}
+  _meshForNpc: {fileID: 0}
+  _cost: 0
+  _lostOnBaitChance: 0
+  _catchTimeMinMax: {x: 1, y: 4}
+  _requireReelingToCatch: 0
+  _hookPoint: {x: 0, y: -0.1, z: 0}
+  inventoryMeshPos: {x: -0.06, y: -0.06, z: 0}
+  _inventoryRot: {x: -36, y: 40, z: -15}
+  inventoryMeshScale: 4
+  _itemWeights:
+  - fishable: {fileID: 11400000, guid: 23c7d6680eacf644ea46ad0f5a0084ce, type: 2}
+    _weight: 10
+  - fishable: {fileID: 11400000, guid: 74268bb147186d345a9df8b2ff862439, type: 2}
+    _weight: 8
+  references:
+    version: 2
+    RefIds: []

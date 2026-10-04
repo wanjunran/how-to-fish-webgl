@@ -1,0 +1,807 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NPC Labels_zh-CN
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: zh-CN
+  m_SharedData: {fileID: 11400000, guid: fa57a2f298180434ab982cf788068735, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6662213632
+    m_Localized: 交谈
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54046427271168
+    m_Localized: 拿取
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54116627337216
+    m_Localized: 打火机
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54213498982400
+    m_Localized: 存有岛屿坐标的闪存盘
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54739510841344
+    m_Localized: 船钥匙
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81550055657472
+    m_Localized: 唔，你好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81663972954112
+    m_Localized: 你在这里撞船了吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81871247069184
+    m_Localized: 来都来了，正好我需要帮手。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81930336423936
+    m_Localized: 只要我一睡觉，这<color=#FFEF4D><b>长腿小畜生</color></b>就会偷喝我的啤酒。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82093876531200
+    m_Localized: 我已经整整一周没睡觉了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82158628196352
+    m_Localized: 你可以帮我解决它吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82227385421824
+    m_Localized: 我跟你打包票，一个<color=#FFEF4D><b>空酒罐</color></b>就能把它引出来。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82357429817344
+    m_Localized: 我倒是有一些多余的啤酒，但都是满的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82606181404672
+    m_Localized: 你把<color=#FFEF4D><b>啤酒</color></b>拿给我，我自然会替你处理掉里面的酒水。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82703942242304
+    m_Localized: 要是买不起的话，只管去抓一些螃蟹卖给我。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82801275260928
+    m_Localized: 赶紧整一根钓蟹竿吧，该去钓鱼了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82976676859904
+    m_Localized: 嗯哼嗯哼，不错不错。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83161104601088
+    m_Localized: 唔，辛苦你了，这个给你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83225633968128
+    m_Localized: 唔嗯唔嗯，去吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83303882903552
+    m_Localized: 拿上这个<color=#FFEF4D><b>空酒罐</color></b>，把它挂在钓竿上。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84195684208640
+    m_Localized: 要是你能击败它的话，我就把我的<color=#FFEF4D><b>船</color></b>给你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84399493828608
+    m_Localized: 反正我也用不上了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84463796703232
+    m_Localized: 这样我就能安安静静地喝酒了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84517198581760
+    m_Localized: 记住了，开船的时候要看<color=#FFEF4D><b>雷达</color></b>。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84616054132736
+    m_Localized: 要是需要的话，我旁边就有一个可以给你用。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84935181946880
+    m_Localized: 好吃、好吃。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85059324956672
+    m_Localized: 好吃、好吃、好吃。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85143248785408
+    m_Localized: 总算搞定了，这是<color=#FFEF4D><b>小船的钥匙</color></b>，记住开船的时候你得用雷达搜索新岛屿的位置。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85361503588352
+    m_Localized: 拿上钥匙出发吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85414536368128
+    m_Localized: 我可得好好独自小酌一番了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85790471835648
+    m_Localized: 总之，该说的都说了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85863683411968
+    m_Localized: 好了，我得开始干正事了，回见。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85938941808640
+    m_Localized: 嗯哼。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86082663829504
+    m_Localized: （砸吧嘴）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86182706368512
+    m_Localized: 好耶。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86279259246592
+    m_Localized: 我超爱螃蟹。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86320959016960
+    m_Localized: 好吃、好吃、好吃。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86372007890944
+    m_Localized: 我得吃个螃蟹。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420935120801792
+    m_Localized: 你好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420995262926848
+    m_Localized: 你可以帮帮我吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421041618374656
+    m_Localized: 我想为我爸爸准备一顿惊喜晚餐，但他不让我碰枪。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421194010021888
+    m_Localized: 这片水域有一条<color=#FFEF4D><b>美味的大鱼</color></b>，没枪可杀不了它，你可以替我收拾它吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421367142502400
+    m_Localized: 它特别喜欢<color=#FFEF4D><b>蚂蝗</color></b>，要是你能弄来一些，我就能替你做出合适的饵料。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421496939433984
+    m_Localized: 地上到处都是这些虫子，爬来爬去的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421662740271104
+    m_Localized: 唔，谢谢。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421704255492096
+    m_Localized: 只要再抓几只，饵料就准备好了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421753421123584
+    m_Localized: 这个不错。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421802796470272
+    m_Localized: 好吃、好吃、好吃。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421838527746048
+    m_Localized: 唔唔唔。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422029922226176
+    m_Localized: 好了，记得带上一把<color=#FFEF4D><b>枪</color></b>呀，赤手空拳抓鱼可是很危险的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422903297953792
+    m_Localized: 要是你替我找到了那条野味，我就告诉你我之前发现的一个小岛的<color=#FFEF4D><b>位置</color></b>。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423099348111360
+    m_Localized: 到时候，小岛的坐标会<color=#FFEF4D><b>自动添加到你的地图</color></b>上。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423227211468800
+    m_Localized: 但眼下还是先去搞定我的晚餐吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423390374088704
+    m_Localized: 好了，这下地图上可以看到下一个<color=#FFEF4D><b>下一个小岛</color></b>的位置了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423701432061952
+    m_Localized: 你可以利用地图找到它。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424172574035968
+    m_Localized: 嗝呃呃呃。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424223446749184
+    m_Localized: 有鱼就卖给我，我价钱公道的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424275997184000
+    m_Localized: 唔嗯。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424310931542016
+    m_Localized: 在店里慢慢挑吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424428346888192
+    m_Localized: 嗷呃。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424470780661760
+    m_Localized: 我有什么吃什么。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424909949456384
+    m_Localized: 嗝呃呃。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425008100364288
+    m_Localized: 噗。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425047040282624
+    m_Localized: 天哪。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425069555306496
+    m_Localized: 阿嚏。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425173376913408
+    m_Localized: 嗯呃。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425204075024384
+    m_Localized: 恶心哪。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425625044733952
+    m_Localized: 哇呃。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425665897254912
+    m_Localized: 我工作累了就休息，但现在我都不能游泳了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425774320013312
+    m_Localized: 海里有一条<color=#FFEF4D><b>可怕的鱼</color></b>，我可不敢下水。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425851797196800
+    m_Localized: 你能替我解决它吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425902661521408
+    m_Localized: 我有一些多余的零食，能给你做饵料，但你别想白拿。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426008861298688
+    m_Localized: 要不你给我找点东西吧，随便什么能让我带回去向同事炫耀的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426140730216448
+    m_Localized: 就比如说那些个<color=#FFEF4D><b>濒危动物</color></b>还挺不错的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426302928146432
+    m_Localized: 等你看到了就懂我在说什么了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426445853249536
+    m_Localized: 唔，辛苦你了，现在用这个饵料去抓那条可怕的鱼吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427343753072640
+    m_Localized: 哟，我是烧烤主理人。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427397419192320
+    m_Localized: 我正在准备一场派对，朋友们马上就到，但现在什么东西都没得烤。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427492277571584
+    m_Localized: 你能替我找一些美味的食材来吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427568391606272
+    m_Localized: 比如说，<color=#FFEF4D><b>鲨鱼</color></b>跟烧烤之夜就挺搭的。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427626839232512
+    m_Localized: 要是你能给我弄一条来，这烧烤架你也可以用，到时候<color=#FFEF4D><b>想烤什么烤什么</color></b>。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427711400595456
+    m_Localized: 到时候你可以拿烹饪过的食材卖更多的钱。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427834952208384
+    m_Localized: 哎呀，我吃掉了。行了行了，这是个打火机，你可以用它点燃烧烤架。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427978091220992
+    m_Localized: 拿着吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428033137266688
+    m_Localized: 烧烤开始了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428084962086912
+    m_Localized: 你可以用烧烤架烹饪猎物，增加它们的售价。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428145339092992
+    m_Localized: 去吧，试试它好不好用。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428776917389312
+    m_Localized: 你有什么想作为回报的吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428869942857728
+    m_Localized: 嗯，对了，我可以给你我老家的<color=#FFEF4D><b>坐标</color></b>。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428983528804352
+    m_Localized: 这样你帮了我之后就能离开这危险的鬼地方了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429062327193600
+    m_Localized: 啊，多谢你了。这是我老家的坐标。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429365504069632
+    m_Localized: 现在你可以利用地图找到它了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429676247470080
+    m_Localized: 欢迎光临。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429777397305344
+    m_Localized: 我们这里有最棒的商品，准保让你度过一个美妙的假期。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429888487641088
+    m_Localized: 想扔球吗？或者飞盘也行。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429947690242048
+    m_Localized: 我们还有船只升级件，可供选购。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430009279401984
+    m_Localized: 当然，买台收音机也不错，可以听音乐呢。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430096915189760
+    m_Localized: 我们还出售枪支！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430142016540672
+    m_Localized: 要是想卖什么好东西，我这儿也高价回收。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430235213975552
+    m_Localized: 只管把东西扔给我就行，现结现付。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431287153807360
+    m_Localized: 不啰嗦了，祝你假期愉快！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431387955515392
+    m_Localized: 唔。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431431949570048
+    m_Localized: 唔唔……食！物！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431477998833664
+    m_Localized: （嚼嚼）
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431501973475328
+    m_Localized: 吃饱饱，吃好好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431549616574464
+    m_Localized: 好汤料。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431574971142144
+    m_Localized: 嗯，这是什么？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431605803470848
+    m_Localized: 好吃、好吃、好吃。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431984423292928
+    m_Localized: 欢迎光临幸运鱼饵赌场。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432080112144384
+    m_Localized: 你看起来面生，是头一回来吧？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432134969446400
+    m_Localized: 要是这样，让我冒昧介绍一下赌场的规矩。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432194503397376
+    m_Localized: 把赌注放在轮盘赌桌上，你可以押上身上带的装备。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432333905285120
+    m_Localized: 然后选择想下注的颜色，选定离手，游戏开始。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432428646223872
+    m_Localized: 要是你赢了，放桌上的赌注会变得更值钱，能卖更高价。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432622834110464
+    m_Localized: 但输了的话，赌注就赔进去了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432701175320576
+    m_Localized: 祝你好运。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432857400561664
+    m_Localized: 它还在那儿吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432911301562368
+    m_Localized: 你还没看见它吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432943568343040
+    m_Localized: 有一只<color=#FFEF4D><b>大鸟</color></b>在岛上四处飞翔，把大家吓得不轻。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433023109124096
+    m_Localized: 打那只鸟出现以来，如今都没人敢出门了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433114742083584
+    m_Localized: 只要有人身上带着<color=#FFEF4D><b>金枪鱼</color></b>，那只鸟就会来。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433223122898944
+    m_Localized: 那只鸟能闻见<color=#FFEF4D><b>金枪鱼</color></b>的味儿，放地上就能把它引来。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433311186505728
+    m_Localized: 我敢说用<color=#FFEF4D><b>专业首领饵</color></b>就能抓到它。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433889987874816
+    m_Localized: 把那只<color=#FFEF4D><b>臭鸟的头</color></b>带来给我，之后我就会通知大家危机解除。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434090685321216
+    m_Localized: 我甚至可以把存有<color=#FFEF4D><b>坐标</color></b>的闪存盘给你，那坐标指向一个我从远处看到的很棒的岛屿。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434531007549440
+    m_Localized: 有劳你了，我会通知大家现在安全了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435174065655808
+    m_Localized: 收下这个闪存盘吧，我该去跟大家分享这个好消息了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435379519442944
+    m_Localized: 请你收下。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443520457986048
+    m_Localized: 欢迎光临幸运鱼饵赌场。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443596425220096
+    m_Localized: 我们的老虎机有众多皮肤等待解锁。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444001943113728
+    m_Localized: 只需将一只<color=#FFEF4D><b>极品动物</color></b>或 <color=#FFEF4D><b>首领战利品</color></b>塞进机器上面的洞里，你就能摇奖了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444269380325376
+    m_Localized: 记住要分享奖品哦，只有塞东西进去的人才会获得皮肤。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444478231498752
+    m_Localized: 该说的都说了，祝你玩得开心！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444517112696832
+    m_Localized: 天哪，我现在真想来六百个春卷。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444581440737280
+    m_Localized: 哦，你还在这儿啊。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444785908862976
+    m_Localized: 你好，有事吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444883258658816
+    m_Localized: 什么？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444906302164992
+    m_Localized: 大点声，我听不见。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444978158981120
+    m_Localized: 买你的东西去。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445032907231232
+    m_Localized: 谢谢。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445180517371904
+    m_Localized: 你好，欢迎来到我的枪械铺。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445243469680640
+    m_Localized: 信不信由你，我这儿的枪应有尽有。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445357462474752
+    m_Localized: 还有新款的枪支组件现货。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445457282715648
+    m_Localized: 随意看看吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445558650654720
+    m_Localized: 对了，要是你有什么东西，我也收购。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445650417831936
+    m_Localized: 好东西。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445687394816000
+    m_Localized: 谢谢。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445710081806336
+    m_Localized: 给你钱。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446218225930240
+    m_Localized: 长官好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447747326562304
+    m_Localized: 长官，任务一结束，我们就可以离开。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454228843253760
+    m_Localized: 您好，长官。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454260141150208
+    m_Localized: 长官，能否请您和那位科学家谈谈我们的任务？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454364499628032
+    m_Localized: 她就在那边，长官。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454417670819840
+    m_Localized: 与此同时，我建议您穿戴好装备。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454499019345920
+    m_Localized: 我这里有不少武器和工具，长官。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454568154058752
+    m_Localized: 长官，要是有需要，您可以采买一些。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454611363778560
+    m_Localized: 我也可以购买您手上的东西。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454647212494848
+    m_Localized: 报告完毕，长官。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454730767224832
+    m_Localized: 报告完毕，长官。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454766502694912
+    m_Localized: 长官。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454809334927360
+    m_Localized: 好东西。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454850141310976
+    m_Localized: 火候刚好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454894819037184
+    m_Localized: 美味。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454923923312640
+    m_Localized: 谢谢。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454969381179392
+    m_Localized: 真鲜美。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455000880402432
+    m_Localized: 我其实不喜欢鱼。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455252588974080
+    m_Localized: 抱歉，你会不会刚好是渔夫呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455365046652928
+    m_Localized: 我们正在执行一个研究任务，但我们没法独立完成它。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455419270615040
+    m_Localized: 我们需要有人替我们抓住一只<color=#FFEF4D><b>大鲸鱼</color></b>。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455461192683520
+    m_Localized: 帮我捯饬一些更小的<color=#FFEF4D><b>动物</color></b>来，我可以为你准备一个捕捉鲸鱼的饵料。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455554054574080
+    m_Localized: 等你击败它了，你必须把它<color=#FFEF4D><b>扔进火山口</color></b>。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455624334331904
+    m_Localized: 那么我们就能观察到鲸鱼对高温有什么反应了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455687810928640
+    m_Localized: 我们相信火山应该能对这只巨兽有所影响，所以准备好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455804467105792
+    m_Localized: 要是你能<color=#FFEF4D><b>向我证明你捕杀了它</color></b>，我们就能得到所需的一切数据了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455996067106816
+    m_Localized: 作为答谢你的酬劳，我可以让你驾驶我们的船。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456054191771648
+    m_Localized: 它上面有<color=#FFEF4D><b>返回主岛的坐标</color></b>，这样你就能回家了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456126010839040
+    m_Localized: 似乎你已经离家好一段时间了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456167941296128
+    m_Localized: 好了，闲话少说，赶紧办正事去吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456261805625344
+    m_Localized: 很好，再来多一点。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456311600402432
+    m_Localized: 好东西。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456350632595456
+    m_Localized: 哇。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456383964729344
+    m_Localized: 美味。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456412515356672
+    m_Localized: 就快好了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456436292866048
+    m_Localized: 谢谢你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456481687818240
+    m_Localized: 唔嗯唔嗯，去吧，捕杀那只大鲸鱼。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457160535920640
+    m_Localized: 你已经办好了吗？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457217314213888
+    m_Localized: 我想早日结束手上的工作，请你快点。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457269168394240
+    m_Localized: 太好了，要是你想回家，就拿上这些钥匙。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457522932174848
+    m_Localized: 你已经完成了任务。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457572198469632
+    m_Localized: 要是你想的话，可以再收拾它一顿，只要你能找足够多的动物给我做饵。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 475779793768448
+    m_Localized: 给你。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454831413317632
+    m_Localized: 钓竿更好，鱼获更好。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455008320671744
+    m_Localized: 记住，你得用鱼竿上的<color=#FFEF4D><b>鱼线轮</color></b>才能钓到鱼。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978330866962432
+    m_Localized: 喔，还有件事，要是你拿到了枪，我还想看看你的<color=#FFEF4D><b>枪法</color></b>有多骚。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978762100133888
+    m_Localized: 如果你能用<color=#FFEF4D><b>花式枪法</color></b>击杀猎物，我会额外加点钱——花样越骚，奖励越多。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8382261860323328
+    m_Localized: '<color=#FFEF4D><b>烹饪过的</color></b>动物也更好吃哦。'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

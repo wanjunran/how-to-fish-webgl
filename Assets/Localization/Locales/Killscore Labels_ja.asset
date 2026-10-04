@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Killscore Labels_ja
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: e2b9951c3caf12441b53d345e83c28c3, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 96034443264
+    m_Localized: 360
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177374580736
+    m_Localized: スコープなし
+    m_Metadata:
+      m_Items: []
+  - m_Id: 687435501568
+    m_Localized: クイックスコープ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 758537342976
+    m_Localized: ロングショット
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1082044010496
+    m_Localized: ヘッドショット
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1134514753536
+    m_Localized: ドッグファイト
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1206866497536
+    m_Localized: 空中射撃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1275401424896
+    m_Localized: フライフィッシング
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1360751316992
+    m_Localized: 超初歩的キル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1491072536576
+    m_Localized: 1撃キル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1686380302336
+    m_Localized: 2連キル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1726347825152
+    m_Localized: 3連キル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1769368801280
+    m_Localized: 4連キル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1801690107904
+    m_Localized: 5連キル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2729721810944
+    m_Localized: 連続キル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2777788534784
+    m_Localized: 久々キル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2807245131776
+    m_Localized: 絶滅危惧種
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2856997965824
+    m_Localized: キルスティール
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2897351364608
+    m_Localized: ゼロ距離
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2932751290368
+    m_Localized: オーバーキル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2974270705664
+    m_Localized: 最後の1発
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3007141466112
+    m_Localized: マーベラス
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334752579670016
+    m_Localized: キル数
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334780551483392
+    m_Localized: キルスコア
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010849860374528
+    m_Localized: 近接キル
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010879283417088
+    m_Localized: 爆発キル
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

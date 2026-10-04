@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Killscore Labels_ru
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ru
+  m_SharedData: {fileID: 11400000, guid: e2b9951c3caf12441b53d345e83c28c3, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 96034443264
+    m_Localized: 360
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177374580736
+    m_Localized: Без прицела
+    m_Metadata:
+      m_Items: []
+  - m_Id: 687435501568
+    m_Localized: Быстрый прицел
+    m_Metadata:
+      m_Items: []
+  - m_Id: 758537342976
+    m_Localized: Выстрел издалека
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1082044010496
+    m_Localized: Выстрел в голову
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1134514753536
+    m_Localized: Воздушный бой
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1206866497536
+    m_Localized: С воздуха
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1275401424896
+    m_Localized: В воздух
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1360751316992
+    m_Localized: Неумёха
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1491072536576
+    m_Localized: Одиночный выстрел
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1686380302336
+    m_Localized: Двойное убийство
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1726347825152
+    m_Localized: Тройное убийство
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1769368801280
+    m_Localized: Четверное убийство
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1801690107904
+    m_Localized: Пятерное убийство
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2729721810944
+    m_Localized: Множественное убийство
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2777788534784
+    m_Localized: Наконец-то
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2807245131776
+    m_Localized: Исчезающий вид
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2856997965824
+    m_Localized: Из-под носа
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2897351364608
+    m_Localized: В упор
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2932751290368
+    m_Localized: Избыточная мощь
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2974270705664
+    m_Localized: Последний патрон
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3007141466112
+    m_Localized: Поразительно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334752579670016
+    m_Localized: 'Убито:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334780551483392
+    m_Localized: Множитель за убийство
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010849860374528
+    m_Localized: Ближний бой
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010879283417088
+    m_Localized: Взрыв
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

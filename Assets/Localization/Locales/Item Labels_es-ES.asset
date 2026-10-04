@@ -1,0 +1,651 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Item Labels_es-ES
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: es-ES
+  m_SharedData: {fileID: 11400000, guid: 91f07ee2427a9af42971d9afa13db604, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16543993856
+    m_Localized: especial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517595549696
+    m_Localized: Suelta el objeto antes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1074867556352
+    m_Localized: Fusil de asalto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1256535445504
+    m_Localized: Pelota de playa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397812187136
+    m_Localized: Cerveza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440275320832
+    m_Localized: Puños americanos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1604490711040
+    m_Localized: Caña para cangrejos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1700359917568
+    m_Localized: Dinamita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1755171082240
+    m_Localized: Caña de pescar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833763950592
+    m_Localized: Frisbi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1918321119232
+    m_Localized: Cuchillo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001888432128
+    m_Localized: Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061577572352
+    m_Localized: Pistola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125578457088
+    m_Localized: Radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2198542569472
+    m_Localized: Escopeta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2265022287872
+    m_Localized: Metralleta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2319141392384
+    m_Localized: Fusil de francotirador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2558585819136
+    m_Localized: Bola de nieve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2793194213376
+    m_Localized: Pez ángel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2919820251136
+    m_Localized: Rape abisal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3094898888704
+    m_Localized: Lubina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3400911114240
+    m_Localized: Pez borrón
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3487762567168
+    m_Localized: Pez sol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3901354496000
+    m_Localized: Pez en pecera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4022288863232
+    m_Localized: Siluro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4084528140288
+    m_Localized: Almeja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4144091451392
+    m_Localized: Pez payaso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4213171638272
+    m_Localized: Bacalao
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4305442131968
+    m_Localized: Cangrejo marrón
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4358051287040
+    m_Localized: Piquete
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4451802370048
+    m_Localized: Anguila
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4503895625728
+    m_Localized: Pez volador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4570647973888
+    m_Localized: Caracol volcánico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756732465152
+    m_Localized: Pejelagarto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878249840640
+    m_Localized: Góbido
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4952019259392
+    m_Localized: Carpa dorada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012891193344
+    m_Localized: Fletán
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5111486697472
+    m_Localized: Sanguijuela
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5182122971136
+    m_Localized: Langosta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5235017338880
+    m_Localized: Caballa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5332526518272
+    m_Localized: Aguja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613381308416
+    m_Localized: Pez remo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5705463058432
+    m_Localized: Pez loro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6025832386560
+    m_Localized: Perca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7383742500864
+    m_Localized: Lucio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7444769624064
+    m_Localized: Piraña
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517343666176
+    m_Localized: Pargo rojo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7692686544896
+    m_Localized: Salmón
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7754799992832
+    m_Localized: Erizo de mar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7821640421376
+    m_Localized: Gaviota
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7968906629120
+    m_Localized: Caballito de mar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8022753103872
+    m_Localized: Sengarat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8279654223872
+    m_Localized: Gamba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8336688369664
+    m_Localized: Pez piedra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8397388337152
+    m_Localized: Pez superenano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8622110756864
+    m_Localized: Pez tigre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8700179337216
+    m_Localized: Pez ballesta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8798422519808
+    m_Localized: Pez voxel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8910662094848
+    m_Localized: Pez cofre amarillo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004824219648
+    m_Localized: Albatros
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9060998533120
+    m_Localized: Tiburón azul
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9125917970432
+    m_Localized: Ballena boreal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9245774401536
+    m_Localized: El viejo lucio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9401873813504
+    m_Localized: Piraña gigante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9471960633344
+    m_Localized: Tiburón duende
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9624083845120
+    m_Localized: Ballena boreal mutante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9726227730432
+    m_Localized: Pez globo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9790161506304
+    m_Localized: Cangrejo araña
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853273198592
+    m_Localized: Pez luna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9947020087296
+    m_Localized: Atún
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10032218984448
+    m_Localized: Cabeza de albatros
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10092432412672
+    m_Localized: Esqueleto de piraña gigante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10272070258688
+    m_Localized: Aleta de pez globo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10429339881472
+    m_Localized: Caparazón de cangrejo araña
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10533899685888
+    m_Localized: Aleta de ballena
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11671877275648
+    m_Localized: Lata de cerveza vacía
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11769382260736
+    m_Localized: Señuelo para jefes de principiante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11915486646272
+    m_Localized: Señuelo de principiante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994754797568
+    m_Localized: Cebo de sanguijuelas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12079676870656
+    m_Localized: Zanahoria
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135154929664
+    m_Localized: Señuelo para jefes estándar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12269896945664
+    m_Localized: Señuelo estándar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12358149296128
+    m_Localized: Señuelo para jefes profesional
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12527846641664
+    m_Localized: Señuelo profesional
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12624521154560
+    m_Localized: Cubo de pescado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12704154210304
+    m_Localized: Señuelo para jefes científico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12876342972416
+    m_Localized: Señuelo científico
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14071937716224
+    m_Localized: Radar de navegación
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16484916613120
+    m_Localized: Ya lo has comprado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20829980676096
+    m_Localized: Compensador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21003675193344
+    m_Localized: Cargador ampliado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21707294855168
+    m_Localized: Mira de hierro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413609025536
+    m_Localized: Mira láser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487277780992
+    m_Localized: Mira de punto rojo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23593548861440
+    m_Localized: Mira telescópica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23718690115584
+    m_Localized: Silenciador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35635374673920
+    m_Localized: Reduce los culatazos con moderación.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36427158605824
+    m_Localized: Aumenta la cantidad de munición en el cargador.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36631865806848
+    m_Localized: Elimina cualquier mira acoplada al arma.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36777357824000
+    m_Localized: Muestra hacia dónde apunta el arma para facilitar el disparo desde la cadera.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37000025034752
+    m_Localized: Hace que sea más fácil acertar a los objetivos al apuntar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37211061440512
+    m_Localized: Hace que sea más fácil alcanzar objetivos lejanos al apuntar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343916019712
+    m_Localized: Reduce los culatazos en gran medida.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38419088101376
+    m_Localized: No se puede acoplar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38503880151040
+    m_Localized: Equípate con un arma de largo alcance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38906973736960
+    m_Localized: Valor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39035646595072
+    m_Localized: Al cocinar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40700424572928
+    m_Localized: Equípate con un arma cuerpo a cuerpo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51375519649792
+    m_Localized: Afilar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51811857289216
+    m_Localized: Aumenta el daño
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51930019221504
+    m_Localized: Al máximo en esta isla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55632947924992
+    m_Localized: Mejorar las balas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55678741336064
+    m_Localized: Aumenta el daño de las balas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91764200919040
+    m_Localized: Motor grande
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91838939222016
+    m_Localized: Motor doble
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099514359926784
+    m_Localized: Daño
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099545099980800
+    m_Localized: Munición
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099588062236672
+    m_Localized: Acoplamientos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483887722713088
+    m_Localized: Objeto de misión
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1533629789982720
+    m_Localized: Perrito caliente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536930950500352
+    m_Localized: Cangrejo de roca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828526547881984
+    m_Localized: Navegar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828554834268160
+    m_Localized: No puedes navegar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828599990145024
+    m_Localized: Necesitas las llaves
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828643153727488
+    m_Localized: Volver a tierra firme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830646902771712
+    m_Localized: Criaturas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830821041885184
+    m_Localized: Criaturas especiales
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186154683748352
+    m_Localized: Introduce una <color=#FFEF4D><b>criatura especial</color></b> para jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186243099676672
+    m_Localized: está girando...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186429616181248
+    m_Localized: Diseños para
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291237806854144
+    m_Localized: Se utiliza para capturar al jefe crustáceo.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291869334818816
+    m_Localized: Cebo para crustáceos más grandes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291948657496064
+    m_Localized: Cebo para los minijefes de rango principiante.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292204136747008
+    m_Localized: Cebo para peces de rango principiante.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292316321796096
+    m_Localized: Cebo para el jefe de la isla 2.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293021463990272
+    m_Localized: Cebo para el jefe de la isla 3.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293207191965696
+    m_Localized: Cebo para el minijefe de rango estándar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293390399164416
+    m_Localized: Cebo para peces de rango estándar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293514412150784
+    m_Localized: Cebo para el minijefe de rango profesional.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293643345055744
+    m_Localized: Cebo para peces de rango profesional.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293763109212160
+    m_Localized: Cebo para el gran jefe.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293878242856960
+    m_Localized: Cebo para el minijefe de rango científico.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3294053837393920
+    m_Localized: Cebo para peces de rango científico.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3322076229881856
+    m_Localized: Peso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616357117153280
+    m_Localized: Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3984920650797056
+    m_Localized: Bote
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4754946219659264
+    m_Localized: Bing Bong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755687046991872
+    m_Localized: Estrella de mar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755941158899712
+    m_Localized: Esponja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756916259082240
+    m_Localized: Calamar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758365198176256
+    m_Localized: Manta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758665606811648
+    m_Localized: Tiburón martillo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758953906491392
+    m_Localized: Narval
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4759131669483520
+    m_Localized: Isópodo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762162721017856
+    m_Localized: Cangrejo ermitaño
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764482083049472
+    m_Localized: Pez vela
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764811897950208
+    m_Localized: Ostra
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

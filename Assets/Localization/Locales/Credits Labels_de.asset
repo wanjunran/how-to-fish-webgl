@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Credits Labels_de
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 037158a0926f2bd4d994984945964f20, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 191417110528
+    m_Localized: SPIELDESIGN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 289177948160
+    m_Localized: PROGRAMMIERUNG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346463752192
+    m_Localized: MUSIK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 365409423360
+    m_Localized: SOUNDEFFEKTE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 397508431872
+    m_Localized: BESONDERER DANK AN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422359683072
+    m_Localized: LOKALISIERUNG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186400059392
+    m_Localized: Studiodirektor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2363785564160
+    m_Localized: Lokalisierungsmanagement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2477635751936
+    m_Localized: Übersetzung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2540386734080
+    m_Localized: Lektorat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2627842166784
+    m_Localized: LQA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3021947359232
+    m_Localized: LQA Manager
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3126909816832
+    m_Localized: LQA Projektmanager
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3278638764032
+    m_Localized: Test Lead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3467835428864
+    m_Localized: Tester:innen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4522996486144
+    m_Localized: Playtesting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 244781600559104
+    m_Localized: Discord-Mitglieder
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

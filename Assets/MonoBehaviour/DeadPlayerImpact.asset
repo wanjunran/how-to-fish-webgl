@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82c9386ba3954c43ae5c166b73715e0d, type: 3}
+  m_Name: DeadPlayerImpact
+  m_EditorClassIdentifier:
+  _clips:
+  - {fileID: 8300000, guid: 404d94e1b3fbb594ab54168f47766ca0, type: 3}
+  - {fileID: 8300000, guid: 9dacb6c3eb69cdc4487150cedbb7aab7, type: 3}
+  - {fileID: 8300000, guid: febeb3ac21be5fc4698e047c70ae1835, type: 3}
+  _minVelToPlayClips:
+  - 1
+  - 5
+  - 10
+  _velForMaxVol: 15
+  _maxVol: 0.5
+  _minVol: 0.05
+  _minDelay: 0.15

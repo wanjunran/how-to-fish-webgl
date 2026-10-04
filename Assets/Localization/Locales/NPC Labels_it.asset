@@ -1,0 +1,807 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NPC Labels_it
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: it
+  m_SharedData: {fileID: 11400000, guid: fa57a2f298180434ab982cf788068735, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6662213632
+    m_Localized: Parla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54046427271168
+    m_Localized: Prendi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54116627337216
+    m_Localized: Accendino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54213498982400
+    m_Localized: Chiavetta USB con coordinate per l'isola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54739510841344
+    m_Localized: Chiavi della barca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81550055657472
+    m_Localized: oh, salve...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81663972954112
+    m_Localized: sei qui a causa di un naufragio?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81871247069184
+    m_Localized: non importa. ho bisogno di una mano
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81930336423936
+    m_Localized: c'è una <color=#FFEF4D><b>bestia con le zampe lunghe</color></b> che mi ruba le birre mentre dormo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82093876531200
+    m_Localized: ormai non chiudo occhio da una settimana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82158628196352
+    m_Localized: non è che potresti togliermela di torno, PER FAVORE?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82227385421824
+    m_Localized: scommetto che se la tenti con una <color=#FFEF4D><b>lattina di birra vuota</color></b> riesci a catturarla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82357429817344
+    m_Localized: qualche lattina ce l'ho, ma sono ancora piene
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82606181404672
+    m_Localized: se <color=#FFEF4D><b>me ne porti una</color></b> te la posso svuotare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82703942242304
+    m_Localized: se non puoi permettertela, puoi sempre pescare dei granchi e vendermeli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82801275260928
+    m_Localized: prendi la canna da granchi e comincia a pescare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82976676859904
+    m_Localized: BURP. ecco a te
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83161104601088
+    m_Localized: mmm, grazie. ecco, prendi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83225633968128
+    m_Localized: slurp. ecco, tieni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83303882903552
+    m_Localized: prendi questa <color=#FFEF4D><b>lattina vuota</color></b> e attaccala alla tua canna da pesca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84195684208640
+    m_Localized: se riesci a sconfiggere la bestiaccia, ti darò la mia <color=#FFEF4D><b>barca</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84399493828608
+    m_Localized: tanto non me ne faccio nulla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84463796703232
+    m_Localized: così almeno mi lascerai bere in pace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84517198581760
+    m_Localized: ricordati di usare il <color=#FFEF4D><b>radar</color></b> quando sei sulla barca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84616054132736
+    m_Localized: puoi prendere quello qui accanto a me, se vuoi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84935181946880
+    m_Localized: gnam gnaaammm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85059324956672
+    m_Localized: gnam gnam gnam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85143248785408
+    m_Localized: finalmente. ecco le <color=#FFEF4D><b>chiavi della barca</color></b>. ricordati di usare il radar per scoprire nuove isole
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85361503588352
+    m_Localized: prendi le chiavi e vai
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85414536368128
+    m_Localized: ora lasciami bere in pace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85790471835648
+    m_Localized: è tutto, direi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85863683411968
+    m_Localized: bene. devo tornare al lavoro. ci si becca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85938941808640
+    m_Localized: mmm mmm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86082663829504
+    m_Localized: gnam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86182706368512
+    m_Localized: oh, sì!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86279259246592
+    m_Localized: adooooro i granchi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86320959016960
+    m_Localized: gnam gnam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86372007890944
+    m_Localized: voglio un granchio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420935120801792
+    m_Localized: ciao
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420995262926848
+    m_Localized: mi daresti una mano?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421041618374656
+    m_Localized: vorrei fare una sorpresa a mio padre e preparargli una cenetta coi fiocchi, ma non mi lascia usare armi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421194010021888
+    m_Localized: qui intorno gira un <color=#FFEF4D><b>bel pescione succulento</color></b>, ma senza armi non posso farlo fuori. puoi farlo tu al posto mio?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421367142502400
+    m_Localized: adora le <color=#FFEF4D><b>sanguisughe</color></b>. se riesci a trovarne, posso trasformarle in esche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421496939433984
+    m_Localized: le trovi qui in giro, strisciano sul terreno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421662740271104
+    m_Localized: mmm, grazie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421704255492096
+    m_Localized: me ne serve qualcuna in più, poi potrò realizzare l'esca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421753421123584
+    m_Localized: niente male
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421802796470272
+    m_Localized: molto bene
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421838527746048
+    m_Localized: mmmmmmmm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422029922226176
+    m_Localized: ecco a te. procurati <color=#FFEF4D><b>un'arma</color></b>, combattere a mani nude è pericoloso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422903297953792
+    m_Localized: se trovi quel bel pescione ti rivelerò <color=#FFEF4D><b>le coordinate</color></b> di un'isola che ho scoperto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423099348111360
+    m_Localized: credo che verranno <color=#FFEF4D><b>aggiunte in automatico alla mappa</color></b>, una volta che te le avrò rivelate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423227211468800
+    m_Localized: ma prima aiutami con la cena, se non ti spiace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423390374088704
+    m_Localized: ecco a te. con queste puoi trovare la <color=#FFEF4D><b>prossima isola</color></b> sulla mappa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423701432061952
+    m_Localized: ora puoi usare la mappa per trovare la prossima isola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424172574035968
+    m_Localized: Bluhrgbb
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424223446749184
+    m_Localized: ti faccio un'offertona per quello che hai pescato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424275997184000
+    m_Localized: mm mmm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424310931542016
+    m_Localized: scegli qualcosa dal negozio dei regali
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424428346888192
+    m_Localized: oogh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424470780661760
+    m_Localized: mangio qualsiasi cosa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424909949456384
+    m_Localized: bleah
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425008100364288
+    m_Localized: pffff
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425047040282624
+    m_Localized: urc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425069555306496
+    m_Localized: et-ciù
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425173376913408
+    m_Localized: ghghggh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425204075024384
+    m_Localized: disgustoooso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425625044733952
+    m_Localized: aaagh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425665897254912
+    m_Localized: sono qui in vacanza per staccare dal lavoro, ma non posso neanche farmi una nuotata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425774320013312
+    m_Localized: in acqua c'è un <color=#FFEF4D><b>pesce spaventoso</color></b>, ho il terrore di immergermi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425851797196800
+    m_Localized: ti spiacerebbe sbarazzartene per me?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425902661521408
+    m_Localized: ho degli spuntini che puoi usare come esca, ma dovrai darmi qualcosa in cambio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426008861298688
+    m_Localized: magari qualcosa che possa mostrare ai miei colleghi quando torno in ufficio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426140730216448
+    m_Localized: non sarebbe male una di quelle <color=#FFEF4D><b>specie a rischio</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426302928146432
+    m_Localized: quando ne vedrai una, saprai di cosa parlo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426445853249536
+    m_Localized: mmm, grazie. ora puoi usare quest'esca per catturare quel pesce spaventoso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427343753072640
+    m_Localized: ciao, sono il mastro fuochista
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427397419192320
+    m_Localized: sto organizzando una festicciola per alcuni amici, ma non ho nulla da cucinare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427492277571584
+    m_Localized: non è che riusciresti a recuperarmi qualcosa da mettere sul barbecue?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427568391606272
+    m_Localized: uno <color=#FFEF4D><b>squalo</color></b> sarebbe proprio quel che ci vuole per stasera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427626839232512
+    m_Localized: se riesci a catturarne uno ti lascerò usare il barbecue per <color=#FFEF4D><b>cucinare ciò che vuoi</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427711400595456
+    m_Localized: così puoi guadagnare qualche spicciolo in più vendendo bestie cotte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427834952208384
+    m_Localized: ops, l'ho mangiato. comunque, ecco a te l'accendino. così puoi accendere il fuoco
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427978091220992
+    m_Localized: prendi l'accendino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428033137266688
+    m_Localized: il fuoco è acceso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428084962086912
+    m_Localized: puoi usare il barbecue per cuocere bestie e aumentarne il valore di vendita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428145339092992
+    m_Localized: accomodati e serviti del barbecue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428776917389312
+    m_Localized: vuoi qualcosa in cambio?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428869942857728
+    m_Localized: mmm, d'accordo. ti darò le <color=#FFEF4D><b>coordinate</color></b> del mio luogo natio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428983528804352
+    m_Localized: così una volta che mi avrai aiutato potrai andartene da questo posto così pericoloso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429062327193600
+    m_Localized: ah, grazie. ecco le coordinate del posto da cui vengo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429365504069632
+    m_Localized: ora puoi usare la mappa per trovare la mia isola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429676247470080
+    m_Localized: è bello vederti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429777397305344
+    m_Localized: qui al negozio troverai tutto il necessario per rendere memorabile la tua vacanza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429888487641088
+    m_Localized: abbiamo palle e dischi volanti per i tuoi momenti di svago
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429947690242048
+    m_Localized: e anche dei potenziamenti per la tua barca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430009279401984
+    m_Localized: ma magari preferisci una radio per ascoltare un po' di musica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430096915189760
+    m_Localized: abbiamo anche delle armi!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430142016540672
+    m_Localized: se hai qualcosa di interessante da vendere, noi possiamo acquistarlo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430235213975552
+    m_Localized: ti basterà lanciarmelo e io ti pagherò
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431287153807360
+    m_Localized: e questo è tutto. goditi la vacanza!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431387955515392
+    m_Localized: mmm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431431949570048
+    m_Localized: MMM... CIBO...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431477998833664
+    m_Localized: gnam gnam gnam...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431501973475328
+    m_Localized: che delizia...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431549616574464
+    m_Localized: adoro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431574971142144
+    m_Localized: mmm, cosa è stato?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431605803470848
+    m_Localized: gnam gnam gnam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431984423292928
+    m_Localized: il casinò "Lucky Bait" ti dà il benvenuto!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432080112144384
+    m_Localized: non ti ho mai visto prima, è la prima volta che vieni qui?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432134969446400
+    m_Localized: in tal caso, ti spiegherò come funziona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432194503397376
+    m_Localized: piazza la tua puntata sul tavolo della roulette. puoi puntare un qualsiasi oggetto in tuo possesso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432333905285120
+    m_Localized: poi seleziona il colore su cui vuoi puntare, e la ruota inizierà a girare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432428646223872
+    m_Localized: se vinci, potrai vendere gli oggetti che hai puntato a un prezzo superiore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432622834110464
+    m_Localized: tuttavia, qualora non vincessi, perderesti l'intera puntata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432701175320576
+    m_Localized: buona fortuna!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432857400561664
+    m_Localized: è ancora qui?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432911301562368
+    m_Localized: non l'hai visto?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432943568343040
+    m_Localized: c'è un <color=#FFEF4D><b>enorme uccello</color></b> che terrorizza l'intera isola!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433023109124096
+    m_Localized: da quando è comparso quell'uccellaccio nessuno si arrischia più a uscire di casa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433114742083584
+    m_Localized: basta aggirarsi da queste parti con del <color=#FFEF4D><b>tonno</color></b> per attirare qui il pennuto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433223122898944
+    m_Localized: quell'uccello riesce a sentire l'odore del tonno. ti basterà <color=#FFEF4D><b>posare il tonno sull'erba</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433311186505728
+    m_Localized: senza dubbio potrai catturarlo con <color=#FFEF4D><b>l'esca da boss per professionisti</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433889987874816
+    m_Localized: portami la <color=#FFEF4D><b>testa di quell'uccello</color></b> e potrò finalmente dire a tutti che siamo al sicuro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434090685321216
+    m_Localized: ti darò perfino la mia chiavetta USB con le <color=#FFEF4D><b>coordinate</color></b> di un'isola spettacolare che ho visto in lontananza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434531007549440
+    m_Localized: grazie, ora potrò dire a tutti che siamo al sicuro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435174065655808
+    m_Localized: prendi pure la chiavetta, io andrò a dire a tutti che siamo al sicuro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435379519442944
+    m_Localized: prego, prendila pure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443520457986048
+    m_Localized: il casinò "Lucky Bait" ti dà il benvenuto!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443596425220096
+    m_Localized: con la nostra slot machine puoi aggiudicarti innumerevoli skin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444001943113728
+    m_Localized: per azionarla ti basterà lanciare una <color=#FFEF4D><b>turbo bestia</color></b> o il <color=#FFEF4D><b>trofeo di un boss</color></b> nel bocchettone in alto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444269380325376
+    m_Localized: ricordati di condividere il premio. la skin spetta solo a chi ha lanciato l'oggetto nel bocchettone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444478231498752
+    m_Localized: è tutto, divertiti!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444517112696832
+    m_Localized: accidenti, non so cosa darei per tipo 600 involtini primavera...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444581440737280
+    m_Localized: oh, sei ancora qui?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444785908862976
+    m_Localized: ciao, ti serve qualcosa?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444883258658816
+    m_Localized: come?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444906302164992
+    m_Localized: parla più forte, non riesco a sentirti!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444978158981120
+    m_Localized: va' a comprare qualcosa, piuttosto!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445032907231232
+    m_Localized: grazie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445180517371904
+    m_Localized: ciao, ti do il benvenuto al mio negozio d'armi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445243469680640
+    m_Localized: che tu ci creda o no, ho una vasta selezione di armi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445357462474752
+    m_Localized: ho anche ampliato le scorte di accessori
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445457282715648
+    m_Localized: dai pure un'occhiata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445558650654720
+    m_Localized: ah, se hai qualcosa da vendere fammi un fischio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445650417831936
+    m_Localized: niente male
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445687394816000
+    m_Localized: grazie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445710081806336
+    m_Localized: eccoti i soldi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446218225930240
+    m_Localized: oh, capo, ciao capo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447747326562304
+    m_Localized: capo, appena finiamo la missione ce ne possiamo andare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454228843253760
+    m_Localized: oh, capo, ciao capo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454260141150208
+    m_Localized: capo, puoi parlare alla scienziata della nostra missione, capo?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454364499628032
+    m_Localized: è laggiù, capo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454417670819840
+    m_Localized: nel frattempo ti consiglio di equipaggiarti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454499019345920
+    m_Localized: ho un bel po' di armi e strumenti, capo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454568154058752
+    m_Localized: capo, puoi comprare quello che preferisci, capo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454611363778560
+    m_Localized: puoi anche vendermi roba, capo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454647212494848
+    m_Localized: passo e chiudo, capo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454730767224832
+    m_Localized: passo e chiudo, capo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454766502694912
+    m_Localized: capo...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454809334927360
+    m_Localized: forte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454850141310976
+    m_Localized: cotto a puntino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454894819037184
+    m_Localized: buono
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454923923312640
+    m_Localized: grazie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454969381179392
+    m_Localized: che delizia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455000880402432
+    m_Localized: neanche mi piace, il pesce...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455252588974080
+    m_Localized: chiedo scusa, per caso ti occupi di pesca?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455365046652928
+    m_Localized: siamo in missione di ricerca, ma non riusciamo a portarla a termine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455419270615040
+    m_Localized: abbiamo bisogno di qualcuno che ci catturi una <color=#FFEF4D><b>grossa balena</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455461192683520
+    m_Localized: se mi porti delle <color=#FFEF4D><b>bestie</color></b> più piccole posso prepararti delle esche per catturarla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455554054574080
+    m_Localized: una volta che l'avrai sconfitta dovrai <color=#FFEF4D><b>lanciarla nel vulcano</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455624334331904
+    m_Localized: così possiamo registrare come reagisce al calore estremo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455687810928640
+    m_Localized: sospettiamo che potrebbe alterare la bestia in qualche modo, quindi occhio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455804467105792
+    m_Localized: se riuscirai a <color=#FFEF4D><b>dimostrarmi che l'hai sconfitta</color></b>, avremo tutto ciò di cui abbiamo bisogno
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455996067106816
+    m_Localized: per ringraziarti ti lascerò usare la nostra barca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456054191771648
+    m_Localized: ci sono registrate le <color=#FFEF4D><b>coordinate per la terraferma</color></b>, così potrai tornare a casa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456126010839040
+    m_Localized: immagino sia da un bel po' che non ci torni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456167941296128
+    m_Localized: bene, è tutto. su, al lavoro!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456261805625344
+    m_Localized: ottimo, ne servono giusto un altro po'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456311600402432
+    m_Localized: molto bene
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456350632595456
+    m_Localized: perfetto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456383964729344
+    m_Localized: ottimo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456412515356672
+    m_Localized: ci siamo quasi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456436292866048
+    m_Localized: grazie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456481687818240
+    m_Localized: ecco a te. e ora acchiappa quella balena
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457160535920640
+    m_Localized: hai portato a termine l'incarico?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457217314213888
+    m_Localized: ti prego, vorrei solo riuscire a completare la mia ricerca...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457269168394240
+    m_Localized: fantastico. prendi pure le chiavi, così puoi tornare a casa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457522932174848
+    m_Localized: hai completato la missione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457572198469632
+    m_Localized: se vuoi, puoi affrontarla nuovamente, ma ho bisogno di altre creature per l'esca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 475779793768448
+    m_Localized: ecco a te
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454831413317632
+    m_Localized: armati di una canna da pesca per catturare prede migliori
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455008320671744
+    m_Localized: 'ricorda: per pescare devi <color=#FFEF4D><b>utilizzare il mulinello</color></b> della canna da pesca'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978330866962432
+    m_Localized: ah, e se riesci a mettere le mani su un'arma voglio proprio vedere qualche <color=#FFEF4D><b>bel trick</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978762100133888
+    m_Localized: ti pagherò un po' di più se mi mostri un <color=#FFEF4D><b>tiro acrobatico</color></b>. più ganzo sarà, più ti pagherò!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8382261860323328
+    m_Localized: inoltre sono anche più gustose se le mangi dopo averle <color=#FFEF4D><b>cucinate</color></b>
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

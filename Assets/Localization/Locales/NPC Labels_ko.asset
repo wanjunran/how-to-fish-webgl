@@ -1,0 +1,807 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NPC Labels_ko
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: fa57a2f298180434ab982cf788068735, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6662213632
+    m_Localized: 대화
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54046427271168
+    m_Localized: 받기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54116627337216
+    m_Localized: 라이터
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54213498982400
+    m_Localized: 섬 좌표 USB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54739510841344
+    m_Localized: 보트 열쇠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81550055657472
+    m_Localized: 어... 안녕
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81663972954112
+    m_Localized: 방금 여기 추락한 거야?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81871247069184
+    m_Localized: 뭐가 됐든, 좀 도와줘
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81930336423936
+    m_Localized: 이 <color=#FFEF4D><b>롱 다리 생명체</color></b>가 내가 자는 동안 내 맥주를 도둑질해갔어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82093876531200
+    m_Localized: 난 일주일을 꼬박 샜어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82158628196352
+    m_Localized: 제발이지 좀 없애줘
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82227385421824
+    m_Localized: 장담하는데 <color=#FFEF4D><b>빈 맥주캔</color></b>으로 도발하면 잡을 수 있을 거야
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82357429817344
+    m_Localized: 예비용으로 가지고 있는데 다 차 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82606181404672
+    m_Localized: 그렇지만 <color=#FFEF4D><b>하나 가져다주면</color></b> 내가 비워줄 수 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82703942242304
+    m_Localized: 돈이 없으면 게를 잡아서 나한테 팔면 돼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82801275260928
+    m_Localized: 그냥 게 낚싯대 들고 낚시를 시작해
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82976676859904
+    m_Localized: 으으윽... 자, 여기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83161104601088
+    m_Localized: 음, 고마워. 자, 이걸 받아
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83225633968128
+    m_Localized: 꼴깍꼴깍... 자, 여기
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83303882903552
+    m_Localized: 이 <color=#FFEF4D><b>빈 맥주캔</color></b>을 가져가서 낚싯대에 붙여
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84195684208640
+    m_Localized: 그걸 해치우면 <color=#FFEF4D><b>내 보트</color></b>를 줄게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84399493828608
+    m_Localized: 어차피 나한테는 쓸모없어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84463796703232
+    m_Localized: 그러면 내가 편히 술 마실 수 있지
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84517198581760
+    m_Localized: 보트 탈 땐 <color=#FFEF4D><b>레이더</color></b>를 꼭 쓰도록 해
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84616054132736
+    m_Localized: 원하면 내 옆에 있는 걸 가져가도 돼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84935181946880
+    m_Localized: 냠냠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85059324956672
+    m_Localized: 냠냠냠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85143248785408
+    m_Localized: 드디어. <color=#FFEF4D><b>보트 열쇠</color></b>야. 새 섬 찾을 땐 반드시 레이더를 써
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85361503588352
+    m_Localized: 열쇠 들고 가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85414536368128
+    m_Localized: 이제 혼자 맥주 좀 마시게 놔둬
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85790471835648
+    m_Localized: 어쨌든, 그게 다야
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85863683411968
+    m_Localized: 좋아, 이제 일하러 가야겠어. 나중에 봐
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85938941808640
+    m_Localized: 흐음
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86082663829504
+    m_Localized: 냠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86182706368512
+    m_Localized: 이야
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86279259246592
+    m_Localized: 난 게가 조오오아!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86320959016960
+    m_Localized: 냠냠냠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86372007890944
+    m_Localized: 게 한 마리를 잡아야 해
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420935120801792
+    m_Localized: 안녕
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420995262926848
+    m_Localized: 뭐 좀 도와줄래?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421041618374656
+    m_Localized: 아빠한테 특별한 저녁 식사를 깜짝 선물하고 싶은데 총 만지는 건 절대 못하게 하셔
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421194010021888
+    m_Localized: 여기 <color=#FFEF4D><b>크고 맛있는 물고기</color></b>가 돌아다니는데 총 없이는 못 잡겠어. 대신 잡아줄래?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421367142502400
+    m_Localized: 그놈은 <color=#FFEF4D><b>거머리</color></b>를 되게 좋아해. 거머리 좀 가져다주면 미끼로 만들어줄게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421496939433984
+    m_Localized: 거머리는 땅바닥 여기저기를 기어다니고 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421662740271104
+    m_Localized: 음, 고마워
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421704255492096
+    m_Localized: 몇 개만 더 있으면 미끼 완성돼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421753421123584
+    m_Localized: 그거 괜찮았어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421802796470272
+    m_Localized: 냠냠냠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421838527746048
+    m_Localized: 으으으으으으으으으으으으으으으음
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422029922226176
+    m_Localized: 자, 여기. <color=#FFEF4D><b>총</color></b> 꼭 챙겨. 맨손으로 싸우면 위험해
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422903297953792
+    m_Localized: 맛있는 생명체를 찾아오면 내가 찾은 <color=#FFEF4D><b>섬 위치</color></b>를 알려줄 수 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423099348111360
+    m_Localized: 주면 네 <color=#FFEF4D><b>지도에 추가</color></b>될 거야, 자동으로
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423227211468800
+    m_Localized: 하지만 먼저 그 저녁 식사를 좀 가져와줘
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423390374088704
+    m_Localized: 자, 이거. 이걸로 지도에서 <color=#FFEF4D><b>다음 섬</color></b>을 찾아
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423701432061952
+    m_Localized: 이제 지도로 다른 섬을 찾을 수 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424172574035968
+    m_Localized: 크르르억
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424223446749184
+    m_Localized: 잡은 건 값을 잘 쳐줄게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424275997184000
+    m_Localized: 흠 흠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424310931542016
+    m_Localized: 기념품 상점에서 하나 골라
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424428346888192
+    m_Localized: 으윽…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424470780661760
+    m_Localized: 난 뭐든 먹어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424909949456384
+    m_Localized: 우웩…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425008100364288
+    m_Localized: 풋
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425047040282624
+    m_Localized: 옴
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425069555306496
+    m_Localized: 에취!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425173376913408
+    m_Localized: 음우엌…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425204075024384
+    m_Localized: 역겨워
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425625044733952
+    m_Localized: 아우…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425665897254912
+    m_Localized: 일을 잠깐 쉬었더니 이젠 수영도 못하겠어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425774320013312
+    m_Localized: 바다에 <color=#FFEF4D><b>무서운 물고기</color></b>가 있어. 겁나서 발도 못 들이겠어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425851797196800
+    m_Localized: 나 대신 좀 없애줄 수 있을까?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425902661521408
+    m_Localized: 미끼로 쓸 간식을 좀 꿍쳐놨는데 대신 다른 걸 줘
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426008861298688
+    m_Localized: 돌아가서 동료들한테 보여줄 만한 거였음 좋겠어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426140730216448
+    m_Localized: '<color=#FFEF4D><b>멸종 위기 생명체</color></b> 한 마리면 돼'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426302928146432
+    m_Localized: 보면 알게 될 거야
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426445853249536
+    m_Localized: 음, 고마워. 이제 이 미끼로 무서운 물고기를 잡아와
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427343753072640
+    m_Localized: 이봐, 난 그릴 장인이야
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427397419192320
+    m_Localized: 나중에 친구들이랑 파티할 건데 구워줄 게 하나도 없어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427492277571584
+    m_Localized: 멋진 걸 좀 잡아줄 수 있을까? 요리할 걸로다가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427568391606272
+    m_Localized: 오늘 저녁으로는 <color=#FFEF4D><b>상어</color></b>가 딱일 것 같아
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427626839232512
+    m_Localized: 한 마리 가져다주면 <color=#FFEF4D><b>네가 잡은 걸</color></b> 구울 때 그릴을 써도 돼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427711400595456
+    m_Localized: 그렇게 하면 익힌 생명체를 팔아 돈을 더 벌 수 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427834952208384
+    m_Localized: 어이쿠, 내가 먹어버렸네. 어쨌든 여기 라이터. 이걸로 그릴을 켤 수 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427978091220992
+    m_Localized: 라이터 가져가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428033137266688
+    m_Localized: 그릴이 켜졌어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428084962086912
+    m_Localized: 그릴로 생명체를 요리해. 그러면 판매가가 올라가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428145339092992
+    m_Localized: 가서 그릴을 마음껏 사용해 봐
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428776917389312
+    m_Localized: 대가로 원하는 게 있어?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428869942857728
+    m_Localized: 흠, 좋아. 내가 온 곳 <color=#FFEF4D><b>좌표</color></b>를 알려줄게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428983528804352
+    m_Localized: 그러면 날 도운 뒤에 이 위험한 곳을 떠날 수 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429062327193600
+    m_Localized: 아, 고마워. 여기 내가 온 곳 좌표야
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429365504069632
+    m_Localized: 이제 지도로 섬을 찾을 수 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429676247470080
+    m_Localized: 찾아줘서 고마워
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429777397305344
+    m_Localized: 휴가를 최고로 만들기에 완벽한 아이템들이 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429888487641088
+    m_Localized: 원하면 공이나 원반 하나를 골라서 던지고 놀아
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429947690242048
+    m_Localized: 보트 업그레이드도 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430009279401984
+    m_Localized: 아니면 음악 들을 라디오가 맘에 들지도 모르겠다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430096915189760
+    m_Localized: 총도 있어!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430142016540672
+    m_Localized: 재미있는 걸 팔 거면 사줄게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430235213975552
+    m_Localized: 그냥 나한테 던져주면 돈을 주지
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431287153807360
+    m_Localized: 그럼, 즐거운 휴가 보내
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431387955515392
+    m_Localized: 음...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431431949570048
+    m_Localized: 음... 음식이다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431477998833664
+    m_Localized: 음냠냠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431501973475328
+    m_Localized: 내 입맛에 딱이야
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431549616574464
+    m_Localized: 국물이 끝내줘요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431574971142144
+    m_Localized: 흠, 방금 뭐였지?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431605803470848
+    m_Localized: 냠냠냠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431984423292928
+    m_Localized: 어서오세요 Lucky Bait Casino입니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432080112144384
+    m_Localized: 처음 온 것 같네. 전에 와본 적 있어?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432134969446400
+    m_Localized: 혹시 처음이면 어떻게 하는지 알려줄게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432194503397376
+    m_Localized: 룰렛 테이블에 베팅해. 가지고 있는 거면 아무 아이템이나 걸 수 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432333905285120
+    m_Localized: 그런 다음 베팅할 색을 누르면 게임이 시작돼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432428646223872
+    m_Localized: 이기면 테이블에 올려둔 아이템을 더 비싸게 팔 수 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432622834110464
+    m_Localized: 하지만 지면 베팅한 걸 모두 잃어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432701175320576
+    m_Localized: 행운을 빌어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432857400561664
+    m_Localized: 아직 거기 있어?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432911301562368
+    m_Localized: 못 봤어?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432943568343040
+    m_Localized: '<color=#FFEF4D><b>거대한 새</color></b>가 날아다니며 섬을 공포에 몰아넣고 있어'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433023109124096
+    m_Localized: 그 새가 나타난 이후로는 아무도 밖에 나가려 하지 않아
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433114742083584
+    m_Localized: 누군가 <color=#FFEF4D><b>참치</color></b>를 들고 오기만 하면 그 새가 다시 나타나
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433223122898944
+    m_Localized: 그 새는 참치 냄새를 맡아. <color=#FFEF4D><b>참치를 잔디 위에 놓기</color></b>만 해
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433311186505728
+    m_Localized: 그걸 잡을 때 쓴 루어는 확실히 <color=#FFEF4D><b>프로페셔널 보스 루어</color></b>일 거야
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433889987874816
+    m_Localized: 그 <color=#FFEF4D><b>새 머리</color></b>를 가져오면 다른 사람들한테 우리가 안전하다고 알려줄게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434090685321216
+    m_Localized: 멀리서 본 멋진 섬 <color=#FFEF4D><b>좌표</color></b>가 들어있는 내 USB 드라이브도 줄게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434531007549440
+    m_Localized: 고마워. 이제 다른 사람들한테 안전하다고 알릴게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435174065655808
+    m_Localized: USB 드라이브를 가져가. 그러면 다른 사람들에게 안전하다고 알릴 수 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435379519442944
+    m_Localized: 제발 지금 가져가 줘
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443520457986048
+    m_Localized: 어서오세요 Lucky Bait Casino입니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443596425220096
+    m_Localized: 우리 슬롯 머신엔 해금할 스킨이 잔뜩 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444001943113728
+    m_Localized: 시작하려면 위에 있는 구멍에 <color=#FFEF4D><b>힙간지 생명체</color></b>나 <color=#FFEF4D><b>보스 트로피</color></b>를 투척해
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444269380325376
+    m_Localized: 잊지 말고 전리품을 나눠 가져야 해. 아이템을 구멍에 던진 사람만 스킨을 얻어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444478231498752
+    m_Localized: 이 정도면 됐어. 재밌게 놀아
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444517112696832
+    m_Localized: 아, 지금 당장 춘권 600개 정도는 먹을 자신 있어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444581440737280
+    m_Localized: 어, 아직 여기 있었네
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444785908862976
+    m_Localized: 안녕, 뭐 줄까?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444883258658816
+    m_Localized: 뭐?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444906302164992
+    m_Localized: 좀 크게 말해, 안 들려
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444978158981120
+    m_Localized: 그 대신 그냥 가서 물건이나 사
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445032907231232
+    m_Localized: 고마워
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445180517371904
+    m_Localized: 안녕. 내 총 상점에 온 걸 환영해
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445243469680640
+    m_Localized: 믿거나 말거나, 총을 진짜 다양하게 갖추고 있지
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445357462474752
+    m_Localized: 방금 새 부착물도 좀 들여왔어
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445457282715648
+    m_Localized: 편하게 둘러봐
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445558650654720
+    m_Localized: 오, 팔 거 있으면 뭐든 나도 살게
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445650417831936
+    m_Localized: 좋네
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445687394816000
+    m_Localized: 고마워
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445710081806336
+    m_Localized: 여기 돈
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446218225930240
+    m_Localized: 손님, 안녕하세요, 손님
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447747326562304
+    m_Localized: 임무 끝나면 바로 떠나도 됩니다
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454228843253760
+    m_Localized: 손님, 안녕하세요, 손님
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454260141150208
+    m_Localized: 선생님, 과학자에게 임무를 좀 전해주시겠어요, 선생님
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454364499628032
+    m_Localized: 저기 있네요, 손님
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454417670819840
+    m_Localized: 그동안 장비를 둘러보세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454499019345920
+    m_Localized: 무기랑 도구가 여러 개 있어요, 손님
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454568154058752
+    m_Localized: 손님, 뭐든지 마음껏 사가세요, 손님
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454611363778560
+    m_Localized: 손님 물건도 사드리죠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454647212494848
+    m_Localized: 이상 종료입니다, 손님
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454730767224832
+    m_Localized: 이상 종료입니다, 손님
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454766502694912
+    m_Localized: 손님
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454809334927360
+    m_Localized: 잘 고르셨어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454850141310976
+    m_Localized: 완벽하게 익었네요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454894819037184
+    m_Localized: 냠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454923923312640
+    m_Localized: 고마워요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454969381179392
+    m_Localized: 완전 맛있어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455000880402432
+    m_Localized: 사실 생선은 별로 안 좋아해요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455252588974080
+    m_Localized: 저기, 혹시 낚시꾼인가요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455365046652928
+    m_Localized: 우린 연구 중이에요. 하지만 우리 힘으론 못 끝내요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455419270615040
+    m_Localized: '<color=#FFEF4D><b>큰 고래</color></b>를 잡아줄 사람이 필요하죠'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455461192683520
+    m_Localized: 작은 <color=#FFEF4D><b>생명체</color></b>를 좀 잡아주세요. 그걸로 고래 잡을 미끼를 만들게요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455554054574080
+    m_Localized: 처치하면 <color=#FFEF4D><b>화산</color></b>에 집어넣어야 해요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455624334331904
+    m_Localized: 그래야 고열에 어떻게 반응하는지 볼 수 있거든요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455687810928640
+    m_Localized: 이게 그 괴물에게 영향을 줄지도 몰라요. 그러니 준비하세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455804467105792
+    m_Localized: '<color=#FFEF4D><b>놈을 처치했다</color></b>는 걸 보여주면 드디어 필요한 건 다 갖추게 돼죠'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455996067106816
+    m_Localized: 보답으로 보트를 쓰게 해줄게요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456054191771648
+    m_Localized: 배에 <color=#FFEF4D><b>본토 좌표</color></b>가 있어서 집으로 돌아갈 수 있어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456126010839040
+    m_Localized: 집을 꽤 오래 비운 모양이네요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456167941296128
+    m_Localized: 좋아요, 됐어요. 시작하세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456261805625344
+    m_Localized: 좋아요, 조금만 더
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456311600402432
+    m_Localized: 잘 고르셨어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456350632595456
+    m_Localized: 완벽해요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456383964729344
+    m_Localized: 냠
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456412515356672
+    m_Localized: 거의 다 됐어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456436292866048
+    m_Localized: 고마워요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456481687818240
+    m_Localized: 자, 여기. 이제 가서 그 고래 잡아오세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457160535920640
+    m_Localized: 끝났어요?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457217314213888
+    m_Localized: 그저 이 임무만 끝내고 싶어요, 제발
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457269168394240
+    m_Localized: 좋아요. 집으로 가고 싶으면 이 열쇠 가져가세요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457522932174848
+    m_Localized: 임무를 완료했어요
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457572198469632
+    m_Localized: 원한다면 다시 이길 수 있어요. 미끼로 생명체를 더 주면
+    m_Metadata:
+      m_Items: []
+  - m_Id: 475779793768448
+    m_Localized: 가져가
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454831413317632
+    m_Localized: 더 좋은 물고기를 잡으려면 낚싯대를 챙겨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455008320671744
+    m_Localized: 명심해. 뭘 잡으려면 낚싯대 <color=#FFEF4D><b>릴</color></b>을 사용해야 해
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978330866962432
+    m_Localized: 오, 그리고 총이 생기면 <color=#FFEF4D><b>트릭샷</color></b>을 좀 보여줘
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978762100133888
+    m_Localized: '<color=#FFEF4D><b>트릭샷</color></b>으로 잡으면 현금을 더 줄게. 절묘할수록 더 많이'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8382261860323328
+    m_Localized: 얘네는 <color=#FFEF4D><b>요리</color></b>해서 먹으면 더 맛있어
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

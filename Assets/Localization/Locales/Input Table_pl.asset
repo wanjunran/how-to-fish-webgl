@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Input Table_pl
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: pl
+  m_SharedData: {fileID: 11400000, guid: ec2ffbfbae1059a448d3d73b1a758681, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 118482358272
+    m_Localized: Mysz i klawiatura
+    m_Metadata:
+      m_Items: []
+  - m_Id: 274904731648
+    m_Localized: Kontroler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 376058761216
+    m_Localized: Poruszanie się
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433973710848
+    m_Localized: Główna akcja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 648243924992
+    m_Localized: Drugorzędna akcja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 710151852032
+    m_Localized: Interakcja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 748617814016
+    m_Localized: Upuść
+    m_Metadata:
+      m_Items: []
+  - m_Id: 778544173056
+    m_Localized: Skok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 830406742016
+    m_Localized: Sprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 879522041856
+    m_Localized: Kucnij
+    m_Metadata:
+      m_Items: []
+  - m_Id: 993355452416
+    m_Localized: Myśl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1046652473344
+    m_Localized: Zmień przynętę
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1101090344960
+    m_Localized: Zmień skórkę broni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1179892928512
+    m_Localized: Poprzednie miejsce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1302911864832
+    m_Localized: Następne miejsce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1343474978816
+    m_Localized: Zdejmij
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1559066398720
+    m_Localized: Naciśnij, aby mówić
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1603769290752
+    m_Localized: Pomiń przerywnik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14340649996288
+    m_Localized: Klawiatura
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

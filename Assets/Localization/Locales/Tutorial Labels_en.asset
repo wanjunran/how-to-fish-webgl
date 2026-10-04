@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_en
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 0aab1b546691bb94fb9c97d597b830b1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: How to Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: Use {0} to move around
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: How to Look
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: Use {0} to look around
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: How to Interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: Press {0} while looking at an item to pick it up. Try it on a clam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: How to Eat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: To relieve hunger, you need to eat. You can eat any creature by holding {0} while holding it. Try it on a clam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: How to Sell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: To earn cash, you need to sell items. Grab a clam, head to the NPC, and hold {0} to throw the clam into the shopkeeper's mouth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: How to Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: Head to the store and buy a crab-fishing rod by pressing {0}. Then you'll be able to catch more valuable creatures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: How to Fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: Look towards water and cast the bait into the ocean with {0} to catch fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: How to Kill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: When a creature has taken the bait, reel it in with {0}, then press {1} to drop it. Then unequip what you're holding with {2}, and start punching with {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: How to Talk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: Complete quests from NPCs around the island to progress. Look at one of them and press {0} to see what they want
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: Well done, you finished the tutorial. You can now go do what you want
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: How to Think
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: You might forget what creatures you've already caught. Try thinking by pressing {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: How to Inspect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: To inspect an item, press {0} while holding it. Try it on a creature to find out its value
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

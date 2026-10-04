@@ -1,0 +1,191 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Pause Labels_sv
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: sv
+  m_SharedData: {fileID: 11400000, guid: 91e86a11e2266574d8661ccfa19b7949, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 20629245952
+    m_Localized: Pausat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82843357184
+    m_Localized: Språk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 158516989952
+    m_Localized: Svenska
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3477369081856
+    m_Localized: Annat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21261289345024
+    m_Localized: Tillbaka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21360283308032
+    m_Localized: Kopiera sessions-id
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21665121128448
+    m_Localized: Bjud In vän
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21816883630080
+    m_Localized: Serverinställningar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22000791277568
+    m_Localized: Spara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22066264363008
+    m_Localized: Till menyn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22528476663808
+    m_Localized: Avsluta?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22792722010112
+    m_Localized: Till menyn?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22969725833216
+    m_Localized: Spel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23146876456960
+    m_Localized: Ljud
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487403610112
+    m_Localized: Titta runt-hastighet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23735098232832
+    m_Localized: Fullskärmsläge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24746433007616
+    m_Localized: Kantlös
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25205583466496
+    m_Localized: Fönster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25318091476992
+    m_Localized: Helskärm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25488485076992
+    m_Localized: Synvinkel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25654873116672
+    m_Localized: VSync
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25742496321536
+    m_Localized: Max FPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 25881004822528
+    m_Localized: Kvalité på skuggor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29119686987776
+    m_Localized: Av
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29153098813440
+    m_Localized: Låg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29187886370816
+    m_Localized: Standard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29465087922176
+    m_Localized: Ambient Occlusion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29691534200832
+    m_Localized: Dekorationer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29876700139520
+    m_Localized: Dekaler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 286759499419648
+    m_Localized: Huvudvolym
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287453128249344
+    m_Localized: Musikvolym
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287677561262080
+    m_Localized: FX Volym
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287867676479488
+    m_Localized: Proxy-chatt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287974027251712
+    m_Localized: Proxy-chatt volym
+    m_Metadata:
+      m_Items: []
+  - m_Id: 288190411395072
+    m_Localized: Mikrofonförstärkning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 288406728429568
+    m_Localized: Proxy-chatt input
+    m_Metadata:
+      m_Items: []
+  - m_Id: 289978195726336
+    m_Localized: Av
+    m_Metadata:
+      m_Items: []
+  - m_Id: 290104767238144
+    m_Localized: Tryck för att prata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 290299915620352
+    m_Localized: Alltid På
+    m_Metadata:
+      m_Items: []
+  - m_Id: 290501158326272
+    m_Localized: Mikrofon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 291137778176000
+    m_Localized: Skada varandra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5072474192039936
+    m_Localized: Språk
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

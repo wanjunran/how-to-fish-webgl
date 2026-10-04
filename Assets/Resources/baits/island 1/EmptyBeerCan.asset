@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d45fceec317a42238cbaccadf3ff2c, type: 3}
+  m_Name: EmptyBeerCan
+  m_EditorClassIdentifier:
+  _nameLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:a2fb6c2a7ccc9b145aa3cd1df802bdbb
+    m_TableEntryReference:
+      m_KeyId: 11671877275648
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _descriptionLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:a2fb6c2a7ccc9b145aa3cd1df802bdbb
+    m_TableEntryReference:
+      m_KeyId: 3291237806854144
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _name: Empty Beer Can
+  _description: Used for catching boss
+  _mesh: {fileID: 4300000, guid: 9169073cf7c4ae147bb91287c3d79cc3, type: 2}
+  _meshForNpc: {fileID: 4300000, guid: 770a54b2fd2d37b4aa92ef4a2ee5e223, type: 2}
+  _cost: 8
+  _lostOnBaitChance: 100
+  _catchTimeMinMax: {x: 2, y: 4}
+  _requireReelingToCatch: 0
+  _hookPoint: {x: 0, y: 0, z: 0}
+  inventoryMeshPos: {x: -0.04, y: -0.04, z: 0}
+  _inventoryRot: {x: -36, y: 40, z: -140}
+  inventoryMeshScale: 2
+  _itemWeights:
+  - fishable: {fileID: 11400000, guid: 337a0ad0d1f2f794da9943d95bd6fb45, type: 2}
+    _weight: 1
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SkyboxTesting
+  m_Shader: {fileID: 4800000, guid: d5ed60b43a4bef347b093f1da1bcea98, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _EMISSION
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties:
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+      unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: {}
+    m_Floats:
+      _Bands: 8
+      _CameraDirectionMultiplier: 0.11
+      _CloudIntensity: 1.2
+      _CloudScale: 9.78
+      _CloudSize: 5
+      _CloudSpeed: 0.002
+      _CloudSpeed2: 0.004
+      _CloudThreshold: 1
+      _Cloud_Smoothness: 0
+      _Cloud_Strenght: 1.57
+      _Emission: 0
+      _MoonIntensity: 10
+      _MoonRadius: 0.5
+      _NoiseFade: 1
+      _NoiseStrength: 0.168
+      _Noise_Scale: 0.04
+      _Noise_Strenght: 0.105
+      _Normal_Scale: 0.2
+      _Normal_Strength: 1
+      _Pixels: 6.38
+      _QueueControl: 0
+      _QueueOffset: 0
+      _Rotation: 141.96
+      _SkyBands: 6
+      _SkyNoiseStrength: 0.15
+      _Speed: 1
+      _SunAlpha: 1
+      _SunFadeRadius: 0.02
+      _SunIntensity: 8
+      _SunPixels: 189.78
+      _SunPolys: 1
+      _SunRadius: 2.5
+      _SunStep: 0.04
+      _Test: 0
+    m_Colors:
+      _BottomColor: {r: 1, g: 0.62408423, b: 0.45098042, a: 1}
+      _BottomDayColor: {r: 0.2627451, g: 0.5764706, b: 1, a: 1}
+      _BottomNightColor: {r: 0.7490196, g: 0.17254902, b: 0, a: 1}
+      _BottomSunriseColor: {r: 2.9960785, g: 0.6925784, b: 0, a: 1}
+      _CamDirMultiplier: {r: -0.1, g: 0.1, b: 0, a: 0}
+      _CloudColor: {r: 1, g: 1, b: 1, a: 1}
+      _CloudScale: {r: 10, g: 10, b: 0, a: 0}
+      _CloudScale2: {r: 10, g: 10, b: 0, a: 0}
+      _CloudThreshold: {r: 1, g: 1, b: 0, a: 0}
+      _Cloud_Smoothness: {r: 0.45, g: 0.55, b: 0, a: 0}
+      _DayColor: {r: 0.2627451, g: 0.5764706, b: 1, a: 1}
+      _MoonColor: {r: 0.068841234, g: 0.18763813, b: 0.8584906, a: 1}
+      _NightColor: {r: 0.01960784, g: 0.01960784, b: 0.01960784, a: 1}
+      _NoiseScale: {r: 10, g: 10, b: 0, a: 0}
+      _Pixels: {r: 20, g: 20, b: 0, a: 0}
+      _SkyNoiseScale: {r: 10, g: 10, b: 0, a: 0}
+      _SkyPixels: {r: 75, g: 30, b: 0, a: 0}
+      _SunColor: {r: 0.7490197, g: 0.44333848, b: 0.22911188, a: 1}
+      _SunFadeColor: {r: 0.6226415, g: 0.5677394, b: 0, a: 1}
+      _SunPos: {r: 4.31, g: -0.5, b: -19.91, a: 0}
+      _SunriseColor: {r: 2.996079, g: 1.050501, b: 0, a: 1}
+      _Test2: {r: 0, g: 0, b: 0, a: 0}
+      _Test3: {r: 0, g: 0, b: 0, a: 0}
+      _TopColor: {r: 0.29800004, g: 0.40531206, b: 1, a: 1}
+      _TopDayColor: {r: 0, g: 0.4660978, b: 1, a: 1}
+      _TopNightColor: {r: 0, g: 0.46666667, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 0

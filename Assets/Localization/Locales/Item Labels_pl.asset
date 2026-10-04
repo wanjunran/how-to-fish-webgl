@@ -1,0 +1,651 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Item Labels_pl
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: pl
+  m_SharedData: {fileID: 11400000, guid: 91f07ee2427a9af42971d9afa13db604, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16543993856
+    m_Localized: Super
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517595549696
+    m_Localized: Najpierw odłóż przedmiot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1074867556352
+    m_Localized: Karabin szturmowy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1256535445504
+    m_Localized: Piłka plażowa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397812187136
+    m_Localized: Piwo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440275320832
+    m_Localized: Kastet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1604490711040
+    m_Localized: Wędka do łowienia krabów
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1700359917568
+    m_Localized: Dynamit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1755171082240
+    m_Localized: Wędka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833763950592
+    m_Localized: Dysk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1918321119232
+    m_Localized: Nóż
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001888432128
+    m_Localized: Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061577572352
+    m_Localized: Pistolet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125578457088
+    m_Localized: Radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2198542569472
+    m_Localized: Dubeltówka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2265022287872
+    m_Localized: Pistolet maszynowy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2319141392384
+    m_Localized: Karabin wyborowy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2558585819136
+    m_Localized: Śnieżka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2793194213376
+    m_Localized: Skalar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2919820251136
+    m_Localized: Żabnicokształtna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3094898888704
+    m_Localized: Bass wielkogębowy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3400911114240
+    m_Localized: Psychrolutes marcidus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3487762567168
+    m_Localized: Bass niebieski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3901354496000
+    m_Localized: Rybka w kuli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4022288863232
+    m_Localized: Sum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4084528140288
+    m_Localized: Małż
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4144091451392
+    m_Localized: Błazenek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4213171638272
+    m_Localized: Dorsz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4305442131968
+    m_Localized: Krab kieszeniec
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4358051287040
+    m_Localized: Sztos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4451802370048
+    m_Localized: Węgorz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4503895625728
+    m_Localized: Ptaszor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4570647973888
+    m_Localized: Głębinowy ślimak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756732465152
+    m_Localized: Niszczuka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878249840640
+    m_Localized: Babka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4952019259392
+    m_Localized: Złota rybka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012891193344
+    m_Localized: Halibut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5111486697472
+    m_Localized: Pijawka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5182122971136
+    m_Localized: Homar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5235017338880
+    m_Localized: Makrela
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5332526518272
+    m_Localized: Belona
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613381308416
+    m_Localized: Wstęgor królewski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5705463058432
+    m_Localized: Papugoryba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6025832386560
+    m_Localized: Okoń
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7383742500864
+    m_Localized: Szczupak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7444769624064
+    m_Localized: Pirania
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517343666176
+    m_Localized: Lucjan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7692686544896
+    m_Localized: Łosoś
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7754799992832
+    m_Localized: Jeżowiec
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7821640421376
+    m_Localized: Mewa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7968906629120
+    m_Localized: Konik morski
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8022753103872
+    m_Localized: Sengarat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8279654223872
+    m_Localized: Krewetka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8336688369664
+    m_Localized: Szkaradnica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8397388337152
+    m_Localized: Paedocypris progenetica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8622110756864
+    m_Localized: Ryba tygrys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8700179337216
+    m_Localized: Rogatnica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8798422519808
+    m_Localized: Wokseloryba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8910662094848
+    m_Localized: Kostera gruzełkowata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004824219648
+    m_Localized: Albatros
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9060998533120
+    m_Localized: Żarłacz błękitny
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9125917970432
+    m_Localized: Wieloryb grenlandzki
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9245774401536
+    m_Localized: Stary szczupak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9401873813504
+    m_Localized: Megapirania
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9471960633344
+    m_Localized: Rekin chochlik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9624083845120
+    m_Localized: Zmutowany wieloryb grenlandzki
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9726227730432
+    m_Localized: Rozdymka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9790161506304
+    m_Localized: Krab olbrzymi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853273198592
+    m_Localized: Samogłów
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9947020087296
+    m_Localized: Tuńczyk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10032218984448
+    m_Localized: Głowa albatrosa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10092432412672
+    m_Localized: Szkielet megapiranii
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10272070258688
+    m_Localized: Płetwa rozdymki
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10429339881472
+    m_Localized: Skorupa kraba olbrzymiego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10533899685888
+    m_Localized: Płetwa wieloryba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11671877275648
+    m_Localized: Pusta puszka po piwie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11769382260736
+    m_Localized: Podstawowy wabik na bossa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11915486646272
+    m_Localized: Podstawowy wabik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994754797568
+    m_Localized: Przynęta z pijawek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12079676870656
+    m_Localized: Marchewka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135154929664
+    m_Localized: Standardowy wabik na bossa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12269896945664
+    m_Localized: Standardowy wabik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12358149296128
+    m_Localized: Profesjonalny wabik na bossa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12527846641664
+    m_Localized: Profesjonalny wabik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12624521154560
+    m_Localized: Wiadro z rybami
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12704154210304
+    m_Localized: Naukowy wabik na bossa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12876342972416
+    m_Localized: Naukowy wabik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14071937716224
+    m_Localized: Radar łodzi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16484916613120
+    m_Localized: Już kupiono
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20829980676096
+    m_Localized: Kompensator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21003675193344
+    m_Localized: Większy magazynek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21707294855168
+    m_Localized: Żelazny celownik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413609025536
+    m_Localized: Laserowy celownik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487277780992
+    m_Localized: Celownik z czerwoną kropką
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23593548861440
+    m_Localized: Celownik optyczny
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23718690115584
+    m_Localized: Tłumik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35635374673920
+    m_Localized: Umiarkowanie zmniejsza odrzut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36427158605824
+    m_Localized: Zwiększa ilość amunicji w magazynku
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36631865806848
+    m_Localized: Usuwa wszelkie celowniki przymocowane do broni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36777357824000
+    m_Localized: Pokazuje, gdzie skierowana jest broń, co ułatwia strzelanie bez celowania
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37000025034752
+    m_Localized: Łatwiej trafić w cele podczas celowania
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37211061440512
+    m_Localized: Łatwiej trafić w odległe cele podczas celowania
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343916019712
+    m_Localized: Znacznie zmniejsza odrzut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38419088101376
+    m_Localized: Nie można przymocować
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38503880151040
+    m_Localized: Wyposaż broń dystansową
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38906973736960
+    m_Localized: Wartość
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39035646595072
+    m_Localized: Po ugotowaniu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40700424572928
+    m_Localized: Wyposaż broń do walki wręcz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51375519649792
+    m_Localized: Naostrz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51811857289216
+    m_Localized: Zwiększa obrażenia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51930019221504
+    m_Localized: Maks. poziom dla tej wyspy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55632947924992
+    m_Localized: Ulepsz kule
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55678741336064
+    m_Localized: Zwiększa obrażenia od kul
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91764200919040
+    m_Localized: Duży silnik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91838939222016
+    m_Localized: Podwójny silnik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099514359926784
+    m_Localized: Obrażenia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099545099980800
+    m_Localized: Amunicja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099588062236672
+    m_Localized: Modyfikacje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483887722713088
+    m_Localized: Cel misji
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1533629789982720
+    m_Localized: Hot dog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536930950500352
+    m_Localized: Krab czerwony
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828526547881984
+    m_Localized: Płyń
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828554834268160
+    m_Localized: Ne można uruchomić
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828599990145024
+    m_Localized: Brak kluczy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828643153727488
+    m_Localized: Wróć na ląd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830646902771712
+    m_Localized: Zwierzęta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830821041885184
+    m_Localized: Super zwierzęta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186154683748352
+    m_Localized: Włóż <color=#FFEF4D><b>super zwierzę</color></b>, aby zagrać
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186243099676672
+    m_Localized: losuje…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186429616181248
+    m_Localized: Skórki dla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291237806854144
+    m_Localized: Używany do schwytania bossa w skorupie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291869334818816
+    m_Localized: Przynęta na większe skorupiaki
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291948657496064
+    m_Localized: Aby zwabić początkowych minibossów
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292204136747008
+    m_Localized: Aby zwabić początkowe ryby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292316321796096
+    m_Localized: Przynęta na bossa z 2. wyspy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293021463990272
+    m_Localized: Przynęta na bossa z 3. wyspy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293207191965696
+    m_Localized: Aby zwabić standardowego minibossa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293390399164416
+    m_Localized: Aby zwabić standardowe ryby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293514412150784
+    m_Localized: Aby zwabić wybrednego minibossa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293643345055744
+    m_Localized: Aby zwabić wybredne ryby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293763109212160
+    m_Localized: Przynęta na dużego bossa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293878242856960
+    m_Localized: Aby zwabić naukowego minibossa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3294053837393920
+    m_Localized: Aby zwabić naukowe ryby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3322076229881856
+    m_Localized: Waga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616357117153280
+    m_Localized: Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3984920650797056
+    m_Localized: Łódź
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4754946219659264
+    m_Localized: Bing Bong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755687046991872
+    m_Localized: Rozgwiazda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755941158899712
+    m_Localized: Gąbka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756916259082240
+    m_Localized: Kalmar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758365198176256
+    m_Localized: Płaszczka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758665606811648
+    m_Localized: Rekin młot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758953906491392
+    m_Localized: Narwal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4759131669483520
+    m_Localized: Równonóg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762162721017856
+    m_Localized: Krab pustelnik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764482083049472
+    m_Localized: Żaglica
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764811897950208
+    m_Localized: Ostryga
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

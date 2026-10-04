@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_zh-TW
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: zh-TW
+  m_SharedData: {fileID: 11400000, guid: 0aab1b546691bb94fb9c97d597b830b1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: 如何移動
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: 按下 {0} 來移動
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: 如何環視周圍
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: 按下 {0} 來環視周圍
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: 如何與周圍人事物互動
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: 看著想要的物件，按下 {0} 就可以拾取，對蛤蜊試試看
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: 如何進食
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: 是人都會餓，記得要好好吃東西。拿著想吃的生物，同時長按 {0}，就能夠把牠吃掉了。對著蛤蜊試試看
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: 如何販賣物品
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: 東西賣得出去，錢進得來，你就發大財。挑個蛤蜊，走去 NPC 那裡，然後長按 {0} 來把蛤蜊丟到店主嘴裡
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: 如何購買物品
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: 按下 {0} 去店裡買一支捕蟹竿。有了捕蟹竿，就可以用來抓更高價的生物了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: 如何釣魚
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: 看著海面，同時按下 {0} 投入誘餌，就能夠抓魚了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: 如何宰殺捕捉物
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: 有生物上鉤時，用 {0} 卷線，再按下 {1} 來把上鉤的生物放下。接下來，按下 {2} 來卸下目前手上的裝備，然後用 {0} 來開始毆打捕捉物
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: 如何和 NPC 對話
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: 完成島上 NPC 給出的任務，就能夠推進遊戲進度。看著 NPC 的同時並按下 {0}，就可以看到每個 NPC 的任務內容了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: 新手教學到此結束，接下來就看你大顯身手了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: 如何進入思考模式
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: 人的記憶也有靠不住的時候。如果忘記抓過哪些生物的話，可以按下 {0} 來進入思考模式
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: 如何檢視物品
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: 手持物品並按下 {0}，就可以開始檢視該物品。可以隨便抓個生物來檢視一下，看看值多少錢
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

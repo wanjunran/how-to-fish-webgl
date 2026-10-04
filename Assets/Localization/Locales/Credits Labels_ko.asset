@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Credits Labels_ko
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: 037158a0926f2bd4d994984945964f20, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 191417110528
+    m_Localized: 게임 디자인
+    m_Metadata:
+      m_Items: []
+  - m_Id: 289177948160
+    m_Localized: 프로그래밍
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346463752192
+    m_Localized: 음악
+    m_Metadata:
+      m_Items: []
+  - m_Id: 365409423360
+    m_Localized: 사운드 이펙트
+    m_Metadata:
+      m_Items: []
+  - m_Id: 397508431872
+    m_Localized: 특별히 고마운 분들
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422359683072
+    m_Localized: 현지화
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186400059392
+    m_Localized: 스튜디오 디렉터
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2363785564160
+    m_Localized: 현지화 매니저
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2477635751936
+    m_Localized: 번역
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2540386734080
+    m_Localized: 교정
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2627842166784
+    m_Localized: 현지화 QA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3021947359232
+    m_Localized: LQA 매니저
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3126909816832
+    m_Localized: LQA 프로젝트 매니저
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3278638764032
+    m_Localized: 테스트 리드
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3467835428864
+    m_Localized: 테스터
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4522996486144
+    m_Localized: 플레이테스트
+    m_Metadata:
+      m_Items: []
+  - m_Id: 244781600559104
+    m_Localized: 디스코드 회원
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
