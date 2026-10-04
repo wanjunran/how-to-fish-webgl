@@ -77,17 +77,35 @@ jobs:
               mkdir -p /var/lib/dbus && ln -sf /etc/machine-id /var/lib/dbus/machine-id 2>/dev/null || true
 
               printf "%s" "$UNITY_LICENSE" > "$LICENSE_DIR/Unity_lic.ulf"
-              echo "--- 写入 ULF，大小: $(wc -c < "$LICENSE_DIR/Unity_lic.ulf") 字节 ---"
-              head -c 120 "$LICENSE_DIR/Unity_lic.ulf"; echo
+              ULF_SIZE=$(wc -c < "$LICENSE_DIR/Unity_lic.ulf")
+              echo "--- ULF 大小: ${ULF_SIZE} 字节 ---"
 
-              echo "=== 步骤 1/2: 导入许可证 ==="
-              unity-editor -batchmode -nographics -quit \
-                -manualLicenseFile "$LICENSE_DIR/Unity_lic.ulf" \
-                -logFile /dev/stdout 2>&1 | tail -40
+              # --- 路线 A: 导入 .ulf 许可证文件（仅当内容看起来是有效 ULF 时尝试）---
+              if [ "$ULF_SIZE" -gt 200 ]; then
+                echo "=== 路线 A: -manualLicenseFile 导入许可证 ==="
+                unity-editor -batchmode -nographics -quit \
+                  -manualLicenseFile "$LICENSE_DIR/Unity_lic.ulf" \
+                  -logFile /dev/stdout 2>&1 | tail -30
+              else
+                echo "=== 路线 A 跳过: ULF 仅 ${ULF_SIZE} 字节，不是有效许可证文件 ==="
+              fi
 
-              echo "=== 许可证文件状态 ==="
-              ls -la "$LICENSE_DIR" || true
-              ls -la /usr/share/unity3d/config/ 2>/dev/null || true
+              # --- 路线 B: 邮箱密码登录激活（Unity 官方 CI 常用方式，不需要 serial）---
+              if [ ! -f /usr/share/unity3d/config/services-config.json ]; then
+                echo "=== 路线 B: 用户名密码登录激活 ==="
+                unity-editor -batchmode -nographics -quit \
+                  -username "$UNITY_EMAIL" \
+                  -password "$UNITY_PASSWORD" \
+                  -logFile /dev/stdout 2>&1 | tail -40
+              else
+                echo "=== 路线 B 跳过: 路线 A 已生成许可证配置 ==="
+              fi
+
+              echo "=== 许可证落地检查 ==="
+              ls -la "$LICENSE_DIR" 2>/dev/null || echo "无 $LICENSE_DIR"
+              ls -la /usr/share/unity3d/config/ 2>/dev/null || echo "无 services-config.json"
+              echo "--- services-config.json 内容 ---"
+              cat /usr/share/unity3d/config/services-config.json 2>/dev/null || echo "(不存在)"
 
               echo "=== 步骤 2/2: 构建 WebGL ==="
               unity-editor -batchmode -nographics -quit \
