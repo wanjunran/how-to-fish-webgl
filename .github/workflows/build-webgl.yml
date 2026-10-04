@@ -17,6 +17,10 @@ jobs:
       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
       UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
       UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+      # GameCI 约定：以 F 开头的哨兵序列号 = 个人许可证。
+      # entrypoint.sh 检测到 F* 会随机化 machine-id，随后
+      # activate.sh 用 -serial F... -username -password 走登录激活。
+      UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
 
     steps:
       - name: Checkout
