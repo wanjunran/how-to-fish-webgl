@@ -8,8 +8,14 @@ using UnityEngine;
 namespace WebGLCloudBuild
 {
     /// <summary>
-    /// 云构建（GameCI / GitHub Actions）调用的 WebGL 构建入口。
-    /// 由 .github/workflows/build-webgl.yml 通过 -executeMethod CloudWebGLBuild.Perform 触发。
+    /// 云构建（GameCI unity-builder v6）调用的 WebGL 构建入口。
+    /// 由 .github/workflows/build-webgl.yml 的 buildMethod 指定为
+    /// WebGLCloudBuild.CloudWebGLBuild.Perform。
+    /// <para>
+    /// unity-builder 会把输出根目录以 -buildPath 传入；未传入时回退到
+    /// build/WebGL，最终产物落在 <输出目录>/WebGL/ 下，与 v6 默认的
+    /// buildsPath 约定一致。
+    /// </para>
     /// </summary>
     public static class CloudWebGLBuild
     {
