@@ -164,10 +164,17 @@ jobs:
           curl -s -o /dev/null -w "index.html HTTP=%{http_code}\n" http://127.0.0.1:8099/
 
           # 三处都指到 /tmp，理由同上：unity-builder 以 root 跑过，
-          # runner 用户在 HOME 下写任何东西都可能Permission denied。
-          # PLAYWRIGHT_BROWSERS_PATH 由上面的 GITHUB_ENV 传下来。
+          # runner 用户在 HOME 下写任何东西都可能 Permission denied。
+          #
+          # 必须在这里再 export 一次，不能只靠上面的 GITHUB_ENV：
+          # GITHUB_ENV 只对**后续步骤**生效，而 install 和验证在同一步骤内，
+          # 变量还没被读回来。结果浏览器装到了 /tmp/pw-browsers，
+          # launch 却仍去 /home/runner/.cache 找，路径完全没变。
+          export PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers
           export XDG_RUNTIME_DIR=/tmp/xdg
           mkdir -p "$XDG_RUNTIME_DIR"
+          # 确认它真的生效，而不是又默默用默认值。
+          /tmp/venv/bin/python -c "import os;print('BROWSERS_PATH=',os.environ.get('PLAYWRIGHT_BROWSERS_PATH'))"
           timeout 420 xvfb-run -a -s "-screen 0 1280x800x24" \
             /tmp/venv/bin/python - "$GITHUB_STEP_SUMMARY" > /tmp/verify.log 2>&1 <<'PY'
           import sys, time
@@ -179,7 +186,17 @@ jobs:
           t0 = time.time()
 
           with sync_playwright() as p:
-              b = p.chromium.launch(headless=False, args=[
+              # 直接给可执行文件路径，不依赖 PLAYWRIGHT_BROWSERS_PATH
+              # 是否传到了这个进程。环境变量方案试过一次：浏览器装到了
+              # /tmp/pw-browsers，而 launch 仍然去 /home/runner/.cache 找，
+              # 因为 GITHUB_ENV 只对后续步骤生效，而这里和 install 同步骤。
+              # 路径写死就没这个坑了。
+              import glob, os
+              pat = "/tmp/pw-browsers/chromium-*/chrome-linux64/chrome"
+              hits = glob.glob(pat)
+              print(f"chrome 可执行文件: {hits[:1] or '未找到'}")
+              exe = hits[0] if hits else None
+              b = p.chromium.launch(headless=False, executable_path=exe, args=[
                   "--use-gl=angle", "--use-angle=swiftshader",
                   "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist",
                   "--disable-dev-shm-usage", "--no-sandbox"])
