@@ -67,6 +67,13 @@ jobs:
           targetPlatform: WebGL
           buildMethod: WebGLCloudBuild.CloudWebGLBuild.Perform
           dockerMemoryLimit: 15g
+          # 必须 NoIncrement，不能留默认 Semantic。
+          # Semantic 会在 build 前跑 `git status --porcelain`，
+          # 一旦树"脏"就直接 [ERROR] Branch is dirty 退出，
+          # 而 CI 把 Library/ 从缓存恢复出来后它必然未跟踪 -> 树脏。
+          # （Library/ 已加进 .gitignore，但其他未跟踪文件也可能让树脏，
+          #   用 NoIncrement 直接绕开脏树检查最稳。）
+          versioning: NoIncrement
 
       - name: Save Library cache
         if: always()

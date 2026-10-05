@@ -2,3 +2,9 @@ __pycache__/
 *.pyc
 build/
 _fishnet_backup/
+
+# Unity 的 Library 是本地构建缓存（巨大、机器相关、可重建）。
+# 必须忽略：CI 从 actions/cache 恢复它后会变成未跟踪文件，
+# 触发 game-ci 的 `versioning: Semantic` 脏树预检 -> "Branch is dirty" -> 构建直接挂。
+# 而且它绝不该被提交进仓库。
+Library/
