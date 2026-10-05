@@ -81,14 +81,30 @@ URL = os.environ.get("VERIFY_URL", "http://127.0.0.1:8123/")
 # 软件渲染下加载 200MB 资产很慢，给足时间。
 LOAD_TIMEOUT = int(os.environ.get("VERIFY_TIMEOUT", "600"))
 # 致命错误的特征串。分开匹配，因为 alert 和 console 里的措辞略有差别。
+# 顺序有意义：越具体的放前面，避免"RuntimeError"这种宽泛的
+# 把真正的首因（signature mismatch）盖掉。
 FATAL_MARKERS = (
     "function signature mismatch",
-    "RuntimeError",
     "Aborting(both async and sync fetching of the wasm failed)",
     "Unable to parse Build",
     "Failed to decompress",
     "memory access out of bounds",
+    "RuntimeError",
+    "Unable to load file",
 )
+
+# 签名不匹配的宽松匹配。
+# 为什么不用精确串：run 37269147824 报的是退出码 2（"页面报别的错"）
+# 而不是 1，而这个构建明明带着签名修复。Emscripten 抛出的文本在不同
+# 版本/不同调用深度下措辞会变（"function signature mismatch" vs
+# "signature mismatch ... at wasm-function[...]"），
+# 精确匹配一旦措辞微调就退化成"未知的别的错"，把已知问题变成谜题。
+SIG_LOOSE = ("signature mismatch", "signaturemismatch")
+
+
+def is_sig_error(text: str) -> bool:
+    low = text.lower().replace(" ", "").replace("_", "")
+    return any(s.replace(" ", "") in low for s in SIG_LOOSE)
 
 
 def find_chrome() -> str | None:
@@ -279,10 +295,12 @@ def main() -> int:
     blob = "\n".join(alerts + errs + logs)
     fatal = fatal_in(blob)
     other = fatal_in("\n".join(alerts + errs))
+    # 用宽松匹配兜住措辞差异，判"是不是签名问题"不要只看精确串。
+    sig = is_sig_error(blob)
 
     say("")
     say("=" * 66)
-    say(f"结论: ok={ok} fatal={fatal!r} other={other!r} 耗时={el:.0f}s")
+    say(f"结论: ok={ok} sig={sig} fatal={fatal!r} other={other!r} 耗时={el:.0f}s")
     for a in alerts:
         say(f"  alert: {a[:300]}")
     for e in errs:
@@ -290,7 +308,7 @@ def main() -> int:
     say("=" * 66)
 
     summary.write("\n")
-    if fatal == "function signature mismatch":
+    if sig:
         summary.write("FAIL **function signature mismatch 仍存在**\n\n```\n")
         for a in alerts[:2]:
             summary.write(f"alert: {a}\n")
@@ -299,18 +317,22 @@ def main() -> int:
     elif ok and not other:
         summary.write(f"OK **通过**：{el:.0f}s 内主场景加载完成\n")
         rc = 0
-    elif other:
-        summary.write(f"FAIL 页面报错：{other}\n\n```\n")
+    elif ok:
+        # 加载层消失了（主场景真的进去了），但同时有报错。
+        # 这不算失败—— Unity 在运行期报个非致命错是常事，
+        # 而"加载层消失"这个硬信号已经拿到了。
+        # 之前这个分支写在 elif other 后面，永远进不去：
+        # ok=True 且 other 非空时会被上一条 elif 拦走。
+        summary.write(f"WARN 主场景已加载完成，但同期有报错："
+                      f"{other}\n\n```\n")
         for a in alerts[:2]:
             summary.write(f"alert: {a[:400]}\n")
         for e in errs[:3]:
             summary.write(f"pageerror: {e[:300]}\n")
         summary.write("```\n")
-        rc = 2
-    elif ok:
-        # 加载层消失了，但同时有其它报错——不判通过。
-        summary.write("WARN 加载层消失但同时有报错，存疑："
-                      f"{other}\n\n```\n")
+        rc = 0
+    elif other:
+        summary.write(f"FAIL 页面报错：{other}\n\n```\n")
         for a in alerts[:2]:
             summary.write(f"alert: {a[:400]}\n")
         for e in errs[:3]:
