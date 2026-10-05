@@ -176,10 +176,10 @@ Shader "Shader Graphs/SkyboxShader"
     	r3.yw = asfloat(asuint(r3.yw) ^ asuint(float4(0, 24.7883, 0, 24.7883).yw));
     	r3.xz = asfloat((asint(r3.yw) + asint(r3.xz)));
     	r3.xy = asfloat((asint(r3.yw) * asint(r3.xz)));
-    	r3.zw = asfloat(asuint(r3.xy) >> asuint(int(5).zw));
+    	r3.zw = asfloat(asuint(r3.xy) >> 5u);
     	r3.xy = asfloat(asuint(r3.zw) ^ asuint(r3.xy));
     	r3.xy = asfloat((asint(r3.xy) * asint(float4(5.90968e-15, 5.90968e-15, 0, 0).xy)));
-    	r3.xy = asfloat(asuint(r3.xy) >> asuint(int(8).xy));
+    	r3.xy = asfloat(asuint(r3.xy) >> 8u);
     	r3.xy = float2(asuint(r3.xy));
     	r4 = mad(r3.xyxy, float4(5.96047e-08, 5.96047e-08, 5.96047e-08, 5.96047e-08), float4(0.5, 0.5, -0.5, -0.5));
     	r3.zw = floor(r4.xy);
