@@ -51,6 +51,29 @@ MAPPING = {
     ("11500000", "7285fd9de17a5b1a34953aa66a69f60a"): "6f48f002b825cbd45a19bd96d90f9edb",
 }
 
+# ===== 第二批：原游戏以 DLL 形式携带的 TMP / Unity Localization =====
+# 67dfb1fd... = Unity.TextMeshPro.dll（本项目改用 com.unity.textmeshpro 2.0.1 源码包）
+# 76ad3cbe... = Unity.Localization DLL（本项目用 com.unity.localization 1.5.13）
+# 两批包内脚本 GUID 由 CI workflow extract-guids.yml 从 Library/PackageCache
+# 的 .meta 里直接抓取（权威值），类身份按序列化字段/资产内容认定。
+TMP_DLL = "67dfb1fdfb2b407222eda8e23ac8b724"
+LOC_DLL = "76ad3cbe9d98d83f7de53e0a92768023"
+
+MAPPING.update({
+    ("1453722849", TMP_DLL): "f4688fdb7df04437aeb418b961361dc5",  # TextMeshProUGUI
+    ("-1620774994", TMP_DLL): "7b743370ac3e4ec2a1668f5455a8ef8a",  # TMP_Dropdown
+    ("2019389346", TMP_DLL): "84a92b25f83d49b9bc132d206b370281",   # TMP_SpriteAsset
+    ("-667331979", TMP_DLL): "71c1514a6bd24e1e882cebbe1904ce04",   # TMP_FontAsset
+    ("-395462249", TMP_DLL): "2705215ac5b84b70bacc50632be6e391",   # TMP_Settings
+    ("-1936749209", TMP_DLL): "ab2114bdc8544297b417dfefe9f1e410",  # TMP_StyleSheet
+    ("814988327", LOC_DLL): "56eb0353ae6e5124bb35b17aff880f16",    # LocalizeStringEvent
+    ("-622809992", LOC_DLL): "e9620f8c34305754d8cc9a7e49e852d9",   # StringTable
+    ("-2074915446", LOC_DLL): "1bb1838fe8befb0429646b938e757ff3",  # Locale
+    ("-149288805", LOC_DLL): "97269afb30aa84742ae3f3342603618a",   # AssetTable
+    ("-299433217", LOC_DLL): "5be51871efa6c3e4eae1703925c8f5ac",   # StringTableCollection
+    ("-179382495", LOC_DLL): "a07b5cd0b1b829245bc8c4b6978793e8",   # LocalizationSettings
+})
+
 # 无源码对应、保持断裂（missing script 警告无害，功能均为调试/未知空组件）：
 #   -771878070  NetworkDebug（ScriptableObject，4.1.0 无此类）-> Debug Logging.asset
 #   111782844   DLL 版可实例化的 NetworkBehaviour 具体类 -> PlayerHolder.prefab
@@ -63,10 +86,11 @@ def main() -> int:
         p for p in root.rglob("*")
         if p.suffix in (".unity", ".prefab", ".asset") and p.is_file()
     ]
+    all_old_guids = {g for (_, g), _ in MAPPING.items()}
     total = 0
     for p in targets:
         text = p.read_text(encoding="utf-8", errors="surrogateescape")
-        if DLL_GUID not in text and "7285fd9de17a5b1a34953aa66a69f60a" not in text:
+        if not any(g in text for g in all_old_guids):
             continue
         changed = 0
         for (fid, old_guid), new_guid in MAPPING.items():
