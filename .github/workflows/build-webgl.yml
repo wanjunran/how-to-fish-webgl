@@ -132,7 +132,7 @@ jobs:
           # runner 用户 open(..., "wb") 会Permission denied。
           # 第一版就是这么失败的（WebGL.wasm 写不进去）。
           sudo python3 - <<'PY'
-          import gzip, pathlib, shutil
+          import gzip, pathlib, shutil, sys
           root = pathlib.Path("build/WebGL")
           for gz in sorted(root.rglob("*.gz")):
               out = gz.with_name(gz.name[:-3])
@@ -145,6 +145,7 @@ jobs:
                   shutil.copyfileobj(fi, fo, length=1 << 20)
               print(f"解压 {gz.name} -> {out.name}"
                     f"({out.stat().st_size / 1048576:.1f} MB)")
+
           # index.html 里写的是 .gz 文件名，改成无后缀的裸文件名，
           # 这样不依赖任何响应头。
           html = root / "index.html"
@@ -156,117 +157,90 @@ jobs:
               print("index.html 已改为引用裸文件名")
           else:
               print("index.html 已是裸文件名")
-          PY
 
-          python3 -m http.server 8099 --directory build/WebGL > /tmp/srv.log 2>&1 &
+          # 解压失败必须在这里停住。步骤开头有 set +e（为了不让
+          # 验证脚本的失败被吞），所以不主动 exit 的话，解压挂了会
+          # 一路滑到验证脚本，报出来的是"加载失败"这种二手结论，
+          # 而真正原因是"文件没解开"。一手信息不该被二手结论盖掉。
+          missing = [n for n in ("WebGL.data", "WebGL.wasm",
+                                 "WebGL.framework.js", "WebGL.loader.js")
+                     if not (root / "Build" / n).exists()]
+          if missing:
+              print("!! 解压后仍缺文件: " + ", ".join(missing), flush=True)
+              sys.exit(1)
+          print("三个大文件均已就位")
+          PY
+          if [ $? -ne 0 ]; then
+            echo "::error::解压产物失败，验证无法进行"
+            exit 1
+          fi
+
+          # 端口选8123，不选 8099。
+          # Chromium 有一份「受限端口」名单（6000/666x/6697/10080 等），
+          # 命中会直接net::ERR_UNSAFE_PORT，而且这个错发生在网络层，
+          # 看起来像「服务没起来」，实际上是浏览器不让连。
+          python3 -m http.server 8123 --directory build/WebGL > /tmp/srv.log 2>&1 &
           SRV=$!
           sleep 3
-          curl -s -o /dev/null -w "index.html HTTP=%{http_code}\n" http://127.0.0.1:8099/
+          curl -s -o /dev/null -w "index.html HTTP=%{http_code}\n" http://127.0.0.1:8123/
+          curl -s -o /dev/null -w "loaderHTTP=%{http_code}\n" \
+            http://127.0.0.1:8123/Build/WebGL.loader.js
 
-          # 三处都指到 /tmp，理由同上：unity-builder 以 root 跑过，
-          # runner 用户在 HOME 下写任何东西都可能 Permission denied。
+          # 验证逻辑放在 tools/verify_load.py，不内嵌在 heredoc 里。
+          # 两个实测过的坑：
+          #   xvfb-run 会把 heredoc 从 stdin 拿走（去喂 xauth），
+          #     sys.stdin.read() 返回空字符串；
+          #   stdout 重定向到文件是块缓冲，脚本中途异常退出时
+          #     缓冲区里的 print 全丢，只剩带flush 的第一行。
+          # 写成文件后代码从文件读、所有 print 带 flush、异常路径有 traceback。
           #
-          # 必须在这里再 export 一次，不能只靠上面的 GITHUB_ENV：
-          # GITHUB_ENV 只对**后续步骤**生效，而 install 和验证在同一步骤内，
-          # 变量还没被读回来。结果浏览器装到了 /tmp/pw-browsers，
-          # launch 却仍去 /home/runner/.cache 找，路径完全没变。
+          # 端口/超时用环境变量传，不写死在脚本里。
           export PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers
           export XDG_RUNTIME_DIR=/tmp/xdg
           mkdir -p "$XDG_RUNTIME_DIR"
-          # 确认它真的生效，而不是又默默用默认值。
-          /tmp/venv/bin/python -c "import os;print('BROWSERS_PATH=',os.environ.get('PLAYWRIGHT_BROWSERS_PATH'))"
-          timeout 420 xvfb-run -a -s "-screen 0 1280x800x24" \
-            /tmp/venv/bin/python - "$GITHUB_STEP_SUMMARY" > /tmp/verify.log 2>&1 <<'PY'
-          import sys, time
-          from playwright.sync_api import sync_playwright
+          export VERIFY_URL=http://127.0.0.1:8123/
+          export VERIFY_TIMEOUT=600
 
-          summary = open(sys.argv[1], "a")
-          logs = []
-          alert = {"msg": None}
-          t0 = time.time()
-
-          with sync_playwright() as p:
-              # 直接给可执行文件路径，不依赖 PLAYWRIGHT_BROWSERS_PATH
-              # 是否传到了这个进程。环境变量方案试过一次：浏览器装到了
-              # /tmp/pw-browsers，而 launch 仍然去 /home/runner/.cache 找，
-              # 因为 GITHUB_ENV 只对后续步骤生效，而这里和 install 同步骤。
-              # 路径写死就没这个坑了。
-              import glob, os
-              pat = "/tmp/pw-browsers/chromium-*/chrome-linux64/chrome"
-              hits = glob.glob(pat)
-              print(f"chrome 可执行文件: {hits[:1] or '未找到'}")
-              exe = hits[0] if hits else None
-              b = p.chromium.launch(headless=False, executable_path=exe, args=[
-                  "--use-gl=angle", "--use-angle=swiftshader",
-                  "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist",
-                  "--disable-dev-shm-usage", "--no-sandbox"])
-              pg = b.new_page(viewport={"width": 1280, "height": 800})
-              pg.on("console", lambda m: logs.append(f"[{m.type}] {m.text[:200]}"))
-              pg.on("pageerror", lambda e: logs.append(f"[pageerror] {str(e)[:200]}"))
-              pg.on("dialog", lambda d: (alert.update(msg=d.message[:400]), d.accept()))
-              pg.goto("http://127.0.0.1:8099/", wait_until="domcontentloaded", timeout=60000)
-
-              ok = False
-              while time.time() - t0 < 360:
-                  time.sleep(6)
-                  st = pg.evaluate("""() => {
-                    const f = document.querySelector('#unity-progress-bar-full');
-                    const l = document.querySelector('#unity-loading-bar');
-                    const c = document.querySelector('#unity-canvas');
-                    let ctx = false;
-                    if (c) ctx = !!(c.getContext('webgl2') || c.getContext('webgl'));
-                    return {pct: f ? f.style.width : '',
-                            vis: l ? l.style.display : '?', ctx};
-                  }""")
-                  if st["ctx"] or st["vis"] == "none":
-                      ok = True
-                      break
-                  if alert["msg"]:
-                      break
-              pg.screenshot(path="verify.png")
-              b.close()
-
-          el = time.time() - t0
-          sig = alert["msg"] and "function signature mismatch" in alert["msg"]
-          if sig:
-              print("❌ **function signature mismatch 仍存在**", file=summary)
-          elif ok:
-              print(f"✅ **通过**：{el:.0f}s 内拿到 WebGL 上下文并进入主场景", file=summary)
-          elif alert["msg"]:
-              print(f"❌ 页面报错：{alert['msg']}", file=summary)
-          else:
-              print(f"⚠️ 360s 内未完成加载（软件渲染慢，不一定失败）", file=summary)
-          print(f"\n耗时 {el:.0f}s\n", file=summary)
-          print("```", file=summary)
-          for l in logs[-20:]:
-              print(l[:200], file=summary)
-          print("```", file=summary)
-          summary.close()
-
-          # 退出码在Python 里给，不要写成 `if sig; then` —— 那是 shell 语法，
-          # 放在 heredoc 里会直接语法错误，整个验证步骤跑不起来。
-          # 这个错误是我写完自检时 ast.parse 抓到的。
-          sys.exit(1 if sig else 0)
-          PY
+          # 注意没有 `| tee` —— 管道的退出码是最后一个命令的，
+          # Python 的失败会被 tee 吞掉。第一版正是这样：
+          # 解压 PermissionError、playwright ModuleNotFound，
+          # 验证脚本压根没跑，步骤仍然 success。
+          set +e
+          timeout 780 xvfb-run -a -s "-screen 0 1280x800x24" \
+            /tmp/venv/bin/python tools/verify_load.py "$GITHUB_STEP_SUMMARY" \
+            > /tmp/verify.log 2>&1
           VR=$?
-          # 日志要出现在 Actions 里，但不能用 `| tee` —— 管道的退出码是
-          # 最后一个命令的，Python 失败会被 tee 吞掉。第一版正是这样：
-          # 解压和 playwright 都PermissionError / ModuleNotFound，
-          # 验证脚本压根没跑，而步骤仍然 success。
           cat /tmp/verify.log
+          set -e
 
-          # Python 异常退出（2/1/其它非 0）也要让步骤红。
-          # 唯一容忍的是「跑满 360s 仍未完成」——软件渲染可能只是慢，
-          # 那不等于产物有问题。这种情况也如实写进 summary。
-          if [ "$VR" -ne 0 ]; then
-            if grep -q "未完成加载" "$GITHUB_STEP_SUMMARY" 2>/dev/null; then
-              echo "::warning::软件渲染下 360s 未完成加载，不判定为失败"
-              exit 0
+          # 截图要能看到。判据是"主场景加载完成"，
+          # 截图是最直接的证据——比读退出码可信。
+          for png in verify_loaded.png verify_settled.png; do
+            if [ -f "$png" ]; then
+              echo "" >> "$GITHUB_STEP_SUMMARY"
+              echo "**${png}**" >> "$GITHUB_STEP_SUMMARY"
             fi
-            echo "::error::验证脚本退出码 $VR，产物未能通过实跑验证"
-            exit 1
-          fi
-          echo "实跑验证通过"
+          done
+
+          case "$VR" in
+            0)
+              echo "实跑验证通过：主场景加载完成"
+              ;;
+            4)
+              # 软件渲染下 600s 仍未加载完，可能是慢而不是坏。
+              # 如实记warning，不让整个 job 变红（产物本身可能没问题，
+              # 只是这台runner 的CPU 跑不动）。
+              echo "::warning::软件渲染下 600s 未完成加载，不判定为失败"
+              ;;
+            3)
+              echo "::error::验证脚本自身出错，产物未被验证"
+              exit 1
+              ;;
+            *)
+              echo "::error::实跑验证失败，退出码 $VR（详见上方日志与 summary）"
+              exit 1
+              ;;
+          esac
 
       - name: Upload WebGL build
         uses: actions/upload-artifact@v4
