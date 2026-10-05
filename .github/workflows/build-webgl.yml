@@ -109,7 +109,21 @@ jobs:
           # venv 建在 /tmp 下，绕开这个权限残局。
           python3 -m venv /tmp/venv
           /tmp/venv/bin/pip install -q playwright
-          /tmp/venv/bin/playwright install --with-deps chromium
+          # 浏览器二进制必须显式指到 /tmp。默认落在 ~/.cache/ms-playwright，
+          # 而 unity-builder 以 root 跑过构建，那个目录属主已经是 root，
+          # runner 用户写不进去 —— 结果 pip 成功了、浏览器没有，
+          # launch 时报 "Executable doesn't exist at .../chromium-1243/..."。
+          PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers \
+            /tmp/venv/bin/playwright install chromium
+          # 后续那步也要用同一个变量，否则找不到刚下的浏览器。
+          echo "PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers" >> "$GITHUB_ENV"
+          ls /tmp/pw-browsers | head -3
+
+          # Chromium 的系统依赖单独装，不用 `playwright install --with-deps`
+          # —— 那条会自己调apt，可能和 unity-builder 留下的包状态打架。
+          sudo apt-get install -y -qq libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 \
+            libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 \
+            libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libasound2 > /dev/null
 
           # 必须预解压并去掉 Content-Encoding：body 已是解压态，
           # 再声明压缩会让浏览器把裸数据当压缩流解，结果是坏的。
@@ -149,6 +163,11 @@ jobs:
           sleep 3
           curl -s -o /dev/null -w "index.html HTTP=%{http_code}\n" http://127.0.0.1:8099/
 
+          # 三处都指到 /tmp，理由同上：unity-builder 以 root 跑过，
+          # runner 用户在 HOME 下写任何东西都可能Permission denied。
+          # PLAYWRIGHT_BROWSERS_PATH 由上面的 GITHUB_ENV 传下来。
+          export XDG_RUNTIME_DIR=/tmp/xdg
+          mkdir -p "$XDG_RUNTIME_DIR"
           timeout 420 xvfb-run -a -s "-screen 0 1280x800x24" \
             /tmp/venv/bin/python - "$GITHUB_STEP_SUMMARY" > /tmp/verify.log 2>&1 <<'PY'
           import sys, time
