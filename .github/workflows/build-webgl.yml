@@ -101,29 +101,47 @@ jobs:
           sudo apt-get install -y -qq xvfb > /dev/null
 
           # runner 镜像不带 playwright 和它的 Chromium。
-          # --break-system-packages：新版 pip 不再允许直接装进系统 Python，
-          # 而 ubuntu-latest 的 3.12 带EXTERNALLY-MANAGED 标记。
-          pip3 install --break-system-packages -q playwright
-          python3 -m playwright install --with-deps chromium
+          #
+          # 必须用 venv：直接 pip3 install 会报
+          #   Permission denied: '/home/runner/.local/lib'
+          # 因为 unity-builder 以 root 跑过构建，runner 用户的 HOME 下
+          # 若干目录的属主变成了 root，pip 又不肯降级写入。
+          # venv 建在 /tmp 下，绕开这个权限残局。
+          python3 -m venv /tmp/venv
+          /tmp/venv/bin/pip install -q playwright
+          /tmp/venv/bin/playwright install --with-deps chromium
 
           # 必须预解压并去掉 Content-Encoding：body 已是解压态，
           # 再声明压缩会让浏览器把裸数据当压缩流解，结果是坏的。
-          python3 - <<'PY'
+          #
+          # 整个脚本用 sudo 跑：unity-builder 以 root 构建，产物属主是 root，
+          # runner 用户 open(..., "wb") 会Permission denied。
+          # 第一版就是这么失败的（WebGL.wasm 写不进去）。
+          sudo python3 - <<'PY'
           import gzip, pathlib, shutil
           root = pathlib.Path("build/WebGL")
-          for gz in root.rglob("*.gz"):
+          for gz in sorted(root.rglob("*.gz")):
               out = gz.with_name(gz.name[:-3])
+              # 已有非空的裸文件就跳过：Library 缓存或重跑会让它先于
+              # 上一步存在，写它同样会撞权限。
+              if out.exists() and out.stat().st_size > 0:
+                  print(f"跳过 {out.name}（已存在）")
+                  continue
               with gzip.open(gz, "rb") as fi, open(out, "wb") as fo:
                   shutil.copyfileobj(fi, fo, length=1 << 20)
-              print(f"解压 {gz.name} -> {out.name}")
+              print(f"解压 {gz.name} -> {out.name}"
+                    f"({out.stat().st_size / 1048576:.1f} MB)")
           # index.html 里写的是 .gz 文件名，改成无后缀的裸文件名，
           # 这样不依赖任何响应头。
-          html = (root / "index.html")
-          t = html.read_text(encoding="utf-8")
+          html = root / "index.html"
+          t = original = html.read_text(encoding="utf-8")
           for n in ("WebGL.data", "WebGL.wasm", "WebGL.framework.js"):
               t = t.replace(f"/{n}.gz", f"/{n}")
-          html.write_text(t, encoding="utf-8")
-          print("index.html 已改为引用裸文件名")
+          if t != original:
+              html.write_text(t, encoding="utf-8")
+              print("index.html 已改为引用裸文件名")
+          else:
+              print("index.html 已是裸文件名")
           PY
 
           python3 -m http.server 8099 --directory build/WebGL > /tmp/srv.log 2>&1 &
@@ -132,7 +150,7 @@ jobs:
           curl -s -o /dev/null -w "index.html HTTP=%{http_code}\n" http://127.0.0.1:8099/
 
           timeout 420 xvfb-run -a -s "-screen 0 1280x800x24" \
-            python3 - "$GITHUB_STEP_SUMMARY" <<'PY' 2>&1 | tee /tmp/verify.log
+            /tmp/venv/bin/python - "$GITHUB_STEP_SUMMARY" > /tmp/verify.log 2>&1 <<'PY'
           import sys, time
           from playwright.sync_api import sync_playwright
 
@@ -194,6 +212,25 @@ jobs:
           # 这个错误是我写完自检时 ast.parse 抓到的。
           sys.exit(1 if sig else 0)
           PY
+          VR=$?
+          # 日志要出现在 Actions 里，但不能用 `| tee` —— 管道的退出码是
+          # 最后一个命令的，Python 失败会被 tee 吞掉。第一版正是这样：
+          # 解压和 playwright 都PermissionError / ModuleNotFound，
+          # 验证脚本压根没跑，而步骤仍然 success。
+          cat /tmp/verify.log
+
+          # Python 异常退出（2/1/其它非 0）也要让步骤红。
+          # 唯一容忍的是「跑满 360s 仍未完成」——软件渲染可能只是慢，
+          # 那不等于产物有问题。这种情况也如实写进 summary。
+          if [ "$VR" -ne 0 ]; then
+            if grep -q "未完成加载" "$GITHUB_STEP_SUMMARY" 2>/dev/null; then
+              echo "::warning::软件渲染下 360s 未完成加载，不判定为失败"
+              exit 0
+            fi
+            echo "::error::验证脚本退出码 $VR，产物未能通过实跑验证"
+            exit 1
+          fi
+          echo "实跑验证通过"
 
       - name: Upload WebGL build
         uses: actions/upload-artifact@v4
