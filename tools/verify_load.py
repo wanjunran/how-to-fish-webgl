@@ -94,10 +94,28 @@ FATAL_MARKERS = (
 def find_chrome() -> str | None:
     """定位 Chromium 可执行文件。
 
-    不依赖 PLAYWRIGHT_BROWSERS_PATH —— 实测设了环境变量、浏览器也装对了，
-    launch 仍去~/.cache/ms-playwright 找。GITHUB_ENV 只对后续步骤生效，
-    而安装和验证在同一步骤内。直接给绝对路径最可靠。
+    优先用runner 镜像自带的 Chrome/Chromium，不要用 playwright 下载的那份。
+    理由是实测数据：沙箱里 venv+playwright 只要 7 秒，
+    而 "playwright install chromium" 下170MB 跑了 8 分钟还没完。
+    GitHub 上run 37267536242 的验证步骤总共只有 36 秒——
+    装浏览器的时间都不够，那个失败几乎肯定就卡在这里。
+
+    GitHub 的 ubuntu runner 镜像自带 Chrome/Chromium（版本随镜像滚动更新），
+    直接用它省掉整个下载环节，也少一个失败点。
+
+    找不到再退回 playwright 自带的路径。
     """
+    system_first = [
+        "/usr/bin/google-chrome",
+        "/usr/bin/google-chrome-stable",
+        "/usr/bin/chromium",
+        "/usr/bin/chromium-browser",
+        "/opt/google/chrome/chrome",
+    ]
+    for p in system_first:
+        if os.path.isfile(p) and os.access(p, os.X_OK):
+            return p
+
     pats = [
         "/tmp/pw-browsers/chromium-*/chrome-linux64/chrome",
         os.path.expanduser("~/.cache/ms-playwright/chromium-*/chrome-linux64/chrome"),

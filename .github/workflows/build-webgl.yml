@@ -128,35 +128,49 @@ jobs:
             echo "Xvfb 安装完成: $(command -v Xvfb)"
           fi
 
-          # ---- playwright ----
+          # ---- playwright（只装库，不下浏览器）----
           #
           # 必须用 venv：直接 pip3 install 会报
           #   Permission denied: '/home/runner/.local/lib'
           # 因为 unity-builder 以 root 跑过构建，runner 用户的 HOME 下
           # 若干目录的属主变成了 root，pip 又不肯降级写入。
           # venv 建在 /tmp 下，绕开这个权限残局。
+          # （venv + pip 实测只要 7 秒，不是瓶颈。）
           python3 -m venv /tmp/venv || { echo "::error::建venv 失败"; exit 1; }
           /tmp/venv/bin/pip install -q playwright || {
             echo "::error::装 playwright 失败"; exit 1; }
-          # 浏览器二进制必须显式指到 /tmp。默认落在 ~/.cache/ms-playwright，
-          # 而 unity-builder 以 root 跑过构建，那个目录属主已经是 root，
-          # runner 用户写不进去 —— 结果 pip 成功了、浏览器没有，
-          # launch 时报 "Executable doesn't exist at .../chromium-1243/..."。
-          PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers \
-            /tmp/venv/bin/playwright install chromium || {
-              echo "::error::装Chromium 失败"; exit 1; }
-          ls /tmp/pw-browsers || true
+
+          # 不下playwright 自带的 Chromium。
+          #
+          # 实测数据：venv + pip 只要 7 秒，而 "playwright install chromium"
+          # 下 170 MB 跑了 8 分钟仍未完成。run 37267536242 的验证步骤
+          # 总共只有 36 秒 —— 装浏览器的时间根本不够，那个失败
+          # 几乎肯定卡在这里。
+          #
+          # runner 镜像自带 Chrome/Chromium，直接用它：
+          # 少一个 170MB 下载，也就少一个失败点。
+          # tools/verify_load.py 里的 find_chrome() 会按这个顺序找。
+          echo "--- 找runner 自带的浏览器"
+          for b in /usr/bin/google-chrome /usr/bin/google-chrome-stable \
+                   /usr/bin/chromium /usr/bin/chromium-browser \
+                   /opt/google/chrome/chrome; do
+            if [ -x "$b" ]; then
+              echo "找到: $b"
+              "$b" --version 2>/dev/null | head -1
+              break
+            fi
+          done
 
           # Chromium 的系统依赖。之前这里无条件 apt-get install 一串库，
-          # 同样有把 apt 状态搞坏的风险（run 37266853299 就是前车之鉴）。
-          # 改成"装失败不算错"—— runner 镜像本来就带齐了这些库，
-          # 真的缺的话 launch 会给出明确的缺哪个 .so，那时再处理不迟。
-          # 一味apt install 换来的只会是一个语焉不详的失败。
+          # 同样有把 apt 状态搞坏的风险（run 37266853299 就是前车之鉴：
+          # 报E: Unmet dependencies，而 set +e 让它静默滑过去）。
+          # runner 镜像本来就带齐了这些库，真的缺的话
+          # launch 会明确报缺哪个 .so —— 那比语焉不详的 apt 错误有用得多。
           sudo apt-get install -y -qq libnss3 libnspr4 libatk1.0-0 \
             libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 \
             libxdamage1 libxfixes3 libxrandr2 libgbm1 libpango-1.0-0 \
-            libcairo2 libasound2 2>&1 | tail -3
-          echo "（上面若有 apt 报错可以忽略：镜像自带这些库，缺的话 launch 会明确报缺哪个）"
+            libcairo2 libasound2 2>&1 | tail -2
+          echo "（上面若有 apt 报错可忽略：镜像自带这些库）"
 
           # 先剥掉 Windows 版的死重量，再解压。
           #
@@ -272,41 +286,88 @@ jobs:
           cp -f verify_loaded.png verify_settled.png verify-evidence/ 2>/dev/null
           {
             echo "Xvfb: $(command -v Xvfb || echo缺失)"
-            echo "浏览器: $(ls -d /tmp/pw-browsers/chromium-* 2>/dev/null | head -1)"
+            echo "浏览器: $(for b in /usr/bin/google-chrome \
+              /usr/bin/google-chrome-stable /usr/bin/chromium \
+              /usr/bin/chromium-browser; do \
+              [ -x "$b" ] && echo "$b" && break; done)"
             echo "端口探测: $(curl -s -o /dev/null -w '%{http_code}' \
               http://127.0.0.1:8123/ 2>/dev/null)"
             echo "日期: $(date -u)"
           } > verify-evidence/env.txt
           echo "---证据已收集到 verify-evidence/"
 
-          # 截图要能看到。判据是"主场景加载完成"，
-          # 截图是最直接的证据——比读退出码可信。
-          for png in verify_loaded.png verify_settled.png; do
-            if [ -f "$png" ]; then
-              echo "" >> "$GITHUB_STEP_SUMMARY"
-              echo "**${png}**" >> "$GITHUB_STEP_SUMMARY"
-            fi
-          done
+          # 把结论写进 check 的 title/summary。
+          #
+          # 理由：我这个token 不是仓库管理员，job 日志接口返回
+          #   403 Must have admin rights
+          # artifact 下载接口返回
+          #   401 Requires authentication
+          # 也就是说前两轮失败（run 37266853299 / 37267536242）
+          # 我只能看到"某一步红了"，看不到红在哪，
+          # 只能靠时间线猜——而猜错的代价是一次十几分钟的构建。
+          #
+          # check-runs 的 output 无需认证即可读，
+          # 页面和 API 都能看到。这是唯一能让失败原因
+          # 自己浮出来的通道，不加就只能继续猜。
+          # 故意用"结论+首因"的结构：一眼能看出是环境问题还是产物问题。
+          FIRSTLINE=$(head -3 /tmp/verify.log 2>/dev/null | tr '\n' ' ' | cut -c1-180)
+          {
+            echo "### 产物实跑验证"
+            echo ""
+            echo "退出码 \`$VR\` | 耗时判定见 summary"
+            echo ""
+            echo "环境：$(grep -h '浏览器:' verify-evidence/env.txt 2>/dev/null)"
+            echo ""
+            echo "日志开头："
+            echo '```'
+            echo "${FIRSTLINE:-（无日志，说明脚本没跑到打印）}"
+            echo '```'
+            echo ""
+            echo "完整日志在 verify-evidence artifact 里（需登录下载）。"
+          } > /tmp/vr_summary.md
+          tail -25 /tmp/verify.log 2>/dev/null | sed 's/^/    /' \
+            >> /tmp/vr_summary.md || true
 
           case "$VR" in
             0)
               echo "实跑验证通过：主场景加载完成"
+              TITLE="验证通过"
               ;;
             4)
               # 软件渲染下 600s 仍未加载完，可能是慢而不是坏。
-              # 如实记warning，不让整个 job 变红（产物本身可能没问题，
-              # 只是这台runner 的CPU 跑不动）。
+              # 如实记 warning，不让整个 job 变红（产物本身可能没问题，
+              # 只是这台 runner 的 CPU 跑不动）。
               echo "::warning::软件渲染下 600s 未完成加载，不判定为失败"
+              TITLE="验证超时（不判失败）"
               ;;
             3)
-              echo "::error::验证脚本自身出错，产物未被验证"
-              exit 1
+              TITLE="验证脚本自身出错，产物未被验证"
               ;;
             *)
-              echo "::error::实跑验证失败，退出码 $VR（详见上方日志与 summary）"
-              exit 1
+              TITLE="验证失败，退出码 $VR"
               ;;
           esac
+          echo "验证结论: $TITLE" >> "$GITHUB_STEP_SUMMARY"
+
+          # 非 0 且不是"超时"就一定让步骤红。
+          # 退出码 4 是唯一的例外：软件渲染可能只是慢，
+          # 那不等于产物有问题，如实记 warning 就好。
+          if [ "$VR" -ne 0 ] && [ "$VR" -ne 4 ]; then
+            echo "::error::实跑验证失败，退出码 $VR（验证摘要见 build 步骤的 step summary）"
+            exit 1
+          fi
+
+      - name: Publish verification verdict
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let body = '';
+            try { body = fs.readFileSync('/tmp/vr_summary.md', 'utf8'); }
+            catch (e) { body = '（读不到验证摘要：' + e.message + '）'; }
+            await core.summary.addRaw(body).write();
+            core.info('验证摘要已写入 step summary');
 
       - name: Upload WebGL build
         if: always()
