@@ -82,7 +82,13 @@ jobs:
       # 只证明文件完整，证明不了它能跑。把验证放在构建机上，产物根本不用经过
       # 我的沙箱（上行 77KB/s，186MB 要 40 分钟）。
       #
-      # 三个参数缺一不可，少一个就是"环境不支持WebGL"而非"产物有问题"：
+      # 判据是Unity 模板里 #unity-loading-bar 变成 display:none，
+      # 也就是 createUnityInstance().then() 那个分支—— 主场景真的加载完了。
+      # 不要改成"画布拿到 WebGL 上下文"：那发生在 wasm 实例化时，
+      # 也就是加载场景之前，而签名不匹配恰恰是在加载场景时抛的，
+      # 那样判据在坏产物上照样会通过。见 tools/verify_load.py 的注释。
+      #
+      # 三个浏览器参数缺一不可，少一个就是"环境不支持 WebGL"而非"产物有问题"：
       #   xvfb-run                 没有 X server，Chrome 连 GL 后端都起不来
       #   --use-angle=swiftshader  软件实现 WebGL2（runner 无 GPU）
       #   --enable-unsafe-swiftshader  新版 Chrome 默认禁用软件 WebGL
@@ -97,33 +103,60 @@ jobs:
             exit 0
           fi
 
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq xvfb > /dev/null
+          # ---- xvfb：只在该装的时候装 ----
+          #
+          # GitHub runner 镜像自带 Xvfb（Firefox 的 bedrock 仓库为此专门
+          # 去掉过安装步骤，原话是"apt-install of things"是 GHA 上最不
+          # 可靠的一环之一）。之前这里无条件 apt-get install xvfb，
+          # run 37266853299 就挂在这一步之后。
+          #
+          # 但不能只信"runner 自带"：万一换了镜像或被裁剪过，
+          # 没有 X server 的症状是 Chrome 报 "Missing X server or $DISPLAY"，
+          # 看起来像产物问题。所以是"有就用，没有才装"，
+          # 并且装完立刻复查，别让失败静默滑过去。
+          if command -v Xvfb > /dev/null 2>&1; then
+            echo "Xvfb 已就绪: $(command -v Xvfb)"
+          else
+            echo "Xvfb 缺失，尝试安装"
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq xvfb
+            if ! command -v Xvfb > /dev/null 2>&1; then
+              echo "::error::装不上 Xvfb，软件渲染验证无法进行（这是环境问题，不是产物问题）"
+              echo "**Xvfb 不可用，实跑验证未执行。**" >> "$GITHUB_STEP_SUMMARY"
+              exit 1
+            fi
+            echo "Xvfb 安装完成: $(command -v Xvfb)"
+          fi
 
-          # runner 镜像不带 playwright 和它的 Chromium。
+          # ---- playwright ----
           #
           # 必须用 venv：直接 pip3 install 会报
           #   Permission denied: '/home/runner/.local/lib'
           # 因为 unity-builder 以 root 跑过构建，runner 用户的 HOME 下
           # 若干目录的属主变成了 root，pip 又不肯降级写入。
           # venv 建在 /tmp 下，绕开这个权限残局。
-          python3 -m venv /tmp/venv
-          /tmp/venv/bin/pip install -q playwright
+          python3 -m venv /tmp/venv || { echo "::error::建venv 失败"; exit 1; }
+          /tmp/venv/bin/pip install -q playwright || {
+            echo "::error::装 playwright 失败"; exit 1; }
           # 浏览器二进制必须显式指到 /tmp。默认落在 ~/.cache/ms-playwright，
           # 而 unity-builder 以 root 跑过构建，那个目录属主已经是 root，
           # runner 用户写不进去 —— 结果 pip 成功了、浏览器没有，
           # launch 时报 "Executable doesn't exist at .../chromium-1243/..."。
           PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers \
-            /tmp/venv/bin/playwright install chromium
-          # 后续那步也要用同一个变量，否则找不到刚下的浏览器。
-          echo "PLAYWRIGHT_BROWSERS_PATH=/tmp/pw-browsers" >> "$GITHUB_ENV"
-          ls /tmp/pw-browsers | head -3
+            /tmp/venv/bin/playwright install chromium || {
+              echo "::error::装Chromium 失败"; exit 1; }
+          ls /tmp/pw-browsers || true
 
-          # Chromium 的系统依赖单独装，不用 `playwright install --with-deps`
-          # —— 那条会自己调apt，可能和 unity-builder 留下的包状态打架。
-          sudo apt-get install -y -qq libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 \
-            libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 \
-            libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libasound2 > /dev/null
+          # Chromium 的系统依赖。之前这里无条件 apt-get install 一串库，
+          # 同样有把 apt 状态搞坏的风险（run 37266853299 就是前车之鉴）。
+          # 改成"装失败不算错"—— runner 镜像本来就带齐了这些库，
+          # 真的缺的话 launch 会给出明确的缺哪个 .so，那时再处理不迟。
+          # 一味apt install 换来的只会是一个语焉不详的失败。
+          sudo apt-get install -y -qq libnss3 libnspr4 libatk1.0-0 \
+            libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 \
+            libxdamage1 libxfixes3 libxrandr2 libgbm1 libpango-1.0-0 \
+            libcairo2 libasound2 2>&1 | tail -3
+          echo "（上面若有 apt 报错可以忽略：镜像自带这些库，缺的话 launch 会明确报缺哪个）"
 
           # 必须预解压并去掉 Content-Encoding：body 已是解压态，
           # 再声明压缩会让浏览器把裸数据当压缩流解，结果是坏的。
@@ -213,6 +246,25 @@ jobs:
           cat /tmp/verify.log
           set -e
 
+          # 把日志和截图打包上传，理由很直接：
+          # GitHub 的 job 日志下载接口要仓库管理员权限，
+          # 我这个token 不是管理员，run 37266853299 失败时
+          # 就只能看到"某个步骤红了"，看不到红在哪一行——
+          # 只能靠猜。产物跑完了还在机器上，
+          # 传出来比重新构建一次（十几分钟）便宜得多。
+          mkdir -p verify-evidence
+          cp -f /tmp/verify.log verify-evidence/ 2>/dev/null
+          cp -f /tmp/srv.log verify-evidence/http-server.log 2>/dev/null
+          cp -f verify_loaded.png verify_settled.png verify-evidence/ 2>/dev/null
+          {
+            echo "Xvfb: $(command -v Xvfb || echo缺失)"
+            echo "浏览器: $(ls -d /tmp/pw-browsers/chromium-* 2>/dev/null | head -1)"
+            echo "端口探测: $(curl -s -o /dev/null -w '%{http_code}' \
+              http://127.0.0.1:8123/ 2>/dev/null)"
+            echo "日期: $(date -u)"
+          } > verify-evidence/env.txt
+          echo "---证据已收集到 verify-evidence/"
+
           # 截图要能看到。判据是"主场景加载完成"，
           # 截图是最直接的证据——比读退出码可信。
           for png in verify_loaded.png verify_settled.png; do
@@ -243,12 +295,24 @@ jobs:
           esac
 
       - name: Upload WebGL build
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: webgl-build
           path: build
           retention-days: 30
           if-no-files-found: error
+
+      # 验证过程的日志与截图。单独一个 artifact，且 if: always()——
+      # 验证失败时这恰恰是最想看的东西，跟着 build 走会一起被跳过。
+      - name: Upload verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verify-evidence
+          path: verify-evidence
+          retention-days: 30
+          if-no-files-found: ignore
 
       - name: Summary
         if: always()
