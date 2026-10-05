@@ -81,14 +81,15 @@ jobs:
 
           echo ""
           echo "=== TMP 包 shader GUID（判定 Assets/Shader 反编译副本是否与包冲突）==="
-          find Library/PackageCache/com.unity.textmeshpro*/ -name "*.shader.meta" 2>/dev/null | while read h; do
+          find Library/PackageCache -name "TMP_SDF*.shader.meta" -o -name "TMP_Sprite*.shader.meta" -o -name "TMP_Bitmap*.shader.meta" 2>/dev/null | while read h; do
+            pkg=$(echo "$h" | sed 's|.*PackageCache/||; s|@.*|@|; s|/.*||')
             guid=$(grep '^guid:' "$h" | awk '{print $2}')
-            echo "$(basename "$h" .shader.meta): $guid"
+            echo "$(basename "$h" .shader.meta): $guid   [$pkg]  (目录: $(dirname "$h" | sed 's|.*PackageCache/||'))"
           done
 
           echo ""
           echo "=== URP 包 shader GUID（供后续排查 3D 空壳 shader 用）==="
-          find Library/PackageCache/com.unity.render-pipelines.universal*/Runtime/Data -name "*.shader.meta" 2>/dev/null | head -60 | while read h; do
+          find Library/PackageCache/com.unity.render-pipelines.universal*/ -name "*.shader.meta" 2>/dev/null | head -80 | while read h; do
             guid=$(grep '^guid:' "$h" | awk '{print $2}')
             echo "$(basename "$h" .shader.meta): $guid"
           done
