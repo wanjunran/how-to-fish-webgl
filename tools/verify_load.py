@@ -194,8 +194,14 @@ def main() -> int:
             def on_dialog(d):
                 # Unity 模板的 .catch() 用 alert 报错，这是拿到
                 # function signature mismatch 的唯一途径。
-                alerts.append(d.message[:600])
-                say(f"!! alert: {d.message[:200]}")
+                #
+                # 全文留着，别截太短：wasm 栈帧（wasm-function[NNN]:0x...）
+                # 出现在消息靠后的位置，而那几行往往正是判断
+                # "空槽位"还是"签名不符"的唯一依据。
+                # run37270190222 报的 "RuntimeError: null function"
+                # 就属于这类需要看完整栈才能进一步定位的错误。
+                alerts.append(d.message)
+                say(f"!! alert（{len(d.message)} 字符）: {d.message[:300]}")
                 try:
                     d.accept()
                 except Exception:
@@ -303,6 +309,24 @@ def main() -> int:
     say(f"结论: ok={ok} sig={sig} fatal={fatal!r} other={other!r} 耗时={el:.0f}s")
     for a in alerts:
         say(f"  alert: {a[:300]}")
+
+    # 把完整的首个错误单独落盘。workflow 的注解只放得下一行摘要，
+    # 但排查 "null function" 这类错误需要看完整 wasm 栈——
+    # 栈帧在消息靠后位置，一截断就只剩结论没有证据。
+    try:
+        with open("/tmp/verify_first_error.txt", "w", encoding="utf-8") as fh:
+            if alerts:
+                fh.write("=== alert (Unity .catch 收到的原始消息) ===\n")
+                fh.write(alerts[0][:4000] + "\n")
+            if errs:
+                fh.write("\n=== pageerror (未捕获的 JS 异常) ===\n")
+                fh.write("\n".join(errs)[:4000] + "\n")
+            if not alerts and not errs:
+                fh.write("(无 alert、无 pageerror)\n")
+        say(f"首因已写入 /tmp/verify_first_error.txt")
+    except Exception as e:
+        say(f"写首因文件失败（不影响结论）: {e}")
+
     for e in errs:
         say(f"  pageerror: {e[:300]}")
     say("=" * 66)

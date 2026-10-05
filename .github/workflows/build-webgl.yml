@@ -183,7 +183,13 @@ jobs:
           #
           # 放在解压之前，是因为 .gz 也要一起删掉；
           # 放在验证之前，是因为要验证的正是用户最终会拿到的那份产物。
-          python3 tools/strip_platform_assets.py build/WebGL --apply || \
+          #
+          # 必须 sudo：unity-builder 以 root 构建，产物属主是 root，
+          # runner 用户 rmtree 会Permission denied。
+          # 上一版忘了 sudo，日志里明明白白写着
+          #   ::warning::剥离平台资源失败，继续用完整产物
+          # 而我直到抓注解才看到——体积一点没降。
+          sudo python3 tools/strip_platform_assets.py build/WebGL --apply || \
             echo "::warning::剥离平台资源失败，继续用完整产物（只是体积大）"
 
           # 必须预解压并去掉 Content-Encoding：body 已是解压态，
@@ -282,6 +288,7 @@ jobs:
           # 传出来比重新构建一次（十几分钟）便宜得多。
           mkdir -p verify-evidence
           cp -f /tmp/verify.log verify-evidence/ 2>/dev/null
+          cp -f /tmp/verify_first_error.txt verify-evidence/ 2>/dev/null
           cp -f /tmp/srv.log verify-evidence/http-server.log 2>/dev/null
           cp -f verify_loaded.png verify_settled.png verify-evidence/ 2>/dev/null
           {
@@ -316,13 +323,19 @@ jobs:
           # 顺便：上一轮拿到"退出码 2"就说明环境那关过了——
           # 浏览器起来了、页面加载了、然后报错。
           # 退出码 2 = 页面alert 或未捕获 JS 异常。
-          ALERTLINE=$(grep -a -m1 -oE 'alert: .{0,200}' /tmp/verify.log2>/dev/null || true)
-          if [ -z "$ALERTLINE" ]; then
-            ALERTLINE=$(grep -a -m1 -oE '(RuntimeError|Error|Failed)[^|]{0,180}' \
-              /tmp/verify.log 2>/dev/null || true)
+          # 优先用 verify_load.py 落盘的首因文件（完整 wasm 栈），
+          # 退回到 grep 日志。这样"null function"这类需要看栈才能定位的
+          # 错误，不会因为注解只能放一行而被削成一句没用的结论。
+          if [ -f /tmp/verify_first_error.txt ]; then
+            ALERTLINE=$(head -4 /tmp/verify_first_error.txt | tr '\n\r' '  ' \
+              | sed 's/%/%25/g; s/:/%3A/g' | cut -c1-200)
+          else
+            ALERTLINE=$(grep -a -m1 -oE 'alert（[^）]*）: .{0,180}' \
+              /tmp/verify.log 2>/dev/null | tr '\n\r' '  ' | cut -c1-200)
+            [ -z "$ALERTLINE" ] && ALERTLINE=$(head -5 /tmp/verify.log 2>/dev/null \
+              | tr '\n' ' ' | cut -c1-200)
           fi
-          [ -z "$ALERTLINE" ] && ALERTLINE=$(head -5 /tmp/verify.log 2>/dev/null \
-            | tr '\n' ' ' | cut -c1-200)
+          [ -z "$ALERTLINE" ] && ALERTLINE="（无日志，脚本可能没跑到打印）"
           BROWSER=$(for b in /usr/bin/google-chrome \
             /usr/bin/google-chrome-stable /usr/bin/chromium \
             /usr/bin/chromium-browser; do
