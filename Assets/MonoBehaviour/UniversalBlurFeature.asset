@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 1506380186, guid: 490754a642a66baec2900e84ab6bdd67, type: 3}
   m_Name: UniversalBlurFeature
   m_EditorClassIdentifier:
-  m_Active: 1
+  m_Active: 0
   iterations: 5
   downsample: 2
   enableMipMaps: 0
