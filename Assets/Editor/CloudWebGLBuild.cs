@@ -53,6 +53,42 @@ namespace WebGLCloudBuild
                 Log($"{LogPrefix}   - {scene}");
             }
 
+            // ===== 清理与 WebGL 不兼容的旧 Addressables 内容 =====
+            //
+            // AssetRipper 导出时把原游戏(Windows 版)的 StreamingAssets/aa 一并
+            // 带了进来：catalog.bin + StandaloneWindows64/*.bundle。WebGL 播放器
+            // 只查 StreamingAssets/aa/WebGL/，这些 Windows 内容永远不会被加载。
+            //
+            // 更糟的是它们会"撞车"：TMP/Localization 脚本引用重连后，
+            // Localization 包的玩家构建钩子第一次能真正生成 WebGL Addressables
+            // 内容，并在玩家构建时通过回调提供
+            //   Library/com.unity.addressables/aa/WebGL/catalog.bin
+            // 而 Unity 6 的增量构建程序(PlayerBuildProgramBase.SetupDataFiles)
+            // 发现项目里已存在同名 StreamingAssets/aa/catalog.bin 时直接抛
+            //   "Callback provided streaming assets file conflicts with file
+            //    already present in project"
+            // 整个构建终止（run 37295926767 死于这里，打包阶段 43s 白跑）。
+            //
+            // 因此构建前删掉旧目录：让 WebGL catalog 顺利交付（顺带消除运行时
+            // InvalidKeyException Key=Locale —— 旧 Windows catalog 对 WebGL 无效）。
+            // 原始文件已从仓库移除；这里作为安全网兜底，防止任何流程再把
+            // 旧内容放回来。裁剪保护不受影响：原 AddressablesLink/link.xml
+            // 已迁至 Assets/link.xml（全局生效）。
+            const string legacyAaFolder = "Assets/StreamingAssets/aa";
+            if (AssetDatabase.IsValidFolder(legacyAaFolder))
+            {
+                if (AssetDatabase.DeleteAsset(legacyAaFolder))
+                {
+                    Log($"{LogPrefix} 已删除旧 Addressables 内容 {legacyAaFolder} " +
+                        "(StandaloneWindows64 专用，与 WebGL 回调内容冲突)");
+                }
+                else
+                {
+                    Log($"{LogPrefix} 警告: 删除 {legacyAaFolder} 失败，" +
+                        "若 Addressables 回调提供同名文件将导致构建冲突");
+                }
+            }
+
             var options = new BuildPlayerOptions
             {
                 scenes = scenes,
