@@ -73,11 +73,58 @@ namespace WebGLCloudBuild
 
                 long total = files.Sum(f => new FileInfo(f).Length);
                 Log($"{LogPrefix} 产物文件数: {files.Length}, 合计: {total / 1024 / 1024} MB");
+                Log($"{LogPrefix} 产物根目录: {outputDir}");
+
+                // 关键：这三个文件是 WebGL 能不能跑起来的全部依据。
+                // 直接点名比"打印文件数"有用得多 —— 之前两轮我都是看到
+                // 82 个文件 207MB 就以为成功了，实际路径错了两轮。
+                // 缺任何一个都说明 Unity 的输出布局变了，要立刻看出来。
+                foreach (string required in new[]
+                         {
+                             "index.html",
+                             Path.Combine("Build", "WebGL.wasm"),
+                             Path.Combine("Build", "WebGL.data"),
+                             Path.Combine("Build", "WebGL.framework.js")
+                         })
+                {
+                    string full = Path.Combine(outputDir, required);
+                    Log($"{LogPrefix}   [{(File.Exists(full) ? "有" : "缺")}] {required}");
+                }
+
                 Log($"{LogPrefix} BUILD_OK");
+
+                // 下面这三行是让整轮构建判为 success 的唯一原因。
+                //
+                // game-ci 的 validateBuild（src/model/unity/build-validation/
+                // unity-build-validation.ts）只认两个信号：
+                //   1. 日志里有字面量 "Build succeeded!"
+                //   2. 否则正则匹配 "# Build results #" 段落里的 "Errors: N"
+                //
+                // 那个 "Build succeeded!" 由它自带的
+                // dist/default-build-script/.../StdOutReporter.cs 打印，
+                // 而那段代码只在**它自己的** Builder.BuildProject() 里调用。
+                // 本工程用 buildMethod 指向了本类，那个脚本根本不会执行，
+                // 于是两个信号都没有 -> validateBuild 无条件抛
+                //   "There was an error building the project."
+                //
+                // 澄清一个我搞了两轮的错误认知：validateBuild **完全不看
+                // 产物路径**。轮次 20 我认定它是在 build/ 下找不到产物，
+                // 那是猜的 —— 读源码后发现它只做上面两个字符串判断。
+                // 路径修正本身有价值（产物结构现在是对的），但它不是失败原因。
+                //
+                // 打印这行 + 退出码 0，validateBuild 才会返回通过，
+                // 后续 Upload WebGL build 步骤（if-no-files-found: error）
+                // 才会执行。
+                Console.WriteLine("Build succeeded!");
+                Console.Out.Flush();
+                EditorApplication.Exit(0);
             }
             else
             {
                 Log($"{LogPrefix} BUILD_FAILED");
+                Console.WriteLine("Build failed!");
+                Console.Out.Flush();
+                EditorApplication.Exit(101);
             }
         }
 
@@ -86,16 +133,17 @@ namespace WebGLCloudBuild
             // unity-builder v6 通过 -customBuildPath 传入输出目录，不设 BUILD_PATH
             // 环境变量，所以两处都要看。
             //
-            // 轮次 20 的教训：不要假设 v6 传入的值长什么样，也不要假设它已经包含
-            // 你想要的层级。实测它传的是
-            //     /github/workspace/build/WebGL/WebGL
-            // 比 artifact 收集路径 build/ 多了两层。产物因此落在
-            //     build/WebGL/WebGL/index.html/...
-            // 而 game-ci 的 validateBuild 在 build/ 下按平台目录找标志文件，
-            // 找不到就把成功的一轮判为 failure，Upload 步骤被 skipped。
+            // 实测 v6 传的是 /github/workspace/build/WebGL/WebGL —— 外层WebGL
+            // 是平台目录，内层是它自己加的 buildName（-customBuildName WebGL）。
+            // 这里剥掉内层，让产物落在 build/WebGL/，与 Unity 的默认输出
+            // 布局一致，也让下面 LocationPathName 的写法成立。
             //
-            // 稳妥做法：剥掉末尾重复的 "WebGL"，让产物落在 build/WebGL/。
-            // artifact 步骤收的是整个 build/，所以少一层不影响上传。
+            // 注意：剥这一层**不是**为了让 game-ci 认出产物。读CLI 源码
+            // （unity-build-validation.ts）后确认 validateBuild 只检查日志里有没有
+            // "Build succeeded!"，根本不看文件路径。轮次 20 我把它当成路径问题，
+            // 方向就错了。路径本身该修的是另一个原因：那时
+            // locationPathName 传的是 outputDir/index.html，Unity 把它当目录名，
+            // 产物多嵌一层，Upload 步骤的 path: build 收集到的结构不对。
             string customBuildPath = ReadCommandLineValue("-customBuildPath");
             if (!string.IsNullOrEmpty(customBuildPath))
             {
