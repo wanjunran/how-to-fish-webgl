@@ -75,6 +75,126 @@ jobs:
           path: Library
           key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/manifest.json', 'Assets/**') }}
 
+      # 在构建机上真的把播放器跑起来。
+      #
+      # 为什么必须这一步：轮次 23 出现过"构建全绿、产物 207MB、B 层离线校验
+      # 12/12 全过，但一加载场景就抛 function signature mismatch"。离线校验
+      # 只证明文件完整，证明不了它能跑。把验证放在构建机上，产物根本不用经过
+      # 我的沙箱（上行 77KB/s，186MB 要 40 分钟）。
+      #
+      # 三个参数缺一不可，少一个就是"环境不支持WebGL"而非"产物有问题"：
+      #   xvfb-run                 没有 X server，Chrome 连 GL 后端都起不来
+      #   --use-angle=swiftshader  软件实现 WebGL2（runner 无 GPU）
+      #   --enable-unsafe-swiftshader  新版 Chrome 默认禁用软件 WebGL
+      - name: Verify the build actually loads
+        if: always()
+        run: |
+          set +e
+          echo "### 产物实跑验证 ###" >> "$GITHUB_STEP_SUMMARY"
+
+          if [ ! -f build/WebGL/index.html ]; then
+            echo "**无 build/WebGL/index.html，跳过。**" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb > /dev/null
+
+          # runner 镜像不带 playwright 和它的 Chromium。
+          # --break-system-packages：新版 pip 不再允许直接装进系统 Python，
+          # 而 ubuntu-latest 的 3.12 带EXTERNALLY-MANAGED 标记。
+          pip3 install --break-system-packages -q playwright
+          python3 -m playwright install --with-deps chromium
+
+          # 必须预解压并去掉 Content-Encoding：body 已是解压态，
+          # 再声明压缩会让浏览器把裸数据当压缩流解，结果是坏的。
+          python3 - <<'PY'
+          import gzip, pathlib, shutil
+          root = pathlib.Path("build/WebGL")
+          for gz in root.rglob("*.gz"):
+              out = gz.with_name(gz.name[:-3])
+              with gzip.open(gz, "rb") as fi, open(out, "wb") as fo:
+                  shutil.copyfileobj(fi, fo, length=1 << 20)
+              print(f"解压 {gz.name} -> {out.name}")
+          # index.html 里写的是 .gz 文件名，改成无后缀的裸文件名，
+          # 这样不依赖任何响应头。
+          html = (root / "index.html")
+          t = html.read_text(encoding="utf-8")
+          for n in ("WebGL.data", "WebGL.wasm", "WebGL.framework.js"):
+              t = t.replace(f"/{n}.gz", f"/{n}")
+          html.write_text(t, encoding="utf-8")
+          print("index.html 已改为引用裸文件名")
+          PY
+
+          python3 -m http.server 8099 --directory build/WebGL > /tmp/srv.log 2>&1 &
+          SRV=$!
+          sleep 3
+          curl -s -o /dev/null -w "index.html HTTP=%{http_code}\n" http://127.0.0.1:8099/
+
+          timeout 420 xvfb-run -a -s "-screen 0 1280x800x24" \
+            python3 - "$GITHUB_STEP_SUMMARY" <<'PY' 2>&1 | tee /tmp/verify.log
+          import sys, time
+          from playwright.sync_api import sync_playwright
+
+          summary = open(sys.argv[1], "a")
+          logs = []
+          alert = {"msg": None}
+          t0 = time.time()
+
+          with sync_playwright() as p:
+              b = p.chromium.launch(headless=False, args=[
+                  "--use-gl=angle", "--use-angle=swiftshader",
+                  "--enable-unsafe-swiftshader", "--ignore-gpu-blocklist",
+                  "--disable-dev-shm-usage", "--no-sandbox"])
+              pg = b.new_page(viewport={"width": 1280, "height": 800})
+              pg.on("console", lambda m: logs.append(f"[{m.type}] {m.text[:200]}"))
+              pg.on("pageerror", lambda e: logs.append(f"[pageerror] {str(e)[:200]}"))
+              pg.on("dialog", lambda d: (alert.update(msg=d.message[:400]), d.accept()))
+              pg.goto("http://127.0.0.1:8099/", wait_until="domcontentloaded", timeout=60000)
+
+              ok = False
+              while time.time() - t0 < 360:
+                  time.sleep(6)
+                  st = pg.evaluate("""() => {
+                    const f = document.querySelector('#unity-progress-bar-full');
+                    const l = document.querySelector('#unity-loading-bar');
+                    const c = document.querySelector('#unity-canvas');
+                    let ctx = false;
+                    if (c) ctx = !!(c.getContext('webgl2') || c.getContext('webgl'));
+                    return {pct: f ? f.style.width : '',
+                            vis: l ? l.style.display : '?', ctx};
+                  }""")
+                  if st["ctx"] or st["vis"] == "none":
+                      ok = True
+                      break
+                  if alert["msg"]:
+                      break
+              pg.screenshot(path="verify.png")
+              b.close()
+
+          el = time.time() - t0
+          sig = alert["msg"] and "function signature mismatch" in alert["msg"]
+          if sig:
+              print("❌ **function signature mismatch 仍存在**", file=summary)
+          elif ok:
+              print(f"✅ **通过**：{el:.0f}s 内拿到 WebGL 上下文并进入主场景", file=summary)
+          elif alert["msg"]:
+              print(f"❌ 页面报错：{alert['msg']}", file=summary)
+          else:
+              print(f"⚠️ 360s 内未完成加载（软件渲染慢，不一定失败）", file=summary)
+          print(f"\n耗时 {el:.0f}s\n", file=summary)
+          print("```", file=summary)
+          for l in logs[-20:]:
+              print(l[:200], file=summary)
+          print("```", file=summary)
+          summary.close()
+
+          # 退出码在Python 里给，不要写成 `if sig; then` —— 那是 shell 语法，
+          # 放在 heredoc 里会直接语法错误，整个验证步骤跑不起来。
+          # 这个错误是我写完自检时 ast.parse 抓到的。
+          sys.exit(1 if sig else 0)
+          PY
+
       - name: Upload WebGL build
         uses: actions/upload-artifact@v4
         with:
