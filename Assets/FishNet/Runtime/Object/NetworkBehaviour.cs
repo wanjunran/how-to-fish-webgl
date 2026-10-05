@@ -150,7 +150,17 @@ namespace FishNet.Object
         /// </summary>
         [MakePublic]
         [APIExclude]
-        internal virtual void NetworkInitializeIfDisabled() { }
+        public virtual void NetworkInitializeIfDisabled() { }
+
+        // 这两个 + 上面改 public 的 NetworkInitializeIfDisabled，原本是织入器
+        // 在 IL 层生成/修改的。游戏的反编译脚本是"织入后"的产物，带
+        // public override，C# 源码层跨程序集 override internal 方法是不可能的，
+        // 所以必须在源码里就提供 public virtual 基方法（等价于织入器的产物）。
+        // 游戏侧 override 会调用 base.X()，故基类必须存在且为空实现。
+        [APIExclude]
+        public virtual void NetworkInitialize___Early() { }
+        [APIExclude]
+        public virtual void NetworkInitialize___Late() { }
 
         #region Editor.
         protected virtual void Reset()
