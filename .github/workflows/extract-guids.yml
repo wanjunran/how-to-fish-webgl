@@ -42,6 +42,23 @@ jobs:
           echo "PackageCache 内容："
           ls Library/PackageCache | head -30
           echo ""
+          echo "=== Localize* 全量（含 SO 与 MonoBehaviour）==="
+          find Library/PackageCache -name "Localize*.cs.meta" 2>/dev/null | while read h; do
+            pkg=$(echo "$h" | sed 's|.*PackageCache/||; s|@.*|@|; s|/.*||')
+            guid=$(grep '^guid:' "$h" | awk '{print $2}')
+            echo "$(basename "$h" .cs.meta): $guid   [$pkg]"
+          done
+          echo ""
+          echo "=== Localization 包 MonoBehaviour 脚本（含 'class .* : MonoBehaviour' 的文件）==="
+          for h in $(grep -rl ": MonoBehaviour" Library/PackageCache/com.unity.localization*/Runtime --include="*.cs" 2>/dev/null | head -40); do
+            meta="${h%.cs}.meta"
+            if [ -f "$meta" ]; then
+              guid=$(grep '^guid:' "$meta" | awk '{print $2}')
+              cls=$(basename "$h" .cs)
+              echo "$cls: $guid"
+            fi
+          done
+          echo ""
           echo "=== 目标脚本 GUID（类名: GUID@包版本）==="
           for cls in \
             TextMeshPro TextMeshProUGUI TMP_SubMesh TMP_SubMeshUI \
