@@ -89,6 +89,7 @@ FATAL_MARKERS = (
     "Unable to parse Build",
     "Failed to decompress",
     "memory access out of bounds",
+    "null function",
     "RuntimeError",
     "Unable to load file",
 )
@@ -188,7 +189,7 @@ def main() -> int:
             say("浏览器已启动")
             pg = b.new_page(viewport={"width": 1280, "height": 800})
 
-            pg.on("console", lambda m: logs.append(f"[{m.type}] {m.text[:300]}"))
+            pg.on("console", lambda m: logs.append(f"[{m.type}] {m.text[:800]}"))
             pg.on("pageerror", lambda e: errs.append(str(e)[:300]))
 
             def on_dialog(d):
@@ -327,6 +328,19 @@ def main() -> int:
     except Exception as e:
         say(f"写首因文件失败（不影响结论）: {e}")
 
+    # console 全文单独落盘。Unity 的 C# Debug.Log 全走 console（log/warning/
+    # error），崩溃前的最后几条日志往往直接写明引擎正在初始化什么——
+    # 比如序列化器注册失败、场景对象 Awake 里的异常。这次 "null function"
+    # 崩溃的第一现场八成就在这里，alert 里只有 wasm 索引没有语义。
+    try:
+        with open("/tmp/verify_console.txt", "w", encoding="utf-8") as fh:
+            fh.write(f"共 {len(logs)} 条 console 消息\n\n")
+            for line in logs:
+                fh.write(line + "\n")
+        say(f"console 全文已写入 /tmp/verify_console.txt（{len(logs)} 条）")
+    except Exception as e:
+        say(f"写 console 文件失败（不影响结论）: {e}")
+
     for e in errs:
         say(f"  pageerror: {e[:300]}")
     say("=" * 66)
@@ -369,8 +383,8 @@ def main() -> int:
         rc = 4
 
     summary.write(f"\n耗时 {el:.0f}s\n\n```\n")
-    for line in logs[-25:]:
-        summary.write(line[:250] + "\n")
+    for line in logs[-40:]:
+        summary.write(line[:300] + "\n")
     summary.write("```\n")
     summary.close()
     return rc

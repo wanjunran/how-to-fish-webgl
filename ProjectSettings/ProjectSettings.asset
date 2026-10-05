@@ -14,6 +14,13 @@ PlayerSettings:
   m_ShowUnitySplashLogo: 0
   m_ShowUnitySplashLogoWithScript: 0
   WebGLMemorySize: 512
+  # WebGL 异常支持 = Full(2)。AssetRipper 生成的这份 ProjectSettings 里
+  # 没写这个字段，Unity 默认 Off(0)：C# 异常不带调用栈，wasm 崩溃只给
+  # "null function / wasm-function[N]" 这种无符号栈，没法定位。
+  # Full 模式下 IL2CPP 会把 C# 调用栈嵌进异常文本打到 console.error，
+  # 是把 wasm 层崩溃翻回 C# 方法名的唯一手段（代价：wasm 略大略慢，
+  # 诊断期间可接受；定位完成后可改回）。
+  webGLEnableExceptions: 2
   webGLPowerPreference: 0
   webGLForceLinearFilter: 0
   webGLMemoryGrowthMode: 2

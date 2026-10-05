@@ -300,6 +300,9 @@ jobs:
           mkdir -p verify-evidence
           cp -f /tmp/verify.log verify-evidence/ 2>/dev/null
           cp -f /tmp/verify_first_error.txt verify-evidence/ 2>/dev/null
+          # console 全文：Unity C# 的 Debug.Log 全走 console，崩溃前最后几条
+          # 日志直接写明引擎正在初始化什么。没有它，null function 只有索引没有语义。
+          cp -f /tmp/verify_console.txt verify-evidence/ 2>/dev/null
           cp -f /tmp/srv.log verify-evidence/http-server.log 2>/dev/null
           cp -f verify_loaded.png verify_settled.png verify-evidence/ 2>/dev/null
 
