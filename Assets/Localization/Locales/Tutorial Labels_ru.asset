@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier:
   m_LocaleId:
     m_Code: ru
-  m_SharedData: {fileID: 11400000, guid: 0aab1b546691bb94fb9c97d597b830b1, type: 2}
+  m_SharedData: {fileID: 11400000, guid: 12b8b93292de64249b7eb258ee6f215d, type: 2}
   m_Metadata:
     m_Items: []
   m_TableData:
