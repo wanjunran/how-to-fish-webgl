@@ -1,0 +1,63 @@
+name: Extract package script GUIDs
+
+# 目的：从 Library 缓存里的 PackageCache 直接 grep 出 TMP / Localization 等
+# 包脚本的官方 GUID（纯文本 YAML，不需要启动 Unity）。
+#
+# 背景：AssetRipper 导出的场景把 TextMeshProUGUI（1042 处）、
+# LocalizeStringEvent（542 处）等的 m_Script 指向原游戏 DLL 的 guid
+# （67dfb1fd... / 76ad3cbe...），这两个 DLL 不在本项目里，包形式的
+# TMP/Localization 源码脚本 GUID 不同，需要逐类映射回官方 GUID。
+# 类的身份已用序列化字段认定（见 tools/fix_script_guids.py 注释）。
+#
+# 为什么不走本地：沙箱没有 Library（Unity 没跑过），PackageCache
+# 只在 CI 的缓存里。这个 job 只读缓存 + grep，2 分钟内结束。
+
+on:
+  workflow_dispatch:
+
+jobs:
+  extract-guids:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore Library cache
+        uses: actions/cache@v4
+        with:
+          path: Library
+          # key 不重要，restore-keys 兜底命中任意一份 Library 缓存
+          # （PackageCache 只由 Packages/manifest.json 决定，manifest 从未变过）
+          key: Library-WebGL-notexist-${{ github.run_id }}
+          restore-keys: |
+            Library-WebGL-
+
+      - name: Extract GUIDs
+        run: |
+          set -e
+          if [ ! -d Library/PackageCache ]; then
+            echo "::error::Library/PackageCache 不存在——缓存没命中，看上面的 cache 日志"
+            exit 1
+          fi
+          echo "PackageCache 内容："
+          ls Library/PackageCache | head -30
+          echo ""
+          echo "=== 目标脚本 GUID（类名: GUID@包版本）==="
+          for cls in \
+            TextMeshPro TextMeshProUGUI TMP_SubMesh TMP_SubMeshUI \
+            TMP_InputField TMP_Dropdown TMP_Scrollbar TMP_Button \
+            TMP_SpriteAsset TMP_FontAsset TMP_Settings TMP_StyleSheet \
+            TMP_ColorGradient TMP_Style \
+            LocalizeStringEvent LocalizeAudioClipEvent LocalizeTextureEvent \
+            LocalizeSpriteEvent LocalizeGameObjectEvent LocalizeUIPanelEvent \
+            LocalizePressEvent LocalizeTrackedDeviceEvent \
+            Locale LocalizationSettings StringTable AssetTable \
+            StringTableCollection AssetTableCollection \
+            ; do
+            hits=$(find Library/PackageCache -name "$cls.cs.meta" 2>/dev/null | head -2)
+            for h in $hits; do
+              pkg=$(echo "$h" | sed 's|.*PackageCache/||; s|@.*|@|; s|/.*||')
+              guid=$(grep '^guid:' "$h" | awk '{print $2}')
+              echo "$cls: $guid   [$pkg]"
+            done
+          done
