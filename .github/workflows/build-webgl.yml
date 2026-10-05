@@ -67,13 +67,17 @@ jobs:
           targetPlatform: WebGL
           buildMethod: WebGLCloudBuild.CloudWebGLBuild.Perform
           dockerMemoryLimit: 15g
-          # 必须 NoIncrement，不能留默认 Semantic。
+          # 必须 None，不能留默认 Semantic，也不能写 NoIncrement。
+          # 这个 game-ci CLI 版本（v0.1.72）的合法值是
+          #   None / Semantic / Tag / Custom
           # Semantic 会在 build 前跑 `git status --porcelain`，
-          # 一旦树"脏"就直接 [ERROR] Branch is dirty 退出，
-          # 而 CI 把 Library/ 从缓存恢复出来后它必然未跟踪 -> 树脏。
-          # （Library/ 已加进 .gitignore，但其他未跟踪文件也可能让树脏，
-          #   用 NoIncrement 直接绕开脏树检查最稳。）
-          versioning: NoIncrement
+          # 一旦树"脏"就直接 [ERROR] Branch is dirty 退出；
+          # CI 把 Library/ 从缓存恢复出来后它必然未跟踪 -> 树脏。
+          # （Library/ 已加进 .gitignore，但其他未跟踪文件也可能让树脏。）
+          # None = 直接用 ProjectSettings 里的现有版本，不做任何语义计算，
+          # 因此不查脏树，最稳。NoIncrement 不是合法值，会直接报
+          # "Invalid values ... Choices: None, Semantic, Tag, Custom"。
+          versioning: None
 
       - name: Save Library cache
         if: always()
