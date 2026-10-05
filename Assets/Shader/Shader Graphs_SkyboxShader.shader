@@ -261,7 +261,7 @@ Shader "Shader Graphs/SkyboxShader"
     	r0.w = (r0.w * r1.w);
     	o0.xyz = mad(r0.www, r1.xyz, r0.xyz);
     	o0.w = float(1);
-    	return;
+    	return o0;
                 }
                 return o0;
             }

@@ -34,8 +34,13 @@ RULES = [
     # asfloat(int(5).zw) -> float(5)
     (re.compile(r"asfloat\(int\((-?\d+)\)\.[xyzw]+\)"), r"float(\1)",
      "立即数取分量 -> float 标量"),
-    # float(5).zw -> float2(5,5).zw 风格的裸立即数取分量
-    (re.compile(r"float\((-?[\d.eE+-]+)\)\.([xyzw]+)"),
+    # DXBC 的 ret 被直译成无值 return，会让外层包好的 return o0 变成死代码，
+    # Unity 报 "'frag': function must return a value"。
+    (re.compile(r"(?m)^(\s*)return;\s*$"), r"\1return o0;",
+     "裸 return -> return o0"),
+    # float(5).zw -> float2(5, 5)。注意：只处理 2 个及以上分量 —— 单分量的
+    # float(5).x 在 HLSL 里本来就合法，改写成 float1(...) 反而会报错。
+    (re.compile(r"float\((-?[\d.eE+-]+)\)\.([xyzw]{2,4})"),
      lambda m: f"float{len(m.group(2))}({', '.join([m.group(1)] * len(m.group(2)))})",
      "裸立即数取分量 -> 显式向量"),
 ]
