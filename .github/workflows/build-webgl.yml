@@ -78,6 +78,14 @@ jobs:
           # 因此不查脏树，最稳。NoIncrement 不是合法值，会直接报
           # "Invalid values ... Choices: None, Semantic, Tag, Custom"。
           versioning: None
+          # 钉死 game-ci CLI 版本，别留默认的 latest。
+          # latest 会让 action 每轮启动时调 GitHub API 解析最新 release；
+          # 托管 runner 的出口 IP 是共享的，API 配额说没就没 —— run
+          # 37299223456 就死在这里（"Failed to resolve the latest game-ci
+          # CLI release: GitHub API returned 403"），连 Unity 都没启动。
+          # 钉住后走本地解析+缓存（cache key: game-ci-cli-v0.1.72-linux-x64），
+          # 不再依赖那一发 API 请求。
+          cliVersion: v0.1.72
 
       - name: Save Library cache
         if: always()
