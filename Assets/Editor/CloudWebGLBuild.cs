@@ -23,6 +23,25 @@ namespace WebGLCloudBuild
 
         public static void Perform()
         {
+            // ===== 诊断期设置（定位 null function 后可回收）=====
+            //
+            // 现象：加载 ~90% 时 wasm 抛 "RuntimeError: null function"，
+            // 栈只有 wasm-function[N] 索引——这个项目里没有 name section，
+            // 索引翻不回 C# 方法名，没法定位。
+            //
+            // FullWithStacktrace：空引用/越界由 Unity 嵌入的检查转为托管异常，
+            // 并携带托管调用栈，随异常文本打进 console.error。
+            // Embedded：把符号直接嵌进 wasm，浏览器报错时栈帧显示
+            // demangle 后的原始函数名（不再是无意义的 wasm-function[N]）。
+            // 两者都让 wasm 变大变慢，诊断期可接受；定位完成后
+            // 删掉这几行即回到发布配置（PlayerSettings 里的值会自然生效）。
+            PlayerSettings.WebGL.exceptionSupport =
+                WebGLExceptionSupport.FullWithStacktrace;
+            PlayerSettings.WebGL.debugSymbolMode =
+                WebGLDebugSymbolMode.Embedded;
+            Log($"{LogPrefix} 诊断设置: Exceptions={PlayerSettings.WebGL.exceptionSupport}, " +
+                $"DebugSymbols={PlayerSettings.WebGL.debugSymbolMode}");
+
             string outputDir = ResolveOutputDir();
             Directory.CreateDirectory(outputDir);
 

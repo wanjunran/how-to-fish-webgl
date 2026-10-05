@@ -14,13 +14,13 @@ PlayerSettings:
   m_ShowUnitySplashLogo: 0
   m_ShowUnitySplashLogoWithScript: 0
   WebGLMemorySize: 512
-  # WebGL 异常支持 = Full(2)。AssetRipper 生成的这份 ProjectSettings 里
-  # 没写这个字段，Unity 默认 Off(0)：C# 异常不带调用栈，wasm 崩溃只给
-  # "null function / wasm-function[N]" 这种无符号栈，没法定位。
-  # Full 模式下 IL2CPP 会把 C# 调用栈嵌进异常文本打到 console.error，
-  # 是把 wasm 层崩溃翻回 C# 方法名的唯一手段（代价：wasm 略大略慢，
-  # 诊断期间可接受；定位完成后可改回）。
-  webGLEnableExceptions: 2
+  # WebGL 异常支持 = Full With Stacktrace(3)。AssetRipper 生成的这份
+  # ProjectSettings 里没写这个字段；枚举: 0=None, 1=ExplicitlyThrown,
+  # 2=FullWithoutStacktrace, 3=FullWithStacktrace（含托管调用栈）。
+  # 注意：构建脚本 CloudWebGLBuild.Perform 里也用 C# API 显式设置了
+  # 同样的值（诊断期），这里写出来是为了让设置对编辑器会话同样生效。
+  # 两者定位完成后都应改回发布值。
+  webGLEnableExceptions: 3
   webGLPowerPreference: 0
   webGLForceLinearFilter: 0
   webGLMemoryGrowthMode: 2
