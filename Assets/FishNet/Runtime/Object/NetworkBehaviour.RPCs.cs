@@ -91,7 +91,7 @@ namespace FishNet.Object
         [APIExclude]
         [MakePublic]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void RegisterServerRpc(uint hash, ServerRpcDelegate del)
+        public void RegisterServerRpc(uint hash, ServerRpcDelegate del)
         {
             if (_serverRpcDelegates.TryAdd(hash, del))
                 IncreaseRpcMethodCount();
@@ -106,7 +106,7 @@ namespace FishNet.Object
         [APIExclude]
         [MakePublic]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void RegisterObserversRpc(uint hash, ClientRpcDelegate del)
+        public void RegisterObserversRpc(uint hash, ClientRpcDelegate del)
         {
             if (_observersRpcDelegates.TryAdd(hash, del))
                 IncreaseRpcMethodCount();
@@ -121,7 +121,7 @@ namespace FishNet.Object
         [APIExclude]
         [MakePublic]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void RegisterTargetRpc(uint hash, ClientRpcDelegate del)
+        public void RegisterTargetRpc(uint hash, ClientRpcDelegate del)
         {
             if (_targetRpcDelegates.TryAdd(hash, del))
                     IncreaseRpcMethodCount();

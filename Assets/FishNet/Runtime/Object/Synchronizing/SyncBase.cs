@@ -188,7 +188,7 @@ namespace FishNet.Object.Synchronizing.Internal
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [MakePublic]
-        internal void InitializeEarly(NetworkBehaviour nb, uint syncIndex, bool isSyncObject)
+        public void InitializeEarly(NetworkBehaviour nb, uint syncIndex, bool isSyncObject)
         {
             NetworkBehaviour = nb;
             SyncIndex = syncIndex;
@@ -202,7 +202,7 @@ namespace FishNet.Object.Synchronizing.Internal
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         [MakePublic]
-        internal void InitializeLate()
+        public void InitializeLate()
         {
             Initialized();
         }
