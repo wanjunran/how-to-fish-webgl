@@ -35,6 +35,19 @@ namespace FishNet.CodeGenerating.ILCore
             if (compiledAssembly.Name.Contains("Editor"))
                 return false;
 
+            /* This project's game scripts (Assembly-CSharp) are AssetRipper-decompiled
+             * POST-WEAVE sources from the original build. They already contain every
+             * weaver product: RegisterServerRpc/RegisterObserversRpc/RegisterTargetRpc
+             * calls, NetworkInitialize___Early/Late overrides, ___Rpc delegates and
+             * GWrite___/GRead___ serializer call sites. Running the weaver over them
+             * re-generates those members on top of the existing ones and produces IL
+             * that IL2CPP rejects with a NullReferenceException inside
+             * ControlFlowGraphBuilder.ConnectBlock (seen on PlayerVitals.NetworkInitialize___Early).
+             * All base members those call sites need are public in FishNet source now,
+             * so the scripts compile as-is and must NOT be woven again. */
+            if (compiledAssembly.Name == "Assembly-CSharp")
+                return false;
+
             /* This line contradicts the one below where referencesFishNet
              * becomes true if the assembly is FishNetAssembly. This is here
              * intentionally to stop codegen from running on the runtime
