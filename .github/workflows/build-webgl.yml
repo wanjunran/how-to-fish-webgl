@@ -38,6 +38,13 @@ jobs:
             Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-
             Library-WebGL-
 
+      # 把 URP/Core/ShaderGraph 包里的官方 shader 源码覆盖到 AssetRipper 留下的
+      # 空壳上（按 Shader "名字" 匹配，保留 .meta GUID 所以材质引用不断）。
+      # 版本来自 Library/PackageCache，与 Packages/manifest.json 声明的完全一致，
+      # 不需要在网上猜版本；缓存未命中时脚本自行跳过，构建照常进行。
+      - name: Restore official shader sources
+        run: python3 tools/sync_official_shaders.py
+
       # 使用 game-ci/unity-builder v6 —— 这是首个内置 `personal` 授权策略的版本。
       #
       # 为什么必须用 v6 而不是 v4：
