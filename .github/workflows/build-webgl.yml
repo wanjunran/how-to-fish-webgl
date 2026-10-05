@@ -306,21 +306,37 @@ jobs:
           # 我只能看到"某一步红了"，看不到红在哪，
           # 只能靠时间线猜——而猜错的代价是一次十几分钟的构建。
           #
-          # check-runs 的 output 无需认证即可读，
-          # 页面和 API 都能看到。这是唯一能让失败原因
-          # 自己浮出来的通道，不加就只能继续猜。
-          # 故意用"结论+首因"的结构：一眼能看出是环境问题还是产物问题。
-          FIRSTLINE=$(head -3 /tmp/verify.log 2>/dev/null | tr '\n' ' ' | cut -c1-180)
+          # 关键教训：上一版把结论写进了 step summary，
+          # 但 step summary 在页面上是异步加载的片段，
+          # 匿名curl 抓 run 页面根本取不到正文（实测只拿到
+          # "退出码 2"这一句 注解里的文字）。
+          # 而 ::error:: / ::warning:: 注解是直接出现在 run 页面
+          # 列表里的，curl 抓得到。所以结论必须走注解。
+          #
+          # 顺便：上一轮拿到"退出码 2"就说明环境那关过了——
+          # 浏览器起来了、页面加载了、然后报错。
+          # 退出码 2 = 页面alert 或未捕获 JS 异常。
+          ALERTLINE=$(grep -a -m1 -oE 'alert: .{0,200}' /tmp/verify.log2>/dev/null || true)
+          if [ -z "$ALERTLINE" ]; then
+            ALERTLINE=$(grep -a -m1 -oE '(RuntimeError|Error|Failed)[^|]{0,180}' \
+              /tmp/verify.log 2>/dev/null || true)
+          fi
+          [ -z "$ALERTLINE" ] && ALERTLINE=$(head -5 /tmp/verify.log 2>/dev/null \
+            | tr '\n' ' ' | cut -c1-200)
+          BROWSER=$(for b in /usr/bin/google-chrome \
+            /usr/bin/google-chrome-stable /usr/bin/chromium \
+            /usr/bin/chromium-browser; do
+            [ -x "$b" ] && echo "$b" && break; done)
+          [ -z "$BROWSER" ] && BROWSER="（未找到任何浏览器）"
+
           {
             echo "### 产物实跑验证"
             echo ""
-            echo "退出码 \`$VR\` | 耗时判定见 summary"
+            echo "退出码 \`$VR\` | 浏览器 \`$BROWSER\`"
             echo ""
-            echo "环境：$(grep -h '浏览器:' verify-evidence/env.txt 2>/dev/null)"
-            echo ""
-            echo "日志开头："
+            echo "首因："
             echo '```'
-            echo "${FIRSTLINE:-（无日志，说明脚本没跑到打印）}"
+            echo "${ALERTLINE:-（无日志）}"
             echo '```'
             echo ""
             echo "完整日志在 verify-evidence artifact 里（需登录下载）。"
@@ -330,15 +346,19 @@ jobs:
 
           case "$VR" in
             0)
-              echo "实跑验证通过：主场景加载完成"
-              TITLE="验证通过"
+              TITLE="验证通过：主场景加载完成"
               ;;
             4)
               # 软件渲染下 600s 仍未加载完，可能是慢而不是坏。
               # 如实记 warning，不让整个 job 变红（产物本身可能没问题，
               # 只是这台 runner 的 CPU 跑不动）。
-              echo "::warning::软件渲染下 600s 未完成加载，不判定为失败"
               TITLE="验证超时（不判失败）"
+              ;;
+            1)
+              TITLE="验证失败：function signature mismatch 仍存在"
+              ;;
+            2)
+              TITLE="验证失败：页面报错，退出码 2"
               ;;
             3)
               TITLE="验证脚本自身出错，产物未被验证"
@@ -349,11 +369,26 @@ jobs:
           esac
           echo "验证结论: $TITLE" >> "$GITHUB_STEP_SUMMARY"
 
+          # 结论写进注解。注解直接出现在 run 页面，匿名可抓——
+          # 这是实测唯一能读到的通道（step summary 抓不到）。
+          # 单行、去掉换行，注解才不会被截断。
+          # 还要转义 GitHub 注解的控制字符：% CR LF。
+          # 错误信息里出现这三样东西的概率不低（堆栈、路径、进度百分比），
+          # 而未转义的 % 会被当成转义序列，把后面的内容吃掉。
+          ONELINE=$(echo "$ALERTLINE" | tr '\n\r' '  ' | tr -d '\r' \
+            | sed 's/%/%25/g; s/:/%3A/g' | cut -c1-200)
+          if [ "$VR" -eq 0 ]; then
+            echo "::notice title=验证通过::主场景加载完成，用时见 summary"
+          elif [ "$VR" -eq 4 ]; then
+            echo "::warning title=验证超时::软件渲染下未在600s 内完成加载，判为环境慢而非产物坏"
+          else
+            echo "::error title=$TITLE::${ONELINE:-（无日志，脚本可能没跑到打印）}"
+          fi
+
           # 非 0 且不是"超时"就一定让步骤红。
           # 退出码 4 是唯一的例外：软件渲染可能只是慢，
           # 那不等于产物有问题，如实记 warning 就好。
           if [ "$VR" -ne 0 ] && [ "$VR" -ne 4 ]; then
-            echo "::error::实跑验证失败，退出码 $VR（验证摘要见 build 步骤的 step summary）"
             exit 1
           fi
 
