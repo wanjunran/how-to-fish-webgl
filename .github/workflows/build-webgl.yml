@@ -291,6 +291,34 @@ jobs:
           cp -f /tmp/verify_first_error.txt verify-evidence/ 2>/dev/null
           cp -f /tmp/srv.log verify-evidence/http-server.log 2>/dev/null
           cp -f verify_loaded.png verify_settled.png verify-evidence/ 2>/dev/null
+
+          # 验证失败时，让构建机自己读 wasm 把结论报出来。
+          #
+          # 背景：签名错修好之后，错误变成了
+          #   RuntimeError: null function at wasm-function[103863]
+          # 这个问题源码层面看不出来——33 个方法名、签名、调用点
+          # 全部核对无误（读 16/16、写 17/17）。只能读产物字节码。
+          #
+          # 而产物在构建机上。把 195 MB 下载到本地要 40 分钟
+          # （上行 77 KB/s），让机器自己分析只要几秒。
+          # wabt 的 wasm-objdump 是标准工具，解析正确；
+          # 缺了就退回inspect_wasm.py 内置的解析器。
+          if [ "$VR" -ne 0 ] && [ "$VR" -ne 4 ] && [ -f build/WebGL/Build/WebGL.wasm ]; then
+            echo "--- 分析 wasm 函数表"
+            # 从首因里抠出 wasm-function[NNN]
+            WIDX=$(grep -a -oE 'wasm-function\[[0-9]+\]' \
+              /tmp/verify_first_error.txt 2>/dev/null \
+              | head -1 | grep -oE '[0-9]+' || true)
+            echo "报错函数索引: ${WIDX:-（日志里没找到）}"
+            sudo apt-get install -y -qq wabt 2>&1 | tail -1
+            python3 tools/inspect_wasm.py build/WebGL/Build/WebGL.wasm \
+              ${WIDX:+$WIDX} > /tmp/wasm_report.txt 2>&1
+            # 只取关键行，避免注解过长被截断
+            grep -E "表总项数|起始槽位|无条目|func\[|签名" \
+              /tmp/wasm_report.txt 2>/dev/null | head -12 \
+              >> verify-evidence/wasm-report.txt || true
+            cat /tmp/wasm_report.txt 2>/dev/null | head -20
+          fi
           {
             echo "Xvfb: $(command -v Xvfb || echo缺失)"
             echo "浏览器: $(for b in /usr/bin/google-chrome \
@@ -336,6 +364,19 @@ jobs:
               | tr '\n' ' ' | cut -c1-200)
           fi
           [ -z "$ALERTLINE" ] && ALERTLINE="（无日志，脚本可能没跑到打印）"
+
+          # wasm 分析结论也拼进注解。null function 这类问题
+          # 光看"函数索引 103863"没法判断，得知道那个槽位是空的
+          # 还是签名不符——这两者的修法完全不同。
+          if [ -f verify-evidence/wasm-report.txt ]; then
+            WSLOT=$(grep -m1 -oE '起始槽位: [0-9]+' \
+              verify-evidence/wasm-report.txt 2>/dev/null || true)
+            WFUNC=$(grep -m1 -oE 'func\[[0-9]+\] 签名: [^ ]+' \
+              verify-evidence/wasm-report.txt 2>/dev/null \
+              | sed 's/%/%25/g' || true)
+            [ -n "$WSLOT$WFUNC" ] && \
+              ALERTLINE="$ALERTLINE | ${WSLOT} ${WFUNC}"
+          fi
           BROWSER=$(for b in /usr/bin/google-chrome \
             /usr/bin/google-chrome-stable /usr/bin/chromium \
             /usr/bin/chromium-browser; do
