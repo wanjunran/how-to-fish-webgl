@@ -321,7 +321,7 @@ public class Explosive : Item
 		pooledWriter.WriteUInt32(tick);
 		pooledWriter.WriteBoolean(forced);
 		pooledWriter.WriteBoolean(instant);
-		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoForced);
+		GameTypeSerializersPooled.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoForced);
 		SendObserversRpc(2u, pooledWriter, channel, DataOrderType.Default, bufferLast: false, excludeServer: false, excludeOwner: false);
 		pooledWriter.Store();
 	}
@@ -348,7 +348,7 @@ public class Explosive : Item
 		uint num = PooledReader0.ReadUInt32();
 		bool flag = PooledReader0.ReadBoolean();
 		bool flag2 = PooledReader0.ReadBoolean();
-		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializersPooled.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsClientInitialized)
 		{
 			RpcLogic___ObserverActivate___1538889672(num, flag, flag2, player);

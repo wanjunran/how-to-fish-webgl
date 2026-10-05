@@ -882,8 +882,8 @@ public class RigidbodySync : NetworkBehaviour
 		pooledWriter.WriteVector3(pos);
 		pooledWriter.WriteQuaternion32(rot);
 		pooledWriter.WriteBoolean(onBoat);
-		GameTypeSerializers.GWrite___System_002ESingle_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, extraHingeAngles);
-		GameTypeSerializers.GWrite___UnityEngine_002EQuaternion_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, extraHingeRots);
+		GameTypeSerializersPooled.GWrite___System_002ESingle_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, extraHingeAngles);
+		GameTypeSerializersPooled.GWrite___UnityEngine_002EQuaternion_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, extraHingeRots);
 		SendObserversRpc(0u, pooledWriter, channel2, DataOrderType.Default, bufferLast: false, excludeServer: true, excludeOwner: false);
 		pooledWriter.Store();
 	}
@@ -927,8 +927,8 @@ public class RigidbodySync : NetworkBehaviour
 		Vector3 vector = PooledReader0.ReadVector3();
 		Quaternion quaternion = PooledReader0.ReadQuaternion32();
 		bool flag = PooledReader0.ReadBoolean();
-		float[] array = GameTypeSerializers.GRead___System_002ESingle_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		Quaternion[] array2 = GameTypeSerializers.GRead___UnityEngine_002EQuaternion_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		float[] array = GameTypeSerializersPooled.GRead___System_002ESingle_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Quaternion[] array2 = GameTypeSerializersPooled.GRead___UnityEngine_002EQuaternion_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsClientInitialized)
 		{
 			RpcLogic___ObserverSetServerPosRot___927077940(networkConnection, vector, quaternion, flag, array, array2, channel);

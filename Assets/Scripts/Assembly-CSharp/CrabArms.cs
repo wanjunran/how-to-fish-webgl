@@ -245,7 +245,7 @@ public class CrabArms : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
+		GameTypeSerializersPooled.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, player);
 		SendObserversRpc(0u, pooledWriter, channel, DataOrderType.Default, bufferLast: false, excludeServer: true, excludeOwner: false);
 		pooledWriter.Store();
 	}
@@ -257,7 +257,7 @@ public class CrabArms : NetworkBehaviour
 
 	private void RpcReader___ObserverAttackTarget___3849956746(PooledReader PooledReader0, Channel channel)
 	{
-		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializersPooled.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsClientInitialized)
 		{
 			RpcLogic___ObserverAttackTarget___3849956746(player);

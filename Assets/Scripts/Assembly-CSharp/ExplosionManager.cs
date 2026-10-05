@@ -283,7 +283,7 @@ public class ExplosionManager : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializersPooled.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
 		pooledWriter.WriteVector3(pos);
 		SendObserversRpc(0u, pooledWriter, channel, DataOrderType.Default, bufferLast: false, excludeServer: false, excludeOwner: false);
 		pooledWriter.Store();
@@ -306,7 +306,7 @@ public class ExplosionManager : NetworkBehaviour
 
 	private void RpcReader___ObserverExplode___4259294983(PooledReader PooledReader0, Channel channel)
 	{
-		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializersPooled.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Vector3 vector = PooledReader0.ReadVector3();
 		if (base.IsClientInitialized)
 		{

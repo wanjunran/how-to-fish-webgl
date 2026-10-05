@@ -553,11 +553,11 @@ public class PlayerVitals : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoHit);
+		GameTypeSerializersPooled.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, playerWhoHit);
 		pooledWriter.WriteVector3(pos);
 		pooledWriter.WriteVector3(dir);
 		pooledWriter.WriteInt32(damage);
-		GameTypeSerializers.GWrite___DamageTypeFishNet_002ESerializing_002EGenerated(pooledWriter, type);
+		GameTypeSerializersPooled.GWrite___DamageTypeFishNet_002ESerializing_002EGenerated(pooledWriter, type);
 		SendObserversRpc(0u, pooledWriter, channel, DataOrderType.Default, bufferLast: false, excludeServer: false, excludeOwner: false);
 		pooledWriter.Store();
 	}
@@ -572,11 +572,11 @@ public class PlayerVitals : NetworkBehaviour
 
 	private void RpcReader___ObserverHit___2388800966(PooledReader PooledReader0, Channel channel)
 	{
-		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializersPooled.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		Vector3 vector = PooledReader0.ReadVector3();
 		Vector3 vector2 = PooledReader0.ReadVector3();
 		int num = PooledReader0.ReadInt32();
-		DamageType damageType = GameTypeSerializers.GRead___DamageTypeFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		DamageType damageType = GameTypeSerializersPooled.GRead___DamageTypeFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsClientInitialized)
 		{
 			RpcLogic___ObserverHit___2388800966(player, vector, vector2, num, damageType);

@@ -539,8 +539,8 @@ public class ProjectileManager : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, owner);
-		GameTypeSerializers.GWrite___WeaponInfoFishNet_002ESerializing_002EGenerated(pooledWriter, weaponInfo);
+		GameTypeSerializersPooled.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, owner);
+		GameTypeSerializersPooled.GWrite___WeaponInfoFishNet_002ESerializing_002EGenerated(pooledWriter, weaponInfo);
 		pooledWriter.WriteUInt32(tick);
 		pooledWriter.WriteUInt32(id);
 		pooledWriter.WriteVector3(pos);
@@ -556,8 +556,8 @@ public class ProjectileManager : NetworkBehaviour
 
 	private void RpcReader___ObserverAddProjectile___3746676724(PooledReader PooledReader0, Channel channel)
 	{
-		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		WeaponInfo weaponInfo = GameTypeSerializers.GRead___WeaponInfoFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializersPooled.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		WeaponInfo weaponInfo = GameTypeSerializersPooled.GRead___WeaponInfoFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		uint num = PooledReader0.ReadUInt32();
 		uint num2 = PooledReader0.ReadUInt32();
 		Vector3 vector = PooledReader0.ReadVector3();
@@ -578,12 +578,12 @@ public class ProjectileManager : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, owner);
-		GameTypeSerializers.GWrite___WeaponInfoFishNet_002ESerializing_002EGenerated(pooledWriter, weaponInfo);
+		GameTypeSerializersPooled.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, owner);
+		GameTypeSerializersPooled.GWrite___WeaponInfoFishNet_002ESerializing_002EGenerated(pooledWriter, weaponInfo);
 		pooledWriter.WriteUInt32(tick);
 		pooledWriter.WriteUInt32(id);
 		pooledWriter.WriteVector3(pos);
-		GameTypeSerializers.GWrite___UnityEngine_002EVector3_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, velocities);
+		GameTypeSerializersPooled.GWrite___UnityEngine_002EVector3_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, velocities);
 		SendObserversRpc(1u, pooledWriter, channel, DataOrderType.Default, bufferLast: false, excludeServer: false, excludeOwner: false);
 		pooledWriter.Store();
 	}
@@ -595,12 +595,12 @@ public class ProjectileManager : NetworkBehaviour
 
 	private void RpcReader___ObserverAddProjectiles___1894401688(PooledReader PooledReader0, Channel channel)
 	{
-		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
-		WeaponInfo weaponInfo = GameTypeSerializers.GRead___WeaponInfoFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializersPooled.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		WeaponInfo weaponInfo = GameTypeSerializersPooled.GRead___WeaponInfoFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		uint num = PooledReader0.ReadUInt32();
 		uint num2 = PooledReader0.ReadUInt32();
 		Vector3 vector = PooledReader0.ReadVector3();
-		Vector3[] array = GameTypeSerializers.GRead___UnityEngine_002EVector3_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Vector3[] array = GameTypeSerializersPooled.GRead___UnityEngine_002EVector3_005B_005DFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		if (base.IsClientInitialized)
 		{
 			RpcLogic___ObserverAddProjectiles___1894401688(player, weaponInfo, num, num2, vector, array);

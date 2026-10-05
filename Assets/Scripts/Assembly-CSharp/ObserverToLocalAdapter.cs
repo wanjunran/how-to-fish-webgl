@@ -80,7 +80,7 @@ public class ObserverToLocalAdapter : NetworkBehaviour
 		}
 		Channel channel2 = channel;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GameTypeSerializers.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
+		GameTypeSerializersPooled.GWrite___ItemFishNet_002ESerializing_002EGenerated(pooledWriter, item);
 		pooledWriter.WriteUInt8Unpacked(vel);
 		SendObserversRpc(0u, pooledWriter, channel2, DataOrderType.Default, bufferLast: false, excludeServer: false, excludeOwner: false);
 		pooledWriter.Store();
@@ -93,7 +93,7 @@ public class ObserverToLocalAdapter : NetworkBehaviour
 
 	private void RpcReader___PlayImpactSound___413717140(PooledReader PooledReader0, Channel channel)
 	{
-		Item item = GameTypeSerializers.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Item item = GameTypeSerializersPooled.GRead___ItemFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		byte b = PooledReader0.ReadUInt8Unpacked();
 		if (base.IsClientInitialized)
 		{

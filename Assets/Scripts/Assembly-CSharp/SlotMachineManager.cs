@@ -146,9 +146,9 @@ public class SlotMachineManager : NetworkBehaviour
 		}
 		Channel channel = Channel.Reliable;
 		PooledWriter pooledWriter = WriterPool.Retrieve();
-		GameTypeSerializers.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, roller);
-		GameTypeSerializers.GWrite___System_002EByte_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, itemIDs);
-		GameTypeSerializers.GWrite___System_002EByte_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, itemSkins);
+		GameTypeSerializersPooled.GWrite___PlayerFishNet_002ESerializing_002EGenerated(pooledWriter, roller);
+		GameTypeSerializersPooled.GWrite___System_002EByte_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, itemIDs);
+		GameTypeSerializersPooled.GWrite___System_002EByte_005B_005DFishNet_002ESerializing_002EGenerated(pooledWriter, itemSkins);
 		pooledWriter.WriteUInt8Unpacked(rolled);
 		SendObserversRpc(0u, pooledWriter, channel, DataOrderType.Default, bufferLast: false, excludeServer: true, excludeOwner: false);
 		pooledWriter.Store();
@@ -161,7 +161,7 @@ public class SlotMachineManager : NetworkBehaviour
 
 	private void RpcReader___SendRoll___1775394313(PooledReader PooledReader0, Channel channel)
 	{
-		Player player = GameTypeSerializers.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
+		Player player = GameTypeSerializersPooled.GRead___PlayerFishNet_002ESerializing_002EGenerateds(PooledReader0);
 		byte[] array = PooledReader0.ReadUInt8ArrayAndSizeAllocated();
 		byte[] array2 = PooledReader0.ReadUInt8ArrayAndSizeAllocated();
 		byte b = PooledReader0.ReadUInt8Unpacked();
