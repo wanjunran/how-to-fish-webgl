@@ -158,6 +158,20 @@ jobs:
             libcairo2 libasound2 2>&1 | tail -3
           echo "（上面若有 apt 报错可以忽略：镜像自带这些库，缺的话 launch 会明确报缺哪个）"
 
+          # 先剥掉 Windows 版的死重量，再解压。
+          #
+          # 产物里带着 89 MB Windows 专用资源
+          # （StreamingAssets/aa/StandaloneWindows64 和 APVStreamingAssets），
+          # WebGL 运行时不会有任何代码去读它们—— settings.json 里
+          # m_buildTarget 写死 StandaloneWindows64，catalog 里也没有
+          # WebGL 路径，而脚本里 Addressables 引用数为 0。
+          # 详见 tools/strip_platform_assets.py 里的三条证据。
+          #
+          # 放在解压之前，是因为 .gz 也要一起删掉；
+          # 放在验证之前，是因为要验证的正是用户最终会拿到的那份产物。
+          python3 tools/strip_platform_assets.py build/WebGL --apply || \
+            echo "::warning::剥离平台资源失败，继续用完整产物（只是体积大）"
+
           # 必须预解压并去掉 Content-Encoding：body 已是解压态，
           # 再声明压缩会让浏览器把裸数据当压缩流解，结果是坏的。
           #

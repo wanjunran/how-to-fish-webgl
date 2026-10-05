@@ -84,12 +84,26 @@ def strip_product(product: pathlib.Path, apply: bool) -> int:
     if not apply:
         print(f"  dry-run：会腾出 {human(total)}。加 --apply 真的执行。")
         return 0
+    freed = 0
+    failed: list[str] = []
     for rel in RELATIVE:
         p = product / rel
-        if p.is_dir():
+        if not p.is_dir():
+            continue
+        sz = du(p)
+        try:
             shutil.rmtree(p)
-            print(f"  已删 {rel}")
-    print(f"  完成，腾出 {human(total)}")
+            freed += sz
+            print(f"  已删 {rel}  腾出 {human(sz)}")
+        except OSError as e:
+            # unity-builder 以 root 构建，产物属主是 root，runner 用户删不掉。
+            # 上层只是 warning：剥不掉不影响正确性，只是体积没降下来。
+            failed.append(f"{rel}: {e.strerror or e}")
+            print(f"  !! 删不掉 {rel}: {e.strerror or e}")
+    print(f"  共腾出 {human(freed)}")
+    if failed:
+        print("  未剥离项（不影响产物可运行，体积偏大）: " + "; ".join(failed))
+        return 1
     return 0
 
 
