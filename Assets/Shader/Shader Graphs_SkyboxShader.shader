@@ -43,10 +43,12 @@ Shader "Shader Graphs/SkyboxShader"
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            // #pragma multi_compile_fog  // 原版天空盒不参与雾
+            #pragma target 3.0
+            // 原版天空盒不参与雾，也不需要 URP 的 multi_compile 变体：
+            // 只依赖 _MainLightPosition（Core.hlsl 已提供），不再 include
+            // Lighting.hlsl —— 它会引入一批未声明的 URP keyword 依赖。
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
             // UnityPerMaterial 布局严格按原版序列化偏移（@0/@16/@32/.../@184）
             CBUFFER_START(UnityPerMaterial)
