@@ -75,16 +75,23 @@ namespace WebGLCloudBuild
                 Log($"{LogPrefix} 产物文件数: {files.Length}, 合计: {total / 1024 / 1024} MB");
                 Log($"{LogPrefix} 产物根目录: {outputDir}");
 
-                // 关键：这三个文件是 WebGL 能不能跑起来的全部依据。
-                // 直接点名比"打印文件数"有用得多 —— 之前两轮我都是看到
+                // 关键：这几个文件是 WebGL 能不能跑起来的全部依据。
+                // 直接点名比"打印文件数"有用得多—— 之前两轮我都是看到
                 // 82 个文件 207MB 就以为成功了，实际路径错了两轮。
                 // 缺任何一个都说明 Unity 的输出布局变了，要立刻看出来。
+                //
+                // 名字必须带 .gz。WebGL 默认开启压缩，产物是
+                //   Build/WebGL.wasm.gz / WebGL.data.gz / WebGL.framework.js.gz
+                // 而这一版最初写的是无压缩名，于是每次都打印 4 个 [缺]，
+                // 看起来像布局坏了，其实是校验自己写错了——
+                // 一守卫恒报错就等于没守卫，人会学会忽略它。
                 foreach (string required in new[]
                          {
                              "index.html",
-                             Path.Combine("Build", "WebGL.wasm"),
-                             Path.Combine("Build", "WebGL.data"),
-                             Path.Combine("Build", "WebGL.framework.js")
+                             Path.Combine("Build", "WebGL.loader.js"),
+                             Path.Combine("Build", "WebGL.wasm.gz"),
+                             Path.Combine("Build", "WebGL.data.gz"),
+                             Path.Combine("Build", "WebGL.framework.js.gz")
                          })
                 {
                     string full = Path.Combine(outputDir, required);
