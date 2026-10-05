@@ -74,6 +74,46 @@ MAPPING.update({
     ("-179382495", LOC_DLL): "a07b5cd0b1b829245bc8c4b6978793e8",   # LocalizationSettings
 })
 
+# ===== 第三批：URP 运行时（c88ab7b3 = Unity.RenderPipelines.Universal.Runtime 的 AssetRipper GUID）=====
+# 覆盖 62 个资产的引用：47 处 UniversalAdditionalLightData（每盏灯）、18 处 UniversalAdditionalCameraData
+# （每相机）、11 处 DecalProjector（贴花 prefab，DecalManager.SpawnDecal 依赖）+ 20 余个后处理 Volume
+# 组件（Vignette/Bloom/Tonemapping...）与 URP 配置资产（PipelineAsset/RendererData/GlobalSettings）。
+# 类身份用 fileID 的确定性 hash 逆向认定：fileID = int32_le(MD4(b's\\0\\0\\0' + namespace + classname)[:4])，
+# 29/29 全部命中 Graphics 仓库 URP Runtime 类名（先用 TMP 批次已知 3 对验证过算法）；
+# GUID 取官方 .cs.meta（Graphics master，Unity 包内资产 GUID 版本间保持稳定）。
+URP_DLL = "c88ab7b37c4f350242674d2efd621c19"
+MAPPING.update({
+    ("304953222", URP_DLL): "572910c10080c0945a0ef731ccedc739",  # PostProcessData
+    ("-549186028", URP_DLL): "bf2edee5c58d82540a51f03df9d42094",  # UniversalRenderPipelineAsset
+    ("1667301410", URP_DLL): "0777d029ed3dffa4692f417d4aba19ca",  # DecalProjector
+    ("464656391", URP_DLL): "0b2db86121404754db890f4c8dfe81b2",  # Bloom
+    ("-1142122322", URP_DLL): "cdfbdbb87d3286943a057f7791b43141",  # ChannelMixer
+    ("456897975", URP_DLL): "81180773991d8724ab7f2d216912b564",  # ChromaticAberration
+    ("-1728269046", URP_DLL): "66f335fb1ffd8684294ad653bf1c7564",  # ColorAdjustments
+    ("1948069495", URP_DLL): "3eb4b772797da9440885e8bd939e9560",  # ColorCurves
+    ("257616187", URP_DLL): "e021b4c809a781e468c2988c016ebbea",  # ColorLookup
+    ("-2085558323", URP_DLL): "c01700fd266d6914ababb731e09af2eb",  # DepthOfField
+    ("-534242816", URP_DLL): "29fa0085f50d5e54f8144f766051a691",  # FilmGrain
+    ("-1562019045", URP_DLL): "c5e1dc532bcb41949b58bc4f2abfbb7e",  # LensDistortion
+    ("282247082", URP_DLL): "5485954d14dfb9a4c8ead8edb0ded5b1",  # LiftGammaGain
+    ("224828655", URP_DLL): "ccf1aba9553839d41ae37dd52e9ebcce",  # MotionBlur
+    ("-1302714509", URP_DLL): "fb60a22f311433c4c962b888d1393f88",  # PaniniProjection
+    ("421016351", URP_DLL): "06437c1ff663d574d9447842ba0a72e4",  # ScreenSpaceLensFlare
+    ("815276277", URP_DLL): "558a8e2b6826cf840aae193990ba9f2e",  # ShadowsMidtonesHighlights
+    ("-1771661620", URP_DLL): "70afe9e12c7a7ed47911bb608a23a8ff",  # SplitToning
+    ("640956576", URP_DLL): "97c23e3b12dc18c42a140437e53d3951",  # Tonemapping
+    ("565963466", URP_DLL): "899c54efeace73346a0a16faa3afe726",  # Vignette
+    ("-1094021734", URP_DLL): "221518ef91623a7438a71fef23660601",  # WhiteBalance
+    ("1619829637", URP_DLL): "a1614fc811f8f184697d9bee70ab9fe5",  # DecalRendererFeature
+    ("972750921", URP_DLL): "b00045f12942b46c698459096c89274e",  # FullScreenPassRendererFeature
+    ("-1963386888", URP_DLL): "6b3d386ba5cd94485973aee1479b272e",  # RenderObjects
+    ("2046858975", URP_DLL): "f62c9c65cf3354c93be831c8bc075510",  # ScreenSpaceAmbientOcclusion
+    ("938447500", URP_DLL): "a79441f348de89743a2939f4d699eac1",  # UniversalAdditionalCameraData
+    ("-1431003440", URP_DLL): "474bcb49853aa07438625e644c072ee6",  # UniversalAdditionalLightData
+    ("474283971", URP_DLL): "2ec995e51a6e251468d2a3fd8a686257",  # UniversalRenderPipelineGlobalSettings
+    ("-1575395517", URP_DLL): "de640fe3d0db1804a85f9fc8f5cadab6",  # UniversalRendererData
+})
+
 # 无源码对应、保持断裂（missing script 警告无害，功能均为调试/未知空组件）：
 #   -771878070  NetworkDebug（ScriptableObject，4.1.0 无此类）-> Debug Logging.asset
 #   111782844   DLL 版可实例化的 NetworkBehaviour 具体类 -> PlayerHolder.prefab
