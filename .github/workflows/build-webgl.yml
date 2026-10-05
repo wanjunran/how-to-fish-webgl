@@ -318,6 +318,27 @@ jobs:
               /tmp/wasm_report.txt 2>/dev/null | head -12 \
               >> verify-evidence/wasm-report.txt || true
             cat /tmp/wasm_report.txt 2>/dev/null | head -20
+
+            # 光看一个函数不够——要看整条调用链。
+            #
+            # 判读的关键是比对「调用点期望的 type」和
+            # 「被调函数实际的 type」。参数个数对不上就是
+            # function signature mismatch，跟槽位空不空无关。
+            # 只看报错的那个函数会看漏，必须顺着栈往下读。
+            #
+            # --no-disasm：整份 66 MB 反汇编要几分钟，
+            # 而签名和表项用 wasm-objdump -x 就能拿到，几秒就够。
+            # 判读 type 是否匹配不需要反汇编。
+            echo "--- 解调用链"
+            python3 tools/explain_crash.py build/WebGL/Build/WebGL.wasm \
+              --stack-file /tmp/verify_first_error.txt --no-disasm \
+              > /tmp/stack_report.txt 2>&1 || true
+            head -30 /tmp/stack_report.txt 2>/dev/null || true
+            {
+              echo "=== 调用链（按栈顺序）==="
+              grep -E "^\s*(func\[|表槽位|判定|>>)" /tmp/stack_report.txt 2>/dev/null \
+                | head -30
+            } >> verify-evidence/wasm-report.txt || true
           fi
           {
             echo "Xvfb: $(command -v Xvfb || echo缺失)"

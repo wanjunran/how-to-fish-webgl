@@ -1,33 +1,50 @@
 #!/usr/bin/env python3
 """读 WebGL.wasm 的函数表，报告"空槽位"和给定函数索引的签名。
 
-为什么需要这个
---------------
-run 37271103725 报的错换了：
+看什么，不看什么
+----------------
+要看：函数表里某个索引有没有条目、它的签名是什么。
+      签名对不上是function signature mismatch 的直接原因。
 
-    签名修复前:  RuntimeError: function signature mismatch
-                 at wasm-function[103867]:0x1c91f10
-    签名修复后:  RuntimeError: null function
-                 at wasm-function[103863]:0x1c920ad
+不要拿它推断跨构建的对应关系。这个坑我踩过：
+最初以为两次构建报错索引"103863 vs 103867，只差 4，
+所以是同一批委托表项，签名修复往前走了一步"。
+那是错的—— IL2CPP 每次构建都会重排函数编号，
+跨构建比索引毫无意义。实测旧产物的 func[103863]
+是个静态字段访问器，压根没有 call_indirect，
+跟签名错无关。稳定的只有签名和表项，不是索引。
 
-两个索引只差 4。用 wabt 查旧产物（签名修复前）：
+两类错误别混
+------------
+function signature mismatch  槽位有东西，但调用点期望的
+                            参数个数/类型与实现对不上
+null function                槽位本身没有条目（起始槽位>0
+                            时的空段，或超出表长）
 
-    func[103863] sig=6 -> (i32) -> i32          <- 新的报错点
-    func[103867] sig=2 -> (i32, i32) -> nil    <- 旧的报错点
-    elem[23838] = ref.func:103863              <- 槽位只差 4
-    elem[23842] = ref.func:103867
+已验证的判读结论（本地抓完整栈 + 反汇编得到）
+--------------------------------------------
+    RuntimeError: function signature mismatch
+      at wasm-function[103867]:0x1c91f10
 
-也就是说它们是同一批委托表项，相邻 4 个。
-signature mismatch = 表项在，签名不符
-null function     = 槽位本身指向空
+    func[157585]  (i32,i32,i32,i32,i32) -> nil   <- IL2CPP 委托 thunk
+        local.get 2 / local.get 1 / local.get 0
+        call_indirect 0 (type 2)     <- 按 2 参取表项
+    func[103867]  (i32, i32) -> nil             <- 实际被调的
+        ...
+        call_indirect 0 (type 1)     <- 它内部又按 3 参调
+    type 1 = (i32,i32,i32) -> nil
+    type 2 = (i32,i32)     -> nil
 
-前者靠手写精确签名重载修掉了；后者是编译期的事，
-源码层面看不出来——33 个方法名、签名、调用点都核对无误
-（读 16/16、写 17/17，无差异）。只能读产物。
+调用点要 2 参、实现是 2 参（这一层对得上），
+但实现内部那层按 3 参调，与 type 1 的实现不符。
+整条链都在FishNet 内部的委托 thunk 上，
+与GameTypeSerializers 那 33 个手写方法无关。
 
-而产物在构建机上。让它自己分析并把结论写进注解，
-比把195 MB 下载到本地快得多（沙箱上行只有 77 KB/s）。
+解整条链用 tools/explain_crash.py，它读 verify_load.py
+落盘的完整 JS 栈。
 
+产物在构建机上。让它自己分析并把结论写进注解，
+比把 195 MB 下载到本地快得多（沙箱上行只有 77 KB/s）。
 优先用 wabt 的 wasm-objdump（标准工具，解析正确），
 没有时回退到内置的精简解析器。
 

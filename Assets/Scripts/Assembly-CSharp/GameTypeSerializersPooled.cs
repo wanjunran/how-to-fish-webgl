@@ -8,32 +8,38 @@
 // 一个都不存在。GameTypeSerializers.cs 手写补回了它们，方法名保持与 FishNet
 // 编码的完全一致。
 //
-// 但只补 Writer/Reader 签名是不够的，会在运行时崩：
+// 为什么要再写一个 Pooled 变体
+// --------------------------
+// 原来只补 Writer/Reader 签名就够了，但会在运行时崩：
 //
 //   RuntimeError: function signature mismatch
-//     at wasm-function[103867]
-//     at wasm-function[157585]
+//     at wasm-function[103867]:0x1c91f10
 //
-// 机制（已从产物的 wasm 字节码确认，不是推测）：
-//   func[103867] 开头是 20 00 28 02 14 —— local.get 0 后 call 4354，
-//   也就是 call_indirect。IL2CPP 把委托调用编译成经函数表的间接调用，
-//   表里放的是按**声明时精确签名**生成的包装器。Emscripten 的 invoke_*
-//   在运行时比对调用点期望的签名与表项的实际签名，不一致就抛
-//   "function signature mismatch"，而且这个检查发生在加载场景时，
-//   所以页面表现是进度条卡在 90% 不动。
+// 当时的判断是：调用点传的是 PooledWriter（子类），C# 按基类重载解析
+// 通过、编译零报错，但 IL2CPP 生成的间接调用签名与表项对不上。
+// 于是为每个方法补了参数类型精确为 PooledWriter/PooledReader 的重载。
 //
-// 调用点实际传进来的类型统计（grep 全Assets/Scripts 得到）：
-//   pooledWriter  85 处   -> PooledWriter
-//   PooledReader0 83 处   -> PooledReader
-//   Writer/Reader  33 处-> 只出现在 GameTypeSerializers.cs 的方法声明里
+// 【这个判断后来被证伪了】—— 本地抓到完整 JS 栈 + 反汇编字节码之后，
+// 真实调用链是：
 //
-// 也就是说走 RPC 的路径**全部**传的是 Pooled 子类实例。PooledWriter 继承
-// Writer，所以 C# 编译器按基类重载解析通过、编译零报错，但 IL2CPP 生成的
-// 间接调用签名与表项对不上——这就是那个崩溃。
+//   func[1374] -> func[162584] -> invoke_iiii (JS)
+//     -> func[162600] -> func[157585]   <- IL2CPP 委托 thunk
+//       -> call_indirect (type 2 = (i32,i32))
+//         -> func[103867]              <- 2 参
+//           -> call_indirect (type 1 = (i32,i32,i32))
 //
-// 做法：为每个方法补一个参数类型精确为 PooledWriter/PooledReader 的重载。
-// 保留原有的 Writer/Reader 版本，两者共存由重载决议按实参静态类型选择，
-// 保证函数表里一定存在与调用点一致的签名。
+// func[157585] 整个函数只有三条 local.get 加一条 call_indirect，
+// 是 IL2CPP 生成的委托 Invoke 桩，不是业务代码。整条链都在
+// FishNet 内部的委托机制上，跟这 33 个方法的签名无关。
+//
+// 另外踩过一个坑值得记下来：最初以为两次构建的报错索引
+// "103863 vs 103867 只差 4"说明签名修复往前走了一步——错的，
+// IL2CPP 每次构建重排函数编号，跨构建比索引毫无意义。
+// 旧产物的 func[103863] 是个静态字段访问器，压根没有 call_indirect。
+//
+// 所以本文件现在**不是**修复手段，只是让声明与调用点的
+// 静态类型严格一致（本身是更干净的做法，保留）。
+// 加载崩溃的真正原因还在 FishNet 的委托链上，未解决。
 //
 // 参数与调用点一一对应，不要改成基类，也不要动方法名——方法名里编码了
 // 序列化器所属的命名空间。
