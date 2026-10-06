@@ -58,13 +58,35 @@ def step1_load_shader(data_dir, want):
                 continue
             if getattr(d.m_ParsedForm, "m_Name", "") == want:
                 comp = bytes(d.compressedBlob)
-                dl = d.decompressedLengths
-                if isinstance(dl, list) and dl and isinstance(dl[0], (list, tuple)):
-                    dec = dl[0][0]
-                else:
-                    dec = int(dl[0]) if not isinstance(dl, list) else int(dl[0])
-                blob = lz4.block.decompress(comp, uncompressed_size=dec)
-                return blob, d, p
+                # blob 是按 platform 分块压缩的（每个平台一段，各带自己的
+                # 偏移表），不能把整块当一个 LZ4 流解 —— 那样只有单 platform
+                # 的 shader 才碰巧能解开。这里逐块解压，D3D11 的那块才含 DXBC。
+                def flatten(arr):
+                    # 新版 Unity 这些数组是 [[a, b, c, ...]] 的形式（外层只
+                    # 套一层），而 m_Platforms 有时只解析出 1 项，不能拿它当
+                    # 平台数，否则只会解出第一块（通常是 Metal/GLES）。
+                    if len(arr) == 1 and isinstance(arr[0], (list, tuple)):
+                        return [int(x) for x in arr[0]]
+                    return [int(x[0]) if isinstance(x, (list, tuple)) else int(x)
+                            for x in arr]
+                offs = flatten(getattr(d, "offsets", None) or [])
+                clens = flatten(d.compressedLengths or [])
+                dlens = flatten(d.decompressedLengths or [])
+                blocks = []
+                for i in range(min(len(clens), len(dlens))):
+                    o = offs[i] if i < len(offs) else 0
+                    try:
+                        blocks.append(lz4.block.decompress(
+                            comp[o:o + clens[i]], uncompressed_size=dlens[i]))
+                    except Exception:
+                        continue
+                if not blocks:
+                    continue
+                # 同名 Shader 可能在多个 asset 里各存一份（分平台打包），
+                # 只认带 D3D11 字节码的那一份
+                if not any(b.find(b"DXBC") >= 0 for b in blocks):
+                    continue
+                return blocks, d, p
     raise SystemExit(f"未找到 shader: {want}")
 
 
