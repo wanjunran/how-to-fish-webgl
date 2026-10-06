@@ -351,25 +351,25 @@ def semantic_of(name):
 
 
 def assign_vary_semantics(vary):
-    """给每个插值器分配互不重复的 TEXCOORD 索引。
+    """给每个插值器分配**连续、唯一且在WebGL 合法范围内**的 TEXCOORD 索引。
 
     HLSLcc 在这批 DXBC->GLES3 输出里不给 varying 写 layout(location)，
-    所以索引得自己定。之前的做法是「按名字里的数字」，遇到名字里没数字的
-    （URP instancing 的 vs_CUSTOM_INSTANCE_ID0）就回退到 TEXCOORD0 ——
-    和 vs_INTERP0 撞在同一个语义上。D3D11 允许重语义，别的后端不一定，
-    至少交叉编译工具会直接报错。这里改成：能用原数字的保留，其余按
-    出现顺序补到已用索引之后，结果唯一且确定（按名字排序）。
+    索引得自己定。
+
+    为什么不能沿用名字里的原数字：
+      1. 原数字可能超出 WebGL 上限。Retro Master 用了 vs_TEXCOORD16 /
+         vs_TEXCOORD17，而 GLES 3.0 只保证 16 个 varying（索引 0..15），
+         实际可用还更少 —— 交叉编译阶段就link 失败。
+      2. 名字里可能没有数字（URP instancing 的 vs_CUSTOM_INSTANCE_ID0），
+         早期版本一律回退到 TEXCOORD0，跟 vs_INTERP0 撞车。
+
+    所以统一按名字排序后重新连续编号。VS 和 PS 用的是同一张表
+    （vary 由 vs.outs 与 ps.ins 合并而来），所以两侧自动对齐；
+    重新编号不改变任何语义，只是把索引压回合法范围。
     """
-    used, out = set(), {}
-    for n in sorted(vary):
-        m = re.match(r"vs_(\w+?)(\d+)$", n)
-        idx = int(m.group(2)) if m else None
-        if idx is None or idx in used:
-            idx = 0
-            while idx in used:
-                idx += 1
-        used.add(idx)
-        out[n] = idx
+    out = {}
+    for i, n in enumerate(sorted(vary)):
+        out[n] = i
     return out
 
 
