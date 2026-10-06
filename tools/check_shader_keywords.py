@@ -12,14 +12,13 @@ exit code**，材质于是被当成没勾任何 keyword 的基础变体来渲染
 `shader_feature`；而材质实际用了 16 种 keyword，其中直接决定渲染方式的
 几个都在被忽略之列：
 
-    _SURFACE_TYPE_TRANSPARENT   14 个材质 -> 透明被当成不透明
+    _SURFACE_TYPE_TRANSPARENT   11 个材质 -> 透明被当成不透明
     _ALPHAPREMULTIPLY_ON        11 个
-    _EMISSION                    6 个-> 自发光失效
+    _EMISSION                    4 个 -> 自发光失效
+    _ALPHATEST_ON                3 个
     _RECEIVE_SHADOWS_OFF         5 个
-    UNDERLAY_ON                  5 个（TMP，声明齐全）
-    OUTLINE_ON                   4 个
     _COLORADDSUBDIFF_ON          3 个
-    _SKIN_TYPE_GRADIENT_NOISE    3 个
+    _SKIN_TYPE_GRADIENT_NOISE3 个
 
 （三个 TextMeshPro shader 是 AssetRipper 的 CGPROGRAM 原生导出，
 它们保留了原始 pragma，所以 UNDERLAY_ON / OUTLINE_ON 是有效的。）
@@ -38,8 +37,38 @@ HLSLcc 反编译产物的**文件名本身就编码了变体维度**，例如 De
 「多变体本身没还原」是另一件事，需要 pick_variant 重建。
 
 所以本脚本**只判定、不修改**，并且把两类问题分开报：
-- **A类**：材质用了 keyword，shader 完全没声明 -> 可以用一行pragma 修
-- **B 类**：HLSLcc 产物显示原版有多变体，我们只取了一个 -> 需要重建
+
+- **A 类**：材质用了 keyword，shader 完全没声明它
+- **B 类**：HLSLcc 产物显示原版有多变体，我们只取了一个
+
+## A 类同样**不是补一行 pragma 能修**（实测，勿再按相反的假设动手）
+
+曾以为A 类的修法就是加`#pragma shader_feature` 声明。实测否掉了：
+
+对全部 107 个 shader 统计 HLSLPROGRAM 正文的条件分支与 pragma 声明：
+
+    含 #if/#ifdef 分支的:        5 个   （Skybox-Procedural + 4 个 TextMeshPro）
+    声明 #pragma shader_feature 的: 3 个 （全在上述 TextMeshPro 里）
+    流水线恢复的 36 个 HLSLcc shader: 分支 0 个、pragma 0 个
+
+并且**每一个 A 类 keyword 在对应 shader 正文里出现次数都是 0** ——
+不是「声明了但没分支」，是连字面量都不存在：
+
+    Universal Render Pipeline/Lit   _SURFACE_TYPE_TRANSPARENT 0 次
+                                   _ALPHAPREMULTIPLY_ON      0 次
+                                   _EMISSION                 0 次
+
+结论：HLSLcc 在反编译时已经把每个变体的分支**求值烧死**成直线代码，
+变体信息在反编译那一步就丢了。补pragma 声明后没有任何分支消费它，
+效果与现在**完全相同** —— 照样是空转。
+
+**所以 A 类和 B 类是同一个根因**：手上只有「某一个具体变体的代码」，
+而不是「带分支的 shader 定义」。A 类缺分支、B 类缺变体，是一件事的
+两个侧面。要真正修，得重建带分支的 shader（用官方 URP / Shader Graph
+源码重新导出），不是加 pragma。
+
+这一节若被删掉，下一个人会照着docstring 里「可以用一行 pragma 修」
+去改，然后发现画面没变，白跑一轮。
 
 ## 用法
 
@@ -184,6 +213,9 @@ def main() -> int:
             tot = sum(sum(v.values()) for v in a_class.values())
             print(f"\nA 类：材质勾了但 shader 没声明的 keyword（{tot} 处）")
             print("     —— 这些 keyword 被 Unity 静默忽略，材质被当成基础变体渲染")
+            print("     注意：**补 #pragma shader_feature 修不了这个**。实测这些 keyword")
+            print("     在对应 shader 正文里出现次数是 0 —— HLSLcc 反编译时已把分支求值")
+            print("     烧死成直线代码，补了声明也没有分支消费它。详见本文件 docstring。")
             for sname, ks in sorted(a_class.items()):
                 print(f"  {sname}")
                 for k, c in sorted(ks.items(), key=lambda x: -x[1]):
