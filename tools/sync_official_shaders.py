@@ -61,6 +61,27 @@ STUB_MARKER = "DummyShaderTextExporter"
 REPORT = os.path.join(ROOT, "verify-evidence", "official-shader-sync.txt")
 
 
+def count_passes(text: str) -> int:
+    """数真正的 Pass 块。
+
+    两个坑，都是实测撞到的：
+
+    1. 最初写 `^[ \\t]*Pass[ \\t]*(?:\\{|$)` —— 要求 Pass 在行首。
+       但 AssetRipper 的空壳里Pass 是**同行**的：
+           `\\tSubShader { Pass { HLSLPROGRAM`
+       于是计数为 0，看着像「这个 shader 一个 Pass 都没有」。
+
+    2. 放宽之后不能简单改成 `Pass[ \\t]*\\{` —— `GrabPass` 含 "Pass"
+       子串，会被数进去；而注释里的 Pass（// Pass 结束后...）同理。
+
+    所以判据三要素齐全才算：前面是行首或紧邻的 `{` / `}`（排掉
+    GrabPass，因为它的 Pass 前面是字母）、后面（允许跨空白换行）
+    跟着 `{`。注释行先剥掉。
+    """
+    body = re.sub(r"//[^\n]*", "", text)
+    return len(re.findall(r"(?:^|\{|\})[ \t]*Pass[ \t\r\n]*\{", body, re.M))
+
+
 def shader_name(path: str) -> str | None:
     """First `Shader "..."` declaration -- the identity Unity matches on."""
     try:
@@ -247,7 +268,7 @@ def _run() -> int:
         has_rt = '"RenderType"' in now
         has_blend = bool(re.search(r"^[ \t]*Blend[ \t]+\w", now, re.M))
         has_zwrite = bool(re.search(r"^[ \t]*ZWrite[ \t]+\w", now, re.M))
-        passes = len(re.findall(r"^[ \t]*Pass[ \t]*(?:\{|$)", now, re.M))
+        passes = count_passes(now)
         flags = []
         if not has_queue:
             flags.append("缺 Queue")
