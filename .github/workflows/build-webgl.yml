@@ -112,6 +112,14 @@ jobs:
           python3 tools/check_dangling_refs.py 2>&1 \
             | tee verify-evidence/dangling-refs.txt \
                   docs/ci-evidence/dangling-refs.txt
+          # LightMode 检查：41 个非空壳 shader 一个 LightMode tag 都没有。
+          # URP 把无 tag 的 Pass 归为 SRPDefaultUnlit，而 shader 自己声明的
+          # _MainLightPosition / _AdditionalLights* / unity_LightData 只有在
+          # UniversalForward 里才被注入 —— 不是「默认 0」，是没人赋值。
+          # 判据是「是否消费 URP 光照数据」，不是「Pass 数」也不是「我猜」。
+          python3 tools/check_lightmode.py 2>&1 \
+            | tee verify-evidence/lightmode.txt \
+                  docs/ci-evidence/lightmode.txt
           # 天空盒链路：碧海蓝天是用户最想看到的东西，而它是唯一一个
           # 在启动场景里、不依赖任何游戏内逻辑就能出结果的渲染产物 ——
           # 所以最适合当「渲染管线通没通」的探针。查的是数据完整性
@@ -1204,12 +1212,71 @@ jobs:
               echo "（无记录）"
             fi
             echo
+            echo "## 悬空引用（包内没导出 / 真丢失 / DLL 身份漂移）"
+            echo
+            echo "三类必须分开：把正常的全报成故障，真信号会被淹掉；"
+            echo "全放过去，真丢了没人知道。DLL 身份漂移是第三类 ——"
+            echo "`.meta` 换了 guid，场景与 prefab 的引用全部作废，"
+            echo "而症状只表现为 LogWarning，看起来像随机失败。"
+            echo
+            if [ -s verify-evidence/dangling-refs.txt ]; then
+              echo '```'
+              head -60 verify-evidence/dangling-refs.txt
+              echo '```'
+            else
+              echo "**无记录** —— 这一节为空**不代表**引用都对，"
+              echo "只代表没查到数据。"
+            fi
+            echo
+            echo "## 日志扫描范围（「没扫到」不等于「扫了没找到」）"
+            echo
+            echo "这一节是上面所有「构建日志里有没有 X」类结论的**前提**。"
+            echo "日志没扫到时，它们报「0 次」—— 而 0 次既可能是真没有，"
+            echo "也可能是根本没读到那份文件。两者必须分开，否则下面每一条"
+            echo "都在拿错误的前提做判断。"
+            echo
+            if [ -s verify-evidence/build-logs-scan.txt ]; then
+              echo '```'
+              head -40 verify-evidence/build-logs-scan.txt
+              echo '```'
+            else
+              echo "**无记录** —— 这一节为空**不代表**日志里没有异常，"
+              echo "只代表扫描步骤没产出结果。"
+            fi
+            echo
+            echo "## 点击验收（能不能真的玩起来）"
+            echo
+            echo "游戏停在主菜单等点击 —— 此前几轮把「进不了场景」误判成渲染"
+            echo "问题，实际是没人点。坐标由`tools/verify_ingame.py` 沿"
+            echo "\`m_Father\` 链上溯累加算得（只取按钮自己那层会算出 (0,0)，"
+            echo "点在屏幕左上角，会打中标题那行字）。"
+            echo
+            if [ -s verify-evidence/ingame-layout.txt ]; then
+              echo '```'
+              head -30 verify-evidence/ingame-layout.txt
+              echo '```'
+            else
+              echo "**无记录** —— 这一节为空**不代表**坐标算对了，"
+              echo "只代表 --layout-only 那步没产出结果。"
+            fi
+            echo
+            if [ -s verify-evidence/ingame-click.txt ]; then
+              echo '```'
+              head -40 verify-evidence/ingame-click.txt
+              echo '```'
+            else
+              echo "**无记录** —— 这一节为空**不代表**点击成功或失败，"
+              echo "只代表点击步骤没产出结果。"
+            fi
+            echo
             echo "## 证据管线自检"
             echo
             echo "查的不是内容对不对，而是**证据有没有真的能被人看到**。"
             echo "本项目在同一个坑上栽过五次（洋红被 exit 1 掐断 / 被"
             echo "except ImportError 吞掉 / 结论段被 head -50 挤出窗口 /"
-            echo "C# 扫描写进被 gitignore 的目录 / 修了 2 处漏了 10 处）。"
+            echo "C# 扫描写进被 gitignore 的目录 / 修了 2 处漏了 10 处）——"
+            echo "第七次是上一轮自己加的证据：产出对了、提交了，"
+            echo "但报告里一处引用都没有，同样等于没做。"
             echo
             if [ -s verify-evidence/evidence-pipeline.txt ]; then
               echo '```'
@@ -1228,6 +1295,27 @@ jobs:
             else
               echo "**无记录** —— 这一节为空**不代表**天空正常，"
               echo "只代表没查到数据。"
+            fi
+            echo
+            echo "## LightMode（物体发黑不发光的最可能原因）"
+            echo
+            echo "URP 把没有 \`LightMode\` tag 的 Pass 归为 \`SRPDefaultUnlit\`。"
+            echo "Pass 不会消失，但 **URP 只在 \`UniversalForward\` 里注入光照"
+            echo "uniform**（\`\_MainLightPosition\` / \`_AdditionalLights*\` /"
+            echo "\`unity_LightData\`）—— 落进 SRPDefaultUnlit 就是**没人赋值**，"
+            echo "漫反射与高光全退化为 0。"
+            echo
+            echo "判据是「这个 shader 是否消费 URP 光照数据」（可从源码读出），"
+            echo "不是「Pass 数」也不是主观判断：不消费的那批（UI / 轮廓 / Blur /"
+            echo "TMP）本来是 unlit，挂了 \`UniversalForward\` 反而是行为改动。"
+            echo
+            if [ -s verify-evidence/lightmode.txt ]; then
+              echo '```'
+              cat verify-evidence/lightmode.txt
+              echo '```'
+            else
+              echo "**无记录** —— 这一节为空**不代表** LightMode 没问题，"
+              echo "只代表检查没跑或没输出。"
             fi
             echo
             echo "## C# 编译错误（UnityTransport 疑点的判决）"
@@ -1422,7 +1510,7 @@ jobs:
           CI_EV="cs-errors.txt unitytransport-check.txt build-logs-scan.txt \
                  shader-errors.txt official-shader-sync.txt \
                  mat-shader-props.txt shader-keywords.txt \
-                 dangling-refs.txt skybox.txt urp-apv-guards.txt \
+                 dangling-refs.txt lightmode.txt skybox.txt urp-apv-guards.txt \
                  ingame-layout.txt ingame-click.txt evidence-pipeline.txt"
           for n in $CI_EV; do
             f="docs/ci-evidence/$n"

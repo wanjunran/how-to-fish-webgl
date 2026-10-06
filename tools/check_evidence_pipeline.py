@@ -73,7 +73,10 @@ EVIDENCE = [
     ("shader-keywords.txt", True,
      "A 类 keyword 错配 / B 类多 Pass 缺失"),
     ("dangling-refs.txt", True,
-     "悬空引用 —— 区分「包内没导出」（正常）和「真丢失」"),
+     "悬空引用 —— 区分「包内没导出」（正常）、「真丢失」和「DLL 身份漂移」"),
+    ("lightmode.txt", True,
+     "LightMode 缺失 —— URP 只在 UniversalForward 注入光照 uniform，"
+     "落进 SRPDefaultUnlit 就是没人赋值，物体全黑"),
     ("skybox.txt", True,
      "天空盒链路数据完整性（碧海蓝天的来源）"),
     ("urp-apv-guards.txt", True,
@@ -145,13 +148,34 @@ def main() -> int:
         writes = len(re.findall(re.escape(rel), wf))
         row["referenced_in_workflow"] = writes
 
-        # 2) 报告里有没有引用（docs/ci-evidence/ 的也算——报告本身
-        #    可能直接 cat 它，也可能经由 verify-evidence/ 那份）
-        in_report = bool(re.search(
-            r"docs/ci-evidence/" + re.escape(name), wf)) or bool(
-            re.search(r"verify-evidence/" + re.escape(name) + r"[\"']?\s*"
-                      r"(\|>|\)|;)", wf))
+        # 2) 报告里有没有**真正把它读出来**的那一步
+        #
+        #    判据原先是「workflow 里出现过 docs/ci-evidence/<name>」，
+        #    这条等于没有：产出步骤里的
+        #        tee verify-evidence/x.txt docs/ci-evidence/x.txt
+        #    自己就满足这个条件。于是「产出」被当成了「报告引用」，
+        #    而报告里那一节被删掉也照样通过。
+        #
+        #    实测栽在这里：把 `## LightMode（...）` 改名后，
+        #    tee 那行还在，旧判据报「在报告里=是」—— 但那一节已经没了。
+        #
+        #    真正要问的是：报告生成区有没有把它读出来。报告里有三种
+        #    读法，都算数（早先只认 cat 一种，于是把下面 10 份全判成
+        #    「没引用」—— 那是判据的漏洞，不是它们真有问题）：
+        #        cat   verify-evidence/x.txt
+        #        head -N verify-evidence/x.txt
+        #        [ -s  docs/ci-evidence/x.txt ]
+        reads = [
+            rf"cat\s+verify-evidence/{re.escape(name)}\b",
+            rf"(?:head|tail|less|more)\s+[-\w\s]*verify-evidence/{re.escape(name)}\b",
+            rf"\[?\s*-s\s+\S*verify-evidence/{re.escape(name)}\b",
+            rf"\[?\s*-s\s+docs/ci-evidence/{re.escape(name)}\b",
+            rf"cat\s+docs/ci-evidence/{re.escape(name)}\b",
+        ]
+        hit = next((r for r in reads if re.search(r, wf)), None)
+        in_report = hit is not None
         row["in_report"] = in_report
+        row["in_report_by"] = hit
 
         # 3) 会不会被 gitignore 吃掉
         ig = ignored_by(rel, rules)
@@ -164,6 +188,21 @@ def main() -> int:
             problems.append(
                 f"{rel}: **被 .gitignore 忽略** —— 内容正确也不会提交，"
                 f"等于算了个空（{what}）")
+        if not in_report and must:
+            # 这一条是**补上的**：原先 in_report 只统计不判决，于是
+            # 「报告里贴了证据但没有任何说明」和「报告里根本没提」
+            # 在结果里长得一模一样。
+            #
+            # 实测栽在这里：我把报告里的 `## LightMode（...）` 标题
+            # 改名，`docs/ci-evidence/lightmode.txt` 字符串仍在
+            # workflow 里（被 tee 和白名单引用），所以旧判据照样
+            # 报「在报告里=是」—— 但那一节已经不存在了。
+            #
+            # 后果与前五次同类：文件确实产出了、内容也确实正确，
+            # 只是报告里没人解释它意味着什么，于是没人读。
+            problems.append(
+                f"{rel}: 报告里**没有引用它的位置** —— "
+                f"证据产出了却没人看得到（{what}）")
         rows.append(row)
 
     data = {"ok": not problems, "rows": rows, "problems": problems,
