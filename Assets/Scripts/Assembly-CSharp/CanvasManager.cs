@@ -81,7 +81,30 @@ public class CanvasManager : MonoBehaviour
 		_mainMenuCanvas.gameObject.SetActive(value: true);
 		_devStuff.SetActive(SteamManager.IsDev);
 		_discordButton.SetActive(!SteamManager.IsDev);
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+		// WebGL 单人版：整行 Steam Relay 状态都不该出现。
+		//
+		// 截图里那行红字「Disconnected: Version mismatch」来自
+		// CanvasManager.OnRelayStatus 的 k_ESteamNetworkingAvailability_Previously
+		// 分支，文案取自 Localization/Locales/Extra Labels_en.asset。
+		// 但 Steam 在 WebGL 下压根没启用（SteamManager 是空实现，
+		// ButtonManager._useSteam 硬编码 false），这个状态没有任何意义 ——
+		// 它不是"版本真的不匹配"，是WebGL 桩的残留状态被渲染了出来。
+		//
+		// 为什么要在意：它出现在每张 CI 截图的**正中间最显眼处**，
+		// 一眼看上去像"游戏连不上服务器"，会让人把排查方向带到联机上去。
+		// 事实上单玩家按钮就在下面，只是被这行字盖住注意力。
+		//
+		// 只隐藏 UI，不动任何逻辑 —— 编辑器与桌面版行为保持原样。
+		if (_steamRelayText != null)
+		{
+			_steamRelayText.gameObject.SetActive(value: false);
+		}
 		SteamManager.RefreshRelayStatus();
+#else
+		SteamManager.RefreshRelayStatus();
+#endif
 	}
 
 	public static void OnRelayStatus(SteamRelayNetworkStatus_t status)

@@ -75,11 +75,31 @@ import time
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCENE = os.path.join(ROOT, "Assets", "Scenes", "Game.unity")
 
-# `SingleplayerButton`（GameObject &1710）的组件 id。写死是安全的：
-# 场景文件是静态资产，改它就等于改了游戏 UI 布局，本来也该重新评估。
-SINGLEPLAYER_GO = 1710
-BUTTON_COMPONENT = 5185
-RECT_COMPONENT = 4617
+# ---------------------------------------------------------------------------
+# 目标按钮：**从场景自动解析**，不写死 fileID
+# ---------------------------------------------------------------------------
+# 这里换过两次目标，原因是前两次都点错了按钮，而点击差异都是 0.00%，
+# 报告只说「点击很可能没生效」，从没说「可能点的是另一个按钮」。
+#
+# ButtonManager 里有两套名字很像的按钮：
+#
+#   CreateServerButton   -> _createServerButton   激活=开
+#       WebGL 单人版真正的入口。场景里就开着。
+#   SingleplayerButton   -> SavedServer 列表里的那一项，绑定
+#       CreateLocalLobbyButton。激活=开，但那个面板要**先选中一个存档**
+#       才会出现 —— 新用户没有存档，于是点了等于点在空气上。
+#
+# 所以判据改成「找出 ButtonManager 里那个激活的、绑定 CreateServer 的按钮」，
+# 由场景数据说话。写死 fileID 的问题不只是「值可能变」：一旦布局调整，
+# 写死的值会安静地点到别的东西上，而报告显示「已点击」。
+BUTTON_MANAGER_GUID = "488b2771a904a6b76cd4192c654bb696"
+# 期望的入口绑定。实测：CreateServerButton 自己的 m_OnClick 是 SetActive
+# （只负责打开「创建存档」面板），真正建档的是面板里那个按钮 ->
+# ButtonManager.CreateNewServer -> SaveManager.CreateServer。
+# 所以「能点开入口」就够了，进游戏要两步，点第一下是正确目标。
+EXPECTED_METHOD = None      # 入口按钮不直接建档，不按方法名筛
+# 兜底候选（按优先级），字段名取自 Game.unity 的 ButtonManager 组件。
+FALLBACK_FIELDS = ("_createServerButton",)
 
 WIDTH, HEIGHT = 1280, 800
 
@@ -89,6 +109,163 @@ def _block(text: str, type_id: int, comp_id: int) -> str:
     m = re.search(rf"^--- !u!{type_id} &{comp_id}\n(.*?)(?=\n--- !u!|\Z)",
                   text, re.S | re.M)
     return m.group(1) if m else ""
+
+
+def host_of(text: str, comp_fid: int) -> int:
+    """组件 fileID -> 宿主 GameObject 的 fileID。
+
+    `_block_any` 可能先命中同一宿主上的另一个 MonoBehaviour —— 那样
+    再取一次 m_GameObject 就不是 GameObject 了。所以这里必须按
+    classID 1 回溯到真正的 GameObject。
+    """
+    for m in re.finditer(r"^--- !u!(\d+) &(\d+)\s*\n(.*?)(?=\n--- !u!|\Z)",
+                         text, re.S | re.M):
+        if int(m.group(2)) != comp_fid:
+            continue
+        if int(m.group(1)) == 1:          # GameObject 本体
+            return comp_fid
+        g = re.search(r"^\s*m_GameObject:\s*\{fileID:\s*(\d+)\}", m.group(3), re.M)
+        if g:
+            return int(g.group(1))
+    return comp_fid
+
+
+def _block_any(text: str, fid: int) -> str:
+    """按 fileID 取块，不关心 classID（224/4 两种 RectTransform 都可能）。"""
+    m = re.search(rf"^--- !u!\d+ &{fid}\n(.*?)(?=\n--- !u!|\Z)", text, re.S | re.M)
+    return m.group(1) if m else ""
+
+
+def _rect_of_go(text: str, comp_fid: int) -> int | None:
+    """找出该按钮所在 GameObject 的 RectTransform fileID。
+
+    场景里 RectTransform 可能是 class 224（带 rootOrder 的那种）
+    也可能是 class 4。两种都要认，只查一种会在另一种布局上返回空。
+    """
+    go = host_of(text, comp_fid)
+    # 先在按钮自身的 RectTransform 里找：class 224 的块含 m_Father
+    for fid_candidate in _all_rect_ids(text):
+        b = _block_any(text, fid_candidate)
+        m = re.search(r"^\s*m_GameObject:\s*\{fileID:\s*(\d+)\}", b, re.M)
+        if m and int(m.group(1)) == go:
+            return fid_candidate
+    return None
+
+
+def _all_rect_ids(text: str) -> list[int]:
+    out = []
+    for m in re.finditer(r"^--- !u!(224|4) &(\d+)\s*\n", text, re.M):
+        out.append(int(m.group(2)))
+    return out
+
+
+def resolve_target_button(text: str) -> dict:
+    """从 Game.unity 找出「该点哪个按钮」，而不是写死 fileID。
+
+    判据链（每一步都能单独解释为什么）：
+      1. 按 GUID 找到 ButtonManager 组件块
+      2. 读出它所有按钮类字段（名字形如 _xxxButton）
+      3. 逐个回溯到 GameObject，取真实名字与激活状态
+      4. 优先选**激活且绑定 CreateServer** 的那个
+      5. 找不到就报出来，并列出所有候选 —— 让人能一眼看出该点哪个
+
+    第 5 步是关键：判据失效时不能只说「失败」，得把候选摊开。
+    前两版就把失败原因写成「点击很可能没生效」，指向浏览器/坐标，
+    而真实原因是「点的是另一个按钮」，方向完全错。
+    """
+    i = text.find(BUTTON_MANAGER_GUID)
+    if i < 0:
+        return {"ok": False, "why": f"场景里找不到 ButtonManager（guid {BUTTON_MANAGER_GUID}）"}
+    head = text.rfind("--- !u!", 0, i)
+    end = text.find("\n--- !u!", i)
+    bm = text[head:end]
+
+    # 场景里每个文档块：--- !u!<classID> &<fileID>
+    blocks: dict[int, str] = {}
+    blocks_cls: dict[int, int] = {}
+    marks = [(m.start(), int(m.group(1)), int(m.group(2)))
+             for m in re.finditer(r"^--- !u!(\d+) &(\d+)\s*\n", text, re.M)]
+    for idx, (start, _c, fid) in enumerate(marks):
+        stop = marks[idx + 1][0] if idx + 1 < len(marks) else len(text)
+        blocks[fid] = text[start:stop]
+        blocks_cls[fid] = _c
+
+    def host(fid: int) -> int:
+        """组件 fileID -> 它挂的 GameObject fileID。
+
+        必须按 classID 判定：`blocks` 里同一个 GameObject 挂着多个
+        MonoBehaviour，若按「带 m_GameObject 的块」回溯，先命中的可能是
+        另一个 MonoBehaviour，于是 host(6031) 返回 6031 自己而不是
+        1559（GameObject）。后面按宿主找 RectTransform 就全错位了。
+        """
+        cls = blocks_cls.get(fid)
+        if cls == 1:
+            return fid
+        b = blocks.get(fid, "")
+        m = re.search(r"^\s*m_GameObject:\s*\{fileID:\s*(\d+)\}", b, re.M)
+        return int(m.group(1)) if m else fid
+
+    def go_name(fid: int) -> str:
+        b = blocks.get(host(fid), "")
+        m = re.search(r"^\s*m_Name:\s*(.*)$", b, re.M)
+        return (m.group(1).strip() if m else "") or f"<&{fid}>"
+
+    def go_active(fid: int) -> bool | None:
+        b = blocks.get(host(fid), "")
+        m = re.search(r"^\s*m_IsActive:\s*(\d)", b, re.M)
+        return bool(int(m.group(1))) if m else None
+
+    def bound_method(fid: int) -> tuple[str | None, int | None]:
+        """按钮组件上的 m_OnClick 绑定方法与调用状态。"""
+        b = blocks.get(host(fid), "")
+        # 组件自身若无 Button 子组件，往下找同宿主的 Button
+        cand = [fid] + [k for k, v in blocks.items()
+                        if host(k) == host(fid)
+                        and re.search(r"^\s*m_OnClick:", v, re.M)]
+        for c in cand:
+            bb = blocks.get(c, "")
+            if not re.search(r"^\s*m_OnClick:", bb, re.M):
+                continue
+            m = re.search(r"m_MethodName:\s*(\S+)", bb)
+            cs = re.search(r"m_CallState:\s*(\d+)", bb)
+            inter = re.search(r"m_Interactable:\s*(\d)", bb)
+            if m and cs and int(cs.group(1)) != 0 and \
+                    (not inter or inter.group(1) != "0"):
+                return m.group(1), int(cs.group(1))
+        return None, None
+
+    cands: list[dict] = []
+    for m in re.finditer(r"^  (_[A-Za-z0-9_]*Button):\s*\{fileID:\s*(\d+)\}",
+                         bm, re.M):
+        field, fid = m.group(1), int(m.group(2))
+        meth, _cs = bound_method(fid)
+        cands.append({
+            "field": field, "fid": fid, "go": go_name(fid),
+            "active": go_active(fid), "method": meth,
+        })
+
+    if not cands:
+        return {"ok": False,
+                "why": "ButtonManager 里没有任何 *Button 字段 —— 场景结构变了"}
+
+    if EXPECTED_METHOD:
+        for c in cands:
+            if c["method"] == EXPECTED_METHOD and c["active"]:
+                return {"ok": True, **c, "candidates": cands,
+                        "why": f"选中 {c['go']}（{c['field']}，"
+                               f"绑定 {c['method']}，激活）"}
+
+    for c in cands:
+        if c["field"] in FALLBACK_FIELDS and c["active"]:
+            return {"ok": True, **c, "candidates": cands,
+                    "why": f"选中 {c['go']}（{c['field']}，激活，"
+                           f"绑定 {c['method']}）"}
+
+    return {"ok": False, "candidates": cands,
+            "why": "场景里没有**激活**的 "
+                   + (f"绑定 {EXPECTED_METHOD} 的" if EXPECTED_METHOD else "")
+                   + f"入口按钮（找过字段 {FALLBACK_FIELDS}）—— "
+                   f"WebGL 单人版的入口不见了，UI 结构可能变了"}
 
 
 def read_button_layout() -> dict:
@@ -103,10 +280,10 @@ def read_button_layout() -> dict:
         m_Pivot: {x: .., y: ..}       轴心（0..1，影响 anchoredPosition 含义）
 
     **必须沿m_Father 一路累加到根，不能只看按钮自己那层。**
-    这是实测撞到的：SingleplayerButton 自己的 anchor 全是 (0,0)、
+    这是实测撞到的：按钮自己的 anchor 全是 (0,0)、
     anchoredPosition 也是 (0,0)，单看它算出来的中心是 (0, 0) ——
     屏幕左上角，会点中「Steam Relay Status」那行字而不是按钮。
-    它的父级是 `&4174`，位置得从父级一路累加下来才有意义。
+    它的父级位置得从父级一路累加下来才有意义。
 
     返回的 (x, y) 是1920x1080 参考分辨率下的像素坐标。
     """
@@ -115,26 +292,28 @@ def read_button_layout() -> dict:
     with open(SCENE, encoding="utf-8", errors="replace") as f:
         text = f.read()
 
-    go = _block(text, 1, SINGLEPLAYER_GO)
-    if not go:
-        return {"ok": False, "why": f"场景里找不到 GameObject &{SINGLEPLAYER_GO}"}
-    if not re.search(r"m_IsActive:\s*1", go):
-        return {"ok": False, "why": f"SingleplayerButton(&{SINGLEPLAYER_GO}) 不活跃"}
-
-    btn = _block(text, 114, BUTTON_COMPONENT)
-    if not btn:
-        return {"ok": False, "why": f"找不到 Button 组件 &{BUTTON_COMPONENT}"}
-    if re.search(r"m_Interactable:\s*0", btn):
-        return {"ok": False, "why": "SingleplayerButton 的 m_Interactable=0（不可点）"}
-    m = re.search(r"m_MethodName:\s*(\S+)", btn)
-    if not m:
-        return {"ok": False, "why": "Button 没有 m_OnClick 绑定"}
-    if m.group(1) != "CreateLocalLobbyButton":
+    tgt = resolve_target_button(text)
+    if not tgt.get("ok"):
+        return {"ok": False, "why": tgt.get("why", "按钮解析失败"),
+                "candidates": tgt.get("candidates", [])}
+    RECT_COMPONENT = _rect_of_go(text, tgt["fid"])
+    if not RECT_COMPONENT:
         return {"ok": False,
-                "why": f"绑定的方法是 {m.group(1)}，不是 CreateLocalLobbyButton"}
-    cs = re.search(r"m_CallState:\s*(\d+)", btn)
-    if cs and cs.group(1) == "0":
-        return {"ok": False, "why": "m_CallState=0，绑定被禁用"}
+                "why": f"{tgt['go']} 上找不到 RectTransform（type 224）"}
+
+    go = _block(text, 1, host_of(text, tgt["fid"]))
+    if not go:
+        return {"ok": False,
+                "why": f"场景里找不到 GameObject &{host_of(text, tgt['fid'])}"}
+    if not re.search(r"m_IsActive:\s*1", go):
+        return {"ok": False, "why": f"{tgt['go']} 当前不活跃"}
+
+    # 激活状态 / Interactable /绑定方法 / CallState 都已在
+    # resolve_target_button 里查过 —— 那里是唯一判据出口，避免两处
+    # 各查一遍、结论却不一致（那种不一致最难查，因为你看到两个
+    # 都「检查通过」的判据，行为却相反）。
+    #
+    # 这里只把「选了哪个按钮」记进返回值，供报告展示。
 
     # ---- 沿 m_Father 上溯，收集每一层 RectTransform ----
     chain: list[tuple[str, dict]] = []
@@ -151,34 +330,83 @@ def read_button_layout() -> dict:
         if len(chain) > 20:      # 防环
             break
 
-    # ---- 累加 ----
-    # Unity 的 RectTransform 变换顺序（从父到子）：
-    #   子.中心 = 父中心 + 父轴心偏移到父锚点的差 + 子.anchoredPosition
-    # 这里只做「锚点 + anchoredPosition」的逐层累加；pivot 只在需要
-    # 精确对齐时影响 anchoredPosition 的参考点，对「找中心点」而言，
-    # 逐层 center 累加即可（误差在按钮自身尺寸量级，不影响点中）。
-    cx = cy = 0.0
+    # ---- 逐层求矩形，最后取中心 ----
+    #
+    # 旧写法是「把每层当点累加」：
+    #     cx += anchor_min.x * 960 + anchor_max.x * 960 + pos.x
+    # 对 anchor=(0,0)..(1,1) 的全屏拉伸层，算出来是 0*960+1*960=960，
+    # 于是**每遇到一层全屏容器就凭空多出 960 像素**。
+    # `CreateServerButton` 的祖先链里有 3 层全屏容器，累加结果就是
+    # (3215, 3200) —— 比 1920x1080 还大，整条链的判断全废。
+    #
+    # 正确做法：维护矩形 (x0,y0,x1,y1)，每层按
+    #     子矩形在父矩形内的偏移 = anchor * 父尺寸 + anchoredPosition
+    #     子尺寸 = (anchor_max - anchor_min) * 父尺寸 + sizeDelta
+    # 逐层算下来，最后取中心。这是 Unity 自己的 RectTransform 公式。
+    W, H = 1920.0, 1080.0
+    # 根矩形：整屏，左下角原点。
+    #
+    # 参考分辨率不是猜的 —— Game.unity 里 CanvasScaler 写着
+    #     m_ReferenceResolution: {x: 1920, y: 1080}
+    #     m_UiScaleMode: 1        （Scale With Screen Size）
+    # 换掉这个数，UI 布局会整体变化，所以这里从场景读，不写死。
+    ref = re.search(r"m_ReferenceResolution:\s*\{x:\s*(-?[\d.]+),\s*y:\s*(-?[\d.]+)\}",
+                    text)
+    if ref:
+        W, H = float(ref.group(1)), float(ref.group(2))
+    # 根矩形：左下角原点、右上角 (W,H)
+    rx0, ry0, rx1, ry1 = 0.0, 0.0, W, H
     trace: list[str] = []
     for cid, v in reversed(chain):
-        cx += v["anchor_min"][0] * 1920.0 / 2.0 + v["anchor_max"][0] * 1920.0 / 2.0 \
-              + v["anchored_position"][0]
-        cy += v["anchor_min"][1] * 1080.0 / 2.0 + v["anchor_max"][1] * 1080.0 / 2.0 \
-              + v["anchored_position"][1]
+        pw, ph = rx1 - rx0, ry1 - ry0
+        # 父矩形退化（宽或高为 0）说明上一层是根 Canvas 层：
+        # Unity 里根 Canvas 的 RectTransform sizeDelta 就是 (0,0)，
+        # 它直接铺满整个参考分辨率。此时用参考分辨率兜底，
+        # 否则整条链会塌成 0 宽 0 高（实测：CreateServerButton 的
+        # 祖先链最内两层就是这种，累加结果 (0,0)-(0,0)）。
+        if pw <= 0:
+            pw = W
+            rx0 = 0.0
+        if ph <= 0:
+            ph = H
+            ry0 = 0.0
+        w = (v["anchor_max"][0] - v["anchor_min"][0]) * pw + v["size_delta"][0]
+        h = (v["anchor_max"][1] - v["anchor_min"][1]) * ph + v["size_delta"][1]
+        x0 = rx0 + v["anchor_min"][0] * pw + v["anchored_position"][0]
+        y0 = ry0 + v["anchor_min"][1] * ph + v["anchored_position"][1]
+        rx0, ry0, rx1, ry1 = x0, y0, x0 + w, y0 + h
         trace.append(f"      &{cid}: anchor={v['anchor_min']}..{v['anchor_max']} "
                      f"pos={v['anchored_position']} size={v['size_delta']} "
-                     f"-> 累加到 ({cx:.1f}, {cy:.1f})")
+                     f"-> 矩形 ({rx0:.1f}, {ry0:.1f}) .. ({rx1:.1f}, {ry1:.1f})")
+    cx = (rx0 + rx1) / 2.0
+    cy = (ry0 + ry1) / 2.0
+    # 最终矩形完全落在参考分辨率内 -> 累加逻辑成立。
+    # 不成立说明还有没建模的变换（Canvas Scaler 之类），
+    # 这时点下去必然点空，必须让调用方看见而不是硬点。
+    in_view = (-1e-6 <= rx0 and rx1 <= W + 1e-6
+               and -1e-6 <= ry0 and ry1 <= H + 1e-6)
 
     own = chain[0][1] if chain else {}
     return {
         "ok": True,
-        "method": m.group(1),
+        "method": tgt.get("method"),
         "depth": len(chain),
         "own_anchor_min": own.get("anchor_min"),
         "own_anchor_max": own.get("anchor_max"),
         "own_pivot": own.get("pivot"),
         "own_size_delta": own.get("size_delta"),
         "center_1920x1080": (cx, cy),
+        "rect": (rx0, ry0, rx1, ry1),
+        "in_view": in_view,
         "trace": trace,
+        # 把「选了哪个按钮」和「还有哪些候选」一起带出去。
+        # 前两版只报坐标不报按钮名，于是点击差异 0.00% 时，
+        # 报告写「点击很可能没生效」—— 把排查方向指向浏览器和坐标，
+        # 而真实原因是点错了按钮对象。方向错比查不到更费时间。
+        "target_go": tgt.get("go"),
+        "target_field": tgt.get("field"),
+        "target_why": tgt.get("why"),
+        "candidates": tgt.get("candidates", []),
     }
 
 
@@ -222,7 +450,19 @@ def main() -> int:
         print("这一节为空**不代表**按钮点不了，只代表拿不到坐标。")
         return 1
     cx, cy = layout["center_1920x1080"]
-    print("== SingleplayerButton 布局（从 Game.unity 读出，非硬编码）")
+    print("== 目标按钮（从 Game.unity 按GUID 解析，不写死 fileID）")
+    print(f"   选中对象   : {layout.get('target_go')}"
+          f"（字段 {layout.get('target_field')}）")
+    print(f"   选中理由   : {layout.get('target_why')}")
+    cands = layout.get("candidates") or []
+    if cands:
+        print("   全部候选（点错按钮就是从这张表里选错的）:")
+        for c in cands:
+            act = {True: "开", False: "关", None: "?"}[c["active"]]
+            print(f"      {c['field']:<26} {c['go']:<28} "
+                  f"激活={act}  绑定={c['method']}")
+    print()
+    print(f"== {layout.get('target_go')} 布局（从 Game.unity 读出，非硬编码）")
     print(f"   绑定方法   : {layout['method']}")
     print(f"   自身 anchor: {layout['own_anchor_min']} .. {layout['own_anchor_max']}"
           f"  pivot={layout['own_pivot']}  size={layout['own_size_delta']}")
