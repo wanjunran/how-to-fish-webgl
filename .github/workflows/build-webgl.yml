@@ -92,6 +92,12 @@ jobs:
           # 59 个正常项会淹掉真信号；若只判「都是正常」，真丢了没人知道。
           python3 tools/check_dangling_refs.py 2>&1 \
             | tee verify-evidence/dangling-refs.txt
+          # 天空盒链路：碧海蓝天是用户最想看到的东西，而它是唯一一个
+          # 在启动场景里、不依赖任何游戏内逻辑就能出结果的渲染产物 ——
+          # 所以最适合当「渲染管线通没通」的探针。查的是数据完整性
+          # （材质/颜色/相机 ClearFlags/pragma target），不是画面观感。
+          python3 tools/check_skybox.py 2>&1 \
+            | tee verify-evidence/skybox.txt
 
       # 使用 game-ci/unity-builder v6 —— 这是首个内置 `personal` 授权策略的版本。
       #
@@ -1071,6 +1077,17 @@ jobs:
               echo '```'
             else
               echo "（无记录）"
+            fi
+            echo
+            echo "## 天空盒（碧海蓝天的来源）"
+            echo
+            if [ -s verify-evidence/skybox.txt ]; then
+              echo '```'
+              cat verify-evidence/skybox.txt
+              echo '```'
+            else
+              echo "**无记录** —— 这一节为空**不代表**天空正常，"
+              echo "只代表没查到数据。"
             fi
             echo
             echo "## shader 编译错误"
