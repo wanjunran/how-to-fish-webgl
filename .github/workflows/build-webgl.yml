@@ -119,6 +119,20 @@ jobs:
           python3 tools/check_skybox.py 2>&1 \
             | tee verify-evidence/skybox.txt \
                   docs/ci-evidence/skybox.txt
+          # 元检查：上面这些检查产出的证据，**有没有真的能被人看到**。
+          #
+          # 为什么需要它：本项目在同一个坑上栽过五次，每次形态不同 ——
+          # 洋红统计被 exit 1 掐断、被 except ImportError 静默吞掉、
+          # 结论段被 head -50 挤出窗口、C# 扫描写进被 gitignore 的目录
+          # （那次内容全对，只是没人看得到）。最后一次修 12 处同类问题时，
+          # 我是先修了 2 处、以为完事，事后 grep 才发现还有 10 处。
+          #
+          # 这类问题不该靠人记得去 grep。判据是「落点会不会被 .gitignore
+          # 吃掉」+「workflow 里有没有这个路径」，能提前抓住。
+          # 它只管证据**能不能被看见**，不管内容对不对。
+          python3 tools/check_evidence_pipeline.py 2>&1 \
+            | tee verify-evidence/evidence-pipeline.txt \
+                  docs/ci-evidence/evidence-pipeline.txt
 
       # 使用 game-ci/unity-builder v6 —— 这是首个内置 `personal` 授权策略的版本。
       #
@@ -1190,6 +1204,21 @@ jobs:
               echo "（无记录）"
             fi
             echo
+            echo "## 证据管线自检"
+            echo
+            echo "查的不是内容对不对，而是**证据有没有真的能被人看到**。"
+            echo "本项目在同一个坑上栽过五次（洋红被 exit 1 掐断 / 被"
+            echo "except ImportError 吞掉 / 结论段被 head -50 挤出窗口 /"
+            echo "C# 扫描写进被 gitignore 的目录 / 修了 2 处漏了 10 处）。"
+            echo
+            if [ -s verify-evidence/evidence-pipeline.txt ]; then
+              echo '```'
+              head -30 verify-evidence/evidence-pipeline.txt
+              echo '```'
+            else
+              echo "**无记录** —— 这一节为空**不代表**证据管线健康。"
+            fi
+            echo
             echo "## 天空盒（碧海蓝天的来源）"
             echo
             if [ -s verify-evidence/skybox.txt ]; then
@@ -1394,7 +1423,7 @@ jobs:
                  shader-errors.txt official-shader-sync.txt \
                  mat-shader-props.txt shader-keywords.txt \
                  dangling-refs.txt skybox.txt urp-apv-guards.txt \
-                 ingame-layout.txt ingame-click.txt"
+                 ingame-layout.txt ingame-click.txt evidence-pipeline.txt"
           for n in $CI_EV; do
             f="docs/ci-evidence/$n"
             [ -f "$f" ] && git add -f "$f" 2>/dev/null
