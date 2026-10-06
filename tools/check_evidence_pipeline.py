@@ -96,6 +96,8 @@ EVIDENCE = [
      "workflow 自身结构合法 + 步数没变 —— run #118 就是这里出的问题"),
     ("shader-health.txt", True,
      "Dummy 桩占材质引用数的比例 —— 画面为什么是黑的直接判据"),
+    ("include-gate-test.txt", True,
+     "官方 shader 覆盖的 include 门禁双向自检 —— 活分支缺要拒、死分支缺不能拒"),
 ]
 
 

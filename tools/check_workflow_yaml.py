@@ -74,6 +74,7 @@ workflow 文件非法时CI **根本不会启动**，所以「在 CI 里检查 wo
 
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -85,6 +86,36 @@ import yaml
 # 同一个 step 里同时出现必然非法。同理一个 step 只能有一个 if。
 # PyYAML 不会拦这类「语义上冲突但键不重复」的情况，所以要自己查。
 MUTUALLY_EXCLUSIVE = [("run", "uses"), ("uses", "run")]
+
+
+def _logical_lines(run: str) -> list[tuple[int, str]]:
+    """把 run 块合并成逻辑行，正确处理反斜杠续行。
+
+    必须合并，否则一条被 `\\` 折成两行的 echo 会被当成两条独立的行，
+    各自引号都不配对 -> 满屏误报。而不合并的直接后果是漏报：
+    引号在第一行开、第二行闭的那种，恰恰是最容易写错也最难发现的。
+
+    返回 (行号, 逻辑行)，行号取该逻辑行**最后一行**的序号，
+    这样报错指向的是真正出问题的那行。
+    """
+    out: list[tuple[int, str]] = []
+    buf = ""
+    start = 0
+    for i, raw in enumerate(run.splitlines(), 1):
+        t = raw.strip()
+        if buf:
+            buf += " " + t
+        else:
+            buf = t
+            start = i
+        if buf.endswith("\\"):
+            buf = buf[:-1].rstrip()
+            continue
+        out.append((i, buf))
+        buf = ""
+    if buf.strip():
+        out.append((start, buf))
+    return out
 
 
 class StrictLoader(yaml.SafeLoader):
@@ -177,6 +208,29 @@ def lint(path: Path) -> tuple[list[str], list[str]]:
             # 把它当成独立 step —— 那不是错误。
             # 留一个永不响的检查冒充覆盖，比没有更糟：
             # 它会让人以为「缩进吃掉step」这类问题有防护。
+            #
+            # ---- run 块里的引号配对 ----
+            # 这不是洁癖：写报告文案时手滑打出过
+            #     echo 'xxx —— 说明"'
+            # 单引号开头、双引号结尾。`bash -n` 查不出来（它对 echo 的
+            # 参数解析比运行时宽松），YAML 也合法，于是它安静地把后面
+            # 几行一起吞进参数里，报告少一节却没人发现。
+            # 加判据后这类错误当场可见。
+            run = step.get("run")
+            if isinstance(run, str):
+                for lineno, logical in _logical_lines(run):
+                    t = logical.strip()
+                    if not t.startswith("echo "):
+                        continue
+                    body = t[5:]
+                    sq = len(re.findall(r"(?<!\\)'", body))
+                    dq = len(re.findall(r'(?<!\\)"', body))
+                    if sq % 2 or dq % 2:
+                        errors.append(
+                            f"{where}: run 块第 {lineno} 行 echo 的引号不配对"
+                            f"（单引号 {sq} 个、双引号 {dq} 个）—— "
+                            f"bash 会把后续行一起吞进参数：{t[:70]}"
+                        )
     return errors, warnings
 
 

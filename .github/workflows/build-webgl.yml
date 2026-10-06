@@ -62,6 +62,23 @@ jobs:
       - name: Restore official shader sources
         run: |
           mkdir -p verify-evidence
+          # 先自检 include 门禁，再真正跑覆盖。
+          #
+          # 顺序不能反：门禁的作用是「缺 include 就不覆盖」（覆盖一个编译
+          # 不过的官方 shader = 洋红）。但这个门禁栽过一次且极安静 ——
+          # `Common.hlsl` 里有10 条按平台分发的 include 分支，WebGL 只走
+          # GLES3 那一条，早期实现把死分支全算成「缺」，于是 45 个官方
+          # shader 全部拒绝覆盖（含被 59 个材质引用的 URP/Lit），
+          # 报告写「已覆盖：0」，流程一路绿灯。
+          #
+          # 只测「能覆盖」抓不住这种坏实现（修正前后分别0 和 26，但那
+          # 一侧本来就该是 0），必须双向测：活分支缺 -> 要拒；死分支缺 ->
+          # 不能拒。少测一个方向，都会留下一个能通过测试的坏实现。
+          #
+          # 失败即中止构建：门禁坏了还继续，覆盖就会静默空转。
+          python3 tools/test_shader_include_gate.py 2>&1 \
+            | tee verify-evidence/include-gate-test.txt \
+                  docs/ci-evidence/include-gate-test.txt
           # sync脚本自己会把 stdout 落盘到 verify-evidence/official-shader-sync.txt
           #（它内部做了 stdout 重定向到内存缓冲，既 print 又写文件）。
           # 这里再复制一份到 docs/ci-evidence/ —— 前者被 .gitignore 忽略、
@@ -1205,6 +1222,38 @@ jobs:
             echo "三态含义：生效 / **未生效**（声称覆盖了但文件仍是空壳）/"
             echo "**未执行**（一个都没覆盖）。后两者画面不会变好。"
             echo
+            # 覆盖数是这一节真正要看的东西 —— 「生效」而不写覆盖了几个，
+            # 只说明脚本跑完了，不代表覆盖了有用的东西。
+            COV=$(grep -m1 -o '已用官方源码覆盖：[0-9]*' "$SYNC" 2>/dev/null || true)
+            if [ -n "$COV" ]; then
+              echo "实际覆盖数量：**$COV** 个shader 文件被换成官方包源码。"
+              LITCNT=$(grep -c '^  + Universal Render Pipeline/Lit$' "$SYNC" 2>/dev/null || echo 0)
+              if [ "$LITCNT" -ge 1 ]; then
+                echo
+                echo '`Universal Render Pipeline/Lit` **在覆盖名单里** ——'
+                echo "它被 59 个材质引用，是画面黑屏的主角"
+                echo "（原本只有 1 个 Pass、输出 unlit、顶点不传法线）。"
+              else
+                echo
+                echo "::warning::\`Universal Render Pipeline/Lit\` 不在覆盖名单里 ——"
+                echo "被59 个材质引用的主shader 仍是空壳，画面不会变好。"
+              fi
+            fi
+            echo
+            # 门禁自检结果必须跟着判决一起看：门禁坏了，覆盖数就是 0，
+            # 而报告看上去一切正常。
+            if [ -s verify-evidence/include-gate-test.txt ]; then
+              echo "### 覆盖前的门禁自检（双向）"
+              echo
+              echo '```'
+              grep -E '^\s+\[(OK|FAIL)\]|双向验证通过|失败' \
+                   verify-evidence/include-gate-test.txt || true
+              echo '```'
+              echo
+              echo "两个方向都必须过：活分支缺 include 要拒（否则洋红），"
+              echo "死分支缺 include 不能拒（否则覆盖静默空转）。"
+            fi
+            echo
             echo "## 洋红（shader 编译失败）"
             echo
             if [ -s verify-evidence/magenta.txt ]; then
@@ -1629,7 +1678,7 @@ jobs:
                  mat-shader-props.txt shader-keywords.txt \
                  dangling-refs.txt lightmode.txt skybox.txt urp-apv-guards.txt \
                  ingame-layout.txt ingame-click.txt evidence-pipeline.txt \
-                 workflow-yaml.txt shader-health.txt"
+                 workflow-yaml.txt shader-health.txt include-gate-test.txt"
           for n in $CI_EV; do
             f="docs/ci-evidence/$n"
             [ -f "$f" ] && git add -f "$f" 2>/dev/null

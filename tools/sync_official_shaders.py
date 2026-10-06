@@ -104,6 +104,43 @@ def count_passes(text: str) -> int:
     return len(re.findall(r"(?:^|\{|\})[ \t]*Pass[ \t\r\n]*\{", body, re.M))
 
 
+def _strip_comments(text: str) -> str:
+    """剥掉 // 行注释。判据函数共用，避免每个正则各写一遍。"""
+    return re.sub(r"//[^\n]*", "", text)
+
+
+def _tag_present(text: str, key: str) -> bool:
+    """Tags 块里是否有这个键。
+
+    ShaderLab 有两种写法，官方 URP 源码两种都出现，且**同一行混用**：
+
+        Tags{"RenderType" = "Opaque" "Queue" = "Geometry" ...}
+               ^^^^^^^^^^ 带引号        ^^^^^^ 不带引号
+
+    早期判据只认带引号的 `'"Queue"' in text`，于是 26 个刚覆盖成功的官方
+    shader 全被标成「缺 Queue」—— 假警报比没判据更糟，它让人不再相信
+    验收这一节。
+    """
+    if '"' + key + '"' in text:
+        return True
+    return bool(re.search(rf'(?<!")\b{re.escape(key)}\b(?!")\s*=\s*"', text))
+
+
+def _state_present(text: str, key: str) -> bool:
+    """渲染状态命令是否存在，接受字面量与材质参数两种形式。
+
+    官方 Lit 的标准写法是**方括号材质参数**：
+
+        Blend [_SrcBlend][_DstBlend]
+        ZWrite [_ZWrite]
+        Cull  [_Cull]
+
+    早期判据是 `^[ \\t]*Blend[ \\t]+\\w`，要求后面紧跟单词字符，
+    于是上面三行全部匹配不上 -> 「缺 Blend 状态 / 缺 ZWrite 状态」。
+    """
+    return bool(re.search(rf"^[ \t]*{re.escape(key)}[ \t]+(?:\[|\w)", text, re.M))
+
+
 def shader_name(path: str) -> str | None:
     """First `Shader "..."` declaration -- the identity Unity matches on."""
     try:
@@ -124,6 +161,183 @@ def is_stub(path: str) -> bool:
 
 
 INCLUDE = re.compile(r'^\s*#include\s+"([^"]+)"', re.M)
+
+# ---------------------------------------------------------------------------
+# 平台感知：只展开 WebGL 实际会走的预处理分支
+# ---------------------------------------------------------------------------
+# 这一节存在的理由是一次**静默失效**：预检把 Common.hlsl 里 10 条死分支的
+# include 全算成「缺」，于是 45 个官方 shader 全部被拒覆盖，其中就包括
+# 被59 个材质引用的 `Universal Render Pipeline/Lit`。报告里写「已用官方
+# 源码覆盖：0」，流程一路绿灯，而画面依旧是黑的。
+#
+# 官方 Common.hlsl 的真实结构（core 包，已下载核对）：
+#
+#     // Include language header
+#     #if defined (SHADER_API_GAMECORE)
+#     #include ".../gamecore/ShaderLibrary/API/GameCore.hlsl"
+#     #elif defined(SHADER_API_XBOXONE)
+#     #include ".../xboxone/ShaderLibrary/API/XBoxOne.hlsl"
+#     #elif defined(SHADER_API_PS4)
+#     ...
+#     #elif defined(SHADER_API_GLES3)          <-- WebGL 走这条
+#     #include ".../core/ShaderLibrary/API/GLES3.hlsl"
+#     ...
+#     #else
+#     #error unsupported shader api
+#     #endif
+#
+# WebGL 构建里 SHADER_API_GAMECORE / XBOXONE / PS4 / PS5 一个都不定义，
+# 所以那4 个 include **永远不会被预处理器读到**，也永远不可能导致编译失败。
+# 把它们算成「缺」不是保守，是**算错了**：门禁的方向是「宁可别覆盖」，
+# 判错就退化成「全都别覆盖」，于是修复全程空转。
+#
+# 这里不判断 include 的内容，只判断**它所在的分支在 WebGL 下是否可达**。
+# 做的仍然是对官方源码的机械解析，没有任何手写 shader 语义。
+# WebGL 下「视为已定义」的宏。
+#
+# 关键：`SHADER_API_GLCORE` **不在**这里。GLCore 是桌面 OpenGL Core
+# profile（Standalone Windows/Linux/macOS），Unity 的 WebGL 平台只用
+# OpenGL ES 2.0/3.0（WebGL1/WebGL2）。把它算成「可能成立」会让
+# `#elif` 链在 GLCore 那支就提前成立，后面的 GLES3 分支被跳过 ——
+# 反向验证时正是这么错的：选中了 GLCore.hlsl 而不是 GLES3.hlsl。
+# 方向错了的保守比不保守更糟，它会把唯一正确的分支踢掉。
+WEBGL_API_MACROS = frozenset({
+    "SHADER_API_GLES3", "UNITY_WEBGL", "UNITY_WEBGL_2",
+})
+
+# 明确不在 WebGL 下成立的平台宏。出现在 #if defined(X) 里就整块跳过。
+DEAD_PLATFORM_MACROS = frozenset({
+    # 主机平台（core 包 Common.hlsl 里各占一条 #elif）
+    "SHADER_API_GAMECORE", "SHADER_API_GAMECORE_SONY",
+    "SHADER_API_XBOXONE", "SHADER_API_XBOXONE_SONY",
+    "SHADER_API_PS4", "SHADER_API_PS5",
+    "SHADER_API_SWITCH",
+    # 桌面 / 移动平台
+    "SHADER_API_D3D11", "SHADER_API_D3D12",
+    "SHADER_API_METAL", "SHADER_API_VULKAN",
+    "SHADER_API_GLES",
+    "SHADER_API_GLCORE",
+    "UNITY_GAMECORE", "UNITY_GAMECORE_SONY", "UNITY_XBOXONE",
+    "UNITY_PS4", "UNITY_PS5", "UNITY_METAL", "UNITY_VULKAN",
+    "UNITY_SWITCH", "UNITY_D3D11", "UNITY_D3D12",
+    "UNITY_IOS", "UNITY_ANDROID", "UNITY_STANDALONE",
+})
+
+# 无路径形式的 include（UnityCG.cginc 之类）。这些是**编辑器安装目录**
+# 里的内置CGIncludes，Unity 自己按目标平台注入，不在 PackageCache 里。
+# 预检只能查 PackageCache，查不到不代表编译失败 —— 判「缺」就会误杀
+# `Hidden/Core/FallbackError` 这种本身只做报错提示的 shader。
+BUILTIN_NO_PATH = frozenset({
+    "UnityCG.cginc", "UnityShaderVariables.cginc",
+    "UnityInstancing.cginc", "UnityInput.cginc",
+    "HLSLSupport.cginc", "Lighting.cginc",
+    "UnityIndirect.cginc", "UnityGBuffer.cginc",
+})
+
+# 条件编译指令。
+DIRECTIVE = re.compile(r"^\s*#\s*(if|ifdef|ifndef|elif|else|endif)\b(.*)$")
+
+
+def _branch_reachable(directive: str, cond: str) -> bool:
+    """判断一条预处理分支在 WebGL 下是否可达。
+
+    只处理「`#if defined(X)` / `#ifdef X` / `#if defined(X) && ...`」这类
+    **纯平台宏**判定。含未知标识符（例如 ``defined(UNITY_FOO) &&
+    !defined(SHADER_QUALITY_LOW)``）时**返回 True**（可达）——
+    门禁必须偏向「多查」，宁可多报一个缺，不可放过一个真缺。
+    """
+    d = directive.lower()
+    cond = cond.strip()
+
+    if d == "else":
+        return True
+    if d == "endif":
+        return True
+    if d in ("ifdef", "ifndef"):
+        m = re.match(r"([A-Za-z_]\w*)", cond)
+        if not m:
+            return True
+        present = m.group(1) in _WEBGL_DEFINED
+        return present if d == "ifdef" else not present
+
+    # if / elif：抽出全部 defined(X) 与裸宏
+    names = re.findall(r"defined\s*\(\s*([A-Za-z_]\w*)\s*\)|(?<![(])\b([A-Za-z_]\w*)\b",
+                       cond)
+    flat = [a or b for a, b in names]
+    flat = [n for n in flat if n not in
+            ("defined", "SHADER_API", "SHADER_TARGET", "UNITY_")]
+    # 剔掉 `&&`/`||` 之类噪音后没有任何宏可判 -> 无法判定，按可达处理
+    if not flat:
+        return True
+
+    # 只要出现任一「明确不成立」的平台宏，且没有出现 WebGL 成立的宏，
+    # 则该分支在 WebGL 下不可达。
+    has_live = any(n in _WEBGL_DEFINED for n in flat)
+    has_dead = any(n in DEAD_PLATFORM_MACROS for n in flat)
+    if has_dead and not has_live:
+        return False
+    return True
+
+
+# WebGL 下「视为已定义」的宏。只放确定成立的，避免误杀。
+_WEBGL_DEFINED = WEBGL_API_MACROS
+
+
+def active_includes(text: str) -> list[str]:
+    """返回在 WebGL 下**真正会被预处理器读到**的 include 列表。
+
+    逐行跟踪 #if / #elif / #else / #endif 的嵌套，遇到不可达的分支就整块
+    跳过，不把它里面的 include 算进来。
+    """
+    out: list[str] = []
+    # 栈元素：(父分支是否可达, 本分支是否已判定为可达, 是否已进入 else)
+    stack: list[tuple[bool, bool, bool]] = []
+    reachable = True
+
+    for line in text.splitlines():
+        m = DIRECTIVE.match(line)
+        if not m:
+            if reachable:
+                out.extend(INCLUDE.findall(line))
+            continue
+
+        directive, cond = m.group(1).lower(), m.group(2)
+        if directive in ("if", "ifdef", "ifndef"):
+            parent_ok = reachable
+            ok = parent_ok and _branch_reachable(directive, cond)
+            # 记录：本分支是否在 WebGL 下成立（用于 #else 取反）
+            stack.append([parent_ok, ok, False])
+            reachable = ok
+        elif directive == "elif":
+            if not stack:
+                continue
+            frame = stack[-1]
+            parent_ok, taken, in_else = frame
+            if in_else:
+                # #else 之后还有 #elif 是非法的，保守当作不可达
+                reachable = False
+            elif taken:
+                # C 预处理器短路：前面已成立，这一支轮不到。
+                # 这一条不是可选的 —— 漏掉它会把 GLES3 分支踢掉。
+                reachable = False
+            else:
+                ok = parent_ok and _branch_reachable("if", cond)
+                frame[1] = ok
+                reachable = ok
+        elif directive == "else":
+            if not stack:
+                continue
+            frame = stack[-1]
+            parent_ok, taken, in_else = frame
+            # 若前面没有任何分支在 WebGL 下成立，else 就是可达的那一支
+            ok = parent_ok and not taken
+            frame[2] = True
+            reachable = ok
+        elif directive == "endif":
+            if stack:
+                stack.pop()
+            reachable = stack[-1][0] if stack else True
+    return out
 
 
 def build_pkg_index(cache_dir: str) -> dict[str, str]:
@@ -171,7 +385,7 @@ def build_pkg_index(cache_dir: str) -> dict[str, str]:
 
 def missing_includes(src: str, cache_dir: str,
                      pkg_index: dict[str, str] | None = None) -> list[str]:
-    """列出在包缓存里解析不到的 `#include`。
+    """列出在包缓存里解析不到的 `#include`（**只看 WebGL 下会读到的**）。
 
     认三种写法，都是 URP/core 包内 shader 实际在用的：
       - ``Packages/<pkg>/<path>``  绝对逻辑路径（要补版本后缀）
@@ -182,6 +396,13 @@ def missing_includes(src: str, cache_dir: str,
     .hlsl，这些 .hlsl 又 include 更多的 .hlsl。只检查第一层会漏掉
     「Lit.hlsl 在，但 LitInput.hlsl 不在」这种。所以这里**递归**展开，
     把每一层都查一遍。
+
+    **关键：递归必须带平台感知。** Common.hlsl 里有一整条
+    ``#if defined(SHADER_API_GAMECORE) ... #elif defined(SHADER_API_GLES3)``
+    的平台 API 分支链，WebGL 只走GLES3 那一支。早期版本用不带条件的
+    ``INCLUDE.findall(text)`` 把10 条死分支全算进来，于是
+    ``Universal Render Pipeline/Lit`（59 个材质引用）被判「include 不全」，
+    45 个官方 shader 全部拒绝覆盖。现在改用 :func:`active_includes`。
     """
     cache_dir = os.path.abspath(cache_dir)
     if pkg_index is None:
@@ -197,10 +418,14 @@ def missing_includes(src: str, cache_dir: str,
         except OSError:
             continue
         cur_dir = os.path.dirname(os.path.abspath(cur))
-        for inc in INCLUDE.findall(text):
+        for inc in active_includes(text):
             if inc in seen:
                 continue
             seen.add(inc)
+            # 编辑器内置 CGIncludes 不在 PackageCache 里，Unity 自己注入。
+            # 查不到不代表编译失败，判「缺」会误杀 FallbackError 这类shader。
+            if os.path.basename(inc) in BUILTIN_NO_PATH:
+                continue
             found = None
             # 1) Packages/<pkg>/<rest>：先查原样（无后缀的老布局），
             #    再按 pkg_index 补版本后缀 —— 真实 PackageCache 用后者。
@@ -369,6 +594,7 @@ def _run() -> int:
     print(f"空壳 shader：{len(stubs)}")
 
     replaced: list[str] = []
+    official_of: dict[str, str] = {}
     missing: list[str] = []
     blocked: list[tuple[str, list[str]]] = []
     for stub in stubs:
@@ -387,7 +613,11 @@ def _run() -> int:
             blocked.append((name, bad))
             continue
         shutil.copyfile(src, stub)
+        # 同时记住官方源路径：验收环节要拿它当基线。只记名字的话，
+        # 后面想对比「官方有而覆盖后没了」就得再扫一遍包缓存，
+        # 而那正是最容易悄悄拿到不同版本的地方。
         replaced.append(name)
+        official_of[name] = src
 
     print(f"\n已用官方源码覆盖：{len(replaced)}")
     for n in replaced:
@@ -457,6 +687,25 @@ def _run() -> int:
     #
     # 官方 Lit.shader 带完整 Tags（Queue / RenderType）和多 Pass，能一并
     # 解决这些。所以覆盖后必须验一遍：Queue 在不在、渲染状态在不在。
+    #
+    # 判据本身也栽过一次（第九次静默失效）：早期用 `'"Queue"' in text` 判
+    # Queue 存在，而官方真实的写法是**不带引号**的
+    #     Tags { "RenderType" = "Opaque" "Queue" = "Geometry" ... }
+    #                ^^^^^^ 带引号        ^^^^^ 不带引号
+    # 于是 26 个刚覆盖成功的官方 shader 全被标成「缺 Queue / 缺 Blend」，
+    # 输出看起来像严重问题，实际全假。假警报比没判据更糟：它让人不再相信
+    # 验收这一节。同理 Blend/ZWrite 要认方括号形式 ——
+    # `Blend [_SrcBlend][_DstBlend]` 是官方 Lit 的标准写法。
+    #
+    # 再往前一步：**拿官方源码自己当基线**。这一步的目标是「用官方源码
+    # 覆盖」，那么官方源码就是正确性的上限，它没有的东西我们不该报缺。
+    # 官方 `Hidden/.../Bloom.shader` 里真的只有
+    #     ZTest Always ZWrite Off Cull Off
+    # 没有 Blend —— 因为它是全屏 RT blit，本来就不需要混合。报「缺 Blend」
+    # 是把官方设计说成缺陷。判据改成「相对官方基线的回退」：
+    #   OK        官方有、覆盖后也有
+    #   官方即无官方源码本身就没有，不算问题（写明，别让人误判）
+    #   回退      官方有、覆盖后没了 —— 这才是真事故
     print("\n### 覆盖后验收（关键判据）")
     for name in replaced:
         stub = None
@@ -467,21 +716,66 @@ def _run() -> int:
         if not stub:
             continue
         with open(stub, encoding="utf-8", errors="replace") as f:
-            now = f.read()
-        has_queue = '"Queue"' in now
-        has_rt = '"RenderType"' in now
-        has_blend = bool(re.search(r"^[ \t]*Blend[ \t]+\w", now, re.M))
-        has_zwrite = bool(re.search(r"^[ \t]*ZWrite[ \t]+\w", now, re.M))
+            now = _strip_comments(f.read())
+        official = official_of.get(name)
+        # 基线必须是**包内**的源，不是刚被覆盖写过的桩。
+        # 曾经栽在这里：`official_of` 存成了桩路径，于是「基线」和「当前」
+        # 读的是同一个文件，判据却报出 26 个「回退」——覆盖是逐字节复制，
+        # 字节都相同怎么可能回退？这种自相矛盾的输出一旦出现，就说明基线取错，
+        # 必须当场崩掉而不是继续打印。断言比注释管用。
+        if official and os.path.abspath(official) == os.path.abspath(stub):
+            raise AssertionError(
+                f"基线取到了桩文件本身：{official}\n"
+                f"覆盖是 shutil.copyfile 的逐字节复制，当前内容与基线必然相同，"
+                f"此时报出任何「回退」都是判据错误。"
+            )
+        base = _strip_comments(
+            open(official, encoding="utf-8", errors="replace").read()
+        ) if official else None
+        # 第二道断言：内容层面自检。逐字节复制意味着两边必须完全相等，
+        # 一旦不等就说明「基线」并不是真正被复制的那份文件 —— 而此时判据
+        # 报出的任何「回退」都是假的。踩过两次才补上这道：
+        # 第一次基线取成桩路径（路径断言能抓），
+        # 第二次是别的文件（只能靠内容抓）。
+        if base is not None and base != now:
+            raise AssertionError(
+                f"基线与覆盖结果内容不一致：{name}\n"
+                f"  覆盖后：{stub}（{len(now)} 字符）\n"
+                f"  基线  ：{official}（{len(base)} 字符）\n"
+                f"  两者本应逐字节相同（shutil.copyfile）。判据据此报出的"
+                f"「回退」全是假的，先修基线来源，别去改判据。"
+            )
+
+        def _t(txt, key):
+            return _tag_present(txt, key) if txt is not None else None
+
+        def _s(txt, key):
+            return _state_present(txt, key) if txt is not None else None
+
+        # Tags 键：ShaderLab 允许 "Queue" 和 Queue 两种写法，都要认
+        has_queue, ref_queue = _t(now, "Queue"), _t(base, "Queue")
+        has_rt, ref_rt = _t(now, "RenderType"), _t(base, "RenderType")
+        # 渲染状态：字面量（Blend One Zero）与材质参数
+        # （Blend [_SrcBlend][_DstBlend] / ZWrite [_ZWrite]）两种都算存在
+        has_blend, ref_blend = _s(now, "Blend"), _s(base, "Blend")
+        has_zwrite, ref_zwrite = _s(now, "ZWrite"), _s(base, "ZWrite")
         passes = count_passes(now)
         flags = []
-        if not has_queue:
-            flags.append("缺 Queue")
-        if not has_rt:
-            flags.append("缺 RenderType")
-        if not has_blend:
-            flags.append("缺 Blend 状态")
-        if not has_zwrite:
-            flags.append("缺 ZWrite 状态")
+        for label, got, ref in (("Queue", has_queue, ref_queue),
+                                ("RenderType", has_rt, ref_rt),
+                                ("Blend状态", has_blend, ref_blend),
+                                ("ZWrite状态", has_zwrite, ref_zwrite)):
+            # 只有「官方基线里有、覆盖后没了」才是真回退。
+            #
+            # 这里栽过一次很典型的错：把 `ref is False`（官方源码本来就没有）
+            # 当成「官方有」去报警，于是官方 Lit 报出「官方有 Queue，覆盖后
+            # 没了」——而它根本没有 Queue tag，只有 _QueueOffset 属性。
+            # 26 个刚覆盖成功的文件全在报警，输出看着像严重事故，全是假的。
+            # 覆盖是 shutil.copyfile 逐字节复制，字节相同不可能回退；
+            # 出现这种自相矛盾的结论，先怀疑判据，别急着改资产。
+            if got or not ref:
+                continue
+            flags.append(f"回退：官方有 {label}，覆盖后没了")
         mark = "OK" if not flags else "; ".join(flags)
         print(f"  {name}: Queue={'Y' if has_queue else 'N'} "
               f"RenderType={'Y' if has_rt else 'N'} "
