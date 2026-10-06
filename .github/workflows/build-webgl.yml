@@ -377,6 +377,60 @@ jobs:
             echo "**shader 编译错误扫描：干净。**" >> "$GITHUB_STEP_SUMMARY"
           fi
 
+          # ---- C# 编译错误扫描 ----
+          #
+          # 为什么必须单独扫：上面那个步骤只查 shader，而 Unity 的
+          # **C# 编译错误**是完全不同的失败模式 —— 它会让 IL2CPP 编译中止、
+          # 产物里没有可用的 .data/.wasm，表现是「构建绿了但页面加载失败」，
+          # 跟 shader 洋红毫无关系。两类混在一起就会只看见自己期待的那个。
+          #
+          # 具体要盯的是类型不存在的错误（CS0246）。目前有一个待确认的疑点：
+          # ConnectionManager.SetTransport() 调用 `_multipass.SetClientTransport<UnityTransport>()`，
+          # 而 `UnityTransport` 这个类型在**整个仓库里搜不到定义**
+          # （FishNet 源码树里没有 UTP 目录，连 .meta 都没有；备份的
+          # FishNet.Runtime.dll 里这个字符串出现 0 次，而 Tugboat 出现 50 次）。
+          # 也就是说那行代码依赖一个不存在的类型 —— 但历史 CI 日志里
+          # `error CS` 计数是 0，两者矛盾。
+          #
+          # **这个矛盾必须由数据回答，不能靠推断。** 所以这里把 C# 错误
+          # 单独落盘成文件，不 exit 1（还要继续取证），并在报告里显式
+          # 点名查这个疑点。
+          CS_HITS=$(grep -ah -E \
+            "error CS[0-9]{4}|Compilation failed|Scripts have compiler errors" \
+            $LOGS 2>/dev/null | sort -u | cut -c1-260)
+          echo "$CS_HITS" > verify-evidence/cs-errors.txt
+          if [ -n "$CS_HITS" ]; then
+            NCS=$(printf '%s\n' "$CS_HITS" | wc -l)
+            echo "::error::构建日志里有 $NCS 条 C# 编译错误（详见 verify-evidence/cs-errors.txt）"
+            printf '%s\n' "$CS_HITS" | head -10 | while IFS= read -r l; do
+              echo "::error::cs: $(printf '%s' "$l" | head -c 240)"
+            done
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "**$NCS 条 C# 编译错误：**" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            printf '%s\n' "$CS_HITS" | head -20 >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          else
+            # 「没扫到 C# 错误」有两种可能，日志里没有 / 日志根本没覆盖到
+            # 编译阶段。必须区分开，否则这份结论没有信息量。
+            if [ "$TOTAL" -lt 200 ]; then
+              echo "::warning::C# 错误扫描不可信：日志只有 $TOTAL 字节"
+              echo "**C# 错误扫描未执行**：日志只有 $TOTAL 字节，" \
+                "扫了个空，不代表 C# 编译没问题。" >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "C# 编译错误扫描：干净（$TOTAL 字节日志）"
+              echo "**C# 编译错误扫描：干净**（扫了 $TOTAL 字节日志）。" \
+                >> "$GITHUB_STEP_SUMMARY"
+            fi
+          fi
+          # 待确认疑点的自证：UnityTransport 是否真的没被编译到
+          echo "== 待确认：UnityTransport（CS0246 疑点）==" \
+            >> "$GITHUB_STEP_SUMMARY"
+          grep -ah -i "UnityTransport" $LOGS 2>/dev/null | head -5 \
+            | cut -c1-200 >> "$GITHUB_STEP_SUMMARY" || true
+          echo "(上面若为空 = 日志里没提到它；这**不能**证明它存在或不存在)" \
+            >> "$GITHUB_STEP_SUMMARY"
+
       # 让 CI 顺手回答一个本地答不了的问题：URP 官方源码里，APV
       # （Adaptive Probe Volumes）那套 SSBO 球谐采样是被什么宏门控的。
       #
