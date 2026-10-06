@@ -79,6 +79,10 @@ jobs:
           # 那么 CI 这次改了的东西和下次不一样，就没法拿 diff 当判据。
           python3 tools/fix_stub_basemap.py --check 2>&1 \
             | tee -a verify-evidence/fix-stub-basemap.txt
+          # 材质/属性错配检查：报「材质设了但 shader 没声明」的属性。
+          # 这类失败 Unity 静默丢弃，日志里一个字都没有，只能靠比对发现。
+          python3 tools/check_mat_shader_props.py 2>&1 \
+            | tee verify-evidence/mat-shader-props.txt
 
       # 使用 game-ci/unity-builder v6 —— 这是首个内置 `personal` 授权策略的版本。
       #
@@ -862,6 +866,35 @@ jobs:
             echo "- 时间: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
             echo "- run: https://github.com/wanjunran/how-to-fish-webgl/actions/runs/${GITHUB_RUN_ID}"
             echo
+            # 洋红统计放**第一屏**：它是「画面到底对不对」唯一的量化判据。
+            # shader 编译失败时 Unity 不报错、不影响构建、照常 exit 0，
+            # 只是把那个材质渲成 (254,0,254) —— 所以「画面里有多少洋红」
+            # 比任何日志都直接。放在后面会被翻页跳过。
+            echo "## 洋红（shader 编译失败）"
+            echo
+            if [ -s verify-evidence/magenta.txt ]; then
+              echo '```'
+              cat verify-evidence/magenta.txt
+              echo '```'
+              echo
+              echo "判读：>= 0.5% 说明至少一个 shader 编译失败。"
+              echo "本地校准基线（\#pragma target 3.5 时的截图）：13.19% / 12.77%。"
+              echo "降到 0 附近才算修好。"
+            else
+              echo "**无记录** —— 说明 verify 步骤没跑到截图统计，"
+              echo "或截图没生成。这一节为空**不代表画面没问题**。"
+            fi
+            echo
+            echo "## 材质属性错配（材质设了但 shader 没声明）"
+            echo
+            if [ -s verify-evidence/mat-shader-props.txt ]; then
+              echo '```'
+              head -60 verify-evidence/mat-shader-props.txt
+              echo '```'
+            else
+              echo "（无记录）"
+            fi
+            echo
             echo "## shader 编译错误"
             echo
             if [ -s verify-evidence/shader-errors.txt ]; then
@@ -974,11 +1007,42 @@ jobs:
             echo "报告与截图均无变化，跳过提交"
             exit 0
           fi
-          # 不 push 失败就当没有 —— 诊断通路不该影响构建结论
-          git commit -q -m "ci: 诊断报告 run ${GITHUB_RUN_ID}" \
-            || echo "::warning::报告提交失败（不影响构建结论）"
-          git push origin HEAD:refs/heads/ci-diagnostics \
-            || echo "::warning::报告推送失败（不影响构建结论）"
+          # 先 commit 再 push —— push 未提交的改动必然失败。
+          # commit 失败同样要炸出来：如果它失败而后面继续跑，
+          # push 会把**上一次构建**的 HEAD 再推一遍（no-op），
+          # 于是又一次出现「步骤全绿、分支却没更新」。
+          if ! git commit -q -m "ci: 诊断报告 run ${GITHUB_RUN_ID}"; then
+            echo "::error::诊断报告 commit 失败（暂存区非空却提交不了）"
+            git status --short | head -20
+            exit 1
+          fi
+          # push 失败**必须以 annotation 形式炸出来**，不能再
+          # `|| echo warning` 咽下去。
+          #
+          # run 37420327376 的真正教训：17 个步骤全部 success，
+          # ci-diagnostics 分支却还是两次之前的提交。两个原因叠在一起：
+          #   1) `|| echo ::warning::` 把 push 失败咽掉了
+          #   2) **push 被非快进拒绝** —— ci-diagnostics 上的提交
+          #      （6cab596）不在 main 的祖先链上：
+          #        git merge-base --is-ancestor 6cab596 <HEAD>  -> 非 0
+          #      所以每轮都是「报告写好了、commit 了、push 被拒」，
+          #      而页面上只看得到 success。
+          #
+          # 用 `+refs/heads/` 强推：这个分支只存 CI 产物，
+          # 不需要保留线性历史，强推不会丢任何有价值的东西
+          # （真要追溯，旧报告也传到了 artifact里）。
+          #
+          # commit 失败 / push 失败都 exit 1（本步骤有 if: always()，
+          # 不影响构建结论），让 job 变红 —— 这样在 run 列表里一眼能看见，
+          # 而不是靠翻 warning。
+          if ! git push --force origin HEAD:refs/heads/ci-diagnostics; then
+            echo "::error::诊断报告 push 失败 —— 报告与截图没能提交回仓库，"
+            echo "::error::这一轮的 CI 结论（洋红面积 / Editor.log / "
+            echo "::error::PackageCache 内容）**无法从仓库读取**，等于这一轮白跑。"
+            git log --oneline -3 || true
+            exit 1
+          fi
+          echo "已推送: $(git rev-parse --short HEAD) -> ci-diagnostics"
 
       - name: Upload WebGL build
         if: always()
