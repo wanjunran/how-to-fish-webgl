@@ -4,6 +4,7 @@ Shader "Shader Graphs/WindyDecorations"
     {
 
 
+
 _Color ("Color", Vector) = (0.3803922,0.454902,0.282353,1)
 _TopColor ("TopColor", Vector) = (0.5882353,0.6235294,0.2980392,1)
 _Smoothness ("Smoothness", Float) = 0
@@ -245,12 +246,12 @@ _Noise_Remap ("Noise Remap", Vector) = (0.9,1,0,0)
                 float4 positionCS : SV_POSITION;
                 nointerpolation uint vs_CUSTOM_INSTANCE_ID0 : TEXCOORD0;
                 float2 vs_INTERP0 : TEXCOORD1;
-                float4 vs_INTERP4 : TEXCOORD4;
-                float4 vs_INTERP5 : TEXCOORD5;
-                float4 vs_INTERP6 : TEXCOORD6;
-                float4 vs_INTERP7 : TEXCOORD7;
-                float3 vs_INTERP8 : TEXCOORD8;
-                float3 vs_INTERP9 : TEXCOORD9;
+                float4 vs_INTERP4 : TEXCOORD2;
+                float4 vs_INTERP5 : TEXCOORD3;
+                float4 vs_INTERP6 : TEXCOORD4;
+                float4 vs_INTERP7 : TEXCOORD5;
+                float3 vs_INTERP8 : TEXCOORD6;
+                float3 vs_INTERP9 : TEXCOORD7;
             };
 
             Varyings vert(Attributes input)
@@ -1120,7 +1121,6 @@ _Noise_Remap ("Noise Remap", Vector) = (0.9,1,0,0)
     u_xlat22.xyz = float3(u_xlat21) * _pad992.xyz;
     __SV_Target0.xyz = u_xlat20.xyz * u_xlat1.xxx + u_xlat22.xyz;
     __SV_Target0.w = (u_xlatb2) ? u_xlat61 : 1.0;
-    __SV_Target1 = uint(uint(_g_floatBitsToUint(_pad176.x)) & uint(_g_floatBitsToUint(_pad128.x)));
     return __SV_Target0;
 
             }

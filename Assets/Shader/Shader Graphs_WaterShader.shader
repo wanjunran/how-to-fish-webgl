@@ -4,6 +4,7 @@ Shader "Shader Graphs/WaterShader"
     {
 
 
+
 [ToggleUI] _Testing ("Testing", Float) = 0
 _DeepColor ("Deep Color", Vector) = (0.03921569,0.09803922,0.2745098,0.7058824)
 _DeepColor_1 ("Deep Color 2", Vector) = (0.03921569,0.09803922,0.2745098,0.7058824)
@@ -296,12 +297,12 @@ _Specular_SmoothStep ("Specular SmoothStep", Vector) = (0,1,0,0)
             {
                 float4 positionCS : SV_POSITION;
                 float2 vs_INTERP0 : TEXCOORD0;
-                float3 vs_INTERP10 : TEXCOORD10;
-                float4 vs_INTERP5 : TEXCOORD5;
-                float4 vs_INTERP6 : TEXCOORD6;
-                float4 vs_INTERP7 : TEXCOORD7;
-                float4 vs_INTERP8 : TEXCOORD8;
-                float3 vs_INTERP9 : TEXCOORD9;
+                float3 vs_INTERP10 : TEXCOORD1;
+                float4 vs_INTERP5 : TEXCOORD2;
+                float4 vs_INTERP6 : TEXCOORD3;
+                float4 vs_INTERP7 : TEXCOORD4;
+                float4 vs_INTERP8 : TEXCOORD5;
+                float3 vs_INTERP9 : TEXCOORD6;
             };
 
             Varyings vert(Attributes input)
@@ -1132,7 +1133,6 @@ float4 hlslcc_FragCoord = float4(input.positionCS.xyz, 1.0/input.positionCS.w);
     u_xlat1.x = (-u_xlat60) + 1.0;
     u_xlat1.xyz = u_xlat1.xxx * _pad992.xyz;
     __SV_Target0.xyz = u_xlat0.xyz * float3(u_xlat60) + u_xlat1.xyz;
-    __SV_Target1 = uint(uint(_g_floatBitsToUint(_pad176.x)) & uint(_g_floatBitsToUint(unity_RenderingLayer.x)));
     __SV_Target0.w = 1.0;
     return __SV_Target0;
 

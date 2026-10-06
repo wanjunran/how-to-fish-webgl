@@ -5,9 +5,22 @@
 与 check_restored_shaders.py 的分工：那个查「未声明标识符」这类HLSL 级
 问题；这个查文件结构级的完整性，适合批量跑。
 
-    python3 tools/check_shader_batch.py /tmp/restored7
+    python3 tools/check_shader_batch.py Assets/Shader
 
-## 一个曾经踩过的坑
+默认扫 ``Assets/Shader``（真正要进 CI 的那批），并且**只查已恢复的**
+文件 ——判据是「不含 ``DummyShaderTextExporter`` 标记」。剩下的 69 个
+空壳由 ``sync_official_shaders.py`` 在 CI 里用URP/包源码覆盖，它们的
+源码在 ``Library/PackageCache`` 里、格式与本检查器无关。
+
+## 又一个曾经踩过的坑：查错了目录还以为查出了 bug
+
+这个脚本的默认参数一度是 ``/tmp/restored7``（某次中间批次的临时输出目录）。
+于是工作区的文件改了、脚本还在扫旧目录，TEXCOORD 超限的报错看起来像是
+回归了。实际工作区那份已经是 ``TEXCOORD0..13`` 连续编号。
+
+教训：**检查永远指向最终交付的那份**，临时目录只在校验生成结果时用。
+
+## 一个曾经踩过的坑（历史）
 
 最早的花括号检查只截 `HLSLPROGRAM` 之后的部分，结果 38 个文件**全部**
 报「不平衡，差 3」。差的那个 3 是 `ENDHLSL` 之后的三个 `}` ——
@@ -42,7 +55,10 @@ def check_one(path):
     m = re.search(r'Shader\s+"([^"]+)"', raw)
     if not m:
         issues.append("无 Shader 声明")
-    elif m.group(1).split("/")[-1] != name:
+    elif m.group(1).replace("/", "_") != name:
+        # AssetRipper 导出时把 Shader 名里的路径分隔符 "/" 转义成文件名里的
+        # "_"，例如 Shader "Shader Graphs/Grass" -> Shader Graphs_Grass.shader。
+        # 所以比对前必须做同样的转写，否则 43 个文件全部误报。
         issues.append(f"shader 名 {m.group(1)!r} 与文件名不符")
 
     o, c = body.count("{"), body.count("}")
@@ -69,7 +85,19 @@ def check_one(path):
     if not ma:
         issues.append("无 Attributes 结构")
 
-    if "readonly buffer" in body or "StructuredBuffer" in body:
+    # SSBO。**三种写法都要查** —— 只 grep "readonly buffer" 会漏掉后两种：
+    #   1. HLSLcc 输出的 GLSL 原文 `readonly buffer _Structured_tN_buf...`
+    #   2. 转成 HLSL 后正文里残留的 `_Structured_tN_buf[...]` 数组下标访问
+    #      （声明那行被 helper 分支吃掉了，但引用还在）
+    #   3. 转义名形式 `StructuredBuffer<T> _Structured_tN_buf;`
+    # GLES 3.0（= WebGL2）没有 SSBO，那是 GLES 3.1 才有的东西。
+    #
+    # 这里不能用 \b 前缀：名字是 `_Structured_t3_buf`，`S` 前面是下划线，
+    # 而 `_` 和 `S` 同属 \w，之间**不存在词边界**，所以 `\bStructured`
+    # 永远匹配不上 —— 检查器会静默漏报（URPDecal / LaserDotDecal 就是这样
+    # 被误判成"38/38 全消除"的）。改用 `(?<!\w)` 的显式否定。
+    if re.search(r"readonly buffer|StructuredBuffer|"
+                 r"(?<!\w)_Structured_t\d+_buf", body):
         issues.append("含 SSBO（WebGL2 = GLES 3.0 不支持）")
 
     # GLSL 残留
@@ -87,8 +115,26 @@ def check_one(path):
 
 
 def main():
-    src = sys.argv[1] if len(sys.argv) > 1 else "/tmp/restored7"
-    files = sorted(glob.glob(os.path.join(src, "*.shader")))
+    src = sys.argv[1] if len(sys.argv) > 1 else "Assets/Shader"
+    all_files = sorted(glob.glob(os.path.join(src, "*.shader")))
+
+    # 筛出「本流水线恢复的」那批，两个条件缺一不可：
+    #   - 含 HLSLPROGRAM：生成器(glsl_to_unity.py) 的产物特征。AssetRipper
+    #     能正常反编译的包内 shader(TMP/Skybox-Procedural 等) 用 CGPROGRAM，
+    #     源码本来就是对的，不归本检查器管。
+    #   - 不含 stub 标记：带标记的是AssetRipper 空壳，CI 里由
+    #     sync_official_shaders.py 用包源码覆盖。
+    # 只用"非空壳"当判据会把那5 个 CGPROGRAM 文件也捞进来，误报一片。
+    files, skipped_cg = [], 0
+    for f in all_files:
+        raw = open(f, encoding="utf-8", errors="replace").read()
+        if crs.STUB_MARKER in raw:
+            continue
+        if "HLSLPROGRAM" not in raw:
+            skipped_cg += 1
+            continue
+        files.append(f)
+
     bad = 0
     for f in files:
         name, issues = check_one(f)
@@ -98,7 +144,10 @@ def main():
             for i in issues:
                 print(f"    {i}")
     print()
-    print(f"检查 {len(files)} 个文件，{bad} 个有问题")
+    print(f"检查 {len(files)} 个已恢复文件"
+          f"（跳过 {skipped_cg} 个 CGPROGRAM 原生导出 + "
+          f"{len(all_files) - len(files) - skipped_cg} 个空壳），"
+          f"{bad} 个有问题")
     return 1 if bad else 0
 
 

@@ -4,6 +4,7 @@ Shader "Shader Graphs/UnderwaterShader"
     {
 
 
+
 [HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
 _UnderwaterColor ("UnderwaterColor", Vector) = (1,1,1,1)
 _Distortion1 ("Distortion1", Range(0, 1)) = 0.1

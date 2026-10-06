@@ -3,6 +3,7 @@ Shader "Shader Graphs/SkyboxShader"
     Properties
     {
 
+
         _SkyPixels ("SkyPixels", Vector) = (1,1,0,0)
         [HDR] _TopDayColor ("TopDayColor", Vector) = (0,0.4660978,1,1)
         [HDR] _TopNightColor ("TopNightColor", Vector) = (0,0.4660978,1,1)

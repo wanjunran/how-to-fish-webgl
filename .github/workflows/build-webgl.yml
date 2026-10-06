@@ -101,6 +101,108 @@ jobs:
           path: Library
           key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/manifest.json', 'Assets/**') }}
 
+      # 抓 shader 编译错误。
+      #
+      # 为什么必须有这一步 —— 这是本项目最贵的一个教训：
+      #
+      #   **Unity 编译 shader 失败不会让构建失败。** 它只是把那个材质
+      #   渲成洋红（magenta），然后照常打包、照常 exit 0。
+      #
+      # 所以在此之前，「CI 全绿」这件事对 shader 正确性的信息量是**零**。
+      # run #90 / #91 连续两轮报success，而那批产物里 17 个 shader 有
+      # `SV_Target1` 赋值却从无声明（MRT 第二输出整个丢失），
+      # 另有 2 个（URPDecal / LaserDotDecal）引用 URP 的 APV 探针
+      # SSBO —— GLES 3.0 根本没有 SSBO。这些在 WebGL2 上全部编译不过。
+      # 它们之所以能一路绿灯推上去，就是因为没人看 shader 日志。
+      #
+      # 判据：Unity 把 shader 编译错误以 `Shader error in 'xxx': ...` 的
+      # 形式打进构建日志。扫描全部候选日志文件（unity-builder 的输出位置
+      # 随版本变过，所以用 glob 找），命中就打 ::error:: —— 注解直接出现
+      # 在 run 页面列表里，匿名 curl 抓得到（这是本文件既有的约定，见下面
+      # Publish verification verdict 的注释）。
+      #
+      # 不 exit 1：shader 报错不该阻断构建（产物仍可用于验证其他问题），
+      # 但必须让信息落盘成证据，并在 run 页面上留痕。
+      - name: Scan for shader compile errors
+        if: always()
+        run: |
+          set +e
+          echo "### shader 编译错误扫描 ###" >> "$GITHUB_STEP_SUMMARY"
+
+          # unity-builder 把 Unity 的 stdout/stderr 落在这些位置之一
+          LOGS=$(ls -1 build.log logs/*.log artifacts/*.log 2>/dev/null)
+          if [ -z "$LOGS" ]; then
+            echo "::warning::没找到 Unity 构建日志，跳过 shader 错误扫描"
+            echo "**未找到构建日志，shader 错误扫描未执行。**" \
+              >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          echo "扫描日志: $(echo $LOGS | tr '\n' ' ')"
+
+          #两类都要：error 必须抓，warning 里也常藏着真正的类型不匹配
+          SHADER_HITS=$(grep -ah -E \
+            "Shader (error|warning) in|error in '.*':.*undeclared|is not declared|no member named" \
+            $LOGS 2>/dev/null | sort -u | cut -c1-220)
+
+          mkdir -p verify-evidence
+          echo "$SHADER_HITS" > verify-evidence/shader-errors.txt
+
+          if [ -n "$SHADER_HITS" ]; then
+            N=$(printf '%s\n' "$SHADER_HITS" | wc -l)
+            echo "::error::构建日志里有 $N 条 shader 编译错误/警告（详见 verify-evidence/shader-errors.txt）"
+            printf '%s\n' "$SHADER_HITS" | head -12 | while IFS= read -r l; do
+              echo "::error::shader: $(printf '%s' "$l" | head -c 200)"
+            done
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "**$N 条 shader 编译错误/警告：**" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            printf '%s\n' "$SHADER_HITS" | head -20 \
+              >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "shader 编译错误扫描：干净"
+            echo "**shader 编译错误扫描：干净。**" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # 让 CI 顺手回答一个本地答不了的问题：URP 官方源码里，APV
+      # （Adaptive Probe Volumes）那套 SSBO 球谐采样是被什么宏门控的。
+      #
+      # URPDecal / LaserDotDecal 的每一个 PS 变体都无条件编译进了
+      # `readonly buffer _Structured_tN`（std430 SSBO），GLES 3.0 没有这
+      # 东西，WebGL2 上必挂。本地没有 Library/PackageCache（Unity 从没在
+      # 沙箱里跑过），所以查不到 URP 源码原文。
+      #
+      # 而这不能靠猜 —— 猜错了就等于手写光照逻辑，正是本项目禁止的。
+      # 官方 shader 源码是权威答案：它会写明 APV 分支的 #if 条件，
+      # 我们照着把同名宏加到 #pragma multi_compile 后面，
+      # 编译器自己就把整段 SSBO 代码消解掉 —— 全程零手写。
+      - name: Dump URP APV guard macros
+        if: always()
+        run: |
+          set +e
+          PC=$(ls -d Library/PackageCache/com.unity.render-pipelines.universal@* 2>/dev/null | head -1)
+          if [ -z "$PC" ]; then
+            echo "::warning::PackageCache 里没有 URP，跳过"
+            exit 0
+          fi
+          echo "URP 包: $PC"
+          mkdir -p verify-evidence
+          # 只找 SSBO / APV 相关的那几行，别把整个 Lit.shader 倒出来
+          for f in "$PC"/Shaders/Lit.shader "$PC"/ShaderLibrary/*.hlsl; do
+            [ -f "$f" ] || continue
+            hits=$(grep -n -E "StructuredBuffer|APV|ADAPTIVE_PROBE|#if.*PROBE" "$f" 2>/dev/null | head -12)
+            [ -n "$hits" ] && { echo "=== $(basename "$f") ==="; echo "$hits"; }
+          done | tee verify-evidence/urp-apv-guards.txt | head -80
+          echo "已写入 verify-evidence/urp-apv-guards.txt"
+
+      - name: Upload APV guard evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shader-and-apv-evidence
+          path: verify-evidence/
+          if-no-files-found: ignore
+
       # 在构建机上真的把播放器跑起来。
       #
       # 为什么必须这一步：轮次 23 出现过"构建全绿、产物 207MB、B 层离线校验

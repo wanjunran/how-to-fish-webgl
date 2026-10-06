@@ -75,6 +75,10 @@ MISC_OK = {
 GENERATED_PREFIXES = ("_tunity_", "_t_Normal", "_t_World", "_t_View",
                        "_t_Projection", "_t_MV", "_t_Object")
 
+# AssetRipper 无法反编译时写的空壳标记。带这个标记的文件不是本流水线的
+# 产物 —— 它们由 sync_official_shaders.py 在 CI 里用URP/包源码覆盖。
+STUB_MARKER = "DummyShaderTextExporter"
+
 IDENT = re.compile(r"\b[A-Za-z_]\w*\b")
 
 
@@ -173,11 +177,27 @@ def check(path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("dirs", nargs="+")
+    # --restored-only：只查本流水线（HLSLcc 反编译 + glsl_to_unity.py）产出
+    # 的那批，判据同 check_shader_batch.py —— 含 HLSLPROGRAM 且不含 stub
+    # 标记。不加这个开关时AssetRipper 原生导出的 CGPROGRAM 文件会被扫进来，
+    # 它们没有 HLSLPROGRAM 段，于是 5 个"找不到 HLSLPROGRAM/ENDHLSL 段"的
+    # 假错误盖住真问题。
+    ap.add_argument("--restored-only", action="store_true")
     a = ap.parse_args()
-    files = []
+
+    files, skipped = [], 0
     for d in a.dirs:
-        files += sorted(glob.glob(os.path.join(d, "*.shader"))) \
+        cand = sorted(glob.glob(os.path.join(d, "*.shader"))) \
             if os.path.isdir(d) else [d]
+        for f in cand:
+            raw = open(f, encoding="utf-8", errors="replace").read()
+            if STUB_MARKER in raw:
+                continue
+            if a.restored_only and "HLSLPROGRAM" not in raw:
+                skipped += 1
+                continue
+            files.append(f)
+
     bad = 0
     for f in files:
         errs, warns = check(f)
@@ -188,7 +208,9 @@ def main():
             for w in warns:
                 print("  警告:", w)
             bad += bool(errs)
-    print(f"\n检查 {len(files)} 个文件，{bad} 个有错误")
+    print(f"\n检查 {len(files)} 个文件"
+          + (f"（跳过 {skipped} 个 CGPROGRAM 原生导出）" if skipped else "")
+          + f"，{bad} 个有错误")
 
 
 if __name__ == "__main__":

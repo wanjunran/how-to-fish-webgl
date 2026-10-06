@@ -186,6 +186,19 @@ def parse_glsl(text):
             continue
 
         # ---- HLSLcc 辅助函数（原样保留）----
+        #
+        # HLSLcc 会在 PS 里内联注入几个 GLSL 版的辅助函数（op_not 等），
+        # 它们的定义是**单行**的：
+        #     int op_not(int value) { return -value - 1; }
+        #     ivec2 op_not(ivec2 a) { a.x = op_not(a.x); ...; return a; }
+        # 原先的正则要求行尾是 `{`，只匹配多行形式，单行定义整行被漏掉 ——
+        # 正文里 `op_not(u_xlati6)` 还在，编译期直接报未声明。
+        #
+        # 所以分两支：单行（含结尾的 `}`）直接收；多行走 in_helper 累积。
+        m = re.match(r"^(\w+)\s+(\w+)\(.*\)\s*\{.*\}\s*$", s)
+        if m:
+            p.helpers.append(ln)
+            continue
         m = re.match(r"^(\w+)\s+(\w+)\(.*\)\s*\{$", s)
         if m:
             p.helpers.append(ln)
@@ -325,6 +338,8 @@ def convert_body(body, is_ps, inst_prefixes, mat_names, vary_names, p,
 
     # GLSL 的 return; -> Unity 函数的 return
     if is_ps:
+        # frag 始终是「location 0 走返回值语义」的形态（高位的 MRT 输出
+        # 在 build() 里整行删掉了），所以裸 `return;` 一律补成返回 0 号输出。
         body = re.sub(r"\breturn\s*;",
                       "return __" + p.ps_outs[0][0] + ";" if p.ps_outs
                       else "return 0;", body)
@@ -448,6 +463,27 @@ def build(shader_name, vs_glsl, ps_glsl, props_txt, tex_alias, tags,
     vs = parse_glsl(vs_glsl)
     ps = parse_glsl(ps_glsl)
 
+    # ---- MRT（多渲染目标）分析 ----
+    #
+    # 原先只取 ps_outs[0] 当返回值，第二个输出（location 1）的
+    # `SV_Target1 = ...` 赋值还留在正文里，但它从没被声明过 ——
+    # 编译期直接报未声明。WaterShader 的 sm50 变体正是这种：
+    #   layout(location = 0) out highp vec4 SV_Target0;
+    #   layout(location = 1) out highp uint SV_Target1;
+    #
+    # 修法有个陷阱：把 frag 改成 `void` 全声明成局部量，看着补齐了声明，
+    # 其实更糟 —— **没有 SV_Target 语义输出的 fragment shader 什么都不
+    # 渲染**，画面直接空掉，比丢失次要目标严重得多。
+    #
+    # 所以：location 0 保持原样走返回值语义（`float4 frag(...) : SV_Target0`），
+    # 只把 location >= 1 的赋值**整行删掉**。这些是 URP 的 Rendering Layer
+    # mask（`uint(unity_RenderingLayer & _pad176)`），GLES 3.0 没有 MRT、
+    # 引擎也没有对应的消费方，丢掉它对画面没有可见影响。
+    # 这是按目标平台能力做的机械裁剪，不是改算法。
+    outs = ps.ps_outs
+    dropped_outs = [n for n, _t, loc in outs if loc != 0]
+    keep_outs = [(n, t, loc) for n, t, loc in outs if loc == 0] or outs[:1]
+
     inst = sorted({"_" + b for b, _ in vs.blocks} | {"_" + b for b, _ in ps.blocks},
                   key=len, reverse=True)
     vary = {}
@@ -511,6 +547,14 @@ def build(shader_name, vs_glsl, ps_glsl, props_txt, tex_alias, tags,
     vs_body = _apply_zcmp(vs_body, zmap)
     ps_body = _apply_zcmp(ps_body, zmap)
 
+    # MRT：GLES 3.0 不支持多渲染目标，把 location >= 1 的输出赋值整行删掉。
+    # 正文侧它们已经被改写成 `__SV_TargetN`，所以按这个形态匹配。
+    # 机械删行，不改任何算法 —— 这些是 URP 的 Rendering Layer mask，
+    # WebGL 上没有消费方。
+    for nm in dropped_outs:
+        ps_body = re.sub(r"^.*\b__" + re.escape(nm) + r"\b.*$\n?", "",
+                         ps_body, flags=re.M)
+
     # 纹理改名同样要在正文里做。只改 TEXTURE2D() 声明是不够的 ——
     # 正文里 _g_texture(_Texture_t3, uv) 还指着旧名，编译期报未声明。
     # 用词边界替换，避免 _Texture_t3 命中 _Texture_t30 的前缀。
@@ -572,10 +616,26 @@ def build(shader_name, vs_glsl, ps_glsl, props_txt, tex_alias, tags,
         lambda m: TYPES[m.group(1)],
         "\n".join(vs.helpers + ps.helpers))
 
-    ps_ret, ps_sig = "float4", " : SV_Target"
-    if ps.ps_outs:
-        n, t, loc = ps.ps_outs[0]
-        ps_ret, ps_sig = TYPES.get(t, t), f" : SV_Target{loc}"
+    # ---- MRT（多渲染目标）----
+    #
+    # 原先只取 ps_outs[0] 当返回值，第二个输出（location 1）的
+    # `SV_Target1 = ...` 赋值还留在正文里，但它从没被声明过 ——
+    # 编译期直接报未声明。WaterShader 的 sm50 变体正是这种：
+    #   layout(location = 0) out highp vec4 SV_Target0;
+    #   layout(location = 1) out highp uint SV_Target1;
+    #
+    # 修法有个陷阱：把 frag 改成 `void` 全声明成局部量，看着补齐了声明，
+    # 其实更糟 —— **没有 SV_Target 语义输出的 fragment shader 什么都不
+    # 渲染**，画面直接空掉，比丢失次要目标严重得多。
+    #
+    # 所以：location 0 保持原样走返回值语义（`float4 frag(...) : SV_Target0`），
+    # 只把 location >= 1 的赋值**整行删掉**。这些是 URP 的 Rendering Layer
+    # mask（`uint(unity_RenderingLayer & _pad176)`），GLES 3.0 没有 MRT、
+    # 引擎也没有对应的消费方，丢掉它对画面没有可见影响。
+    # 这是按目标平台能力做的机械裁剪，不是改算法。
+    # MRT 分析已在 build() 开头完成（dropped_outs / keep_outs）。
+    n, t, loc = keep_outs[0]
+    ps_ret, ps_sig = TYPES.get(t, t), f" : SV_Target{loc}"
 
     tags_txt = ("        Tags { " +
                 " ".join(f'"{k}" = "{v}"' for k, v in tags) + " }"
@@ -707,12 +767,21 @@ def pick_variant_pair(directory):
         ps_safe = [f for f in g["PS"] if no_ssbo(f)]
         if vs_safe and ps_safe:
             return min(vs_safe, key=len), min(ps_safe, key=len), key
-    # 退路：没有不含 SSBO 的配对组合，就取任意一组配对（调用方会告警）
-    for key in sorted(groups, key=lambda k: (len(k), k)):
-        g = groups[key]
-        if "VS" in g and "PS" in g:
-            return min(g["VS"], key=len), min(g["PS"], key=len), key
-    return None, None, None
+
+    # 到这里说明**每个** PS 变体都含 SSBO（URP 的 DBuffer / APV 查找表）。
+    #
+    # 以前这里是「退路」：不检查 SSBO，随便挑一对走人。后果是产物里留下
+    # 一堆 `_Structured_tN_buf[...]`，WebGL2（GLES 3.0，无 SSBO）上必然编译
+    # 失败 —— 而这个失败 Unity 不当构建错误，只把材质渲成洋红，所以 CI 一路
+    # 全绿，把问题完全掩盖了。URPDecal / LaserDotDecal 两个 shader 就是这样
+    # 被推上去的。
+    #
+    # 所以宁可不产出：返回 None，调用方把这个 shader 记为「跳过」并打印原因，
+    # 让它留在 AssetRipper 空壳状态（至少渲染成白/洋红但结构是对的），
+    # 也不产出一个必然编译不过的版本。
+    ssbo_keys = [k for k in groups
+                 if "VS" in groups[k] and "PS" in groups[k]]
+    return None, None, ("SSBO" if ssbo_keys else None)
 
 
 def pick_variant(directory, stage):
@@ -735,6 +804,10 @@ def main():
 
     vs_f, ps_f, key = pick_variant_pair(a.dir)
     if not vs_f or not ps_f:
+        if key == "SSBO":
+            # 每个 PS 变体都引用 URP 的 DBuffer / APV 查找表（std430 SSBO）。
+            # GLES 3.0 没有 SSBO，产出来必然编译不过 —— 如实失败，别产出。
+            sys.exit(f"{a.dir}: 所有 PS 变体都含 SSBO，WebGL2 无法编译，跳过")
         sys.exit(f"{a.dir}: 找不到 pass0 的 VS/PS 变体")
     vs_glsl = open(os.path.join(a.dir, vs_f), errors="replace").read()
     ps_glsl = open(os.path.join(a.dir, ps_f), errors="replace").read()

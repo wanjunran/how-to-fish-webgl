@@ -4,6 +4,7 @@ Shader "Shader Graphs/DefaultShader"
     {
 
 
+
 [NoScaleOffset] _Colors ("Colors", 2D) = "white" {}
 _Emission ("Emission", Float) = 0
 _MetallicAngleSmoothStep ("MetallicAngleSmoothStep", Vector) = (0.4,0.75,0,0)
@@ -286,9 +287,9 @@ _PlasticSmoothness ("PlasticSmoothness", Range(0, 1)) = 0
                 float4 positionCS : SV_POSITION;
                 nointerpolation uint vs_CUSTOM_INSTANCE_ID0 : TEXCOORD0;
                 float2 vs_INTERP0 : TEXCOORD1;
-                float4 vs_INTERP10 : TEXCOORD10;
-                float3 vs_INTERP11 : TEXCOORD11;
-                float3 vs_INTERP12 : TEXCOORD12;
+                float4 vs_INTERP10 : TEXCOORD2;
+                float3 vs_INTERP11 : TEXCOORD3;
+                float3 vs_INTERP12 : TEXCOORD4;
                 float4 vs_INTERP5 : TEXCOORD5;
                 float4 vs_INTERP6 : TEXCOORD6;
                 float4 vs_INTERP7 : TEXCOORD7;
@@ -1144,7 +1145,6 @@ _PlasticSmoothness ("PlasticSmoothness", Range(0, 1)) = 0
     u_xlat44 = (-u_xlat22.x) + 1.0;
     u_xlat2.xyz = float3(u_xlat44) * _pad992.xyz;
     __SV_Target0.xyz = u_xlat1.xyz * u_xlat22.xxx + u_xlat2.xyz;
-    __SV_Target1 = uint(uint(_g_floatBitsToUint(_pad176.x)) & uint(_g_floatBitsToUint(_pad128.x)));
     __SV_Target0.w = 1.0;
     return __SV_Target0;
 

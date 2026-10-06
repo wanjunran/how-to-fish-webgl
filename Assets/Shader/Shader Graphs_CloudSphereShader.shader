@@ -4,6 +4,7 @@ Shader "Shader Graphs/CloudSphereShader"
     {
 
 
+
 _CloudHeigth ("CloudHeigth", Float) = 0
 _Pixels ("Pixels", Float) = 1
 [HDR] _Color ("Color", Vector) = (0.7490196,0.7490196,0.7490196,1)

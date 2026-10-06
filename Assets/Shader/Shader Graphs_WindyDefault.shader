@@ -4,6 +4,7 @@ Shader "Shader Graphs/WindyDefault"
     {
 
 
+
 [NoScaleOffset] _Texture ("Texture", 2D) = "white" {}
 _Smoothness ("Smoothness", Float) = 0
 _Metallic ("Metallic", Float) = 0
@@ -256,13 +257,13 @@ _Normal_Scale ("Normal Scale", Float) = 1
             {
                 float4 positionCS : SV_POSITION;
                 float2 vs_INTERP0 : TEXCOORD0;
-                float3 vs_INTERP10 : TEXCOORD10;
-                float3 vs_INTERP11 : TEXCOORD11;
-                float4 vs_INTERP5 : TEXCOORD5;
-                float4 vs_INTERP6 : TEXCOORD6;
-                float4 vs_INTERP7 : TEXCOORD7;
-                float4 vs_INTERP8 : TEXCOORD8;
-                float4 vs_INTERP9 : TEXCOORD9;
+                float3 vs_INTERP10 : TEXCOORD1;
+                float3 vs_INTERP11 : TEXCOORD2;
+                float4 vs_INTERP5 : TEXCOORD3;
+                float4 vs_INTERP6 : TEXCOORD4;
+                float4 vs_INTERP7 : TEXCOORD5;
+                float4 vs_INTERP8 : TEXCOORD6;
+                float4 vs_INTERP9 : TEXCOORD7;
             };
 
             Varyings vert(Attributes input)
@@ -1180,7 +1181,6 @@ _Normal_Scale ("Normal Scale", Float) = 1
     u_xlat1.x = (-u_xlat63) + 1.0;
     u_xlat1.xyz = u_xlat1.xxx * _pad992.xyz;
     __SV_Target0.xyz = u_xlat0.xyz * float3(u_xlat63) + u_xlat1.xyz;
-    __SV_Target1 = uint(uint(_g_floatBitsToUint(_pad176.x)) & uint(_g_floatBitsToUint(unity_RenderingLayer.x)));
     __SV_Target0.w = 1.0;
     return __SV_Target0;
 
