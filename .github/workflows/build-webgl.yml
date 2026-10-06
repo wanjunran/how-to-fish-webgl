@@ -39,8 +39,19 @@ jobs:
         uses: actions/cache@v4
         with:
           path: Library
-          key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/manifest.json', 'Assets/**') }}
+          # key 与 Save 侧对齐（`-stable` 后缀），并去掉 hashFiles('Assets/**')。
+          #
+          # 为什么不带 Assets 哈希：下一个步骤 `Restore official shader sources`
+          # 要读Library/PackageCache 里的官方 shader 源码。如果这里带
+          # Assets 哈希，每轮我们改 shader（每轮都在改）都会导致缓存 miss ->
+          # 空 Library -> sync 脚本必然跳过 -> 66 个空壳一个都覆盖不到，
+          # 其中包括 59 个材质在用的 URP/Lit。
+          #
+          # Library 能否复用真正取决于 Unity 版本与包版本，跟 Assets 内容无关，
+          # 所以这两项就是正确的 key 组成。
+          key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/manifest.json') }}-stable
           restore-keys: |
+            Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/manifest.json') }}-
             Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt') }}-
             Library-WebGL-
 
@@ -114,12 +125,31 @@ jobs:
           # 不再依赖那一发 API 请求。
           cliVersion: v0.1.72
 
+      # Save Library cache
+      #
+      # key 刻意**不含** hashFiles('Assets/**')。原因是这个步骤的结构性依赖：
+      #
+      # `Restore official shader sources` 在本步骤的**前一步**就要读
+      # Library/PackageCache 里的官方shader 源码。如果 Save 用的是
+      # `key: ...Assets/**`，那么每轮只要我们改了 shader（而这正是每一轮
+      # 都在做的事），key 就变 -> Restore 缓存 miss -> 工作区里是空 Library
+      # -> sync 脚本必然走「跳过」分支 -> 66 个空壳一个都覆盖不到。
+      #
+      # 实测证据：第一轮报告里出现了
+      # `PackageCache/com.unity.render-pipelines.core@...`，说明那一轮
+      # 确实恢复出了缓存；但同报告`grep -c universal` = 0，
+      # universal 包不在里头 —— 而 59 个材质在用 URP/Lit。
+      #
+      # Library 里真正决定「能不能重新导入」的是 ProjectVersion +
+      # manifest.json（Unity 版本、包版本），跟Assets 内容无关。
+      # 所以 Save 存到与 restore-keys 对齐的稳定 key 上：Restore 靠前缀
+      # 命中它，下一轮无论Assets 怎么变都能拿回 PackageCache。
       - name: Save Library cache
         if: always()
         uses: actions/cache/save@v4
         with:
           path: Library
-          key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/manifest.json', 'Assets/**') }}
+          key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/manifest.json') }}-stable
 
       # Unity 在 Linux 上把一切（含 shader 编译错误）写进 Editor.log。
       # 显式把它收拢到工作区固定路径 —— 靠猜$HOME/.config 还是
