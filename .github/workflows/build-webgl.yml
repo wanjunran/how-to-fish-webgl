@@ -120,6 +120,17 @@ jobs:
           python3 tools/check_lightmode.py 2>&1 \
             | tee verify-evidence/lightmode.txt \
                   docs/ci-evidence/lightmode.txt
+          # shader 资产健康度：这是**画面为什么是黑的**的直接判据。
+          #
+          # 实测（按材质实际引用数加权）：Dummy 桩占 55.8%（86/154），
+          # 其中 Universal Render Pipeline/Lit 被 59 个材质引用且全是桩。
+          # 107 个 shader 里 103 个只有 1 个 Pass（原版至少 5-6）。
+          #
+          # 这一节推翻了我上一轮「先补 LightMode」的排序：
+          # 桩里根本没有光照代码可以接收 uniform，补 tag 救不了它。
+          python3 tools/check_shader_health.py 2>&1 \
+            | tee verify-evidence/shader-health.txt \
+                  docs/ci-evidence/shader-health.txt
           # workflow 自身合法性检查（回归网，见下面报告节的说明）。
           # 这步能跑起来就说明文件已经合法，所以它的作用不是"首次门禁"
           # —— 文件非法时 run 在分配 runner 前就挂了，这段代码根本不会执行。
@@ -1286,6 +1297,33 @@ jobs:
               echo "只代表点击步骤没产出结果。"
             fi
             echo
+            echo "## shader 资产健康度（画面为什么是黑的）"
+            echo
+            echo "口径是**按材质实际引用数加权**，不是按文件个数 ——"
+            echo "一个被 59 个材质引用的 shader 和一个没人用的，重要性差 59 倍。"
+            echo
+            echo "\`Dummy 桩\` 指只有 \`//DummyShaderTextExporter\` 骨架、"
+            echo "没有真实 HLSL 的 shader。它**会编译通过**（所以构建不报错），"
+            echo "但渲染结果是错的。"
+            echo
+            echo "最重要的一条：**Dummy 桩占引用数过半，"
+            echo "其中 \`Universal Render Pipeline/Lit\` 被 59 个材质引用且全是桩。**"
+            echo "PBR 标准 shader 一失效，所有非 UI 物体都渲不出来 ——"
+            echo "这就是「偏蓝0.00%、偏绿 0.00%」的来源。"
+            echo
+            echo "所以修复顺序是：**官方源码覆盖 → 多 Pass 重建 → LightMode 补 tag**。"
+            echo "LightMode 排在最后，因为桩里没有光照代码可接收 uniform，"
+            echo "先补 tag 是白做。"
+            echo
+            if [ -s verify-evidence/shader-health.txt ]; then
+              echo '```'
+              cat verify-evidence/shader-health.txt
+              echo '```'
+            else
+              echo "**无记录** —— 这一节为空**不代表** shader 健康，"
+              echo "只代表检查没跑或没输出。"
+            fi
+            echo
             echo "## workflow 自身结构（这一节能出现，就说明它已经合法）"
             echo
             echo "**run #118–#124 连续 7 次秒挂、0 个 job。** 原因不在runner、"
@@ -1585,7 +1623,7 @@ jobs:
                  mat-shader-props.txt shader-keywords.txt \
                  dangling-refs.txt lightmode.txt skybox.txt urp-apv-guards.txt \
                  ingame-layout.txt ingame-click.txt evidence-pipeline.txt \
-                 workflow-yaml.txt"
+                 workflow-yaml.txt shader-health.txt"
           for n in $CI_EV; do
             f="docs/ci-evidence/$n"
             [ -f "$f" ] && git add -f "$f" 2>/dev/null

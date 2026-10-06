@@ -94,6 +94,8 @@ EVIDENCE = [
      "点击前后对比 —— 「能不能玩」的直接证据"),
     ("workflow-yaml.txt", True,
      "workflow 自身结构合法 + 步数没变 —— run #118 就是这里出的问题"),
+    ("shader-health.txt", True,
+     "Dummy 桩占材质引用数的比例 —— 画面为什么是黑的直接判据"),
 ]
 
 
