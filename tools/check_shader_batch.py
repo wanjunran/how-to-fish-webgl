@@ -100,6 +100,34 @@ def check_one(path):
                  r"(?<!\w)_Structured_t\d+_buf", body):
         issues.append("含 SSBO（WebGL2 = GLES 3.0 不支持）")
 
+    # #pragma target 必须 <= 3.0
+    #
+    # 这一项单独拎出来，因为它**不报任何编译错误信息**就能让整个 shader
+    # 静默失效，而且是我实际踩过的最大的一个坑：
+    #
+    # Unity 的 target 与 GLES 的对应：
+    #   3.0 -> GLES 3.0 / SM 4.0
+    #   3.5 -> GLES 3.1 / SM 5.0   <- 多 compute shader + SSBO
+    #
+    # 目标平台 WebGL2 **就是** GLES 3.0，不支持 SSBO。写 3.5 时编译器按
+    # SM 5.0 的能力编译，WebGL 后端给不出那个能力 -> shader 编译失败 ->
+    # Unity 把材质渲成洋红，**照常打包、照常 exit 0**，日志里也未必有
+    # 显眼错误。所以之前 36 个已恢复 shader 全部是 3.5，CI 报success，
+    # 而实际画面 13.19% 的像素是纯 (254,0,254)。
+    #
+    # 光靠「扫日志里的 Shader error」抓不住这一类 —— 判据得落在源码上。
+    m_tgt = re.search(r"^\s*#pragma\s+target\s+([\d.]+)", raw, re.M)
+    if m_tgt:
+        try:
+            tgt = float(m_tgt.group(1))
+        except ValueError:
+            issues.append(f"#pragma target 值无法解析: {m_tgt.group(1)!r}")
+        else:
+            if tgt > 3.0:
+                issues.append(
+                    f"#pragma target {m_tgt.group(1)} > 3.0"
+                    f"（GLES 3.1 特性，WebGL2 = GLES 3.0 不支持）")
+
     # GLSL 残留
     for pat, lbl in ((r"^\s*#version", "#version"),
                      (r"^\s*layout\(", "layout("),

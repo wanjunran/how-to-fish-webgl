@@ -5,6 +5,7 @@ Shader "Shader Graphs/DefaultShader"
 
 
 
+
 [NoScaleOffset] _Colors ("Colors", 2D) = "white" {}
 _Emission ("Emission", Float) = 0
 _MetallicAngleSmoothStep ("MetallicAngleSmoothStep", Vector) = (0.4,0.75,0,0)
@@ -49,7 +50,24 @@ _PlasticSmoothness ("PlasticSmoothness", Range(0, 1)) = 0
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #pragma target 3.5
+            // target 级别必须跟目标平台的 GLES 能力对齐，不能照抄 sm50。
+            //
+            // Unity 的 target 与 GLES 的对应：
+            //   3.0 -> GLES 3.0 / SM 4.0
+            //   3.5 -> GLES 3.1 / SM 5.0   <- 多compute shader + SSBO
+            //
+            // 我们的目标是 WebGL2，而 **WebGL2 == GLES 3.0**，没有 SSBO
+            // （那是 GLES 3.1 才有的）。原先写 3.5，于是编译器按SM 5.0 的
+            // 能力去编译，而 WebGL 后端只能给到 GLES 3.0 —— 整个 shader
+            // 编译失败，Unity 把材质渲成洋红，然后**照常打包、照常exit 0**。
+            //
+            // 实测证据：上一轮CI 抓到的verify_loaded.png 里，**13.19% 的像素
+            // 是纯 (254,0,254)**，主菜单一大片元素渲成洋红。这就是本行的
+            // 后果 —— 36 个已恢复 shader **全部**是 3.5，无一幸免。
+            //
+            // 改成 3.0 不改任何算法：只是把「声明需要什么硬件能力」对齐到
+            // 目标平台真实提供的能力。
+            #pragma target 3.0
 
 // ---- 以下全部是 GLSL -> HLSL 的等价宏，正文一字未改 ----
 #define _g_inversesqrt rsqrt
@@ -83,10 +101,10 @@ _PlasticSmoothness ("PlasticSmoothness", Range(0, 1)) = 0
             SAMPLER(sampler__Texture_t1);
             TEXTURECUBE(_Texture_t2);
             SAMPLER(sampler__Texture_t2);
-            TEXTURE2D(_Colors);
-            SAMPLER(sampler__Colors);
-            TEXTURE2D(_Normal_Map);
-            SAMPLER(sampler__Normal_Map);
+            TEXTURE2D(_Texture_t3);
+            SAMPLER(sampler__Texture_t3);
+            TEXTURE2D(_Texture_t4);
+            SAMPLER(sampler__Texture_t4);
             TEXTURE2D(_Texture_t5);
             SAMPLER(sampler__Texture_t5);
             TEXTURE2D(_Texture_t6);
@@ -532,8 +550,8 @@ _PlasticSmoothness ("PlasticSmoothness", Range(0, 1)) = 0
     u_xlat66 = (-u_xlat66) + (-_pad352.y);
     u_xlat66 = max(u_xlat66, 0.0);
     u_xlat66 = u_xlat66 * _pad976.x;
-    u_xlat6.xyz = _g_texture(_Colors, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
-    u_xlat7 = _g_texture(_Normal_Map, input.vs_INTERP0.xy, _GlobalMipBias.x);
+    u_xlat6.xyz = _g_texture(_Texture_t3, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
+    u_xlat7 = _g_texture(_Texture_t4, input.vs_INTERP0.xy, _GlobalMipBias.x);
     u_xlat7.xyz = u_xlat7.xyz + float3(-0.5, -0.5, -0.5);
     u_xlat68 = dot(u_xlat3.xyz, u_xlat7.xyz);
     u_xlat68 = u_xlat68 + 0.5;

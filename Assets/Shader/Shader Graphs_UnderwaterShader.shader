@@ -5,6 +5,7 @@ Shader "Shader Graphs/UnderwaterShader"
 
 
 
+
 [HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
 _UnderwaterColor ("UnderwaterColor", Vector) = (1,1,1,1)
 _Distortion1 ("Distortion1", Range(0, 1)) = 0.1
@@ -30,7 +31,24 @@ _WaveSpeed2 ("WaveSpeed2", Vector) = (0,0,0,0)
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #pragma target 3.5
+            // target 级别必须跟目标平台的 GLES 能力对齐，不能照抄 sm50。
+            //
+            // Unity 的 target 与 GLES 的对应：
+            //   3.0 -> GLES 3.0 / SM 4.0
+            //   3.5 -> GLES 3.1 / SM 5.0   <- 多compute shader + SSBO
+            //
+            // 我们的目标是 WebGL2，而 **WebGL2 == GLES 3.0**，没有 SSBO
+            // （那是 GLES 3.1 才有的）。原先写 3.5，于是编译器按SM 5.0 的
+            // 能力去编译，而 WebGL 后端只能给到 GLES 3.0 —— 整个 shader
+            // 编译失败，Unity 把材质渲成洋红，然后**照常打包、照常exit 0**。
+            //
+            // 实测证据：上一轮CI 抓到的verify_loaded.png 里，**13.19% 的像素
+            // 是纯 (254,0,254)**，主菜单一大片元素渲成洋红。这就是本行的
+            // 后果 —— 36 个已恢复 shader **全部**是 3.5，无一幸免。
+            //
+            // 改成 3.0 不改任何算法：只是把「声明需要什么硬件能力」对齐到
+            // 目标平台真实提供的能力。
+            #pragma target 3.0
 
 // ---- 以下全部是 GLSL -> HLSL 的等价宏，正文一字未改 ----
 #define _g_inversesqrt rsqrt
@@ -58,8 +76,8 @@ _WaveSpeed2 ("WaveSpeed2", Vector) = (0,0,0,0)
 #define _g_zcmpLod(tex, uv, lod) \
     ((tex).SampleCmpLevelZero(sampler##tex, float3(uv, lod)))
 
-            TEXTURE2D(_MainTex);
-            SAMPLER(sampler__MainTex);
+            TEXTURE2D(_Texture_t0);
+            SAMPLER(sampler__Texture_t0);
 
             float4x4 unity_MatrixVP;
             float4 _RendererColor;
@@ -278,7 +296,7 @@ _WaveSpeed2 ("WaveSpeed2", Vector) = (0,0,0,0)
     u_xlat7.x = min(u_xlat7.x, 1.0);
     u_xlat7.x = (-u_xlat7.x) + 1.0;
     u_xlat0.xy = u_xlat7.xx * u_xlat0.xx + input.vs_INTERP0.xy;
-    u_xlat0 = _g_texture(_MainTex, u_xlat0.xy, _GlobalMipBias.x);
+    u_xlat0 = _g_texture(_Texture_t0, u_xlat0.xy, _GlobalMipBias.x);
     u_xlat0.xyz = u_xlat0.xyz * _UnderwaterColor.xyz;
     u_xlat0.w = 1.0;
     __SV_TARGET0 = u_xlat0 * input.vs_INTERP1;

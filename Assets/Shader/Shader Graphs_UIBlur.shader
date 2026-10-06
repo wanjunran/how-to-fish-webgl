@@ -4,6 +4,7 @@ Shader "Shader Graphs/UIBlur"
     {
 
 
+
 [HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
 _Pixel_Ratio ("Pixel Ratio", Float) = 1
 _Gradient_Scale ("Gradient Scale", Range(0, 20)) = 0
@@ -38,7 +39,24 @@ _PausedColor ("PausedColor", Vector) = (1,1,1,1)
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #pragma target 3.5
+            // target 级别必须跟目标平台的 GLES 能力对齐，不能照抄 sm50。
+            //
+            // Unity 的 target 与 GLES 的对应：
+            //   3.0 -> GLES 3.0 / SM 4.0
+            //   3.5 -> GLES 3.1 / SM 5.0   <- 多compute shader + SSBO
+            //
+            // 我们的目标是 WebGL2，而 **WebGL2 == GLES 3.0**，没有 SSBO
+            // （那是 GLES 3.1 才有的）。原先写 3.5，于是编译器按SM 5.0 的
+            // 能力去编译，而 WebGL 后端只能给到 GLES 3.0 —— 整个 shader
+            // 编译失败，Unity 把材质渲成洋红，然后**照常打包、照常exit 0**。
+            //
+            // 实测证据：上一轮CI 抓到的verify_loaded.png 里，**13.19% 的像素
+            // 是纯 (254,0,254)**，主菜单一大片元素渲成洋红。这就是本行的
+            // 后果 —— 36 个已恢复 shader **全部**是 3.5，无一幸免。
+            //
+            // 改成 3.0 不改任何算法：只是把「声明需要什么硬件能力」对齐到
+            // 目标平台真实提供的能力。
+            #pragma target 3.0
 
 // ---- 以下全部是 GLSL -> HLSL 的等价宏，正文一字未改 ----
 #define _g_inversesqrt rsqrt
@@ -66,8 +84,8 @@ _PausedColor ("PausedColor", Vector) = (1,1,1,1)
 #define _g_zcmpLod(tex, uv, lod) \
     ((tex).SampleCmpLevelZero(sampler##tex, float3(uv, lod)))
 
-            TEXTURE2D(_MainTex);
-            SAMPLER(sampler__MainTex);
+            TEXTURE2D(_Texture_t0);
+            SAMPLER(sampler__Texture_t0);
             TEXTURE2D(_Texture_t1);
             SAMPLER(sampler__Texture_t1);
 
@@ -259,7 +277,7 @@ _PausedColor ("PausedColor", Vector) = (1,1,1,1)
     u_xlat1.x = input.vs_INTERP2.w * 255.0;
     u_xlat1.x = _g_roundEven(u_xlat1.x);
     u_xlat1.w = u_xlat1.x * 0.00392156886;
-    u_xlat2 = _g_texture(_MainTex, input.vs_INTERP0.xy, _GlobalMipBias.x);
+    u_xlat2 = _g_texture(_Texture_t0, input.vs_INTERP0.xy, _GlobalMipBias.x);
     u_xlat0.w = u_xlat2.w;
     u_xlat1.xyz = input.vs_INTERP2.xyz;
     u_xlat0 = u_xlat0 * u_xlat1;

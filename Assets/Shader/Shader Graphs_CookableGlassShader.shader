@@ -4,6 +4,7 @@ Shader "Shader Graphs/CookableGlassShader"
     {
 
 
+
 _Smooth_Step ("Smooth Step", Vector) = (0,0,0,0)
 _Distance_Min_Max ("Distance Min Max", Vector) = (1,5,0,0)
 [NoScaleOffset] _Colors ("Colors", 2D) = "white" {}
@@ -47,12 +48,29 @@ _BurntColor ("BurntColor", Vector) = (0,0,0,1)
             ZWrite Off
             Cull Back
             // RenderType: Transparent
-
+            Blend SrcAlpha OneMinusSrcAlpha ZWrite Off Cull Back
 
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #pragma target 3.5
+            // target 级别必须跟目标平台的 GLES 能力对齐，不能照抄 sm50。
+            //
+            // Unity 的 target 与 GLES 的对应：
+            //   3.0 -> GLES 3.0 / SM 4.0
+            //   3.5 -> GLES 3.1 / SM 5.0   <- 多compute shader + SSBO
+            //
+            // 我们的目标是 WebGL2，而 **WebGL2 == GLES 3.0**，没有 SSBO
+            // （那是 GLES 3.1 才有的）。原先写 3.5，于是编译器按SM 5.0 的
+            // 能力去编译，而 WebGL 后端只能给到 GLES 3.0 —— 整个 shader
+            // 编译失败，Unity 把材质渲成洋红，然后**照常打包、照常exit 0**。
+            //
+            // 实测证据：上一轮CI 抓到的verify_loaded.png 里，**13.19% 的像素
+            // 是纯 (254,0,254)**，主菜单一大片元素渲成洋红。这就是本行的
+            // 后果 —— 36 个已恢复 shader **全部**是 3.5，无一幸免。
+            //
+            // 改成 3.0 不改任何算法：只是把「声明需要什么硬件能力」对齐到
+            // 目标平台真实提供的能力。
+            #pragma target 3.0
 
 // ---- 以下全部是 GLSL -> HLSL 的等价宏，正文一字未改 ----
 #define _g_inversesqrt rsqrt
@@ -86,10 +104,10 @@ _BurntColor ("BurntColor", Vector) = (0,0,0,1)
             SAMPLER(sampler__Texture_t1);
             TEXTURECUBE(_Texture_t2);
             SAMPLER(sampler__Texture_t2);
-            TEXTURE2D(_Colors);
-            SAMPLER(sampler__Colors);
-            TEXTURE2D(_Normal_Texture);
-            SAMPLER(sampler__Normal_Texture);
+            TEXTURE2D(_Texture_t3);
+            SAMPLER(sampler__Texture_t3);
+            TEXTURE2D(_Texture_t4);
+            SAMPLER(sampler__Texture_t4);
             TEXTURE2D(_Texture_t5);
             SAMPLER(sampler__Texture_t5);
             TEXTURE2D(_Texture_t6);
@@ -419,8 +437,8 @@ _BurntColor ("BurntColor", Vector) = (0,0,0,1)
     u_xlat63 = (-u_xlat63) + (-_pad352.y);
     u_xlat63 = max(u_xlat63, 0.0);
     u_xlat63 = u_xlat63 * _pad976.x;
-    u_xlat5.xyz = _g_texture(_Colors, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
-    u_xlat6 = _g_texture(_Normal_Texture, input.vs_INTERP0.xy, _GlobalMipBias.x);
+    u_xlat5.xyz = _g_texture(_Texture_t3, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
+    u_xlat6 = _g_texture(_Texture_t4, input.vs_INTERP0.xy, _GlobalMipBias.x);
     u_xlat6.xyz = u_xlat6.xyz + float3(-0.5, -0.5, -0.5);
     u_xlat65 = dot(u_xlat3.xyz, u_xlat6.xyz);
     u_xlat65 = u_xlat65 + 0.5;

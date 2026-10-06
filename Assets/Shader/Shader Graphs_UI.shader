@@ -4,6 +4,7 @@ Shader "Shader Graphs/UI"
     {
 
 
+
 [HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
 _Rect_Scale ("Rect Scale", Float) = 1
 _Rotation_Multiplier ("Rotation Multiplier", Range(0, 1)) = 0
@@ -38,7 +39,24 @@ _Rotation_Speed ("Rotation Speed", Float) = 5
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #pragma target 3.5
+            // target 级别必须跟目标平台的 GLES 能力对齐，不能照抄 sm50。
+            //
+            // Unity 的 target 与 GLES 的对应：
+            //   3.0 -> GLES 3.0 / SM 4.0
+            //   3.5 -> GLES 3.1 / SM 5.0   <- 多compute shader + SSBO
+            //
+            // 我们的目标是 WebGL2，而 **WebGL2 == GLES 3.0**，没有 SSBO
+            // （那是 GLES 3.1 才有的）。原先写 3.5，于是编译器按SM 5.0 的
+            // 能力去编译，而 WebGL 后端只能给到 GLES 3.0 —— 整个 shader
+            // 编译失败，Unity 把材质渲成洋红，然后**照常打包、照常exit 0**。
+            //
+            // 实测证据：上一轮CI 抓到的verify_loaded.png 里，**13.19% 的像素
+            // 是纯 (254,0,254)**，主菜单一大片元素渲成洋红。这就是本行的
+            // 后果 —— 36 个已恢复 shader **全部**是 3.5，无一幸免。
+            //
+            // 改成 3.0 不改任何算法：只是把「声明需要什么硬件能力」对齐到
+            // 目标平台真实提供的能力。
+            #pragma target 3.0
 
 // ---- 以下全部是 GLSL -> HLSL 的等价宏，正文一字未改 ----
 #define _g_inversesqrt rsqrt
@@ -66,10 +84,10 @@ _Rotation_Speed ("Rotation Speed", Float) = 5
 #define _g_zcmpLod(tex, uv, lod) \
     ((tex).SampleCmpLevelZero(sampler##tex, float3(uv, lod)))
 
-            TEXTURE2D(_MainTex);
-            SAMPLER(sampler__MainTex);
-            TEXTURE2D(_NoiseTex);
-            SAMPLER(sampler__NoiseTex);
+            TEXTURE2D(_Texture_t0);
+            SAMPLER(sampler__Texture_t0);
+            TEXTURE2D(_Texture_t1);
+            SAMPLER(sampler__Texture_t1);
 
             float4x4 unity_MatrixVP;
             float4x4 unity_ObjectToWorld;
@@ -165,7 +183,7 @@ float4 hlslcc_FragCoord = float4(input.positionCS.xyz, 1.0/input.positionCS.w);
     u_xlat4.xz = _ScreenParams.xy * float2(float2(_Noise_Texture_Scale, _Noise_Texture_Scale));
     u_xlat0.xy = u_xlat0.xz * u_xlat4.xz;
     u_xlat0.xy = u_xlat0.xy * float2(9.99999975e-05, 9.99999975e-05);
-    u_xlat0 = _g_texture(_NoiseTex, u_xlat0.xy, _GlobalMipBias.x);
+    u_xlat0 = _g_texture(_Texture_t1, u_xlat0.xy, _GlobalMipBias.x);
     u_xlat12 = _Rotation_Speed * _Rotation_Multiplier;
     u_xlat12 = u_xlat12 * _TimeParameters.x;
     u_xlat12 = sin(u_xlat12);
@@ -184,7 +202,7 @@ float4 hlslcc_FragCoord = float4(input.positionCS.xyz, 1.0/input.positionCS.w);
     u_xlat2.y = dot(u_xlat1.xy, u_xlat3.xy);
     u_xlat2.x = dot(u_xlat1.xy, u_xlat3.yz);
     u_xlat1.xy = u_xlat2.xy + float2(0.5, 0.5);
-    u_xlat1 = _g_texture(_MainTex, u_xlat1.xy, _GlobalMipBias.x);
+    u_xlat1 = _g_texture(_Texture_t0, u_xlat1.xy, _GlobalMipBias.x);
     u_xlat0.xyz = u_xlat0.xyz + (-u_xlat1.xyz);
     u_xlat1.xyz = float3(_Noise_Amount) * u_xlat0.xyz + u_xlat1.xyz;
     u_xlat0.x = input.vs_INTERP2.w * 255.0;
