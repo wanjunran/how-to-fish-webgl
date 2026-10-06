@@ -1,0 +1,16 @@
+共52 个材质引用 38 个已恢复 shader
+
+透明   clip  Src            Dst              ZWrite  Cull  材质数
+------------------------------------------------------------------------------
+是    False SrcAlpha       OneMinusSrcAlpha False   Back  4
+        Assets/Material/CookableGlass.mat
+        Assets/Material/DustParticles.mat
+        Assets/Material/Glass2.mat
+        Assets/Material/PoopParticles.mat
+是    True  One            OneMinusSrcAlpha False   Back  1
+        Assets/Material/BloodParticle.mat
+否    False None           None             None    None  32
+否    False None           None             None    Off   1
+否    False One            Zero             True    Back  13
+否    True  None           None             None    None  1
+        Assets/Material/OutlineBackground.mat

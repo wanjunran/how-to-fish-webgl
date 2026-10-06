@@ -55,6 +55,14 @@ def is_stub(path: str) -> bool:
 def main() -> int:
     if not os.path.isdir(PACKAGE_CACHE):
         print(f"跳过：未找到 {PACKAGE_CACHE}（Library 缓存未命中）")
+        # 「跳过」和「覆盖成功」在 CI 里都是 exit 0，从外面看一模一样。
+        # 而事实上 Unity 装的是**编译后**的 shader 包，官方 .shader 源码
+        # 常常根本不在 PackageCache 里 —— 也就是这一步压根没生效，
+        # 那一百多个空壳还是空壳。这个事实必须能被人看见，所以打一条
+        # warning 注解（匿名 curl 抓 run 页面就能看到）。
+        print("::warning::没找到 Library/PackageCache —— "
+              "官方 shader 源码覆盖**未执行**，所有 AssetRipper 空壳保持原样。"
+              "这不是成功，是没做。")
         return 0
 
     # Index every .shader shipped by any restored package.
@@ -64,6 +72,16 @@ def main() -> int:
         if name and name not in by_name:
             by_name[name] = path
     print(f"包内可用 shader：{len(by_name)}")
+    if not by_name:
+        # 同理：包里一个 .shader 都没有，说明这个缓存恢复的是编译产物。
+        print("::warning::Library/PackageCache 里没有任何 .shader 源码 —— "
+              "覆盖**未执行**。Unity 只装了编译后的 shader 包。")
+        print("缓存目录里有什么（前 20 项）:")
+        try:
+            for n in sorted(os.listdir(PACKAGE_CACHE))[:20]:
+                print(f"  {n}")
+        except OSError as e:
+            print(f"  （读不了：{e}）")
 
     stubs = sorted(
         os.path.join(ASSETS_SHADER, f)
