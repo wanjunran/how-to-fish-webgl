@@ -5,6 +5,7 @@ Shader "Shader Graphs/UIBlur"
 
 
 
+
 [HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
 _Pixel_Ratio ("Pixel Ratio", Float) = 1
 _Gradient_Scale ("Gradient Scale", Range(0, 20)) = 0
@@ -35,7 +36,14 @@ _PausedColor ("PausedColor", Vector) = (1,1,1,1)
         {
             Name "Forward"
 
-
+            Stencil
+            {
+                Ref [_Stencil]
+                Comp [_StencilComp]
+                WriteMask [_StencilWriteMask]
+                ReadMask [_StencilReadMask]
+            }
+            ColorMask [_ColorMask]
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

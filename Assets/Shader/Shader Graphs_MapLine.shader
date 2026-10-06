@@ -5,6 +5,7 @@ Shader "Shader Graphs/MapLine"
 
 
 
+
 [HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
 _Thinness ("Thinness", Float) = 31.76
 _Angle ("Angle", Float) = 0
@@ -35,7 +36,14 @@ _LineSmoothstep ("LineSmoothstep", Vector) = (0,0,0,0)
         {
             Name "Forward"
 
-
+            Stencil
+            {
+                Ref [_Stencil]
+                Comp [_StencilComp]
+                WriteMask [_StencilWriteMask]
+                ReadMask [_StencilReadMask]
+            }
+            ColorMask [_ColorMask]
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

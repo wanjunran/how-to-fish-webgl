@@ -5,6 +5,7 @@ Shader "Shader Graphs/SniperAim"
 
 
 
+
 _SniperAimPos ("SniperAimPos", Vector) = (0.5,0.5,0,0)
 _SmoothStep ("SmoothStep", Vector) = (0,1,0,0)
 _SniperScale ("SniperScale", Float) = 0
@@ -30,7 +31,14 @@ _SniperScale ("SniperScale", Float) = 0
         {
             Name "Forward"
 
-
+            Stencil
+            {
+                Ref [_Stencil]
+                Comp [_StencilComp]
+                WriteMask [_StencilWriteMask]
+                ReadMask [_StencilReadMask]
+            }
+            ColorMask [_ColorMask]
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

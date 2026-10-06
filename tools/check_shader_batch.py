@@ -100,7 +100,24 @@ def check_one(path):
                  r"(?<!\w)_Structured_t\d+_buf", body):
         issues.append("含 SSBO（WebGL2 = GLES 3.0 不支持）")
 
-    # #pragma target 必须 <= 3.0
+    # Properties 声明了 Stencil / ColorMask 变量，但 Pass 里没有对应的块
+    #
+    # UI Shader Graph 的遮罩完全靠 Stencil 块驱动（UI/Default 靠它做 Mask）。
+    # 属性声明在、块没有 => 变量完全不起作用，Mask 失效、层级错乱，
+    # 而且**编译不会报错**（缺的是渲染状态，不是代码）—— 只有画面不对。
+    #
+    # 12 个 UI 类 shader 之前就是这样。ShaderLab 的 Stencil 块只能引用
+    # Properties 变量，所以「属性名 -> 块条目」是一一对应的固定映射。
+    has_stencil_prop = "_StencilComp" in raw
+    has_stencil_blk = bool(re.search(r"^\s*Stencil\s*\{", raw, re.M))
+    if has_stencil_prop and not has_stencil_blk:
+        issues.append("声明了 _Stencil* 属性但 Pass 里没有 Stencil 块"
+                      "（UI Mask 会失效，且不报编译错）")
+    if "_ColorMask" in raw and not re.search(
+            r"^\s*ColorMask\s+\[_ColorMask\]", raw, re.M):
+        issues.append("声明了 _ColorMask 属性但 Pass 里没有 ColorMask [_ColorMask]")
+
+    # ---- #pragma target 必须 <= 3.0
     #
     # 这一项单独拎出来，因为它**不报任何编译错误信息**就能让整个 shader
     # 静默失效，而且是我实际踩过的最大的一个坑：

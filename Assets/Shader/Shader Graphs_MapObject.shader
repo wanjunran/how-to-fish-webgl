@@ -5,6 +5,7 @@ Shader "Shader Graphs/MapObject"
 
 
 
+
 [HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
 _Size ("Size", Float) = 1
 _Pixels ("Pixels", Float) = 1
@@ -32,7 +33,14 @@ _CircleSmoothstep ("CircleSmoothstep", Vector) = (0,0,0,0)
         {
             Name "Forward"
 
-
+            Stencil
+            {
+                Ref [_Stencil]
+                Comp [_StencilComp]
+                WriteMask [_StencilWriteMask]
+                ReadMask [_StencilReadMask]
+            }
+            ColorMask [_ColorMask]
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

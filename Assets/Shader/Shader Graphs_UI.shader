@@ -5,6 +5,7 @@ Shader "Shader Graphs/UI"
 
 
 
+
 [HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
 _Rect_Scale ("Rect Scale", Float) = 1
 _Rotation_Multiplier ("Rotation Multiplier", Range(0, 1)) = 0
@@ -35,7 +36,14 @@ _Rotation_Speed ("Rotation Speed", Float) = 5
         {
             Name "Forward"
 
-
+            Stencil
+            {
+                Ref [_Stencil]
+                Comp [_StencilComp]
+                WriteMask [_StencilWriteMask]
+                ReadMask [_StencilReadMask]
+            }
+            ColorMask [_ColorMask]
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

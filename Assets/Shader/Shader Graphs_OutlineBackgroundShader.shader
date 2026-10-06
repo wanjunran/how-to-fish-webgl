@@ -5,6 +5,7 @@ Shader "Shader Graphs/OutlineBackgroundShader"
 
 
 
+
 [HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
 _LineThinness ("LineThinness", Float) = 1
 _BackgroundSpeed ("BackgroundSpeed", Float) = 0
@@ -33,7 +34,14 @@ _Emission ("Emission", Float) = 0
         {
             Name "Forward"
 
-
+            Stencil
+            {
+                Ref [_Stencil]
+                Comp [_StencilComp]
+                WriteMask [_StencilWriteMask]
+                ReadMask [_StencilReadMask]
+            }
+            ColorMask [_ColorMask]
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

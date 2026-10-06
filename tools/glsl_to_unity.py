@@ -649,6 +649,46 @@ def build(shader_name, vs_glsl, ps_glsl, props_txt, tex_alias, tags,
     lm = st.get("lightmode")
     lm_txt = f'            Tags {{ "LightMode" = "{lm}" }}\n' if lm else ""
 
+    # ---- Stencil 块 ----
+    #
+    # UI Shader Graph 的核心机制，原版每个 UI shader 都有，且属性声明齐全。
+    # 12 个 shader（UI / UIBlur / MapBackground / MapLine / MapObject /
+    # OutlineBackground / RedDot / SlotMachineBackground / SniperAim /
+    # Thinking / Vignette / Tinted Blur）都声明了这6 个属性，但 Pass 里
+    # 一个 Stencil 块都没有 —— UI 的Mask 遮罩会完全失效。
+    #
+    # 为什么这个可以机械还原、不算手写：ShaderLab 的 Stencil 块**只能**
+    # 引用这些 Properties 变量（不引用变量的字面量写法在这里没有意义），
+    # 所以块内容与属性名是**一一对应的固定映射**：
+    #
+    #     Stencil {
+    #         Ref [_Stencil]      {  = 值取自 Properties 的 _Stencil
+    #         Comp [_StencilComp]    = 值取自 _StencilComp
+    #         WriteMask [_StencilWriteMask]
+    #         ReadMask [_StencilReadMask]
+    #     }
+    #
+    # 不涉及任何着色逻辑、不改算法 —— 只是把 Properties 里已经声明好的
+    # 变量接到它们本该驱动的东西上。数值侧由 .mat 在运行时给，
+    # 不用在这里定。
+    if "_StencilComp" in props_txt and "Stencil {" not in pass_state:
+        stencil_txt = """            Stencil
+            {
+                Ref [_Stencil]
+                Comp [_StencilComp]
+                WriteMask [_StencilWriteMask]
+                ReadMask [_StencilReadMask]
+            }
+"""
+    else:
+        stencil_txt = ""
+
+    # ColorMask 同理：属性存在时必须接上，否则 _ColorMask 完全无效。
+    if "_ColorMask" in props_txt:
+        cm = f"            ColorMask [_ColorMask]\n"
+    else:
+        cm = ""
+
     return f"""Shader "{shader_name}"
 {{
     Properties
@@ -662,9 +702,8 @@ def build(shader_name, vs_glsl, ps_glsl, props_txt, tex_alias, tags,
         Pass
         {{
             Name "{pass_name}"
-{lm_txt}{('            ' + pass_state) if pass_state else ''}
-
-            HLSLPROGRAM
+{('            ' + pass_state) if pass_state else ''}
+{stencil_txt}{cm}{lm_txt}            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
             // target 级别必须跟目标平台的 GLES 能力对齐，不能照抄 sm50。

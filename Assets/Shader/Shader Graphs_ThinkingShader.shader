@@ -5,6 +5,7 @@ Shader "Shader Graphs/ThinkingShader"
 
 
 
+
 [HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
 _OuterColor ("OuterColor", Vector) = (1,1,1,1)
 _InnerColor ("InnerColor", Vector) = (1,1,1,1)
@@ -40,7 +41,14 @@ _Pixels ("Pixels", Float) = 1
         {
             Name "Forward"
 
-
+            Stencil
+            {
+                Ref [_Stencil]
+                Comp [_StencilComp]
+                WriteMask [_StencilWriteMask]
+                ReadMask [_StencilReadMask]
+            }
+            ColorMask [_ColorMask]
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

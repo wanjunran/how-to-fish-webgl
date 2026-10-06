@@ -5,6 +5,7 @@ Shader "Shader Graphs/SlotMachineBackground"
 
 
 
+
 [HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
 _Emission ("Emission", Float) = 0
 _MainColor ("MainColor", Vector) = (1,1,1,1)
@@ -53,7 +54,14 @@ _LineThinness ("LineThinness", Float) = 1
         {
             Name "Forward"
 
-
+            Stencil
+            {
+                Ref [_Stencil]
+                Comp [_StencilComp]
+                WriteMask [_StencilWriteMask]
+                ReadMask [_StencilReadMask]
+            }
+            ColorMask [_ColorMask]
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

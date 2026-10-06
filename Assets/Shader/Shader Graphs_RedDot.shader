@@ -5,6 +5,7 @@ Shader "Shader Graphs/RedDot"
 
 
 
+
 _MiddleColor ("MiddleColor", Vector) = (1,1,1,1)
 _OuterColor ("OuterColor", Vector) = (1,0,0,1)
 _SmoothStep ("SmoothStep", Vector) = (0,1,0,0)
@@ -31,7 +32,14 @@ _DotPrecision ("DotPrecision", Float) = 2.9
         {
             Name "Forward"
 
-
+            Stencil
+            {
+                Ref [_Stencil]
+                Comp [_StencilComp]
+                WriteMask [_StencilWriteMask]
+                ReadMask [_StencilReadMask]
+            }
+            ColorMask [_ColorMask]
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
