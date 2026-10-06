@@ -231,6 +231,74 @@ def lint(path: Path) -> tuple[list[str], list[str]]:
                             f"（单引号 {sq} 个、双引号 {dq} 个）—— "
                             f"bash 会把后续行一起吞进参数：{t[:70]}"
                         )
+            # ---- 报告里 grep 判据的模式能不能真的匹配 ----
+            #
+            # 这条判据来自 #126：报告用
+            #     grep -E '^\s+\[(OK|FAIL)\]'
+            # 去抓门禁自检结果，而工具输出的是 `[OK  ]`（OK 后补空格对齐）
+            # 和 `[FAIL]`。`\]` 要求 `)` 紧邻右括号，于是**所有 OK 行
+            # 全部被吞**，报告里只剩那条 FAIL。
+            #
+            # 后果不是「报告难看」，而是判据退化成「只看失败」：
+            # 三项断言里唯一能告诉你基线覆盖数的那一项
+            # （「包完整时有覆盖发生覆盖=3」）就这么从报告里消失了，
+            # 剩下孤零零一条 `3 -> 3`，谁也看不出 3 是从哪来的。
+            #
+            # 凡是形如 `[X|Y]` 的**字面方括号组**（不是 POSIX 字符类
+            # `[a-z]`，那种写法本项目没用到），一律拿两种宽度实测一遍。
+            if isinstance(run, str):
+                for lineno, logical in _logical_lines(run):
+                    t = logical.strip()
+                    m = re.search(r"grep\s+-E?\s+'([^']*)'", t)
+                    if not m:
+                        continue
+                    pat = m.group(1)
+                    if "[" not in pat or "]" not in pat:
+                        continue
+                    # 只查含 OK/FAIL/PASS 这类判定标记的模式。
+                    #
+                    # 这里刻意**不要求写成 `(OK|FAIL)` 带括号的形式**：
+                    # 早先的守卫是 `\((OK|FAIL|PASS|FAIL)\|`，只认
+                    # 「括号内 alternation」那一种写法，于是
+                    # `grep -E '^\s+\[OK *\]'` 这种**只写 OK、
+                    # 漏掉 FAIL** 的模式被 `continue` 直接跳过 ——
+                    # 而那正是最该抓的一种：照着 `[OK  ]` 的宽度手写，
+                    # 很容易就只写了 OK。
+                    # 守卫比被守卫的东西还窄，就等于没有守卫。
+                    if not re.search(r"\b(OK|FAIL|PASS)\b", pat):
+                        continue
+                    # 探针必须用 MULTILINE：`^` 在没有该标志时**只对第一行
+                    # 生效**，于是除首行外的 `[FAIL]` 全部匹配不到 ——
+                    # 判据自己漏数据，却把结果当成「模式有病」报出来。
+                    # 这跟 #126 那条 grep 是**同一个错误的两个实例**：
+                    # 一个漏了 OK 行，一个漏了 FAIL 行，而两个都长得像
+                    # 「被检查的东西有问题」。
+                    probe = "  [OK  ] a\n  [FAIL] b\n  [PASS ] c"
+                    hit = list(re.finditer(pat, probe, re.MULTILINE))
+                    kinds = {m.group(0).strip("[] ") for m in hit}
+                    missing = {"OK", "FAIL"} - kinds
+                    if missing:
+                        errors.append(
+                            f"{where}: run 块第 {lineno} 行的 grep 模式"
+                            f"匹配不到 {'/'.join(sorted(missing))} 行：{pat!r} —— "
+                            f"实测只匹配到 {sorted(kinds) or '空'}。"
+                            f"判定标记的宽度不一致（`[OK  ]` vs `[FAIL]`），"
+                            f"报告里会**只显示失败、丢掉通过**，"
+                            f"于是判据退化成半个判据。"
+                        )
+                    # 另一半：**只匹配 OK、不匹配 FAIL** 同样要抓。
+                    # 这不是对称的假设，是真实会写出来的形态——
+                    # 照着 `[OK  ]` 的样子手写 `\[OK *\]`，很自然就漏了
+                    # FAIL，而漏掉的那一行恰恰是唯一有诊断价值的一行。
+                    # 上一版判据只查「两侧都匹配」，这一版实测漏了它。
+                    if not missing and "FAIL" in kinds and \
+                            not re.search(r"FAIL", pat):
+                        errors.append(
+                            f"{where}: run 块第 {lineno} 行的 grep 模式"
+                            f"里没有 FAIL 分支：{pat!r} —— "
+                            f"报告将不显示任何失败行，"
+                            f"门禁坏了也看不出坏了。"
+                        )
     return errors, warnings
 
 

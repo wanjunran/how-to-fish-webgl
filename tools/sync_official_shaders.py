@@ -257,7 +257,7 @@ def _branch_reachable(directive: str, cond: str) -> bool:
         m = re.match(r"([A-Za-z_]\w*)", cond)
         if not m:
             return True
-        present = m.group(1) in _WEBGL_DEFINED
+        present = m.group(1) in WEBGL_API_MACROS
         return present if d == "ifdef" else not present
 
     # if / elif：抽出全部 defined(X) 与裸宏
@@ -272,15 +272,17 @@ def _branch_reachable(directive: str, cond: str) -> bool:
 
     # 只要出现任一「明确不成立」的平台宏，且没有出现 WebGL 成立的宏，
     # 则该分支在 WebGL 下不可达。
-    has_live = any(n in _WEBGL_DEFINED for n in flat)
+    #
+    # 两边都**在调用时读模块全局**，不缓存成模块级常量。
+    # 之前 `_WEBGL_DEFINED = WEBGL_API_MACROS` 是在导入时绑定的，
+    # 于是任何「改了宏集合再跑」的验证手段（包括我用来复现 #126 的
+    # 故障注入）都改不动它—— 测试注入不进去，测出来的通过是假的。
+    # 一个常量在导入时快照、之后没人能改，等于把可测性关掉了。
+    has_live = any(n in WEBGL_API_MACROS for n in flat)
     has_dead = any(n in DEAD_PLATFORM_MACROS for n in flat)
     if has_dead and not has_live:
         return False
     return True
-
-
-# WebGL 下「视为已定义」的宏。只放确定成立的，避免误杀。
-_WEBGL_DEFINED = WEBGL_API_MACROS
 
 
 def active_includes(text: str) -> list[str]:

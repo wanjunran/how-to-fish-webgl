@@ -100,6 +100,40 @@ def _stub_dir(cache: str) -> str | None:
     return None
 
 
+def _print_pkg_identity(cache: str) -> None:
+    """打印被测包的**真实身份**（名字 / 版本 / .shader 数）。
+
+    为什么必须打这个：#126 的门禁自检输出是
+
+        [FAIL] 活分支（GLES3）缺失 -> 拒绝更多  3 -> 3
+
+    只看这一行无法判断是「门禁实现坏了」还是「CI 的包和本地不是同一个」。
+    而这两种情况的修法完全相反：前者要改代码，后者要改测试的预期基线。
+    目录名里的 `@789199009d13` 是**内容哈希**不是版本号 ——
+    本地两份不同版本的包可以撞出同一个哈希后缀（实际就撞了：
+    10.10.1 的包目录名和 CI 17.x 的完全一样），
+    所以必须读 package.json 里的 version 字段。
+    """
+    import json
+    for n in sorted(os.listdir(cache)):
+        base = n.split("@", 1)[0]
+        if not base.startswith("com.unity.render-pipelines."):
+            continue
+        pj = os.path.join(cache, n, "package.json")
+        ver = "?"
+        if os.path.isfile(pj):
+            try:
+                with open(pj, encoding="utf-8") as f:
+                    ver = json.load(f).get("version", "?")
+            except (OSError, ValueError):
+                ver = "?"
+        nsh = 0
+        for _, _, files in os.walk(os.path.join(cache, n)):
+            nsh += sum(1 for x in files if x.endswith(".shader"))
+        print(f"  被测包 {base}  version={ver}  "
+              f"{nsh} 个 .shader  ({n})")
+
+
 def _run_with(cache: str, stubs: str, tmp: str) -> tuple[int, int, str]:
     """在临时工程里跑一次 _run，返回 (覆盖数, 空壳数, 输出)。"""
     import io
@@ -152,6 +186,7 @@ def main() -> int:
     api = os.path.join(cache, core, "ShaderLibrary", "API")
     print(f"包缓存: {cache}")
     print(f"桩目录: {stubs}")
+    _print_pkg_identity(cache)
     print()
 
     failures = []
@@ -197,9 +232,91 @@ def main() -> int:
         print(f"失败 {len(failures)} 项：")
         for f in failures:
             print(f"  - {f}")
+        # 失败时必须给出**可操作的信息**，否则这个 FAIL 只能被看着干瞪眼。
+        # #126 就是这么废掉的：报告里只有一行「3 -> 3」，
+        # 既不知道 3 个候选是谁，也不知道剩下 23 个为什么被拒。
+        _diagnose(cache, stubs, tmp)
         return 1
     print("双向验证通过：门禁既能拒真缺，也不会被死分支拖死。")
+    print(f"（基线覆盖数 {base}；被测包身份见上方「被测包」行）")
     return 0
+
+
+def _diagnose(cache: str, stubs: str, tmp: str) -> None:
+    """门禁失败时打印候选清单与被拒理由。
+
+    「门禁坏了」和「包不一样」只能靠这组信息区分：
+      - 若被拒理由全是**同一批**平台 API 文件（GameCore/XBoxOne/
+        PSSL/D3D11/Metal/Vulkan...），说明门禁没做平台感知；
+      - 若被拒理由是**包版本里真的没有**的文件，那是包/门禁的匹配问题，
+        修代码方向完全不同。
+    """
+    import io
+    import contextlib
+    proj = os.path.join(tmp, "diag")
+    shutil.rmtree(proj, ignore_errors=True)
+    os.makedirs(proj)
+    _copy_pkg(cache, os.path.join(proj, "Library", "PackageCache"))
+    shutil.copytree(stubs, os.path.join(proj, "Assets", "Shader"))
+
+    old_root, old_assets, old_cache = S.ROOT, S.ASSETS_SHADER, S.PACKAGE_CACHE
+    buf = io.StringIO()
+    try:
+        S.ROOT = proj
+        S.ASSETS_SHADER = os.path.join(proj, "Assets", "Shader")
+        S.PACKAGE_CACHE = os.path.join(proj, "Library", "PackageCache")
+        with contextlib.redirect_stdout(buf):
+            S._run()
+    except Exception as e:                      # noqa: BLE001
+        print(f"  （诊断跑挂了：{e}）")
+        return
+    finally:
+        S.ROOT, S.ASSETS_SHADER, S.PACKAGE_CACHE = \
+            old_root, old_assets, old_cache
+
+    out = buf.getvalue()
+    print()
+    print("  ---- 失败诊断：候选与被拒理由 ----")
+    for line in out.splitlines():
+        s = line.strip()
+        if s.startswith("已用官方源码覆盖") or \
+           s.startswith("有 include 解析不全") or \
+           s.startswith("包内无对应"):
+            print(f"  {s}")
+    blocked = [l.strip()[2:] for l in out.splitlines()
+               if l.strip().startswith("! ")]
+    if blocked:
+        print(f"  被 include 门禁拒绝的候选（{len(blocked)} 个）:")
+        for b in blocked[:30]:
+            print(f"    ! {b}")
+        if len(blocked) > 30:
+            print(f"    ... 另 {len(blocked) - 30} 个")
+    # 被拒理由按「缺失文件」聚合：同一个缺 10 次说明是包结构问题，
+    # 缺 1 次说明是个别 shader 的问题 —— 两者的修法不同。
+    reasons: dict[str, int] = {}
+    lines = out.splitlines()
+    for i, line in enumerate(lines):
+        if line.strip().startswith("! "):
+            j = i + 1
+            while j < len(lines) and lines[j].strip().startswith("缺: "):
+                f = lines[j].strip()[3:].strip()
+                reasons[f] = reasons.get(f, 0) + 1
+                j += 1
+    if reasons:
+        print("  被拒理由（缺失的 include -> 出现次数）:")
+        for f, c in sorted(reasons.items(), key=lambda kv: -kv[1])[:25]:
+            print(f"    {c:3d} x  {f}")
+    else:
+        # 这个措辞很关键。**「没有拒绝」本身就是一种拒绝原因**，
+        # 而且是最坏的那种：门禁把活分支当死分支放过，于是缺 include
+        # 的官方 shader 照样被复制上去 -> 编译失败 -> 洋红。
+        # 只写「不是 include 门禁拒的」会让人以为门禁没参与，
+        # 从而查错方向。
+        print("  被拒理由: 无 —— 即**没有任何候选被门禁拦下**。")
+        print("  这恰好是「删掉活分支文件后覆盖数不变」的成因：")
+        print("  门禁把WebGL 会走的分支也当成死分支跳过了，于是它")
+        print("  什么都没检查。真实故障是覆盖了编译不过的官方 shader")
+        print("  -> 洋红，而不是「没覆盖」。")
 
 
 if __name__ == "__main__":

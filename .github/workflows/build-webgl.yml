@@ -75,16 +75,65 @@ jobs:
           # 一侧本来就该是 0），必须双向测：活分支缺 -> 要拒；死分支缺 ->
           # 不能拒。少测一个方向，都会留下一个能通过测试的坏实现。
           #
-          # 失败即中止构建：门禁坏了还继续，覆盖就会静默空转。
+          # 门禁失败**不中止构建**，只跳过覆盖那一步。
+          #
+          # 这一条改过一次。原来是 `set -e` 语义下的硬失败，结果：
+          # #126 门禁自检挂掉 -> 整个 job 退出 -> 后面 20 个步骤
+          # （洋红统计 / 材质错配 / 点击验收 / shader 健康度 / Unity 日志 /
+          # workflow 自检 / 证据管线自检）**一份证据都没产出**，
+          # 诊断报告里全是「无记录」。
+          #
+          # 而「无记录」把两件事混成一件：门禁坏了，和画面没问题。
+          # 实际上 #126 的构建已经跑完、截图已经生成，只是没人去看。
+          #
+          # 门禁的作用是「门禁不可信就别覆盖」（覆盖编译不过的官方 shader
+          # 会变洋红），它管的是**覆盖这一步**，不是**后面所有诊断**。
+          # 门禁坏掉的正确反应是「不覆盖、但继续查」，否则唯一能定位
+          # 门禁为什么坏的那份证据，恰好被门禁自己掐掉了。
+          #
+          # `set +e`：让门禁的退出码只影响下面那个 if，不影响其余步骤。
+          set +e
           python3 tools/test_shader_include_gate.py 2>&1 \
             | tee verify-evidence/include-gate-test.txt \
                   docs/ci-evidence/include-gate-test.txt
+          GATE_RC=${PIPESTATUS[0]}
+          set -e
+          echo "门禁自检退出码：$GATE_RC"
+          if [ "$GATE_RC" -ne 0 ]; then
+            echo "::warning::include 门禁自检失败（rc=$GATE_RC）—— "
+            echo "已跳过官方 shader 源码覆盖，AssetRipper 空壳保持原样。"
+            echo "**这不是「画面没问题」**：门禁坏掉时最可能的真实故障是"
+            echo "覆盖静默空转（报告显示「已覆盖：0」而流程全绿）。"
+            echo "后续诊断步骤照常执行，证据照常产出。"
+            echo "门禁明细见 include-gate-test.txt。"
+            # 把「为什么失败」也留档：门禁失败时最需要的是被拒名单，
+            # 但那属于 sync 的输出，而 sync 这一轮不会跑。
+            # 所以这里主动跑一次 --list-targets 之外的只读诊断：
+            # 复制一份桩目录到 verify-evidence 供下次比对。
+            mkdir -p verify-evidence/gate-failed-stubs
+            cp -f Assets/Shader/*.shader verify-evidence/gate-failed-stubs/ 2>/dev/null || true
+          fi
           # sync脚本自己会把 stdout 落盘到 verify-evidence/official-shader-sync.txt
           #（它内部做了 stdout 重定向到内存缓冲，既 print 又写文件）。
           # 这里再复制一份到 docs/ci-evidence/ —— 前者被 .gitignore 忽略、
           # 永不提交，而**这个文件里的「### 判决：覆盖」行是本报告第一屏的
           # 唯一判据**，只放在被忽略的目录等于每次都只能靠当场读日志。
-          python3 tools/sync_official_shaders.py
+          if [ "$GATE_RC" -eq 0 ]; then
+            python3 tools/sync_official_shaders.py
+          else
+            echo "### 判决：覆盖 **未执行**（include 门禁自检失败，已跳过）" \
+              | tee verify-evidence/official-shader-sync.txt
+            echo "" >> verify-evidence/official-shader-sync.txt
+            echo "原因：test_shader_include_gate.py 退出码 $GATE_RC。" \
+              >> verify-evidence/official-shader-sync.txt
+            echo "这不是「覆盖成功但效果不好」，是**根本没覆盖** —— " \
+              >> verify-evidence/official-shader-sync.txt
+            echo "所有 AssetRipper 空壳保持原样。" \
+              >> verify-evidence/official-shader-sync.txt
+            echo "" >> verify-evidence/official-shader-sync.txt
+            echo "被拒候选与缺失 include 见 docs/ci-evidence/include-gate-test.txt。" \
+              >> verify-evidence/official-shader-sync.txt
+          fi
           mkdir -p docs/ci-evidence
           cp -f verify-evidence/official-shader-sync.txt \
                 docs/ci-evidence/official-shader-sync.txt 2>/dev/null || {
@@ -1242,16 +1291,35 @@ jobs:
             echo
             # 门禁自检结果必须跟着判决一起看：门禁坏了，覆盖数就是 0，
             # 而报告看上去一切正常。
+            #
+            # grep 的 ` *` 不能省：判定行是 `[OK  ]` / `[FAIL]` ——
+            # 两种宽度不同（OK 后面补空格对齐）。原来的
+            # `\[(OK|FAIL)\]`只匹配得到 `[FAIL]`，**所有 OK 行全被吞掉**。
+            # 于是 #126 的报告里只剩一条 FAIL，看着像「就差一项」，
+            # 实际上「包完整时有覆盖发生」那一项是过的，
+            # 而它恰恰是唯一告诉你基线覆盖数（3）的信息。
+            # 一条判据只能看见失败、看不见通过，等于半个判据。
             if [ -s verify-evidence/include-gate-test.txt ]; then
               echo "### 覆盖前的门禁自检（双向）"
               echo
               echo '```'
-              grep -E '^\s+\[(OK|FAIL)\]|双向验证通过|失败' \
+              grep -E '^\s+\[(OK|FAIL) *\]|双向验证通过|失败' \
                    verify-evidence/include-gate-test.txt || true
               echo '```'
               echo
+              # 被测包身份必须一起贴出来：`3 -> 3` 里的 3 看着像
+              # 「门禁只认3 个 shader」，但它真正的含义取决于
+              # 被测的是哪个版本的 URP —— 而目录名里的 @哈希 不是版本号。
+              grep -E '^\s+被测包 ' \
+                   verify-evidence/include-gate-test.txt || true
+              echo
+              grep -A 40 '失败诊断' \
+                   verify-evidence/include-gate-test.txt || true
+              echo
               echo "两个方向都必须过：活分支缺 include 要拒（否则洋红），"
               echo "死分支缺 include 不能拒（否则覆盖静默空转）。"
+              echo "上面「被测包」两行给出真实版本 —— 目录名里的 @哈希是"
+              echo "内容哈希不是版本，10.10.1 与 17.x 的目录名可以完全一样。"
             fi
             echo
             echo "## 洋红（shader 编译失败）"
