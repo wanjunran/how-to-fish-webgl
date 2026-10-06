@@ -25,7 +25,9 @@ using UnityEngine;
 namespace FishySteamworks
 {
 	/// <summary>
-	/// Steam 传输层占位实现。UnityTransport 才是 WebGL 版实际使用的传输层。
+	/// Steam 传输层占位实现。UnityTransport 才是 WebGL 版实际使用的传输层
+	/// —— 它由 Assets/Plugins/FishyUnityTransport.dll 提供，基于
+	/// com.unity.transport，并带 WebSocket 支持（浏览器里 UDP 不可用）。
 	/// 保留此类型仅为满足 ConnectionManager 的字段声明与场景反序列化。
 	/// </summary>
 	public class FishySteamworks : MonoBehaviour
@@ -38,7 +40,7 @@ namespace FishySteamworks
 		{
 			Debug.LogWarning(
 				"[FishySteamworks] 桩实现被加载。WebGL 单人版不使用 Steam 传输层，" +
-				"当前传输方式为 UnityTransport，此实例不会被使用。");
+				"当前传输方式为 UnityTransport（dll 提供，非源码），此实例不会被使用。");
 		}
 	}
 }

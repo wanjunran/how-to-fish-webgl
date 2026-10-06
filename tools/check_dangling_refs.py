@@ -42,6 +42,45 @@ AssetRipper 导出的是**游戏自己的资产**，不导出包内资产。所�
 本脚本据此分流，避免两种极端：把正常的全报成故障（噪声淹没有效
 信号），或者反过来全放过去（真丢了没人知道）。
 
+## 但上面那个分流有个盲区，它已经栽过实打实的一次
+
+把所有 `m_Script` 悬空都归进「包内，正常」，对**包内脚本**是对的。
+可 DLL 里的 MonoBehaviour 走的也是 `m_Script` —— 它指向那个 DLL 自己的
+.meta guid。**一旦有人在重建或改名 .meta 时换掉了 guid，它就成了悬空
+引用，而这条分类会把它当成包内资产放过去。**
+
+本项目的实例（`FishyUnityTransport.dll`）：
+
+| 提交 | meta guid | 场景/prefab 引用的 guid | 状态 |
+|------|-----------|------------------------|------|
+| `d3eab9a`..`5949eae` | `d8db7e6e…` | `d8db7e6e…` | 一致 |
+| `d2ac6c2` | *（文件被删）* | `d8db7e6e…` | 悬空 |
+| `d414ac3` | `3f0a1c8e…` | `d8db7e6e…` | **永久悬空** |
+
+`d414ac3` 把这个 DLL 改名回 `FishyUnityTransport`（为了避开与
+`com.unity.transport` 的程序集同名冲突），顺手新建了一份 .meta 并给了
+**新 guid**。但 Unity 的 .meta 里存的是资产身份：**改文件名不等于改身份，
+换 guid 就等于所有既有引用全部作废。** 于是场景和 `NetworkManager.prefab`
+里 4 处 `UnityTransport` 组件引用全部悬空，而本脚本当时报的是
+「疑似真的丢失: 0 个」。
+
+后果不是"少一个资源"这么轻。`_transports` 列表第二项在Unity 里变成
+missing MonoBehaviour（null），`Multipass.Initialize()` 会移除 null 项
+并只`LogWarning` —— WebGL 上就只剩走 UDP 的 Tugboat，而浏览器没有 UDP。
+接着 `SetClientTransport<UnityTransport>()` 走到 `IndexInRange(-1)`，
+`LogError` 之后**静默返回**（`Multipass.cs:597-603`），`ClientTransport`
+落回 getter 的自动兜底（`Multipass.cs:66-78`）。整条进场景链路在一个
+LogError 之后继续跑，看起来像"随机失败"。
+
+所以补了**判据二**：数一遍所有 DLL 插件 meta 的 guid 引用次数，零引用的
+挑出来，再拿 git 历史里该 .meta 曾用过的 guid 逐一比对 —— 只要有悬空
+guid 命中历史身份，就是身份漂移的实锤。
+
+零引用本身**不算错**：纯托管库（`Newtonsoft.Json`、
+`FishNet.CodeAnalysis*`）只需 `using`，不需要资产引用。所以判据必须两段
+才敢报警：零引用 **且** 悬空 guid 命中历史。历史拿不到时（CI 浅克隆）
+退化为只报零引用，不硬判 —— 宁可少报也不误报。
+
 ## 用法
 
     python3 tools/check_dangling_refs.py
@@ -142,6 +181,65 @@ def classify(miss: dict[str, set[str]], root: str) -> tuple:
     return pkg, suspect
 
 
+# ===== 判据二：插件 DLL 的 guid 零引用 = 身份漂移 =====
+#
+# 上面那个分类有个盲区，代价是本项目实打实栽过一次：
+# 它把**所有** m_Script 悬空一律归为"包内，正常"。而DLL 里导出的
+# MonoBehaviour，其 m_Script 指向的guid 属于那个 DLL 的 .meta —— 一旦
+# 有人在重建/改名 .meta 时换掉了guid，它就成了悬空引用，而分类把它当
+# 成包内资产放了过去。
+#
+# 实测经过：Assets/Plugins/FishyUnityTransport.dll 在 d3eab9a..5949eae
+# 期间 meta guid 是 d8db7e6e61692c478fb9733936ad93bb，场景与
+# NetworkManager.prefab 里 4 处 UnityTransport 组件引用它。d2ac6c2 删掉
+# 该文件，d414ac3 重建时用了新 guid 3f0a1c8e...，于是那 4 处引用全部
+# 悬空。分类把它们判成"包内，正常"，报告里"疑似真的丢失"是 0 个。
+#
+# 后果不是"某个资源加载不出来"这么轻：_transports 列表第二项在Unity 里
+# 变成 missing MonoBehaviour（null），Multipass.Initialize() 会移除 null
+# 项并只 LogWarning —— 于是在 WebGL 上只剩 UDP 的 Tugboat 可用，
+# SetClientTransport<UnityTransport>() 走到 IndexInRange(-1)，LogError
+# 之后**静默返回**，ClientTransport 落回 getter 的自动兜底。整条联机/
+# 进场景链路在一个 LogError 之后继续跑，看起来像"随机失败"。
+#
+# 判据：把仓库里所有 .meta 的 guid 数一遍，找出**零引用的 DLL/程序集
+# meta**。DLL 被人引用时靠 guid 定位，没被引用就说明要么没人用（正常，
+# 比如纯托管库 Newtonsoft），要么引用方拿的是另一个 guid（异常）。
+# 再拿 git 历史里该 meta 的历次 blob 逐一核对：只要历史里出现过一个
+# 「当前悬空引用正在用」的 guid，就是身份漂移，实锤。
+DLL_META_SUFFIX = ".dll.meta"
+
+
+def plugin_meta_guids() -> dict[str, str]:
+    """Assets 下所有 DLL 插件的 meta guid -> dll 路径。"""
+    out = {}
+    for mp in glob.glob(os.path.join(ASSETS, "**", "*" + DLL_META_SUFFIX),
+                        recursive=True):
+        try:
+            with open(mp, encoding="utf-8", errors="replace") as f:
+                m = GUID_IN_META.search(f.read(4096))
+        except OSError:
+            continue
+        if m:
+            out[m.group(1)] = os.path.relpath(mp[:-len(DLL_META_SUFFIX)], ROOT)
+    return out
+
+
+def guid_refcounts(root: str) -> dict[str, int]:
+    """资产文件里每个 guid 被引用多少次。"""
+    counts: dict[str, int] = defaultdict(int)
+    for ext in ("*.asset", "*.mat", "*.prefab", "*.unity", "*.controller"):
+        for f in glob.glob(os.path.join(ASSETS, "**", ext), recursive=True):
+            try:
+                with open(f, encoding="utf-8", errors="replace") as fh:
+                    text = fh.read()
+            except OSError:
+                continue
+            for g in GUID_IN_ASSET.findall(text):
+                counts[g] += 1
+    return counts
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--json", action="store_true")
@@ -180,7 +278,77 @@ def main() -> int:
     else:
         print("\n### 疑似真的丢失：无")
         print("这一节为空**不代表引用都对**，只代表没有落入「疑似」分类。")
+
+    # ---- 判据二：插件 DLL 身份漂移 ----
+    counts = guid_refcounts(ROOT)
+    dlls = plugin_meta_guids()
+    orphans = {g: p for g, p in dlls.items() if counts.get(g, 0) == 0}
+    print("\n### 插件 DLL 引用情况")
+    if not dlls:
+        print("  无 DLL 插件，本节跳过（不代表没有 DLL 被打包进别处）。")
+    else:
+        for g, p in sorted(dlls.items(), key=lambda x: -counts.get(x[0], 0)):
+            n = counts.get(g, 0)
+            tag = "  <- 零引用" if n == 0 else ""
+            print(f"  {p:48s} {g}被引用 {n:4d} 次{tag}")
+        if orphans:
+            # 不直接判成缺陷：纯托管库（Newtonsoft.Json）本来就没人引用。
+            # 但只要**有一个悬空 guid 出现在这些 DLL 的 git 历史 guid 里**，
+            # 就是身份漂移的实锤 —— 场景在找旧身份，DLL 挂在新身份上。
+            hist = historical_guids(ROOT, [p + DLL_META_SUFFIX for p in orphans.values()])
+            hot = {g: fs for g, fs in miss.items() if g in hist}
+            if hot:
+                print(f"\n  **身份漂移实锤**：{len(hot)} 个悬空 guid 正是下列 DLL "
+                      "历史上用过的身份 —— 场景/prefab 在找旧 guid，"
+                      "而 DLL 的 .meta 已经换成新的了。")
+                for g, fs in sorted(hot.items(), key=lambda x: -len(x[1])):
+                    who = [f for gg, p in hist.items() if gg == g
+                           for f in [p]]
+                    print(f"! {g}  引用 {len(fs)} 处 "
+                          f"{sorted(fs)[:2]}")
+                    print(f"    该 guid 历史属于: {who}")
+                print("::error::把对应 .meta 的 guid 改回历史值"
+                      "（换文件名不等于换身份，Unity 靠 guid 定位）")
+            else:
+                print("\n  零引用但**未发现身份漂移** —— 多半是纯托管库"
+                      "（只需 using，不需要资产引用），属正常。")
+                print("  注意：本节只覆盖 Assets/**；打包进 asmdef 或"
+                      " 由代码动态加载的 DLL 不在其中。")
     return 0
+
+
+def historical_guids(root: str, rel_metas: list[str]) -> dict[str, str]:
+    """从 git 历史里取这些 .meta 曾用过的 guid -> 现在的路径。
+
+    拿不到 git（CI 里浅克隆、或历史被清）时返回空 dict，判据二退化为
+    只报「零引用」，不硬判。宁可少报也不误报。
+    """
+    import subprocess
+    out: dict[str, str] = {}
+    for rel in rel_metas:
+        try:
+            log = subprocess.run(
+                ["git", "log", "--all", "--format=%H", "--", rel],
+                cwd=root, capture_output=True, text=True, timeout=60)
+            if log.returncode != 0:
+                return out
+            for sha in log.stdout.split():
+                ls = subprocess.run(
+                    ["git", "ls-tree", sha, "Assets/" + rel if not rel.startswith("Assets/")
+                     else rel],
+                    cwd=root, capture_output=True, text=True, timeout=60)
+                blob = ls.stdout.split("\t")[0].split()[-1] if ls.stdout.strip() else ""
+                if not blob:
+                    continue
+                cat = subprocess.run(["git", "cat-file", "-p", blob],
+                                     cwd=root, capture_output=True, text=True,
+                                     timeout=60)
+                m = GUID_IN_META.search(cat.stdout)
+                if m:
+                    out.setdefault(m.group(1), rel)
+        except (OSError, subprocess.SubprocessError):
+            return out
+    return out
 
 
 if __name__ == "__main__":

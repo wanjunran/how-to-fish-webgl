@@ -4,6 +4,10 @@ using FishNet.Managing.Logging;
 using FishNet.Managing.Server;
 using FishNet.Transporting;
 using FishNet.Transporting.Multipass;
+//这个命名空间由 Assets/Plugins/FishyUnityTransport.dll 提供（程序集里
+// 是托管代码，不是源码）。它极易被误判成「AssetRipper 把 UTP 目录丢掉
+// 了」—— Transports/ 下确实只有 Multipass/ 和 Tugboat/，但那只是
+// 源码视图；dll 才是真正的宿主。
 using FishNet.Transporting.UTP;
 using FishySteamworks;
 using Steamworks;
@@ -96,7 +100,19 @@ public class ConnectionManager : MonoBehaviour
 
 	private void SetTransport(bool toSteam)
 	{
-		// WebGL 单人版：始终使用 UnityTransport，不加载 Steamworks 传输层
+		// WebGL 单人版：不加载 Steamworks 传输层。
+		//
+		// UnityTransport 由 Assets/Plugins/FishyUnityTransport.dll 提供，
+		// 它基于 com.unity.transport（manifest.json 里 2.7.3），并且带
+		// WebSocket 支持（dll 里的 WebSocketNetworkInterface +
+		// m_UseWebSockets），这是浏览器里唯一走得通的传输方式 —— Tugboat
+		// 走 System.Net.Sockets.Socket 的 UDP，WebGL 没有 UDP API。
+		//
+		// 这行代码一度编译不过（CS0234: 命名空间 'UTP' 不存在于
+		// 'FishNet.Transporting'）。那不是缺程序集：d414ac3 之前这个 dll
+		// 叫 Unity.Networking.Transport.dll，与 com.unity.transport 包自带
+		// 的 asmdef 同名，编译器把类型解析到了错的那个。改名回
+		// FishyUnityTransport 已解决。
 		IsUsingSteam = false;
 		_multipass.SetClientTransport<UnityTransport>();
 	}
