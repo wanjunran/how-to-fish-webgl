@@ -64,7 +64,16 @@ MISC_OK = {
     "NORMAL", "POSITION", "TANGENT", "COLOR", "BLENDWEIGHT", "BLENDINDICES",
     "SV_Target0", "SV_Target1", "SV_Target2", "SV_Target3",
     "dFdx", "dFdy", "fwidth",
+    # Unity 侧的合法标识符：Attributes/positionCS 所在的结构体名。
+    "input",
+    # 转换器在flat 插值器前加的插值修饰符（HLSL 里对应 GLSL flat）。
+    "nointerpolation",
 } | {f"TEXCOORD{i}" for i in range(24)}
+
+# 转换器生成的矩阵转置局部量，名字是 "_t" + 原矩阵名（glsl_to_unity.py
+# 里的 _t<name>），随矩阵集动态变化，无法穷举 —— 按前缀排除。
+GENERATED_PREFIXES = ("_tunity_", "_t_Normal", "_t_World", "_t_View",
+                       "_t_Projection", "_t_MV", "_t_Object")
 
 IDENT = re.compile(r"\b[A-Za-z_]\w*\b")
 
@@ -106,6 +115,8 @@ def check(path):
     declared |= set(re.findall(r"#define\s+(\w+)", src))
     declared |= set(re.findall(r"^\s*(?:const\s+)?[\w]+\s+(\w+)\s*(?:\[[^\]]*\])?\s*;",
                                src, re.M))                     # 全局/局部量
+    declared |= set(re.findall(r"(?:^|[;{}])\s*(?:const\s+)?\w+\s+(\w+)\s*=",
+                               src, re.M))              # 带初始化的量（缩进的也算）
     declared |= set(re.findall(r"^\s*#define\s+(\w+)\(", src, re.M))
     # 结构体成员
     for sm in re.finditer(r"struct\s+(\w+)\s*\{(.*?)\}", src, re.S):
@@ -114,6 +125,13 @@ def check(path):
                                    sm.group(2)))
     # 函数名
     declared |= set(re.findall(r"^\s*[\w]+\s+(\w+)\s*\(", src, re.M))
+    # Unity 的资源声明宏：TEXTURE2D(_BaseMap); / SAMPLER(sampler__BaseMap);
+    # TEXTURECUBE / TEXTURE3D / TEXTURE2D_ARRAY 同理。它们在 HLSL 里展开成
+    # 真实的 Texture2D + SamplerState 声明，但源码层面是「宏(名字);」形式，
+    # 上面的「类型 名字;」正则匹配不到 —— 不补这条就会把每个纹理都误报成
+    # 「正文出现但未见声明」。
+    declared |= set(re.findall(r"^\s*(?:TEXTURE\w*|SAMPLER)\s*\(\s*(\w+)\s*\)",
+                               src, re.M))
     # swizzle 会被误当标识符，剔除带 . 的
     src_noswz = re.sub(r"\.\s*[xyzwrgbastpq]+\b", " ", src)
     src_noswz = re.sub(r"\b\w+\s*\.\s*(\w+)", r"\1", src_noswz)  # obj.field
@@ -121,6 +139,7 @@ def check(path):
     used = set(IDENT.findall(src_noswz))
     missing = sorted((used - declared) - MISC_OK)
     missing = [u for u in missing if not u.startswith("_g_")]
+    missing = [u for u in missing if not u.startswith(GENERATED_PREFIXES)]
     if missing:
         warns.append("正文出现但未见声明：" + ", ".join(missing[:25])
                      + (" …" if len(missing) > 25 else ""))

@@ -70,7 +70,8 @@ class Parsed:
         self.tex = []         # [(纹理名, 宏名)]
         self.zcmp = []        # 参与 shadow 深度比较的纹理名
         self.ins = []         # [(名, 类型)]
-        self.outs = []        # [(名, 类型)]
+        self.outs = []# [(名, 类型)]
+        self.out_mod = {}    # {名: 修饰符}，GLSL 的 flat -> HLSL nointerpolation
         self.ps_outs = []     # [(名, 类型, location)]
         self.globals = []     # [(类型, 名, 数组维度)]
         self.helpers = []     # HLSLcc 自带的辅助函数（op_not 等）
@@ -151,6 +152,20 @@ def parse_glsl(text):
             continue
 
         # ---- IO ----
+        #
+        # 插值限定符（flat / smooth / noperspective / centroid）用「先剥再用」
+        # 而不是塞进正则分支。实测：把多个分支写进同一个可选组后，Python re
+        # 在裸 out / in 上会回溯失败 —— 限定符组能匹配空，但后续的类型/变量
+        # 两组仍会误把精度限定符当类型，整行匹配不上。分支越多越脆
+        # （单 token 全对、任意组合全错），所以干脆不写进正则。
+        #
+        # 漏掉这一项的代价：instancing 变体里的
+        #     flat out highp uint vs_CUSTOM_INSTANCE_ID0;
+        # 整行被丢弃，Varyings 少一个成员而 PS 仍在引用它 —— 编译期报未声明。
+        if s.startswith(("flat ", "smooth ", "noperspective ", "centroid ")):
+            qual, s = s.split(" ", 1)
+        else:
+            qual = ""
         m = re.match(r"^layout\(location = (\d+)\) out (?:\w+\s+)?"
                      r"(\w+)\s+(\w+);$", s)
         if m:
@@ -163,6 +178,11 @@ def parse_glsl(text):
         m = re.match(r"^out\s+(?:\w+\s+)?(\w+)\s+(\w+);$", s)
         if m:
             p.outs.append((m.group(2), m.group(1)))
+            # GLSL 的 flat 在 HLSL 里对应 nointerpolation。丢掉它会让整数
+            # 插值器走默认插值，instancing 的 instance id 在多顶点间被插成
+            # 小数 —— 不报编译错，但结果是错的。
+            p.out_mod[m.group(2)] = ("nointerpolation "
+                                      if qual == "flat" else "")
             continue
 
         # ---- HLSLcc 辅助函数（原样保留）----
@@ -330,6 +350,29 @@ def semantic_of(name):
     return "TEXCOORD" + (m.group(2) if m else "0")
 
 
+def assign_vary_semantics(vary):
+    """给每个插值器分配互不重复的 TEXCOORD 索引。
+
+    HLSLcc 在这批 DXBC->GLES3 输出里不给 varying 写 layout(location)，
+    所以索引得自己定。之前的做法是「按名字里的数字」，遇到名字里没数字的
+    （URP instancing 的 vs_CUSTOM_INSTANCE_ID0）就回退到 TEXCOORD0 ——
+    和 vs_INTERP0 撞在同一个语义上。D3D11 允许重语义，别的后端不一定，
+    至少交叉编译工具会直接报错。这里改成：能用原数字的保留，其余按
+    出现顺序补到已用索引之后，结果唯一且确定（按名字排序）。
+    """
+    used, out = set(), {}
+    for n in sorted(vary):
+        m = re.match(r"vs_(\w+?)(\d+)$", n)
+        idx = int(m.group(2)) if m else None
+        if idx is None or idx in used:
+            idx = 0
+            while idx in used:
+                idx += 1
+        used.add(idx)
+        out[n] = idx
+    return out
+
+
 # ---------------------------------------------------------------- 生成
 def extract_properties(dummy_shader_path):
     """从 AssetRipper 导出的原版 .shader 里原样取出 Properties 块。"""
@@ -412,6 +455,9 @@ def build(shader_name, vs_glsl, ps_glsl, props_txt, tex_alias, tags,
         vary[n] = t
     for n, t in ps.ins:
         vary.setdefault(n, t)
+    # 修饰符以 VS 侧的 flat 为准（GLSL 里配对的 out/in 修饰符本来就该一致，
+    # 但只有 VS 侧带 out_mod；PS 侧的 in 走的是另一条记录路径）。
+    mods = dict(vs.out_mod)
 
     # 第一遍：还不知道哪些 pad 会被引用，先不带 pad 做矩阵名单
     mat_names = {n for p in (vs, ps) for t, n in p.uniform_vars() if "x" in t}
@@ -485,8 +531,10 @@ def build(shader_name, vs_glsl, ps_glsl, props_txt, tex_alias, tags,
     attrs = "\n".join(
         f"                {TYPES.get(t, t)} {n} : {semantic_of(n)};"
         for n, t in vs.ins) or "                float3 _unused : TEXCOORD0;"
+    vary_sem = assign_vary_semantics(vary)
     varys = "\n".join(
-        f"                {TYPES.get(t, t)} {n} : {semantic_of(n)};"
+        f"                {mods.get(n, '')}"
+        f"{TYPES.get(t, t)} {n} : TEXCOORD{vary_sem[n]};"
         for n, t in sorted(vary.items()))
     # VS 与 PS 的临时量都要声明（u_xlat* / ImmCB*）
     gl, seen_g = [], set()
@@ -597,19 +645,63 @@ def _apply_zcmp(text, zmap):
 
 
 # ---------------------------------------------------------------- main
-def pick_variant(directory, stage):
-    """挑不含 SSBO 的变体（WebGL2 = GLES 3.0 不支持），取关键字最少的一个。"""
+def variant_key(filename):
+    """从变体文件名里取出「关键字组合」。
+
+    HLSLcc 生成的文件名形如
+        00_p0_VS_sm40_UnityPerDraw_LightShadows__MainLightPosi.glsl
+        20_p0_PS_sm50__WindSpeed__WindStrength_UnityPerDraw__G.glsl
+    下划线后面那一段就是该子程序的关键字集。同一 pass 的 VS 与 PS 只有在
+    关键字集相同时才是一对能链接的程序 —— URP 的 instancing 关键字会让
+    VS 多输出一个 flat uint instance id，PS 再读它；错配的���候 PS 会去读
+    一个 VS 根本没写的插值器，编译期报未声明，链接期也可能静默出错。
+    """
+    m = re.match(r"^\d+_p\d+_(?:VS|PS)_sm\d+_(.*)\.glsl$", filename)
+    return m.group(1) if m else filename
+
+
+def pick_variant_pair(directory):
+    """挑一对**关键字相同**且不含 SSBO 的 VS/PS（WebGL2 = GLES 3.0 无 SSBO）。
+
+    先按文件名长度排序枚举候选组合（短的 = 关键字少），取第一组 VS/PS 都
+    存在、且两者都不含 SSBO 的组合。关键字数一致这点由variant_key 保证。
+    """
     files = sorted(f for f in os.listdir(directory)
-                   if f.endswith(".glsl") and f"_p0_{stage}_" in f)
-    if not files:
-        return None
-    safe = []
-    for f in files:
+                   if f.endswith(".glsl") and "_p0_" in f)
+
+    def no_ssbo(f):
         txt = open(os.path.join(directory, f), errors="replace").read()
-        if "readonly buffer" not in txt:
-            safe.append(f)
-    pool = safe or files
-    return min(pool, key=len)
+        return "readonly buffer" not in txt
+
+    # 组合 -> {stage: [files]}，stage 取自文件名的 _p0_VS_ / _p0_PS_
+    groups = {}
+    for f in files:
+        m = re.match(r"^\d+_p0_(VS|PS)_sm\d+_", f)
+        if m:
+            groups.setdefault(variant_key(f), {}).setdefault(
+                m.group(1), []).append(f)
+
+    # 排序键：先按组合名长度（关键字少者靠前），再按名字，保证结果稳定。
+    for key in sorted(groups, key=lambda k: (len(k), k)):
+        g = groups[key]
+        if "VS" not in g or "PS" not in g:
+            continue
+        vs_safe = [f for f in g["VS"] if no_ssbo(f)]
+        ps_safe = [f for f in g["PS"] if no_ssbo(f)]
+        if vs_safe and ps_safe:
+            return min(vs_safe, key=len), min(ps_safe, key=len), key
+    # 退路：没有不含 SSBO 的配对组合，就取任意一组配对（调用方会告警）
+    for key in sorted(groups, key=lambda k: (len(k), k)):
+        g = groups[key]
+        if "VS" in g and "PS" in g:
+            return min(g["VS"], key=len), min(g["PS"], key=len), key
+    return None, None, None
+
+
+def pick_variant(directory, stage):
+    """单stage 入口（供调试/脚本用）。"""
+    vs_f, ps_f, _key = pick_variant_pair(directory)
+    return vs_f if stage == "VS" else ps_f
 
 
 def main():
@@ -624,13 +716,12 @@ def main():
     ap.add_argument("--out-name", default=None)
     a = ap.parse_args()
 
-    vs_f = pick_variant(a.dir, "VS")
-    ps_f = pick_variant(a.dir, "PS")
+    vs_f, ps_f, key = pick_variant_pair(a.dir)
     if not vs_f or not ps_f:
         sys.exit(f"{a.dir}: 找不到 pass0 的 VS/PS 变体")
     vs_glsl = open(os.path.join(a.dir, vs_f), errors="replace").read()
     ps_glsl = open(os.path.join(a.dir, ps_f), errors="replace").read()
-    print(f"VS: {vs_f}\nPS: {ps_f}")
+    print(f"关键字组合: {key}\nVS: {vs_f}\nPS: {ps_f}")
     if "readonly buffer" in ps_glsl:
         print("  ! 该 shader 无不含 SSBO 的 PS 变体，WebGL2 无法编译")
 
