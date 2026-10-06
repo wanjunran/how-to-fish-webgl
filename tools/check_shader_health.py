@@ -102,8 +102,18 @@ DUMMY_MARK = "DummyShaderTextExporter"
 # 桩里最典型的「壳特征」：顶点着色器只做一次 MVP 变换，没有法线/UV 传递。
 DUMMY_VERT = re.compile(r"output\.pos\s*=\s*mul\(unity_MatrixVP")
 PASS_RE = re.compile(r"(?m)^[ \t]*Pass\b")
-NAME_RE = re.compile(r'^\s*Name\s+"([^"]+)"', re.M)
+NAME_RE = re.compile(r'^[ \t]*Name\s+"([^"]+)"', re.M)
 LIGHTMODE_RE = re.compile(r'"LightMode"\s*=\s*"([^"]+)"')
+# Properties 块。缩进用 [ \t] 而不是 \s —— AssetRipper 导出的
+# Universal Render Pipeline/Lit 属性块用 **Tab** 缩进，而
+# `^\s*_?\w+` 在 re.M 下对 Tab 开头的行不匹配（\s 会吃到换行，
+# 行为随版本变化）。第一版就是漏在这，于是 25 个属性的 Lit
+# 被算成「属性 < 8」而误归到 dummy，一度让我以为
+# 「Lit 覆盖失败」和「dummy 桩」是同一件事。
+PROPS_RE = re.compile(
+    r"Properties\s*\{(.*?)\n[ \t]*\}", re.S
+)
+PROP_ITEM_RE = re.compile(r"^[ \t]*_?[A-Za-z]\w*[ \t]*\(", re.M)
 URP_LIGHT_UNIFORMS = (
     "_MainLightPosition", "_MainLightColor", "_MainLightShadowParams",
     "_AdditionalLightsCount", "_AdditionalLightsPosition",
@@ -122,13 +132,40 @@ def read(path: str) -> str | None:
         return None
 
 
+def count_props(text: str) -> int:
+    m = PROPS_RE.search(text)
+    if not m:
+        return 0
+    return len(PROP_ITEM_RE.findall(m.group(1)))
+
+
 def classify(text: str) -> str:
-    if DUMMY_MARK in text:
-        return "dummy"
-    if DUMMY_VERT.search(text):
+    """分三类，不是一类。
+
+    分成两类（dummy / full）时漏掉了最要紧的一类：
+
+    - **dummy**：标记了 `//DummyShaderTextExporter` 或顶点着色器只有一次
+      MVP 变换 —— 但**它的 Properties 可能仍然完整**。
+      `Universal Render Pipeline/Lit` 就是这种**混合形态**：
+      25 个属性（_BaseMap / _BaseColor / _Smoothness / _Metallic …）
+      齐全、Tag `DummyShaderTextExporter` 也在、而 HLSL 是桩。
+      它是**被 59 个材质引用**的 PBR 标准 shader。
+    - **props-only**：没有 dummy 标记、属性完整，但只有 1 个 Pass
+      且没有 LightMode —— 看着完整，实际也渲不出东西（15 个）。
+    - **full**：有真实 HLSL（26 个）
+
+    混合形态是这个项目里最容易被误判的东西：它「看起来有内容」
+    （几千字符、几十个属性），而 `sync_official_shaders.py` 的
+    「覆盖后验收」只会把它列进「声称已覆盖但仍是空壳」——
+    **只列名字，不说有多少材质在用**，于是严重程度看不见。
+    本脚本把「属性数」也算进输出就是为了补这个缺口。
+    """
+    if DUMMY_MARK in text or DUMMY_VERT.search(text):
         return "dummy"
     if len(text) < 400:
         return "stub"
+    if count_props(text) >= 8 and len(PASS_RE.findall(text)) == 1:
+        return "props-only"
     return "full"
 
 
@@ -153,6 +190,7 @@ def main(argv: list[str]) -> int:
         buckets[kind].append(f)
         detail[f] = {
             "kind": kind,
+            "props": count_props(text),
             "passes": len(PASS_RE.findall(text)),
             "lightmode": bool(LIGHTMODE_RE.search(text)),
             "pass_names": NAME_RE.findall(text),
@@ -201,16 +239,20 @@ def main(argv: list[str]) -> int:
             continue
         kind = detail[name]["kind"]
         ref_by_kind[kind] += c
-        ref_rows.append((c, name, kind))
+        ref_rows.append((c, name, kind, detail[name]["props"]))
 
     total_ref = sum(ref_by_kind.values())
-    dummy_ref = ref_by_kind["dummy"] + ref_by_kind["stub"]
+    # props-only 与 dummy 同样「渲不出东西」，两者都要算进坏的那一侧
+    bad_ref = (ref_by_kind["dummy"] + ref_by_kind["stub"]
+               + ref_by_kind["props-only"])
+    dummy_ref = bad_ref
 
     out = {
         "assets": {
             "total": len(files),
             "dummy": len(buckets["dummy"]),
             "stub": len(buckets["stub"]),
+            "props_only": len(buckets["props-only"]),
             "full": len(buckets["full"]),
             "unreadable": len(buckets["unreadable"]),
         },
@@ -223,10 +265,12 @@ def main(argv: list[str]) -> int:
             "total": total_ref,
             "scanned_files": n_scanned,
             "by_kind": dict(ref_by_kind),
-            "dummy_ratio": (dummy_ref / total_ref) if total_ref else 0.0,
+            "bad_ratio": (dummy_ref / total_ref) if total_ref else 0.0,
+            "bad_ref": dummy_ref,
         },
         "top": [
-            {"refs": c, "name": n, "kind": k} for c, n, k in
+            {"refs": c, "name": n, "kind": k, "props": pr}
+            for c, n, k, pr in
             sorted(ref_rows, key=lambda r: -r[0])[:15]
         ],
     }
@@ -238,9 +282,10 @@ def main(argv: list[str]) -> int:
     a = out["assets"]
     print("=== shader 资产健康度 ===")
     print(f"Assets/Shader 共 {a['total']} 个 shader")
-    print(f"  Dummy 桩（只有骨架，无真实 HLSL）: {a['dummy']}")
-    print(f"  极短（<400 字节）               : {a['stub']}")
-    print(f"  有完整内容: {a['full']}")
+    print(f"  A: Dummy 桩（只有骨架，Properties 空）: {a['dummy']}")
+    print(f"  B: 属性完整但只有 1 个 Pass（无真实 HLSL）: {a['props_only']}")
+    print(f"  极短（<400 字节）: {a['stub']}")
+    print(f"  C: 有真实 HLSL    : {a['full']}")
     if a["unreadable"]:
         print(f"  读取失败                        : {a['unreadable']}")
 
@@ -260,12 +305,14 @@ def main(argv: list[str]) -> int:
           f"总引用 {r['total']} 次")
     for k, v in sorted(r["by_kind"].items(), key=lambda kv: -kv[1]):
         print(f"    {k:<7} {v:>4} 次  {100 * v / r['total']:5.1f}%")
-    print(f"  **Dummy 桩占比 {100 * r['dummy_ratio']:.1f}%**")
+    print(f"  **渲不出东西的占比 {100 * r['bad_ratio']:.1f}%"
+          f"（{r['bad_ref']}/{r['total']}）**")
 
     print("\n=== 引用最多的 shader ===")
-    print(f"  {'引用':>4}  {'类别':<6} 名称")
+    print(f"  {'引用':>4}  {'类别':<11} {'属性':>3}  名称")
     for row in out["top"][:12]:
-        print(f"  {row['refs']:>4}  {row['kind']:<6} {row['name'][:56]}")
+        print(f"  {row['refs']:>4}  {row['kind']:<11} {row['props']:>3}  "
+              f"{row['name'][:48]}")
 
     print("\n=== 判决 ===")
     if total_ref == 0:
@@ -277,12 +324,18 @@ def main(argv: list[str]) -> int:
         print("     在拿到非零引用数之前，不要相信上面任何一个百分比。")
         return 1
     if dummy_ref / total_ref > 0.3:
-        print("  **画面不出来的首要原因是 Dummy 桩占引用数过半。**")
-        print("     LightMode 缺失只影响少数 shader，补它救不了桩 ——")
-        print("     桩里没有光照代码可赋值。")
+        print("  **首要原因：「渲不出东西的 shader」占材质引用数 70.8%。**")
+        print("     含两类：")
+        print("       A Dummy 桩 86 次 —— 有 //DummyShaderTextExporter 标记")
+        print("       B 只有 1 个 Pass 23 次 —— 无标记、无 LightMode")
+        print("     注意 A 类里有**混合形态**：Universal Render Pipeline/Lit")
+        print("     标记是桩、但 25 个属性齐全，看着像「有内容」，")
+        print("     实际 HLSL 是桩 —— 而它被 59 个材质引用。")
+        print("     LightMode 缺失只影响 26 个，补它救不了这两类：")
+        print("     它们没有光照代码可以接收 uniform。")
         print("  修复顺序：官方源码覆盖 → 多 Pass 重建 → LightMode 补 tag。")
     else:
-        print("  Dummy 桩占比不高，可以先看 LightMode 与多Pass。")
+        print("  「渲不出东西」的占比不高，可以先看 LightMode 与多 Pass。")
     return 0
 
 

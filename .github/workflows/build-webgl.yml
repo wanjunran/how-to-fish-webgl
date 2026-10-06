@@ -1306,14 +1306,20 @@ jobs:
             echo "没有真实 HLSL 的 shader。它**会编译通过**（所以构建不报错），"
             echo "但渲染结果是错的。"
             echo
-            echo "最重要的一条：**Dummy 桩占引用数过半，"
-            echo "其中 \`Universal Render Pipeline/Lit\` 被 59 个材质引用且全是桩。**"
-            echo "PBR 标准 shader 一失效，所有非 UI 物体都渲不出来 ——"
-            echo "这就是「偏蓝0.00%、偏绿 0.00%」的来源。"
+            echo "最重要的一条：**「渲不出东西的 shader」占材质引用数 70.8%"
+            echo "（109/154）** —— 含两类："
+            echo "\`//DummyShaderTextExporter\` 标记的 86 次，"
+            echo "以及「无标记但只有 1 个 Pass」的 23 次。"
+            echo
+            echo "其中 \`Universal Render Pipeline/Lit\` 被 **59 个材质**引用，"
+            echo "而它是**混合形态**：25 个属性（_BaseMap / _BaseColor /"
+            echo "_Smoothness / _Metallic ...）齐全、标记也在、HLSL 是桩 ——"
+            echo "**看着像「有内容」，实际渲不出任何东西。**"
+            echo "它是 PBR 标准 shader，一失效所有非 UI 物体都没了。"
             echo
             echo "所以修复顺序是：**官方源码覆盖 → 多 Pass 重建 → LightMode 补 tag**。"
-            echo "LightMode 排在最后，因为桩里没有光照代码可接收 uniform，"
-            echo "先补 tag 是白做。"
+            echo "LightMode 排在最后，因为这两类没有光照代码可接收 uniform，"
+            echo "先补tag 是白做。"
             echo
             if [ -s verify-evidence/shader-health.txt ]; then
               echo '```'
