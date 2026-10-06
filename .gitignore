@@ -8,3 +8,10 @@ _fishnet_backup/
 # 触发 game-ci 的 `versioning: Semantic` 脏树预检 -> "Branch is dirty" -> 构建直接挂。
 # 而且它绝不该被提交进仓库。
 Library/
+
+# CI 的验证证据与截图：每次构建都变，且要通过 ci-diagnostics 分支提交
+# —— 提交进main 只会让每个 PR 都多出无意义的二进制变更。
+# 注意 verify_loaded.png / verify_settled.png 是**给人看画面**的，故意提交
+# 在仓库里（它们很小，且是「画面到底对不对」的唯一直接证据），
+# 同名的 verify-evidence/ 目录才是CI 产物。
+verify-evidence/

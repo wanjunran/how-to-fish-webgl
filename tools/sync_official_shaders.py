@@ -32,6 +32,11 @@ PACKAGE_CACHE = os.path.join(ROOT, "Library", "PackageCache")
 SHADER_NAME = re.compile(r'^\s*Shader\s+"([^"]+)"', re.MULTILINE)
 STUB_MARKER = "DummyShaderTextExporter"
 
+# 结果落盘路径：CI 会把它并进诊断报告提交回仓库，这样「覆盖到底有没有生效」
+# 不再只能靠猜 —— 上一轮就是因为没有这个文件，报告里只有 core 包的路径，
+# universal 包缺席这件事完全看不出来。
+REPORT = os.path.join(ROOT, "verify-evidence", "official-shader-sync.txt")
+
 
 def shader_name(path: str) -> str | None:
     """First `Shader "..."` declaration -- the identity Unity matches on."""
@@ -53,6 +58,26 @@ def is_stub(path: str) -> bool:
 
 
 def main() -> int:
+    # 所有 print 同时落盘。做法是最后统一写一遍：把 stdout 重定向到
+    # 内存缓冲，再既打印又写文件 —— 避免在每个分支里手动写两次，
+    # 那种写法漏一处分支就会丢一段证据（而丢的往往正是「没生效」那段）。
+    import io
+    import contextlib
+    buf = io.StringIO()
+    with contextlib.redirect_stdout(buf):
+        _run()
+    text = buf.getvalue()
+    print(text, end="")
+    try:
+        os.makedirs(os.path.dirname(REPORT), exist_ok=True)
+        with open(REPORT, "w", encoding="utf-8") as f:
+            f.write(text)
+    except OSError as e:
+        print(f"::warning::结果落盘失败（不影响构建）: {e}")
+    return 0
+
+
+def _run() -> int:
     if not os.path.isdir(PACKAGE_CACHE):
         print(f"跳过：未找到 {PACKAGE_CACHE}（Library 缓存未命中）")
         # 「跳过」和「覆盖成功」在 CI 里都是 exit 0，从外面看一模一样。

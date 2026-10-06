@@ -843,6 +843,46 @@ jobs:
               echo "（无记录 —— PackageCache 里大概率没有 .shader 源码，"
               echo "Unity 装的是编译产物。）"
             fi
+            echo
+            echo "## 官方 shader 覆盖结果"
+            echo
+            echo "这决定 66 个AssetRipper 空壳的命运 —— 其中 **59 个材质"
+            echo "用Universal Render Pipeline/Lit**（Level / Fire / Bean /"
+            echo "Default 等），18 个 VFX shader 被特效材质用。"
+            echo "空壳状态下它们渲成洋红。"
+            echo
+            if [ -s verify-evidence/official-shader-sync.txt ]; then
+              echo '```'
+              head -50 verify-evidence/official-shader-sync.txt
+              echo '```'
+            else
+              echo "（无记录 —— 脚本没产出任何东西。）"
+            fi
+            echo
+            echo "## PackageCache 实际内容"
+            echo
+            echo "重点看 **com.unity.render-pipelines.universal 在不在**。"
+            echo "上一轮报告里只有 core 包、没有 universal，"
+            echo "这意味着 URP/Lit 很可能拿不到官方源码。"
+            echo
+            echo '```'
+            ls Library/PackageCache 2>/dev/null | head -40 \
+              || echo "（目录不存在）"
+            echo '```'
+            echo
+            echo "URP 包目录:"
+            echo '```'
+            ls -d Library/PackageCache/com.unity.render-pipelines.* 2>/dev/null \
+              || echo "  （无 —— URP 包未安装到 PackageCache）"
+            echo '```'
+            echo
+            echo "core/universal 包里的 .shader 源码数:"
+            echo '```'
+            for d in Library/PackageCache/com.unity.render-pipelines.*; do
+              [ -d "$d" ] || continue
+              echo "  $(basename $d): $(find "$d" -name '*.shader' 2>/dev/null | wc -l) 个 .shader"
+            done
+            echo '```'
           } > "$OUT"
 
           # 上限保护：报告只留最近 12 份，别把仓库撑大
