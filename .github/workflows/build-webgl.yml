@@ -235,6 +235,61 @@ jobs:
             echo '```' >> "$GITHUB_STEP_SUMMARY"
           fi
 
+      # 兜底扫描：按「文件类型」找日志，不猜目录。
+      #
+      # run 37422020996 的教训：`Collect Unity Editor log` 试了 5 个已知
+      # 路径 + find 全盘兜底，**全部落空**，报告写着「没找到 Unity
+      # Editor.log —— shader 结论无依据」。而同一份报告里 PackageCache
+      # 完好（universal 包 84 个 .shader 都在），说明构建确实跑起来了。
+      #
+      # 结论是 Unity 没往任何 Editor.log 路径写 —— 继续猜路径没用，
+      # 之前已经猜了 5 轮。改为在**已知的关键目录**内按类型找，
+      # 并限定深度，避免 `find /` 那种全盘遍历（上一版会扫到海量系统
+      # 日志，既慢又会淹没真信号）。
+      #
+      # 这一步还承担一件更实在的事：把「shader 到底编译失败几个」
+      # 用**可复核的清单**列出来 —— 不只给一个总数，而是给
+      # 「哪个shader 的哪一行报了什么」。总数只能让人知道有问题，
+      # 清单才能让人开始修。
+      - name: Capture build logs by type
+        if: always()
+        run: |
+          set +e
+          mkdir -p verify-evidence
+          {
+            echo "=== 按类型扫描 Unity 构建日志（限定目录，避免全盘 find）==="
+            for d in "$GITHUB_WORKSPACE" "$RUNNER_TEMP" "$HOME" \
+                     "$HOME/.config/unity3d" "/root/.config/unity3d" \
+                     "/var/log/unity3d" "$HOME/.local/share/unity3d"; do
+              [ -d "$d" ] || continue
+              find "$d" -maxdepth 4 -type f \
+                \( -name "*.log" -o -name "Editor.log*" -o -name "build*.txt" \) \
+                -size +256 2>/dev/null | head -10
+            done | sort -u
+            echo
+            echo "=== 含shader 编译错误的行 ==="
+            FOUND_SHADER=0
+            for d in "$GITHUB_WORKSPACE" "$RUNNER_TEMP" "$HOME"; do
+              [ -d "$d" ] || continue
+              while IFS= read -r f; do
+                if grep -qi "shader error" "$f" 2>/dev/null; then
+                  FOUND_SHADER=1
+                  echo "--- $f"
+                  grep -i -B1 -A3 "shader error" "$f" 2>/dev/null | head -40
+                fi
+              done <<< "$(find "$d" -maxdepth 4 -type f \
+                         \( -name "*.log" -o -name "Editor.log*" \) \
+                         -size +256 2>/dev/null | head -20)"
+            done
+            if [ "$FOUND_SHADER" -eq 0 ]; then
+              echo "（没有扫到 shader 编译错误记录）"
+              echo "::warning::没扫到 shader 编译错误 —— 这**不代表 shader 没问题**，"
+              echo "::warning::只代表没扫到日志。当前洋红 $( cat verify-evidence/magenta.txt 2>/dev/null | tail -2 | head -1 )"
+            fi
+          } | tee verify-evidence/build-logs-scan.txt | \
+              tail -80 >> "$GITHUB_STEP_SUMMARY"
+          echo "已落盘 verify-evidence/build-logs-scan.txt"
+
       # 抓 shader 编译错误。
       #
       # 为什么必须有这一步 —— 这是本项目最贵的一个教训：
