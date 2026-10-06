@@ -405,6 +405,45 @@ def _run() -> int:
     for n in missing:
         print(f"  - {n}")
 
+    # ---- 判决行：覆盖到底有没有生效 ----
+    #
+    # 为什么要单独加这一段：`shutil.copyfile` 成功 **不等于** 覆盖有效。
+    # 上面那些计数全部来自「我们打算做什么」，没有一个来自「做完之后
+    # 文件真的变了」。这个项目已经被同一个教训反复咬过：报告里
+    # `已用官方源码覆盖：N` 那行因为 head -50 被吃掉，于是「覆盖没生效」
+    # 和「覆盖生效了」在报告里长得一模一样，只能靠猜。
+    #
+    # 所以这里做**事后复查**：重新读一遍每个目标文件，看 Stub 标记还在不在。
+    # 判据极简且不依赖任何其它脚本的输出 ——
+    #   还在  = 没生效（复制了、但写的不是同一件事）
+    #   不在  = 生效
+    # 把 `replaced` 和「复查仍为空壳」两者同时报出来，两个数不相等就是有鬼。
+    still_stub = [n for n in replaced
+                  if is_stub(next((p for p in stubs
+                                   if shader_name(p) == n), ""))]
+    # 三态而不是两态。原先只有「生效 / 未生效」，于是 `目标 0 个` 也报
+    # 「生效」—— 而「一个都没覆盖」和「全都覆盖好了」在这套措辞下
+    # 长得一模一样。这正是本项目最熟悉的那类失效：判据把「没做事」
+    # 判成了「做成了」。所以 0 目标必须单独成态。
+    if not replaced and not still_stub:
+        verdict = "**未执行**（没有任何候选被覆盖）"
+    elif still_stub:
+        verdict = "**未生效**"
+    else:
+        verdict = "生效"
+    print(f"\n### 判决：覆盖 {verdict}"
+          f"（目标 {len(replaced)} 个，复查后仍为空壳 {len(still_stub)} 个）")
+    if still_stub:
+        # 这几个是「声称覆盖了、但文件里 Stub 标记还在」——
+        # 上一轮 Universal Render Pipeline/Lit 就落在这一类里，
+        # 而报告里完全看不出它异常。单独列名，别让它混在计数里。
+        print("     以下 shader 声称已覆盖但仍是空壳（需人工查 sync 的复制逻辑）：")
+        for n in still_stub:
+            print(f"       ! {n}")
+    if blocked:
+        print(f"     另有 {len(blocked)} 个因 include 不全被拒（见上），"
+              f"合计未生效 {len(still_stub) + len(blocked)} 个。")
+
     # ---- 覆盖后的验收 ----
     #
     # 「复制成功」不等于「问题解决」。这一步按**具体判据**检查覆盖后的

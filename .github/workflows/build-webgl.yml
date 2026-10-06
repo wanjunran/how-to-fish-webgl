@@ -1017,10 +1017,27 @@ jobs:
             echo "- 时间: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
             echo "- run: https://github.com/wanjunran/how-to-fish-webgl/actions/runs/${GITHUB_RUN_ID}"
             echo
-            # 洋红统计放**第一屏**：它是「画面到底对不对」唯一的量化判据。
-            # shader 编译失败时 Unity 不报错、不影响构建、照常 exit 0，
-            # 只是把那个材质渲成 (254,0,254) —— 所以「画面里有多少洋红」
-            # 比任何日志都直接。放在后面会被翻页跳过。
+            # 覆盖判决放**第二屏、紧跟洋红**：这两行是本报告里唯二
+            # 能回答「画面为什么现在这样」的判据，而它们各自都曾经
+            # 被 head -50 挤掉过 —— 挤掉之后「覆盖生效」和「覆盖没生效」
+            # 在报告里完全一样，只能靠猜。所以判决行不只是打出来，
+            # 还要**断言它在**（见下）：文件里没有就是构建有问题。
+            echo "## 官方 shader 覆盖判决"
+            echo
+            SYNC=verify-evidence/official-shader-sync.txt
+            VD=$(grep -m1 '^### 判决：覆盖' "$SYNC" 2>/dev/null)
+            if [ -n "$VD" ]; then
+              echo '```'
+              echo "$VD"
+              echo '```'
+            else
+              echo "::warning::official-shader-sync.txt 里没有「### 判决：覆盖」行。"
+              echo "脚本没跑到这一步，或结构变了 —— **不代表覆盖成功**。"
+            fi
+            echo
+            echo "三态含义：生效 / **未生效**（声称覆盖了但文件仍是空壳）/"
+            echo "**未执行**（一个都没覆盖）。后两者画面不会变好。"
+            echo
             echo "## 洋红（shader 编译失败）"
             echo
             if [ -s verify-evidence/magenta.txt ]; then
