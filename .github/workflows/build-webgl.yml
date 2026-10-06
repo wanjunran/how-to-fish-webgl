@@ -62,7 +62,18 @@ jobs:
       - name: Restore official shader sources
         run: |
           mkdir -p verify-evidence
+          # sync脚本自己会把 stdout 落盘到 verify-evidence/official-shader-sync.txt
+          #（它内部做了 stdout 重定向到内存缓冲，既 print 又写文件）。
+          # 这里再复制一份到 docs/ci-evidence/ —— 前者被 .gitignore 忽略、
+          # 永不提交，而**这个文件里的「### 判决：覆盖」行是本报告第一屏的
+          # 唯一判据**，只放在被忽略的目录等于每次都只能靠当场读日志。
           python3 tools/sync_official_shaders.py
+          mkdir -p docs/ci-evidence
+          cp -f verify-evidence/official-shader-sync.txt \
+                docs/ci-evidence/official-shader-sync.txt 2>/dev/null || {
+            echo "::warning::sync 没产出 official-shader-sync.txt —— "
+            echo "这**不代表覆盖成功**，只代表脚本没跑到落盘那步。"
+          }
 
       # 必须在 Build 之前跑：这些是**改文件**的修正步骤，不是检查。
       #
@@ -292,9 +303,12 @@ jobs:
               echo "::warning::没扫到 shader 编译错误 —— 这**不代表 shader 没问题**，"
               echo "::warning::只代表没扫到日志。当前洋红 $( cat verify-evidence/magenta.txt 2>/dev/null | tail -2 | head -1 )"
             fi
-          } | tee verify-evidence/build-logs-scan.txt | \
+          } | tee verify-evidence/build-logs-scan.txt \
+                  docs/ci-evidence/build-logs-scan.txt | \
               tail -80 >> "$GITHUB_STEP_SUMMARY"
-          echo "已落盘 verify-evidence/build-logs-scan.txt"
+          # 落两处：verify-evidence/ 被 .gitignore 忽略、从不提交，
+          # 只有 docs/ci-evidence/ 那份会进仓库，下一轮的我才读得到。
+          echo "已落盘 verify-evidence/ 与 docs/ci-evidence/（后者会提交）"
 
       # 抓 shader 编译错误。
       #
@@ -363,8 +377,12 @@ jobs:
             "Shader (error|warning) in|error in '.*':.*undeclared|is not declared|no member named" \
             $LOGS 2>/dev/null | sort -u | cut -c1-220)
 
-          mkdir -p verify-evidence
-          echo "$SHADER_HITS" > verify-evidence/shader-errors.txt
+          mkdir -p verify-evidence docs/ci-evidence
+          # 落两处：被 gitignore 忽略的那份只在本步骤内用，
+          # docs/ci-evidence/ 那份会提交，下一轮才读得到。
+          printf '%s\n' "$SHADER_HITS" \
+            | tee verify-evidence/shader-errors.txt \
+                  docs/ci-evidence/shader-errors.txt > /dev/null
 
           if [ -n "$SHADER_HITS" ]; then
             N=$(printf '%s\n' "$SHADER_HITS" | wc -l)
@@ -404,10 +422,39 @@ jobs:
           CS_HITS=$(grep -ah -E \
             "error CS[0-9]{4}|Compilation failed|Scripts have compiler errors" \
             $LOGS 2>/dev/null | sort -u | cut -c1-260)
-          echo "$CS_HITS" > verify-evidence/cs-errors.txt
+          # **落盘要落两处。**
+          #
+          # 之前只写 verify-evidence/cs-errors.txt，而那个目录被 .gitignore
+          # 忽略、从不提交 —— 于是这个扫描算出来的答案**躺在构建机上没人看**。
+          # 同一个坑洋红统计已经踩过一次（写在会被 exit 1 掐断的位置）。
+          # docs/ci-evidence/ 是会提交到 ci-diagnostics 分支的，那才是
+          # 「下一轮的我」能读到的地方。
+          mkdir -p docs/ci-evidence
+          {
+            echo "# C# 编译错误扫描（构建 commit ${GITHUB_SHA:0:7}）"
+            echo "# 扫过的日志字节数: $TOTAL"
+            echo "# ---"
+            if [ -n "$CS_HITS" ]; then
+              printf '%s\n' "$CS_HITS"
+            else
+              echo "（无匹配）"
+              [ "$TOTAL" -lt 200 ] && \
+                echo "**不可信**：日志只有 $TOTAL 字节，扫了个空"
+            fi
+          } > docs/ci-evidence/cs-errors.txt
+          # 自证：UnityTransport 在日志里出现过几次？
+          {
+            echo "# UnityTransport 在构建日志中的出现情况"
+            echo "# 出现 0 次**不能**证明它存在或不存在 —— 只说明日志没覆盖到"
+            echo "---"
+            grep -ah -c -i "UnityTransport" $LOGS 2>/dev/null \
+              | head -1 | sed 's/^/匹配行数: /' || echo "匹配行数: 0"
+            grep -ah -i "UnityTransport" $LOGS 2>/dev/null | head -5 \
+              | cut -c1-200 || true
+          } > docs/ci-evidence/unitytransport-check.txt
           if [ -n "$CS_HITS" ]; then
             NCS=$(printf '%s\n' "$CS_HITS" | wc -l)
-            echo "::error::构建日志里有 $NCS 条 C# 编译错误（详见 verify-evidence/cs-errors.txt）"
+            echo "::error::构建日志里有 $NCS 条 C# 编译错误（详见 docs/ci-evidence/cs-errors.txt）"
             printf '%s\n' "$CS_HITS" | head -10 | while IFS= read -r l; do
               echo "::error::cs: $(printf '%s' "$l" | head -c 240)"
             done
@@ -1141,6 +1188,33 @@ jobs:
               echo "只代表没查到数据。"
             fi
             echo
+            echo "## C# 编译错误（UnityTransport 疑点的判决）"
+            echo
+            echo "这一节是专门为**一个存疑的 CS0246** 建的："
+            echo "`ConnectionManager.SetTransport()` 调用"
+            echo "`_multipass.SetClientTransport<UnityTransport>()`，"
+            echo "而 `UnityTransport` 这个类型在整个仓库里搜不到定义"
+            echo "（FishNet 源码树没有 UTP 目录；备份 dll 里该字符串 0 次，"
+            echo "而 Tugboat 50 次）。但历史 CI 日志 `error CS` 计数是 0，矛盾。"
+            echo "**这个矛盾只能由数据回答。**"
+            echo
+            if [ -s docs/ci-evidence/cs-errors.txt ]; then
+              echo '```'
+              cat docs/ci-evidence/cs-errors.txt
+              echo '```'
+            else
+              echo "**无记录** —— 这一节为空**不代表**没有 C# 错误，"
+              echo "只代表扫描没产出文件。"
+            fi
+            echo
+            if [ -s docs/ci-evidence/unitytransport-check.txt ]; then
+              echo "UnityTransport 在日志中的出现情况："
+              echo
+              echo '```'
+              cat docs/ci-evidence/unitytransport-check.txt
+              echo '```'
+            fi
+            echo
             echo "## shader 编译错误"
             echo
             if [ -s verify-evidence/shader-errors.txt ]; then
@@ -1292,6 +1366,37 @@ jobs:
 
           git add -f "$OUT" docs/ci-reports 2>/dev/null
           [ -n "$SHOTS$MAGENTA" ] && git add -f docs/ci-screenshots 2>/dev/null
+          # **必须显式列出。** git add 这里是白名单式的（不用 git add -A），
+          # 因为工作区里有 build/ Library/ 这些绝不能进仓库的东西。
+          # 而 docs/ci-evidence/ 是C# 错误扫描、构建日志扫描这类
+          # 「算出来但没人看」的证据的落点 —— 漏了它就等于扫描没做。
+          # 用 -f是因为 docs/ 下别的东西可能被 ignore 规则扫到，
+          # 这里只挑明确的几份文件，不整目录 add。
+          for f in docs/ci-evidence/cs-errors.txt \
+                   docs/ci-evidence/unitytransport-check.txt \
+                   docs/ci-evidence/build-logs-scan.txt \
+                   docs/ci-evidence/shader-errors.txt \
+                   docs/ci-evidence/official-shader-sync.txt; do
+            [ -f "$f" ] && git add -f "$f" 2>/dev/null
+          done
+          # 防回归断言：**提交后立刻核对提交里真的有这些文件**。
+          #
+          # 为什么必须查：前面所有 add 用的都是 `2>/dev/null` —— 静默失败。
+          # 路径打错、文件没生成、.gitignore 命中，都不会让这一步失败，
+          # 而下一轮的我看到的是「文件不在」却已经无从判断是
+          # 「CI 没产出」还是「add 漏了」。这两者的排查方向完全不同。
+          #
+          # git show --stat 对着 HEAD 检查，比检查暂存区更可靠：
+          # 它验证的是**真的进了提交**，而不是「打算进」。
+          sleep 1
+          STAGED=$(git diff --cached --name-only | tr '\n' ' ')
+          echo "暂存内容: $STAGED"
+          for f in "$OUT" docs/ci-evidence/cs-errors.txt; do
+            case "$STAGED" in
+              *"$f"*) : ;;
+              *) echo "::warning::$f 不在暂存区 —— 证据可能没提交上去" ;;
+            esac
+          done
           # **不要**在这里 `exit 0`。上一版有个
           #   if (git diff --cached --quiet); then echo 报告无变化; exit 0; fi
           # 看着是「无变化就别白跑一趟」，实际后果是：**报告已经写好了，
