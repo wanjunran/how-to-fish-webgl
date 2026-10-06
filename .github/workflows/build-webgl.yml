@@ -101,6 +101,47 @@ jobs:
           path: Library
           key: Library-WebGL-${{ hashFiles('ProjectSettings/ProjectVersion.txt', 'Packages/manifest.json', 'Assets/**') }}
 
+      # Unity 在 Linux 上把一切（含 shader 编译错误）写进 Editor.log。
+      # 显式把它收拢到工作区固定路径 —— 靠猜$HOME/.config 还是
+      # /root/.config 不可靠（unity-builder 以 root 跑构建，而runner
+      # 用户的 HOME 可能被改写），而且这一步跑在「Save Library cache」
+      # 之后，Unity 进程已经退出、日志不会再被覆写。
+      #
+      # 找得到 = 后面扫描有依据；找不到 = 打警告，让扫描步骤知道
+      # 「没日志」和「日志干净」是两回事。
+      - name: Collect Unity Editor log
+        if: always()
+        run: |
+          set +e
+          mkdir -p verify-evidence
+          FOUND=""
+          for p in "$HOME/.config/unity3d/Editor.log" \
+                   /root/.config/unity3d/Editor.log \
+                   "$HOME/.local/share/unity3d/Editor.log" \
+                   /var/log/unity3d/Editor.log \
+                   "$RUNNER_TEMP/Editor.log"; do
+            if [ -f "$p" ] && [ -s "$p" ]; then
+              cp "$p" verify-evidence/Editor.log
+              FOUND="$p"; break
+            fi
+          done
+          if [ -n "$FOUND" ]; then
+            echo "::notice::Unity 日志: $FOUND ($(wc -c < verify-evidence/Editor.log) 字节)"
+            echo "已收集 Unity 日志 $(wc -c < verify-evidence/Editor.log) 字节" \
+              >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::warning::没找到 Unity Editor.log —— shader 错误扫描将没有依据（这不代表 shader 没问题）"
+            echo "**没找到 Unity Editor.log，shader 错误扫描无依据。**" \
+              >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            echo "找过:" >> "$GITHUB_STEP_SUMMARY"
+            for p in "$HOME/.config/unity3d" /root/.config/unity3d "$RUNNER_TEMP"; do
+              echo "  $p -> $(ls "$p" 2>/dev/null | head -5 | tr '\n' ' ')" \
+                >> "$GITHUB_STEP_SUMMARY"
+            done
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       # 抓 shader 编译错误。
       #
       # 为什么必须有这一步 —— 这是本项目最贵的一个教训：
@@ -129,15 +170,39 @@ jobs:
           set +e
           echo "### shader 编译错误扫描 ###" >> "$GITHUB_STEP_SUMMARY"
 
-          # unity-builder 把 Unity 的 stdout/stderr 落在这些位置之一
-          LOGS=$(ls -1 build.log logs/*.log artifacts/*.log 2>/dev/null)
+          # Unity 的构建日志散落在好几个地方，位置随unity-builder 版本和
+          # runner 镜像变。上一版只列了三个（build.log / logs / artifacts），
+          # 全都可能不存在 —— 那就等于「扫了个空」，还会报成"干净"，
+          # 比不扫更坏。所以：把已知位置全试一遍 + find 兜底，
+          # 并且**区分「没找到日志」和「日志里没有 shader 错误」**。
+          LOGS=""
+          for p in build.log unity-build.log \
+                   verify-evidence/Editor.log \
+                   "$HOME/.config/unity3d/Editor.log" \
+                   /root/.config/unity3d/Editor.log \
+                   logs artifacts; do
+            if [ -e "$p" ]; then LOGS="$LOGS $p"; fi
+          done
+          # 兜底：工作区里任何名字带 log 的文本文件
+          EXTRA=$(find . -maxdepth 3 -name "*.log" -type f 2>/dev/null | head -10)
+          LOGS="$LOGS $EXTRA"
+          LOGS=$(echo "$LOGS" | tr ' ' '\n' | grep -v '^$' | sort -u)
+
           if [ -z "$LOGS" ]; then
-            echo "::warning::没找到 Unity 构建日志，跳过 shader 错误扫描"
+            echo "::warning::没找到任何 Unity 构建日志 —— shader 错误扫描**未执行**（不是「干净」）"
             echo "**未找到构建日志，shader 错误扫描未执行。**" \
+              >> "$GITHUB_STEP_SUMMARY"
+            echo "注意：这不代表 shader 没问题，只代表没东西可扫。" \
               >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
-          echo "扫描日志: $(echo $LOGS | tr '\n' ' ')"
+          echo "扫描日志:"; echo "$LOGS" | sed 's/^/  /'
+          # 报告实际扫了多少字节 —— 万一是空文件，结论不成立
+          TOTAL=$(cat $LOGS 2>/dev/null | wc -c)
+          echo "日志总字节: $TOTAL"
+          if [ "$TOTAL" -lt 200 ]; then
+            echo "::warning::日志只有 $TOTAL 字节，基本是空的，扫描结论不可信"
+          fi
 
           #两类都要：error 必须抓，warning 里也常藏着真正的类型不匹配
           SHADER_HITS=$(grep -ah -E \
@@ -180,20 +245,71 @@ jobs:
         if: always()
         run: |
           set +e
-          PC=$(ls -d Library/PackageCache/com.unity.render-pipelines.universal@* 2>/dev/null | head -1)
-          if [ -z "$PC" ]; then
-            echo "::warning::PackageCache 里没有 URP，跳过"
+          mkdir -p verify-evidence
+          # 多路径探测。上一版只查 Library/PackageCache 一个地方，artifact
+          # 只有 1223 字节（那点体积全是上一轮 verify 步骤写的文件），
+          # 说明这一步大概率什么都没dump 出来。原因值得记下来：
+          # **Unity 装的是编译后的 shader 包，官方 .shader 源码通常不在
+          # PackageCache 里** —— sync_official_shaders.py 依赖的那个目录
+          # 未必存在。所以这里把能想到的位置都试一遍，并如实报告
+          # 「都没找到」，而不是默默跳过。
+          CANDIDATES=$(ls -d \
+            Library/PackageCache/com.unity.render-pipelines.universal@* \
+            Library/PackageCache/com.unity.render-pipelines.core@* \
+            Packages/com.unity.render-pipelines.universal* \
+            2>/dev/null | head -6)
+          echo "候选目录: ${CANDIDATES:-（无）}"
+
+          if [ -z "$CANDIDATES" ]; then
+            echo "::warning::URP 包源码在构建机上不存在（Library/PackageCache 未命中或只装了编译产物）—— 无法取得 APV 门控宏的官方依据"
+            echo "**URP 源码不可用，APV 门控宏未能取得。**" \
+              >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            echo "ls Library/PackageCache | head -20 实际内容：" \
+              >> "$GITHUB_STEP_SUMMARY"
+            ls Library/PackageCache 2>/dev/null | head -20 \
+              >> "$GITHUB_STEP_SUMMARY" || echo "（目录不存在）" \
+              >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
-          echo "URP 包: $PC"
-          mkdir -p verify-evidence
+
+          # 全盘找官方 shader 源码，任何一个 .shader 文件都算命中
+          ANY=$(find $CANDIDATES -name "*.shader" 2>/dev/null | head -3)
+          if [ -z "$ANY" ]; then
+            echo "::warning::候选目录里没有任何 .shader 源码（Unity 装的是编译产物），APV 门控宏无从取得"
+            echo "**候选目录里没有.shader 源码（Unity 装的是编译产物）。**" \
+              >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          echo "找到 .shader: $ANY"
+
           # 只找 SSBO / APV 相关的那几行，别把整个 Lit.shader 倒出来
-          for f in "$PC"/Shaders/Lit.shader "$PC"/ShaderLibrary/*.hlsl; do
-            [ -f "$f" ] || continue
-            hits=$(grep -n -E "StructuredBuffer|APV|ADAPTIVE_PROBE|#if.*PROBE" "$f" 2>/dev/null | head -12)
-            [ -n "$hits" ] && { echo "=== $(basename "$f") ==="; echo "$hits"; }
-          done | tee verify-evidence/urp-apv-guards.txt | head -80
-          echo "已写入 verify-evidence/urp-apv-guards.txt"
+          {
+            for f in $(find $CANDIDATES -name "*.shader" -o -name "*.hlsl" 2>/dev/null | head -400); do
+              hits=$(grep -n -E "StructuredBuffer|APV|ADAPTIVE_PROBE|#if.*PROBE|unity_Structured" "$f" 2>/dev/null | head -8)
+              [ -n "$hits" ] && { echo "=== ${f#$GITHUB_WORKSPACE/} ==="; echo "$hits"; }
+            done
+          } | tee verify-evidence/urp-apv-guards.txt > /tmp/apv.txt
+
+          N=$(wc -l < /tmp/apv.txt)
+          echo "APV/SSBO 相关行数: $N"
+          if [ "$N" -gt 0 ]; then
+            # 注解：匿名 curl 抓run 页面就能看到，不必下载 artifact
+            head -20 /tmp/apv.txt | while IFS= read -r l; do
+              [ -z "$l" ] && continue
+              echo "::notice::APV: $(printf '%s' "$l" | head -c 200)"
+            done
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "**URP 里的 APV / SSBO 相关行（前 30 条）：**" \
+              >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            head -30 /tmp/apv.txt >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::warning::在 URP 源码里没找到 APV/SSBO 相关行"
+          fi
 
       - name: Upload APV guard evidence
         if: always()
