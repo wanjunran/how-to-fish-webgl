@@ -64,6 +64,22 @@ jobs:
           mkdir -p verify-evidence
           python3 tools/sync_official_shaders.py
 
+      # 必须在 Build 之前跑：这些是**改文件**的修正步骤，不是检查。
+      #
+      # 顺序很关键：
+      #   sync_official_shaders -> 用官方源码覆盖空壳（可能直接换掉整个文件）
+      #   fix_stub_basemap      -> 覆盖失败时兜底改名
+      #   apply_surface_state   -> 按材质实际设置补渲染状态
+      # 反过来的话，后一步的产物会被前一步覆盖掉。
+      - name: Fix stub shader property names
+        run: |
+          mkdir -p verify-evidence
+          python3 tools/fix_stub_basemap.py 2>&1 | tee verify-evidence/fix-stub-basemap.txt
+          # 跑第二遍必须是 0：如果不是，说明脚本不幂等，
+          # 那么 CI 这次改了的东西和下次不一样，就没法拿 diff 当判据。
+          python3 tools/fix_stub_basemap.py --check 2>&1 \
+            | tee -a verify-evidence/fix-stub-basemap.txt
+
       # 使用 game-ci/unity-builder v6 —— 这是首个内置 `personal` 授权策略的版本。
       #
       # 为什么必须用 v6 而不是 v4：

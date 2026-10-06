@@ -76,11 +76,11 @@ Shader "Universal Render Pipeline/Particles/Simple Lit" {
 				return output;
 			}
 
-			float4 _Color;
+			float4 _BaseColor;
 
 			float4 frag(Vertex_Stage_Output input) : SV_TARGET
 			{
-				return _Color; // RGBA
+				return _BaseColor; // RGBA
 			}
 
 			ENDHLSL

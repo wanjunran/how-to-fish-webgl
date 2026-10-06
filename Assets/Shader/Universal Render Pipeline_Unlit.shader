@@ -34,7 +34,7 @@ Shader "Universal Render Pipeline/Unlit" {
 
 			float4x4 unity_ObjectToWorld;
 			float4x4 unity_MatrixVP;
-			float4 _MainTex_ST;
+			float4 _BaseMap_ST;
 
 			struct Vertex_Stage_Input
 			{
@@ -51,14 +51,14 @@ Shader "Universal Render Pipeline/Unlit" {
 			Vertex_Stage_Output vert(Vertex_Stage_Input input)
 			{
 				Vertex_Stage_Output output;
-				output.uv = (input.uv.xy * _MainTex_ST.xy) + _MainTex_ST.zw;
+				output.uv = (input.uv.xy * _BaseMap_ST.xy) + _BaseMap_ST.zw;
 				output.pos = mul(unity_MatrixVP, mul(unity_ObjectToWorld, input.pos));
 				return output;
 			}
 
-			Texture2D<float4> _MainTex;
-			SamplerState sampler_MainTex;
-			float4 _Color;
+			Texture2D<float4> _BaseMap;
+			SamplerState sampler_BaseMap;
+			float4 _BaseColor;
 
 			struct Fragment_Stage_Input
 			{
@@ -67,7 +67,7 @@ Shader "Universal Render Pipeline/Unlit" {
 
 			float4 frag(Fragment_Stage_Input input) : SV_TARGET
 			{
-				return _MainTex.Sample(sampler_MainTex, input.uv.xy) * _Color;
+				return _BaseMap.Sample(sampler_BaseMap, input.uv.xy) * _BaseColor;
 			}
 
 			ENDHLSL
