@@ -1099,7 +1099,43 @@ jobs:
             echo
             if [ -s verify-evidence/official-shader-sync.txt ]; then
               echo '```'
-              head -50 verify-evidence/official-shader-sync.txt
+              # **先只取结论段**：覆盖数、验收结论、阻塞原因。
+              #
+              # 为什么不能直接 head -50：加包目录清单后这一段从 2 行涨到 54 行，
+              # 于是 head -50 把「已用官方源码覆盖：N」和整个「覆盖后验收」
+              # 全部挤出了窗口 —— 报告里只剩一长串包名，最该看的那几个数字
+              # 反而不见了。这正是本项目最熟悉的一类回归：**新加了有用的
+              # 信息，却把旧的关键信息挤出去了**，而且报告本身看不出被截断。
+              #
+              # 所以分两次取：结论段（`### 覆盖后验收` 之前）不限行数，
+              # 包清单单独一节且限行。
+              #
+              # 断言必须存在：`sed -n '1,/锚点/p'` 一旦锚点没了就输出空，
+              # 而「空」和「没有结论」在报告里长得一样 —— 所以锚点找不到时
+              # 明确说「锚点已变」，不能就这么留一片空白。
+              SYNC=verify-evidence/official-shader-sync.txt
+              if grep -q '^### 覆盖后验收' "$SYNC"; then
+                sed -n '1,/^### 覆盖后验收/p' "$SYNC" | grep -v '^$'
+              else
+                echo "::warning::official-shader-sync.txt 里找不到「### 覆盖后验收」锚点"
+                echo "（脚本结构可能变了 —— 下面按原样输出前 80 行，请人工确认结论段在哪）"
+                head -80 "$SYNC"
+              fi
+              echo '```'
+              echo
+              echo "**包目录清单（$(grep -c '^  com.unity' \
+                verify-evidence/official-shader-sync.txt) 个，略）**"
+              echo '```'
+              grep '^  com.unity' verify-evidence/official-shader-sync.txt \
+                | head -8
+              echo "..."
+              echo '```'
+              echo
+              echo "### 覆盖后验收"
+              echo
+              echo '```'
+              sed -n '/### 覆盖后验收/,$p' \
+                verify-evidence/official-shader-sync.txt | head -60
               echo '```'
             else
               echo "（无记录 —— 脚本没产出任何东西。）"
