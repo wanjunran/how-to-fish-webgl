@@ -275,6 +275,45 @@ def main() -> int:
                 except Exception as e:
                     say(f"截图({tag})失败，不影响结论: {str(e)[:120]}")
 
+            # ---- 洋红（magenta）面积统计 ----
+            #
+            # 为什么要量化而不是靠肉眼看图：Unity 编译 shader 失败时**不会**
+            # 让构建失败、不会在 console 报错，它只是把那个材质渲成洋红。
+            # 所以「画面里有多少洋红」是唯一能在 CI 里自动发现 shader 编译
+            # 失败的信号 —— 之前只截图不判定，等于把这唯一的信号扔了。
+            #
+            # 判据：R 和 B 都高（>200）、G 明显低（<80），且 RGB 不相等
+            #（排除纯白/纯灰）。Unity 的错误洋红是 (255,0,255) 一族。
+            try:
+                from PIL import Image
+                for name in ("verify_loaded.png", "verify_settled.png"):
+                    src = f"/tmp/{name}"
+                    if not os.path.exists(src):
+                        continue
+                    im = Image.open(src).convert("RGB")
+                    px = list(im.getdata())
+                    n = len(px)
+                    hit = sum(1 for r, g, b in px
+                              if r > 200 and b > 200 and g < 80)
+                    pct = 100.0 * hit / n
+                    rows = sorted({
+                        f"r={r} g={g} b={b}"
+                        for r, g, b in px if r > 200 and b > 200 and g < 80
+                    })[:6]
+                    say(f"洋红统计({name}): {hit}/{n} 像素 = {pct:.3f}%"
+                        f" 取值样本: {rows}")
+                    summary.write(
+                        f"- `{name}` 洋红像素：**{hit}** / {n} = **{pct:.3f}%**"
+                        f"{'（样本 ' + ', '.join(rows) + '）' if rows else ''}\n")
+                    if pct >= 0.5:
+                        errs.append(
+                            f"{name} 有 {pct:.3f}% 洋红像素 —— 至少一个 shader "
+                            f"编译失败（Unity 不让构建失败，只渲洋红）")
+            except ImportError:
+                say("洋红统计跳过：环境无 PIL")
+            except Exception as e:
+                say(f"洋红统计失败（不影响主结论）: {str(e)[:150]}")
+
             # 把截图挪到工作区，Actions 里可以直接点开看
             try:
                 import shutil

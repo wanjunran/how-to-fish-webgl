@@ -49,7 +49,9 @@ jobs:
       # 版本来自 Library/PackageCache，与 Packages/manifest.json 声明的完全一致，
       # 不需要在网上猜版本；缓存未命中时脚本自行跳过，构建照常进行。
       - name: Restore official shader sources
-        run: python3 tools/sync_official_shaders.py
+        run: |
+          mkdir -p verify-evidence
+          python3 tools/sync_official_shaders.py
 
       # 使用 game-ci/unity-builder v6 —— 这是首个内置 `personal` 授权策略的版本。
       #
@@ -91,6 +93,18 @@ jobs:
           # 因此不查脏树，最稳。NoIncrement 不是合法值，会直接报
           # "Invalid values ... Choices: None, Semantic, Tag, Custom"。
           versioning: None
+          # 把 Unity 的日志重定向到工作区的确定路径。
+          #
+          # 为什么要显式指定：Unity 在 Linux 上默认写 `$HOME/.config/unity3d/
+          # Editor.log`，但 unity-builder 以 root 跑构建，runner 的 HOME
+          # 未必是 /root（可被 actions 环境改写），所以「猜 HOME」这个做法
+          # 本身不可靠 —— 上一轮 5 个候选路径全落空，shader 错误扫描因此
+          # 「扫了个空」还报成干净。
+          #
+          # 写进 ${{ github.workspace }} 是因为下一步从工作区读它，
+          # 路径确定，判据才成立。相对路径不行：Unity 解析 -logFile 时
+          # 的基准目录不确定。
+          unityArgs: -logFile ${{ github.workspace }}/verify-evidence/Editor.log
           # 钉死 game-ci CLI 版本，别留默认的 latest。
           # latest 会让 action 每轮启动时调 GitHub API 解析最新 release；
           # 托管 runner 的出口 IP 是共享的，API 配额说没就没 —— run
@@ -121,16 +135,30 @@ jobs:
           set +e
           mkdir -p verify-evidence
           FOUND=""
+          # 最优先：unityArgs -logFile 指定的确定路径。
+          if [ -s "verify-evidence/Editor.log" ]; then FOUND="verify-evidence/Editor.log"; fi
+          # 其次试已知位置。
           for p in "$HOME/.config/unity3d/Editor.log" \
                    /root/.config/unity3d/Editor.log \
                    "$HOME/.local/share/unity3d/Editor.log" \
                    /var/log/unity3d/Editor.log \
                    "$RUNNER_TEMP/Editor.log"; do
+            [ -n "$FOUND" ] && break
             if [ -f "$p" ] && [ -s "$p" ]; then
               cp "$p" verify-evidence/Editor.log
-              FOUND="$p"; break
+              FOUND="$p"
             fi
           done
+          # 最后 find 兜底 —— unity-builder 在容器里跑，Unity 可能写在
+          # 任何地方，而路径随版本变过。上一轮 5 个候选全落空就是没做这层。
+          if [ -z "$FOUND" ]; then
+            CAND=$(find / -name "Editor.log" -type f -size +1k 2>/dev/null \
+                   | head -3 | tail -1)
+            if [ -n "$CAND" ]; then
+              cp "$CAND" verify-evidence/Editor.log
+              FOUND="$CAND (find 兜底)"
+            fi
+          fi
           if [ -n "$FOUND" ]; then
             echo "::notice::Unity 日志: $FOUND ($(wc -c < verify-evidence/Editor.log) 字节)"
             echo "已收集 Unity 日志 $(wc -c < verify-evidence/Editor.log) 字节" \
@@ -292,11 +320,35 @@ jobs:
           echo "找到 .shader: $ANY"
 
           # 只找 SSBO / APV 相关的那几行，别把整个 Lit.shader 倒出来
+          #
+          # 上一版的做法是 `find ... | head -400` 然后 grep SSBO —— 结果拿到
+          # 的全是 core 包 PathTracing / GPUDriven / VRS / DebugOcclusion 的
+          # StructuredBuffer，**一条 APV 都没有**。原因很具体：head -400 按
+          # 字母序截断，而 PathTracing 在 core 包里排在 ProbeVolume 之前，
+          # 预算全被前者吃掉了。所以那轮「APV 相关行」的结论是无效的。
+          #
+          # 改成两步：先按**路径含 ProbeVolume/APV** 精准锁定相关文件
+          # （这才是 APV 球谐 SSBO 的所在），再在这些文件里抓 SSBO 声明
+          # 及其外层的 #if/#ifdef 门控宏。门控宏才是我们要的东西 ——
+          # 给产物加上同名宏，编译器就会自己消解掉整段 SSBO 代码。
           {
-            for f in $(find $CANDIDATES -name "*.shader" -o -name "*.hlsl" 2>/dev/null | head -400); do
-              hits=$(grep -n -E "StructuredBuffer|APV|ADAPTIVE_PROBE|#if.*PROBE|unity_Structured" "$f" 2>/dev/null | head -8)
+            echo "### 1. ProbeVolume / APV 相关文件清单"
+            find $CANDIDATES -type f \
+                 \( -name "*.hlsl" -o -name "*.shader" -o -name "*.cs" \) \
+                 2>/dev/null | grep -i -E "probevolume|probe.*volume|apv|adaptiv" \
+                 | sed "s|^|  |" | head -40
+            echo ""
+            echo "### 2. 这些文件里StructuredBuffer 声明及其外层门控宏"
+            for f in $(find $CANDIDATES -type f \
+                        \( -name "*.hlsl" -o -name "*.shader" -o -name "*.cs" \) \
+                        2>/dev/null | grep -i -E "probevolume|probe.*volume|apv|adaptiv"); do
+              hits=$(grep -n -E "StructuredBuffer|#if|#ifdef|#ifndef|#else|#endif" "$f" 2>/dev/null | head -40)
               [ -n "$hits" ] && { echo "=== ${f#$GITHUB_WORKSPACE/} ==="; echo "$hits"; }
             done
+            echo ""
+            echo "### 3. 全包内含StructuredBuffer 的 APV 相关文件（兜底：不限定文件名）"
+            grep -rl "StructuredBuffer" $CANDIDATES --include="*.hlsl" 2>/dev/null \
+              | grep -i -E "probevolume|apv|adaptiv" | sed "s|^|  |" | head -20
           } | tee verify-evidence/urp-apv-guards.txt > /tmp/apv.txt
 
           N=$(wc -l < /tmp/apv.txt)
