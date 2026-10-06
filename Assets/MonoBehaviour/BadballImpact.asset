@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82c9386ba3954c43ae5c166b73715e0d, type: 3}
+  m_Name: BadballImpact
+  m_EditorClassIdentifier:
+  _clips:
+  - {fileID: 8300000, guid: 818b52ac8d70384429845fbf50a745b7, type: 3}
+  - {fileID: 8300000, guid: 839e8b1e1de46154a913997f3b54f80c, type: 3}
+  - {fileID: 8300000, guid: d3cbf66a55b1f8f4eafd9414379e4f05, type: 3}
+  _minVelToPlayClips:
+  - 1
+  - 5
+  - 10
+  _velForMaxVol: 15
+  _maxVol: 1
+  _minVol: 0.2
+  _minDelay: 0.15

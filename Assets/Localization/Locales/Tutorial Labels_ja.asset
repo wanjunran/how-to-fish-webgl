@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_ja
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: a6b0b69a1f2361645a78b193b90d2d4e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: 操作方法
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: '{0}で動かす'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: 視点の操作方法
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: '{0}で周囲を見回す'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: インタラクトの方法
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: アクションを起こしたいアイテムを見た状態で{0}を押すと、アイテムを拾うことができる。二枚貝で試してみよう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: ものを食べる方法
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: 空腹を満たすには、食べ物が必要。獲物を持った状態で{0}を長押しすると食べることができる。まずは二枚貝で試してみよう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: アイテムの売却方法
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: アイテムを売ることでお金を稼ぐことができる。二枚貝を持ってNPCの元へ行き、{0}長押しで店主の口に放り込んでみよう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: アイテムの購入方法
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: お店に行って{0}長押しでカニ専用のロッドを購入しよう。これでもっと上級の獲物をゲットできるぞ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: 釣りのやり方
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: 海に向けてエサをキャストし、{0}で魚を釣り上げよう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: キル獲得方法
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: 獲物がエサに食いついたら、{0}でリールを巻いて{1}でドロップする。持ってるものを{2}で装備解除し、{0}でパンチを食らわせることができる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: 会話方法
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: 島にいるNPCとのクエストをクリアしながらゲームを進めよう。会話したい相手の方を向いて{0}を押すと、要件を聞くことができる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: おめでとう！チュートリアルを完了したぞ！あとは自由に行動してみよう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: 忘れっぽい時は
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: 今まで捕まえてきた獲物が何か思い出せない時は、{0}を押してみよう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: 調べる方法
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: アイテムを調べるには、持った状態で{0}を押してみよう。獲物を調べればその価値が分かるぞ
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

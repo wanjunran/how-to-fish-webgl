@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -299433217, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Killscore Labels Shared Data
+  m_EditorClassIdentifier:
+  m_TableCollectionName: Killscore Labels
+  m_TableCollectionNameGuidString: 8234f18fdd63ed84ebceb433894f8034
+  m_Entries:
+  - m_Id: 96034443264
+    m_Key: killscore.360
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177374580736
+    m_Key: killscore.noScope
+    m_Metadata:
+      m_Items: []
+  - m_Id: 687435501568
+    m_Key: killscore.quickScope
+    m_Metadata:
+      m_Items: []
+  - m_Id: 758537342976
+    m_Key: killscore.longshot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1082044010496
+    m_Key: killscore.headshot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1134514753536
+    m_Key: killscore.dogfight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1206866497536
+    m_Key: killscore.aerial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1275401424896
+    m_Key: killscore.flyFishing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1360751316992
+    m_Key: killscore.noobKill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1491072536576
+    m_Key: killscore.oneShotOneKill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1686380302336
+    m_Key: killscore.doubleKill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1726347825152
+    m_Key: killscore.tripleKill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1769368801280
+    m_Key: killscore.quadraKill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1801690107904
+    m_Key: killscore.pentaKill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2729721810944
+    m_Key: killscore.multiKill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2777788534784
+    m_Key: killscore.finally
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2807245131776
+    m_Key: killscore.endangered
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2856997965824
+    m_Key: killscore.killsteal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2897351364608
+    m_Key: killscore.pointBlank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2932751290368
+    m_Key: killscore.overkill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2974270705664
+    m_Key: killscore.lastBullet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3007141466112
+    m_Key: killscore.impressive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334752579670016
+    m_Key: killscore.killed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334780551483392
+    m_Key: killscore.killscore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010849860374528
+    m_Key: killscore.melee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010879283417088
+    m_Key: killscore.explosion
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8744106492881535056
+  references:
+    version: 2
+    RefIds:
+    - rid: 8744106492881535056
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1784989142855

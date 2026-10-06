@@ -1,0 +1,8 @@
+rule1:
+  area: SRP Foundation
+
+rule2:
+  when:
+    path:
+      - ^.*SpeedTree.*$
+  area: Environment Effects

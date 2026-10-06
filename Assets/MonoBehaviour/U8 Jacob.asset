@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451916751ce4b24628c8dee1ba51a92b, type: 3}
+  m_Name: U8 Jacob
+  m_EditorClassIdentifier:
+  _defaultUnlocked: 0
+  _hatMesh: {fileID: 4300000, guid: 56ab633f7aaa25541a6b4a1b66f41ab3, type: 2}
+  _accessoryMesh: {fileID: 0}
+  outfitMesh: {fileID: 4300000, guid: ad0032c3f0a53524d83bd4691e714630, type: 2}

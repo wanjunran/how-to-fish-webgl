@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f79baa68a44440685de84457223eca, type: 3}
+  m_Name: I4 Seagull Quest
+  m_EditorClassIdentifier:
+  _questItems:
+  - {fileID: 114618682377417806, guid: 3cbe067d90fa698488d9b0adea23b14a, type: 2}
+  _onlyCreatures: 0
+  _totalItems: 1
+  _interactableMesh: {fileID: 4300000, guid: 42cca0741afd2d847829402a091f2bf7, type: 2}
+  _baitToReceive: {fileID: 0}
+  _type: 3
+  _islandToUnlock: 5
+  _linesLocalized:
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 432857400561664
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 432911301562368
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 432943568343040
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 433023109124096
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 433114742083584
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 433223122898944
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 433311186505728
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 433889987874816
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 434090685321216
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _onItemReceivedLinesLocalized: []
+  _onQuestCompletedLinesLocalized:
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 434531007549440
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _holdingItemLinesLocalized:
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 435174065655808
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 435379519442944
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _alreadyCompletedLinesLocalized: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,651 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Item Labels_en
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 3d3b57a959995b04e8c31a8136a612d5, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16543993856
+    m_Localized: Drip
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517595549696
+    m_Localized: Unequip item first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1074867556352
+    m_Localized: Assault Rifle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1256535445504
+    m_Localized: Badball
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397812187136
+    m_Localized: Beer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440275320832
+    m_Localized: Brass Knuckles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1604490711040
+    m_Localized: Crab-Fishing Rod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1700359917568
+    m_Localized: Dynamite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1755171082240
+    m_Localized: Fishing Rod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833763950592
+    m_Localized: Disc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1918321119232
+    m_Localized: Knife
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001888432128
+    m_Localized: Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061577572352
+    m_Localized: Pistol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125578457088
+    m_Localized: Radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2198542569472
+    m_Localized: Shotgun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2265022287872
+    m_Localized: SMG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2319141392384
+    m_Localized: Sniper Rifle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2558585819136
+    m_Localized: Snowball
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2793194213376
+    m_Localized: Angelfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2919820251136
+    m_Localized: Anglerfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3094898888704
+    m_Localized: Bass
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3400911114240
+    m_Localized: Blobfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3487762567168
+    m_Localized: Bluegill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3901354496000
+    m_Localized: Bowlfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4022288863232
+    m_Localized: Catfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4084528140288
+    m_Localized: Clam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4144091451392
+    m_Localized: Clownfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4213171638272
+    m_Localized: Cod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4305442131968
+    m_Localized: Brown Crab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4358051287040
+    m_Localized: Dripper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4451802370048
+    m_Localized: Eel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4503895625728
+    m_Localized: Flying Fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4570647973888
+    m_Localized: Footsnail
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756732465152
+    m_Localized: Gar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878249840640
+    m_Localized: Goby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4952019259392
+    m_Localized: Goldfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012891193344
+    m_Localized: Halibut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5111486697472
+    m_Localized: Leech
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5182122971136
+    m_Localized: Lobster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5235017338880
+    m_Localized: Mackerel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5332526518272
+    m_Localized: Needlefish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613381308416
+    m_Localized: Oarfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5705463058432
+    m_Localized: Parrotfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6025832386560
+    m_Localized: Perch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7383742500864
+    m_Localized: Pike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7444769624064
+    m_Localized: Piranha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517343666176
+    m_Localized: Red Snapper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7692686544896
+    m_Localized: Salmon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7754799992832
+    m_Localized: Sea Urchin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7821640421376
+    m_Localized: Seagull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7968906629120
+    m_Localized: Seahorse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8022753103872
+    m_Localized: Sengarat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8279654223872
+    m_Localized: Shrimp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8336688369664
+    m_Localized: Stonefish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8397388337152
+    m_Localized: Superdwarf Fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8622110756864
+    m_Localized: Tigerfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8700179337216
+    m_Localized: Triggerfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8798422519808
+    m_Localized: Voxelfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8910662094848
+    m_Localized: Yellow Boxfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004824219648
+    m_Localized: Albatross
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9060998533120
+    m_Localized: Blue Shark
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9125917970432
+    m_Localized: Bowhead Whale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9245774401536
+    m_Localized: The Old Pike
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9401873813504
+    m_Localized: Giant Piranha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9471960633344
+    m_Localized: Goblin Shark
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9624083845120
+    m_Localized: Mutated Bowhead Whale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9726227730432
+    m_Localized: Pufferfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9790161506304
+    m_Localized: Spider Crab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853273198592
+    m_Localized: Sunfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9947020087296
+    m_Localized: Tuna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10032218984448
+    m_Localized: Albatross Head
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10092432412672
+    m_Localized: Giant Piranha Skeleton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10272070258688
+    m_Localized: Pufferfish Fin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10429339881472
+    m_Localized: Spider Crab Shell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10533899685888
+    m_Localized: Whale Fin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11671877275648
+    m_Localized: Empty Beer Can
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11769382260736
+    m_Localized: Beginner Boss Lure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11915486646272
+    m_Localized: Beginner Lure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994754797568
+    m_Localized: Leech Bait
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12079676870656
+    m_Localized: Carrot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135154929664
+    m_Localized: Standard Boss Lure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12269896945664
+    m_Localized: Standard Lure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12358149296128
+    m_Localized: Professional Boss Lure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12527846641664
+    m_Localized: Professional Lure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12624521154560
+    m_Localized: Fish Bucket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12704154210304
+    m_Localized: Scientific Boss Lure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12876342972416
+    m_Localized: Scientific Lure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14071937716224
+    m_Localized: Boat Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16484916613120
+    m_Localized: Already Bought
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20829980676096
+    m_Localized: Compensator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21003675193344
+    m_Localized: Extended Mag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21707294855168
+    m_Localized: Iron Sight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413609025536
+    m_Localized: Laser Sight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487277780992
+    m_Localized: Red Dot Sight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23593548861440
+    m_Localized: Sniper Scope
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23718690115584
+    m_Localized: Suppressor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35635374673920
+    m_Localized: Moderately reduces recoil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36427158605824
+    m_Localized: Increases ammo count in magazine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36631865806848
+    m_Localized: Removes any sight attached to weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36777357824000
+    m_Localized: Shows where the weapon is pointing, making hipfire easier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37000025034752
+    m_Localized: Easier to hit targets while aiming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37211061440512
+    m_Localized: Easier to hit distant targets while aiming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343916019712
+    m_Localized: Significantly reduces recoil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38419088101376
+    m_Localized: Can't Attach
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38503880151040
+    m_Localized: Equip Ranged Weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38906973736960
+    m_Localized: Value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39035646595072
+    m_Localized: Cooking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40700424572928
+    m_Localized: Equip Melee Weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51375519649792
+    m_Localized: Sharpen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51811857289216
+    m_Localized: Increases damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51930019221504
+    m_Localized: Maxed for this island
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55632947924992
+    m_Localized: Upgrade Bullets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55678741336064
+    m_Localized: Increases bullet damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91764200919040
+    m_Localized: Big Motor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91838939222016
+    m_Localized: Dual Motors
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099514359926784
+    m_Localized: Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099545099980800
+    m_Localized: Ammo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099588062236672
+    m_Localized: Attachments
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483887722713088
+    m_Localized: Quest Item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1533629789982720
+    m_Localized: Hot Dog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536930950500352
+    m_Localized: Rock Crab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828526547881984
+    m_Localized: Drive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828554834268160
+    m_Localized: Can't Drive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828599990145024
+    m_Localized: No Keys
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828643153727488
+    m_Localized: Get back to the mainland
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830646902771712
+    m_Localized: Creatures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830821041885184
+    m_Localized: Drip Creatures
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186154683748352
+    m_Localized: Insert <color=#FFEF4D><b>drip creature</color></b> to play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186243099676672
+    m_Localized: is spinning...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186429616181248
+    m_Localized: Skins for
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291237806854144
+    m_Localized: Used for catching crustacean boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291869334818816
+    m_Localized: Bait for bigger crustaceans
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291948657496064
+    m_Localized: Catches beginner mini-bosses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292204136747008
+    m_Localized: Catches beginner fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292316321796096
+    m_Localized: Bait for island 2 boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293021463990272
+    m_Localized: Bait for island 3 boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293207191965696
+    m_Localized: Catches standard mini-boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293390399164416
+    m_Localized: Catches standard fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293514412150784
+    m_Localized: Catches professional mini-boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293643345055744
+    m_Localized: Catches professional fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293763109212160
+    m_Localized: Bait for big boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293878242856960
+    m_Localized: Catches scientific mini-boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3294053837393920
+    m_Localized: Catches scientific fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3322076229881856
+    m_Localized: Weight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616357117153280
+    m_Localized: Radar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3984920650797056
+    m_Localized: Boat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4754946219659264
+    m_Localized: Bing Bong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755687046991872
+    m_Localized: Starfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755941158899712
+    m_Localized: Sponge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756916259082240
+    m_Localized: Squid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758365198176256
+    m_Localized: Manta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758665606811648
+    m_Localized: Hammerhead Shark
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758953906491392
+    m_Localized: Narwhal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4759131669483520
+    m_Localized: Isopod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762162721017856
+    m_Localized: Hermit Crab
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764482083049472
+    m_Localized: Sailfish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764811897950208
+    m_Localized: Oyster
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

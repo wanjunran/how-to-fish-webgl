@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d45fceec317a42238cbaccadf3ff2c, type: 3}
+  m_Name: Scientific Lure
+  m_EditorClassIdentifier:
+  _nameLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:a2fb6c2a7ccc9b145aa3cd1df802bdbb
+    m_TableEntryReference:
+      m_KeyId: 12876342972416
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _descriptionLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:a2fb6c2a7ccc9b145aa3cd1df802bdbb
+    m_TableEntryReference:
+      m_KeyId: 3294053837393920
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _name: Scientific Lure
+  _description: Catches scientific fish
+  _mesh: {fileID: 4300000, guid: 01c5b639a6e86b64b991c2bb524c660b, type: 2}
+  _meshForNpc: {fileID: 0}
+  _cost: 500
+  _lostOnBaitChance: 20
+  _catchTimeMinMax: {x: 0.75, y: 1.5}
+  _requireReelingToCatch: 1
+  _hookPoint: {x: 0, y: -0.15, z: 0}
+  inventoryMeshPos: {x: 0, y: 0.04, z: 0}
+  _inventoryRot: {x: 288.271, y: 258.1142, z: 283.5466}
+  inventoryMeshScale: 4
+  _itemWeights:
+  - fishable: {fileID: 11400000, guid: 6dfb2d9dec1570d4fb5cf262587700e6, type: 2}
+    _weight: 10
+  - fishable: {fileID: 11400000, guid: 5b1b605a3f0a1be4c954717c13e4267f, type: 2}
+    _weight: 10
+  - fishable: {fileID: 11400000, guid: a59b0a56c6d08ed4286c7730f918d932, type: 2}
+    _weight: 10
+  - fishable: {fileID: 11400000, guid: b71c2a5ffdfe6eb489d0051131dd209f, type: 2}
+    _weight: 6
+  - fishable: {fileID: 11400000, guid: 5e1b68498f70d6746b3e6c2050105840, type: 2}
+    _weight: 4
+  references:
+    version: 2
+    RefIds: []

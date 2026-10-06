@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Menu Labels_tr
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: tr
+  m_SharedData: {fileID: 11400000, guid: d6fafc7872dc8fe4d854f1b8803164bc, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 145510453248
+    m_Localized: Oyun Kur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 540202848256
+    m_Localized: Oyuna Katıl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 611896086528
+    m_Localized: Karakter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 662856880128
+    m_Localized: Seçenekler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 712303529984
+    m_Localized: Emeği Geçenler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 825704927232
+    m_Localized: Çık
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4535533260800
+    m_Localized: Discord'a Katıl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4734813032448
+    m_Localized: Sürüm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6814114074624
+    m_Localized: Yeni Oyun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7015633604608
+    m_Localized: Kayıt İsmi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7610180390912
+    m_Localized: Oturum Türü
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7789121982464
+    m_Localized: Oluştur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37245739945984
+    m_Localized: Çok Oyunculu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37324198596608
+    m_Localized: Tek Oyunculu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39184305311744
+    m_Localized: Oyun Yükle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39423271587840
+    m_Localized: Kayıt Detayları
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39599050674176
+    m_Localized: İsim
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39755464658944
+    m_Localized: Son Oynama
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39959710486528
+    m_Localized: Oyun Süresi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40071824232448
+    m_Localized: Ada
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40212325027840
+    m_Localized: Sil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40331548119040
+    m_Localized: Yükle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40489782431744
+    m_Localized: Kaydı Sil?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40707345174528
+    m_Localized: Evet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40755344789504
+    m_Localized: Hayır
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40935997657088
+    m_Localized: Geri
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41700023685120
+    m_Localized: Oturum No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41873382658048
+    m_Localized: Oturum No İle Katıl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42034817224704
+    m_Localized: Steam Arkadaşı Bul
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42733596659712
+    m_Localized: Karakter Özelleştirme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42928711487488
+    m_Localized: Ten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43025155313664
+    m_Localized: Şapka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43107774713856
+    m_Localized: Kıyafet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43263270146048
+    m_Localized: Aksesuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44845541969920
+    m_Localized: Renk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46104130965504
+    m_Localized: Seçilenleri Sıfırla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46266576359424
+    m_Localized: Seçilenleri Rastgele Yap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46447279558656
+    m_Localized: Sıfırla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46522399543296
+    m_Localized: Rastgele
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47508979535872
+    m_Localized: Oyun Tasarımı
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47642547146752
+    m_Localized: Programlama
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47748591734784
+    m_Localized: Grafikler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47903944560640
+    m_Localized: Müzik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50236178911232
+    m_Localized: Atlanıyor…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50502492049408
+    m_Localized: Oynadığın için teşekkürler!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3931751522586624
+    m_Localized: "How to\nFish"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3952311279374336
+    m_Localized: Oyun ismini yaz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3953281396723712
+    m_Localized: Bir şey yaz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5068142029656064
+    m_Localized: Fasulye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121082929369088
+    m_Localized: Zorluk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121140584271872
+    m_Localized: Kolay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121160876314624
+    m_Localized: Varsayılan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121201640755200
+    m_Localized: Zor
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

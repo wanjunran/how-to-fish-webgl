@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d45fceec317a42238cbaccadf3ff2c, type: 3}
+  m_Name: Standard Lure
+  m_EditorClassIdentifier:
+  _nameLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:a2fb6c2a7ccc9b145aa3cd1df802bdbb
+    m_TableEntryReference:
+      m_KeyId: 12269896945664
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _descriptionLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:a2fb6c2a7ccc9b145aa3cd1df802bdbb
+    m_TableEntryReference:
+      m_KeyId: 3293390399164416
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _name: Standard Lure
+  _description: Catches standard fish
+  _mesh: {fileID: 4300000, guid: 98dd841411ca0e843a03a4c33efad87b, type: 2}
+  _meshForNpc: {fileID: 0}
+  _cost: 15
+  _lostOnBaitChance: 30
+  _catchTimeMinMax: {x: 1, y: 2.5}
+  _requireReelingToCatch: 1
+  _hookPoint: {x: 0, y: -0.1, z: 0}
+  inventoryMeshPos: {x: 0, y: 0, z: 0}
+  _inventoryRot: {x: -36, y: 40, z: -140}
+  inventoryMeshScale: 3
+  _itemWeights:
+  - fishable: {fileID: 11400000, guid: 1a4ce0792beee5a409a588140566d309, type: 2}
+    _weight: 12
+  - fishable: {fileID: 11400000, guid: 69f7f598c7ca84c4c9d9a209d55a2644, type: 2}
+    _weight: 10
+  - fishable: {fileID: 11400000, guid: f4fa3f9d3773f27459e211b315e72c39, type: 2}
+    _weight: 8
+  - fishable: {fileID: 11400000, guid: 84e6b918489e52d4cb1a62f5e5d15be9, type: 2}
+    _weight: 8
+  - fishable: {fileID: 11400000, guid: 6244c0005d40fe847bec6b32b1370de0, type: 2}
+    _weight: 8
+  - fishable: {fileID: 11400000, guid: cf3d8d4dcddb0624da5c475084358d29, type: 2}
+    _weight: 10
+  - fishable: {fileID: 11400000, guid: 7ab5e9efd2e06244d9cdd683306b0e6a, type: 2}
+    _weight: 6
+  - fishable: {fileID: 11400000, guid: 4f54dda472feba84683c97911192d700, type: 2}
+    _weight: 3
+  - fishable: {fileID: 11400000, guid: 079cd4a84e73ab342a0d99423d99e8cd, type: 2}
+    _weight: 3
+  - fishable: {fileID: 11400000, guid: 4dd31a288ec86af438f7454d904ce91b, type: 2}
+    _weight: 1
+  references:
+    version: 2
+    RefIds: []

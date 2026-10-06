@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_pl
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: pl
+  m_SharedData: {fileID: 11400000, guid: a6b0b69a1f2361645a78b193b90d2d4e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: Jak się poruszać
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: Użyj {0}, aby się poruszać.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: Jak się rozglądać
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: Użyj {0}, aby się rozejrzeć.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: Interakcje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: Naciśnij {0}, patrząc na przedmiot, aby go podnieść. Przetestuj to na małżu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: Jak jeść
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: Musisz jeść, aby zaspokoić głód. Możesz zjeść dowolne zwierzę, naciskając {0}, gdy masz je w ręku. Przetestuj to na małżu.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: Jak sprzedawać
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: Aby zdobyć gotówkę, musisz sprzedać przedmioty. Podnieś małża, znajdź NPC i przytrzymaj {0}, aby rzucić małża w usta sklepikarza.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: Jak kupować
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: Udaj się do sklepu i kup wędkę do łowienia małży, naciskając {0}. Wtedy będziesz w stanie złowić więcej cennych zwierząt.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: Jak łowić ryby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: Spójrz na wodę i zarzuć wędkę z przynętą do oceanu za pomocą {0}, aby złapać rybę.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: Jak zabijać
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: Gdy zwierzę połknie przynętę, zwiń żyłkę za pomocą {0}, a następnie naciśnij {1}, aby je odczepić. Następnie upuść trzymany przedmiot za pomocą {2} i zacznij uderzać zwierzę, naciskając {0}.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: Jak rozmawiać
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: Wykonuj misje otrzymane od NPC na wyspie, aby robić postępy. Popatrz na postać i naciśnij {0}, aby dowiedzieć się, czego chce.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: Dobra robota, to koniec samouczka. Teraz możesz iść i robić, co chcesz.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: Jak myśleć
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: Możesz zapomnieć, jakie zwierzęta już udało ci się złapać. Wysil umysł, naciskając {0}.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: Jak badać przedmioty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: Aby zbadać przedmiot, naciśnij {0}, trzymając go. Przetestuj to na zwierzęciu, aby poznać jego wartość.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

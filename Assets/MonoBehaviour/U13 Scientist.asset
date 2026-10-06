@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451916751ce4b24628c8dee1ba51a92b, type: 3}
+  m_Name: U13 Scientist
+  m_EditorClassIdentifier:
+  _defaultUnlocked: 0
+  _hatMesh: {fileID: 4300000, guid: 0f652b7850ef9964dba695fe9932acca, type: 2}
+  _accessoryMesh: {fileID: 4300000, guid: f92527b20492f084ea44c238e887c2a9, type: 2}
+  outfitMesh: {fileID: 4300000, guid: 8297ecc3c12569249b3b8f8c4bfb95ec, type: 2}

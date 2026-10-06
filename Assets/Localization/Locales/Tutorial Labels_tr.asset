@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_tr
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: tr
+  m_SharedData: {fileID: 11400000, guid: a6b0b69a1f2361645a78b193b90d2d4e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: Hareket Etme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: '{0} ile hareket et'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: Bakma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: '{0} ile etrafına bak'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: Etkileşim Kurma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: Bir nesneyi almak için ona bakarken {0} tuşuna bas. Bu şekilde bir midye al
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: Bir Şey Yeme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: Açlığını bastırmak için bir şeyler yemelisin. Bir canlıyı elinde tutarken {0} tuşunu basılı tutarak onu yiyebilirsin. Bu şekilde bir midye ye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: Satma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: Para kazanmak için bir şeyler satmalısın. Bir midye alıp NPC'nin yanına git ve {0} tuşunu basılı tutarak midyeyi dükkân sahibinin ağzına sok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: Satın Alma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: Mağazaya git ve {0} tuşuna basarak yengeç oltası satın al. Ondan sonra daha değerli canlılar yakalayabilirsin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: Balık Tutma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: Balık tutmak için suya bak ve {0} ile yemi okyanusa at
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: Öldürme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: Bir canlı yemi yuttuğunda {0} ile oltayı sar, sonra {1} tuşuna basarak onu bırak. {2} ile oltayı kaldır ve {0} ile yumrukla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: Konuşma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: İlerlemek için adadaki NPC'lerin verdiği görevleri tamamla. Onlara bakarken {0} tuşuna basarak ne istediklerini öğren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: Aferin sana, eğiticiyi tamamladın. Şimdi git ne isityorsan yap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: Düşünme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: Hangi canlıları yakaladığını unutabilirsin. {0} tuşuna basarak düşün
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: İnceleme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: Bir şeyi incelemek için onu tutarken {0} tuşuna bas. Bu şekilde bir canlının değerini öğren
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

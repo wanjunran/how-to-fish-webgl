@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Killscore Labels_ko
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: 2e69b0e39d5890448801ae3b1cc82b8d, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 96034443264
+    m_Localized: 360
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177374580736
+    m_Localized: 노 스코프
+    m_Metadata:
+      m_Items: []
+  - m_Id: 687435501568
+    m_Localized: 퀵 스코프
+    m_Metadata:
+      m_Items: []
+  - m_Id: 758537342976
+    m_Localized: 장거리샷
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1082044010496
+    m_Localized: 헤드샷
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1134514753536
+    m_Localized: 공중전
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1206866497536
+    m_Localized: 공중 처치
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1275401424896
+    m_Localized: 플라이 피싱
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1360751316992
+    m_Localized: 뉴비 킬
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1491072536576
+    m_Localized: 원샷 원킬
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1686380302336
+    m_Localized: 더블 킬
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1726347825152
+    m_Localized: 트리플 킬
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1769368801280
+    m_Localized: 쿼드라 킬
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1801690107904
+    m_Localized: 펜타 킬
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2729721810944
+    m_Localized: 멀티 킬
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2777788534784
+    m_Localized: 마수걸이
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2807245131776
+    m_Localized: 멸종 위기종
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2856997965824
+    m_Localized: 킬스틸
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2897351364608
+    m_Localized: 근접 사격
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2932751290368
+    m_Localized: 오버킬
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2974270705664
+    m_Localized: 막탄
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3007141466112
+    m_Localized: 기교왕
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334752579670016
+    m_Localized: '처치:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334780551483392
+    m_Localized: 처치 점수
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010849860374528
+    m_Localized: 근접
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010879283417088
+    m_Localized: 폭발
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

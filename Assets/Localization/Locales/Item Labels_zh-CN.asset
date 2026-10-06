@@ -1,0 +1,651 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Item Labels_zh-CN
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: zh-CN
+  m_SharedData: {fileID: 11400000, guid: 3d3b57a959995b04e8c31a8136a612d5, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16543993856
+    m_Localized: 极品
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517595549696
+    m_Localized: 需先卸下物品
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1074867556352
+    m_Localized: 突击步枪
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1256535445504
+    m_Localized: 沙滩排球
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397812187136
+    m_Localized: 啤酒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440275320832
+    m_Localized: 铜指虎
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1604490711040
+    m_Localized: 钓蟹竿
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1700359917568
+    m_Localized: 炸药
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1755171082240
+    m_Localized: 钓竿
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833763950592
+    m_Localized: 飞盘
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1918321119232
+    m_Localized: 小刀
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001888432128
+    m_Localized: 雷达
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061577572352
+    m_Localized: 手枪
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125578457088
+    m_Localized: 收音机
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2198542569472
+    m_Localized: 霰弹枪
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2265022287872
+    m_Localized: 冲锋枪
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2319141392384
+    m_Localized: 狙击枪
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2558585819136
+    m_Localized: 雪球
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2793194213376
+    m_Localized: 神仙鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2919820251136
+    m_Localized: 鮟鱇
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3094898888704
+    m_Localized: 鲈鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3400911114240
+    m_Localized: 水滴鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3487762567168
+    m_Localized: 蓝鳃太阳鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3901354496000
+    m_Localized: 缸中鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4022288863232
+    m_Localized: 鲶鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4084528140288
+    m_Localized: 肉蚌
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4144091451392
+    m_Localized: 小丑鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4213171638272
+    m_Localized: 鳕鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4305442131968
+    m_Localized: 棕蟹
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4358051287040
+    m_Localized: 走地鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4451802370048
+    m_Localized: 鳗鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4503895625728
+    m_Localized: 飞鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4570647973888
+    m_Localized: 深海蜗牛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756732465152
+    m_Localized: 雀鳝
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878249840640
+    m_Localized: 刺鳍鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4952019259392
+    m_Localized: 金鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012891193344
+    m_Localized: 比目鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5111486697472
+    m_Localized: 蚂蟥
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5182122971136
+    m_Localized: 龙虾
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5235017338880
+    m_Localized: 鲭鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5332526518272
+    m_Localized: 针鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613381308416
+    m_Localized: 皇带鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5705463058432
+    m_Localized: 鹦嘴鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6025832386560
+    m_Localized: 河鲈
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7383742500864
+    m_Localized: 狗鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7444769624064
+    m_Localized: 食人鲳
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517343666176
+    m_Localized: 红鲷鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7692686544896
+    m_Localized: 三文鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7754799992832
+    m_Localized: 海胆
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7821640421376
+    m_Localized: 海鸥
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7968906629120
+    m_Localized: 海马
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8022753103872
+    m_Localized: 无鳞鲶鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8279654223872
+    m_Localized: 虾子
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8336688369664
+    m_Localized: 石头鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8397388337152
+    m_Localized: 微缩鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8622110756864
+    m_Localized: 虎鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8700179337216
+    m_Localized: 引金鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8798422519808
+    m_Localized: 像素鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8910662094848
+    m_Localized: 黄箱魨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004824219648
+    m_Localized: 信天翁
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9060998533120
+    m_Localized: 蓝鲨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9125917970432
+    m_Localized: 弓头鲸
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9245774401536
+    m_Localized: 大狗鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9401873813504
+    m_Localized: 大食人鲳
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9471960633344
+    m_Localized: 哥布林鲨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9624083845120
+    m_Localized: 变异弓头鲸
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9726227730432
+    m_Localized: 河鲀
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9790161506304
+    m_Localized: 蜘蛛蟹
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853273198592
+    m_Localized: 翻车鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9947020087296
+    m_Localized: 金枪鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10032218984448
+    m_Localized: 信天翁头
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10092432412672
+    m_Localized: 大食人鲳骨头
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10272070258688
+    m_Localized: 河鲀鳍
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10429339881472
+    m_Localized: 蜘蛛蟹壳
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10533899685888
+    m_Localized: 鲸鱼尾
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11671877275648
+    m_Localized: 空酒罐
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11769382260736
+    m_Localized: 新手首领饵
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11915486646272
+    m_Localized: 新手鱼饵
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994754797568
+    m_Localized: 蚂蟥饵
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12079676870656
+    m_Localized: 胡萝卜
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135154929664
+    m_Localized: 标准首领饵
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12269896945664
+    m_Localized: 标准鱼饵
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12358149296128
+    m_Localized: 专业首领饵
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12527846641664
+    m_Localized: 专业鱼饵
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12624521154560
+    m_Localized: 鱼桶
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12704154210304
+    m_Localized: 科技首领饵
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12876342972416
+    m_Localized: 科技鱼饵
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14071937716224
+    m_Localized: 船用雷达
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16484916613120
+    m_Localized: 已购买
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20829980676096
+    m_Localized: 制退器
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21003675193344
+    m_Localized: 扩容弹匣
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21707294855168
+    m_Localized: 机械瞄具
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413609025536
+    m_Localized: 激光瞄具
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487277780992
+    m_Localized: 红点瞄具
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23593548861440
+    m_Localized: 狙击镜
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23718690115584
+    m_Localized: 消音器
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35635374673920
+    m_Localized: 适度降低后坐力
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36427158605824
+    m_Localized: 增加弹匣中的弹药
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36631865806848
+    m_Localized: 移除武器上的瞄具
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36777357824000
+    m_Localized: 显示武器指向位置，让你轻松速射
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37000025034752
+    m_Localized: 瞄准时更容易命中目标
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37211061440512
+    m_Localized: 瞄准时更容易命中远处的目标
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343916019712
+    m_Localized: 极大降低后坐力
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38419088101376
+    m_Localized: 无法加装
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38503880151040
+    m_Localized: 装备远程武器
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38906973736960
+    m_Localized: 价值
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39035646595072
+    m_Localized: 烹饪
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40700424572928
+    m_Localized: 装备近战武器
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51375519649792
+    m_Localized: 打磨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51811857289216
+    m_Localized: 增加伤害
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51930019221504
+    m_Localized: 已达该岛屿满级
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55632947924992
+    m_Localized: 升级子弹
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55678741336064
+    m_Localized: 增加子弹伤害
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91764200919040
+    m_Localized: 大马达
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91838939222016
+    m_Localized: 双马达
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099514359926784
+    m_Localized: 伤害
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099545099980800
+    m_Localized: 弹药
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099588062236672
+    m_Localized: 组件
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483887722713088
+    m_Localized: 任务物品
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1533629789982720
+    m_Localized: 热狗
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536930950500352
+    m_Localized: 岩蟹
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828526547881984
+    m_Localized: 驾驶
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828554834268160
+    m_Localized: 无法驾驶
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828599990145024
+    m_Localized: 没有钥匙
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828643153727488
+    m_Localized: 返回主岛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830646902771712
+    m_Localized: 动物
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830821041885184
+    m_Localized: 极品动物
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186154683748352
+    m_Localized: 投入<color=#FFEF4D><b>极品动物</color></b>后摇奖
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186243099676672
+    m_Localized: 正在摇奖……
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186429616181248
+    m_Localized: 皮肤奖励
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291237806854144
+    m_Localized: 用于捕捉甲壳类首领
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291869334818816
+    m_Localized: 诱捕大型甲壳类动物
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291948657496064
+    m_Localized: 能捕获新手迷你首领
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292204136747008
+    m_Localized: 能捕获新手鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292316321796096
+    m_Localized: 诱捕 2 号小岛的首领
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293021463990272
+    m_Localized: 诱捕 3 号小岛的首领
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293207191965696
+    m_Localized: 能捕获标准迷你首领
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293390399164416
+    m_Localized: 能捕获标准鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293514412150784
+    m_Localized: 能捕获专业迷你首领
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293643345055744
+    m_Localized: 能捕获专业鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293763109212160
+    m_Localized: 诱捕 3 号小岛的首领
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293878242856960
+    m_Localized: 能捕获科技迷你首领
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3294053837393920
+    m_Localized: 能捕获科技鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3322076229881856
+    m_Localized: 重量
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616357117153280
+    m_Localized: 雷达
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3984920650797056
+    m_Localized: 船
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4754946219659264
+    m_Localized: Bing Bong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755687046991872
+    m_Localized: 海星
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755941158899712
+    m_Localized: 海绵
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756916259082240
+    m_Localized: 鱿鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758365198176256
+    m_Localized: 魔鬼鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758665606811648
+    m_Localized: 锤头鲨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758953906491392
+    m_Localized: 独角鲸
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4759131669483520
+    m_Localized: 等足虫
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762162721017856
+    m_Localized: 寄居蟹
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764482083049472
+    m_Localized: 旗鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764811897950208
+    m_Localized: 牡蛎
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

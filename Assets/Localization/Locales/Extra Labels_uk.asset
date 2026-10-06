@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Extra Labels_uk
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: uk
+  m_SharedData: {fileID: 11400000, guid: 15a15f5ce0d7dad438878e9e82a39467, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 38058826747904
+    m_Localized: г
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38117194682368
+    m_Localized: хв
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38134177419264
+    m_Localized: с
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52920734797824
+    m_Localized: Прокр. вниз
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52877269225472
+    m_Localized: Прокр. вгору
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13746393088
+    m_Localized: Гострота
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16779126067200
+    m_Localized: Вгору
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16823489220608
+    m_Localized: Вліво
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16856720691200
+    m_Localized: Вправо
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16897468354560
+    m_Localized: Вниз
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16943060439040
+    m_Localized: Попередній
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16982876966912
+    m_Localized: Наступний
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17428832145408
+    m_Localized: Очікування введення...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21937234989056
+    m_Localized: Прив'язування
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413193789440
+    m_Localized: Шматок м'яса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24825348837376
+    m_Localized: Змінити слот інвентарю
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38381570052096
+    m_Localized: Роздільність екрану
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53831062343680
+    m_Localized: Колесо миші
+    m_Metadata:
+      m_Items: []
+  - m_Id: 281734836473856
+    m_Localized: 'Відключено: невідповідність версій'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 285459105796096
+    m_Localized: Застосувати
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342617595924480
+    m_Localized: Показувати точки предметів
+    m_Metadata:
+      m_Items: []
+  - m_Id: 373258983133184
+    m_Localized: Закрити {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694893553692672
+    m_Localized: Камера
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702431045136384
+    m_Localized: Бос піде через...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 761753506721792
+    m_Localized: Бос пішов
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630278305730560
+    m_Localized: За запрошенням
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630332928151552
+    m_Localized: Відкрита
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3648836913942528
+    m_Localized: Потрібен перезапуск сервера
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652878016794624
+    m_Localized: Інверсія осі X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652892701052928
+    m_Localized: Інверсія осі Y
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

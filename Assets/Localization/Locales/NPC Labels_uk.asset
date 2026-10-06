@@ -1,0 +1,807 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NPC Labels_uk
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: uk
+  m_SharedData: {fileID: 11400000, guid: 0b10042bfac98894db904666807ebd73, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6662213632
+    m_Localized: Говорити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54046427271168
+    m_Localized: Узяти
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54116627337216
+    m_Localized: Запальничка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54213498982400
+    m_Localized: Флешка з координатами острова
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54739510841344
+    m_Localized: Ключі від човна
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81550055657472
+    m_Localized: ху, привіт
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81663972954112
+    m_Localized: щойно потрощило тут?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81871247069184
+    m_Localized: та й годі. поможи мені
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81930336423936
+    m_Localized: я тут куняв, а те <color=#FFEF4D><b>довгоноге</color></b> вкрало моє пиво
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82093876531200
+    m_Localized: з тиждень уже труби горять
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82158628196352
+    m_Localized: можеш ПРОШУ позбавити мене від істоти?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82227385421824
+    m_Localized: знаю, її легко спровокувати <color=#FFEF4D><b>порожньою банкою з-під пива</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82357429817344
+    m_Localized: маю кілька, але повних
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82606181404672
+    m_Localized: '<color=#FFEF4D><b>принеси мені одну</color></b>, і я її звільню для тебе'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82703942242304
+    m_Localized: не принесеш пивка, то налови крабів і продай їх мені
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82801275260928
+    m_Localized: бери вудку для крабів і починай
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82976676859904
+    m_Localized: е-е-е-е-егх. ось на
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83161104601088
+    m_Localized: м-м-м дяка. на бери
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83225633968128
+    m_Localized: буль-буль. ось на
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83303882903552
+    m_Localized: і на цю <color=#FFEF4D><b>пусту бляшанку</color></b>, насади на гачок
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84195684208640
+    m_Localized: і якщо щось упіймаєш, продам тобі свій <color=#FFEF4D><b>човен</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84399493828608
+    m_Localized: однаково ним не користуюся
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84463796703232
+    m_Localized: так хоч пивка накину в тиші
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84517198581760
+    m_Localized: не забудь вмикати <color=#FFEF4D><b>радар</color></b>, коли будеш у човні
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84616054132736
+    m_Localized: захочеш бери, він поруч зі мною
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84935181946880
+    m_Localized: ням ням
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85059324956672
+    m_Localized: ням ням ням
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85143248785408
+    m_Localized: ось. тримай <color=#FFEF4D><b>ключі від човна</color></b>. не забувай про радар, коли шукатимеш нові острови
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85361503588352
+    m_Localized: ось ключі, іди
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85414536368128
+    m_Localized: зараз хочу сам-один пивка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85790471835648
+    m_Localized: хай там як, це все
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85863683411968
+    m_Localized: добре мушу повертатися до роботи. побачимось іще
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85938941808640
+    m_Localized: гм мгм
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86082663829504
+    m_Localized: ням
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86182706368512
+    m_Localized: о так
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86279259246592
+    m_Localized: лю-ю-юблю крабиків
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86320959016960
+    m_Localized: ням ням ням
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86372007890944
+    m_Localized: мені треба краба
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420935120801792
+    m_Localized: привіт
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420995262926848
+    m_Localized: можеш допомогти у справі?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421041618374656
+    m_Localized: хочу приготувати таткові особливу вечерю, але він не дозволяє мені брати до рук зброю
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421194010021888
+    m_Localized: десь тут плаває <color=#FFEF4D><b>крупна смачнюча риба</color></b>, але я не вражу її без рушниці. можеш убити для мене?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421367142502400
+    m_Localized: вона так любить їсти <color=#FFEF4D><b>п’явок</color></b>. знайди мені кількох, і я зроблю з них тобі наживку
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421496939433984
+    m_Localized: вони тут усюди повзають на землі
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421662740271104
+    m_Localized: м-м-м дяка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421704255492096
+    m_Localized: ще кілька п’явочок — і наживка готова
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421753421123584
+    m_Localized: яка гарнюня
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421802796470272
+    m_Localized: ням ням ням
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421838527746048
+    m_Localized: м-м-м-м-м-м-м-м-м-м-м-м-м-м-м
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422029922226176
+    m_Localized: тримай. не забудь про <color=#FFEF4D><b>рушницю</color></b>. бороти цю рибу голіруч небезпечно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422903297953792
+    m_Localized: знайдеш мені смачну істотку, а я тобі <color=#FFEF4D><b>інфу</color></b> про острів мною знайдений
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423099348111360
+    m_Localized: гадаю інфа яку я дам про острів автоматом <color=#FFEF4D><b>залетить тобі на мапу</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423227211468800
+    m_Localized: але спочатку знайди мені вечерю, бумласочка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423390374088704
+    m_Localized: лови інфу. застосуй її, і знайдеш <color=#FFEF4D><b>наступний острів</color></b> на мапі
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423701432061952
+    m_Localized: зараз можеш користуватися мапою і знаходити інші острови
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424172574035968
+    m_Localized: БУЛЬГрхбуль
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424223446749184
+    m_Localized: я дам хорошу ціну за здобич
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424275997184000
+    m_Localized: гм угм
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424310931542016
+    m_Localized: купи щось у сувенірці
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424428346888192
+    m_Localized: ох-х-х
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424470780661760
+    m_Localized: хм їм усяку
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424909949456384
+    m_Localized: бггу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425008100364288
+    m_Localized: ф-ф-ф-ф
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425047040282624
+    m_Localized: ГИК
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425069555306496
+    m_Localized: а-а-аг-г-гх
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425173376913408
+    m_Localized: мгм-м-мр-р-риг
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425204075024384
+    m_Localized: ги-к-доту
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425625044733952
+    m_Localized: у-у-уг-г-гик
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425665897254912
+    m_Localized: Зараз у мене коротка відпустка, але я навіть поплавати не можу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425774320013312
+    m_Localized: в океані багато <color=#FFEF4D><b>потвор</color></b>. боюся навіть у воду заходити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425851797196800
+    m_Localized: можеш позбавити мене від них, так?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425902661521408
+    m_Localized: дам тобі кілька снеків приманити їх, але принеси мені щось натомість
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426008861298688
+    m_Localized: щось таке аби похизуватися перед колегами, коли повернуся з відпустки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426140730216448
+    m_Localized: якийсь такий <color=#FFEF4D><b>топчик</color></b>, ото було б круто
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426302928146432
+    m_Localized: ти зрозумієш, коли побачиш їх
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426445853249536
+    m_Localized: м-м-м дяка. ось тобі приманка на страхорибу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427343753072640
+    m_Localized: йо, та я ж грильмайстер
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427397419192320
+    m_Localized: тут скоро моя вечірка з друзями, а приготувати нічого
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427492277571584
+    m_Localized: не хочеш упіймати мені щось смачненьке?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427568391606272
+    m_Localized: гадаю <color=#FFEF4D><b>акула</color></b> добре зайде в меню
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427626839232512
+    m_Localized: принеси акулу — і можеш загрилювати <color=#FFEF4D><b>свою здобич</color></b> у мене
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427711400595456
+    m_Localized: а ще більше заробиш, бо продаси свій вилов-гриль
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427834952208384
+    m_Localized: ой-ой усе вже в моєму животі, ось тобі запальничка. можеш розпалити мангал
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427978091220992
+    m_Localized: ось тобі запальничка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428033137266688
+    m_Localized: грилювання почалося
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428084962086912
+    m_Localized: можеш загрилювати свій вилов і збільшити його ціну
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428145339092992
+    m_Localized: ну ж бо починай і грилюй
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428776917389312
+    m_Localized: ти хочеш щось натомість?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428869942857728
+    m_Localized: гм-м-м добре. ось тобі <color=#FFEF4D><b>координати</color></b> місця, звідки я
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428983528804352
+    m_Localized: ти мені допоможеш і так залишиш небезпечне місце
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429062327193600
+    m_Localized: о-о-о дякую. лови координат місця, звідки я
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429365504069632
+    m_Localized: можеш скористатися мапою і знайти острів зараз
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429676247470080
+    m_Localized: вітаю в крамниці
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429777397305344
+    m_Localized: маємо крутезні товари для бомбезнішої відпустки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429888487641088
+    m_Localized: ось м’яч а ось диск щоб кидати, якщо захочете
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429947690242048
+    m_Localized: також є круті апгрейди для вашого човна
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430009279401984
+    m_Localized: а може вам подобається музика, тож маємо радіо
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430096915189760
+    m_Localized: а ще рушниці!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430142016540672
+    m_Localized: маєте щось цікаве на продаж, показуйте й купимо
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430235213975552
+    m_Localized: мені до рук ваш крам, вам від мене грошики
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431287153807360
+    m_Localized: по руках, бомбезної вам відпустки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431387955515392
+    m_Localized: м-м-м
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431431949570048
+    m_Localized: М-М-М... ЇЖА
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431477998833664
+    m_Localized: ням мям ням
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431501973475328
+    m_Localized: смакота для живота
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431549616574464
+    m_Localized: смачний супчик
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431574971142144
+    m_Localized: г-м-м, що то було?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431605803470848
+    m_Localized: ням ням ням
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431984423292928
+    m_Localized: вітаємо в казино щаслИва наживка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432080112144384
+    m_Localized: здається ви новачок, туточки вже бували?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432134969446400
+    m_Localized: якщо ні, то розкажу як тут усе діє
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432194503397376
+    m_Localized: кладете вашу ставку на стіл з руль-леткою. усе що принесли підходить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432333905285120
+    m_Localized: потім тицяйте на колір, на який ставите, і гра розпочнеться
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432428646223872
+    m_Localized: виграєте й ціна усіх предметів ставки зросте, більше виручите від їхнього продажу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432622834110464
+    m_Localized: проте... програєте й утратите всю ставку
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432701175320576
+    m_Localized: удачі
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432857400561664
+    m_Localized: він іще тут?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432911301562368
+    m_Localized: не бачили його?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432943568343040
+    m_Localized: '<color=#FFEF4D><b>величезного птаха</color></b>, що літає та тероризує острів'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433023109124096
+    m_Localized: відтоді як той птах з’явився, усі бояться виходити назовні
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433114742083584
+    m_Localized: і коли будь-хто привозить <color=#FFEF4D><b>тунця</color></b>, цей птах повертається
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433223122898944
+    m_Localized: він чує тунця. просто <color=#FFEF4D><b>поклади рибу на траву</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433311186505728
+    m_Localized: це точно приманить <color=#FFEF4D><b>професійного боса</color></b>, і ти впіймаєш його
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433889987874816
+    m_Localized: принеси мені <color=#FFEF4D><b>голову птаха</color></b>, і я сповіщу інших що вже безпечно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434090685321216
+    m_Localized: Я навіть дам тобі свою флешку з <color=#FFEF4D><b>координатами</color></b> крутого острову, який я бачив удалині
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434531007549440
+    m_Localized: дяка, я дам знати іншими що небезпека минула
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435174065655808
+    m_Localized: бери флешку, а я дам знати іншими що небезпека минула
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435379519442944
+    m_Localized: прошу не вагайся
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443520457986048
+    m_Localized: вітаємо в казино щаслИва наживка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443596425220096
+    m_Localized: наші автомати мають багато образів які можна розблокувати
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444001943113728
+    m_Localized: лише кинь <color=#FFEF4D><b>топчика</color></b> або <color=#FFEF4D><b>трофей за боса</color></b> в шпарину угорі й починай
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444269380325376
+    m_Localized: і не забувай ділитися здобиччю. образи отримують тільки ті, хто ділиться
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444478231498752
+    m_Localized: це все. розважайся
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444517112696832
+    m_Localized: чуваче, я б міг з’їсти просто зараз 600 спринг-ролів
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444581440737280
+    m_Localized: а, то ви ще тут?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444785908862976
+    m_Localized: привіт, чим можу допомогти?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444883258658816
+    m_Localized: що?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444906302164992
+    m_Localized: гучніш, не чую вас
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444978158981120
+    m_Localized: я тільки подивитися що купити
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445032907231232
+    m_Localized: дяка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445180517371904
+    m_Localized: привіт. вітаю в крамниці рушниць
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445243469680640
+    m_Localized: вірите чи ні, тут найбільший асортимент
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445357462474752
+    m_Localized: є також нове навісне обладнання
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445457282715648
+    m_Localized: будьте як удома, оглядайте товар
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445558650654720
+    m_Localized: мені справді дещо треба, якщо маєте
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445650417831936
+    m_Localized: непогано
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445687394816000
+    m_Localized: дяка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445710081806336
+    m_Localized: ось гроші
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446218225930240
+    m_Localized: пане, агов, пане
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447747326562304
+    m_Localized: пане, неважливо коли, але щойно завершимо нашу місію ми підемо
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454228843253760
+    m_Localized: пане, агов, пане
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454260141150208
+    m_Localized: пане, не могли б ви поговорити з ученим щодо нашої місії, пане?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454364499628032
+    m_Localized: вона он тамочки, пане
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454417670819840
+    m_Localized: а поки пропоную екіпіруватися
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454499019345920
+    m_Localized: я маю багато зброї та знарядь, пане
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454568154058752
+    m_Localized: пане, купуйте що душа забажає, пане
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454611363778560
+    m_Localized: я також можу купити у вас спорядження
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454647212494848
+    m_Localized: усе, пане
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454730767224832
+    m_Localized: усе, пане
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454766502694912
+    m_Localized: пане
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454809334927360
+    m_Localized: смачно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454850141310976
+    m_Localized: бездоганно приготовано
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454894819037184
+    m_Localized: ням
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454923923312640
+    m_Localized: дяка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454969381179392
+    m_Localized: нямка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455000880402432
+    m_Localized: навіть не відчуваю смаку риби
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455252588974080
+    m_Localized: вибачте, ви раптом не рибалка?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455365046652928
+    m_Localized: у нас наукова місія, але ми самі не впораємося
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455419270615040
+    m_Localized: нам потрібен хтось, щоб упіймав нам <color=#FFEF4D><b>великого кита</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455461192683520
+    m_Localized: знайдіть мені <color=#FFEF4D><b>менших істот</color></b>, а я зроблю належну приманку щоб ви його впіймали
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455554054574080
+    m_Localized: щойно ви його здолаєте, <color=#FFEF4D><b>тушу одразу треба буде кинути до вулкану</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455624334331904
+    m_Localized: і ми побачимо, як він реагує на надмірне тепло
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455687810928640
+    m_Localized: ми вважаємо, воно може якось вплинути на звіра тож готуйтеся
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455804467105792
+    m_Localized: якщо ви <color=#FFEF4D><b>доведете що здолали його</color></b>, ми нарешті отримаємо усе що необхідно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455996067106816
+    m_Localized: на знак подяки я дозволю вам скористуватися нашим човном
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456054191771648
+    m_Localized: на ньому вже задано <color=#FFEF4D><b>координати материка</color></b>, тож ви дістанетеся домівки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456126010839040
+    m_Localized: схоже ви довго не були вдома
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456167941296128
+    m_Localized: так саме так. за роботу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456261805625344
+    m_Localized: добре, ще кілька
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456311600402432
+    m_Localized: смачно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456350632595456
+    m_Localized: ось це так досконалість
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456383964729344
+    m_Localized: ням
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456412515356672
+    m_Localized: майже там
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456436292866048
+    m_Localized: дяка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456481687818240
+    m_Localized: тримайте. а зараз ідіть і вполюйте того кита
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457160535920640
+    m_Localized: роботу виконано?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457217314213888
+    m_Localized: я тільки хочу закінчити місію, будь ласка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457269168394240
+    m_Localized: добре. тримайте ці ключі, якщо хочете додому
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457522932174848
+    m_Localized: ви завершили місію
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457572198469632
+    m_Localized: можете виконати її ще раз, якщо хочете, але ж здобудьте мені більше істот на приманку
+    m_Metadata:
+      m_Items: []
+  - m_Id: 475779793768448
+    m_Localized: ось
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454831413317632
+    m_Localized: візьми вудку на кращу рибу
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455008320671744
+    m_Localized: не забувай користатися <color=#FFEF4D><b>котушкою</color></b>, щоб ловити хоч щось
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978330866962432
+    m_Localized: о а якщо візьмеш рушницю, покажи мені кілька <color=#FFEF4D><b>трюків із пострілами</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978762100133888
+    m_Localized: я ще й грошенят накину за кожний вилов, якщо буде <color=#FFEF4D><b>трюк</color></b> що хитріше то краще
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8382261860323328
+    m_Localized: вони також смачніші якщо їси їх <color=#FFEF4D><b>приготованими</color></b>
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

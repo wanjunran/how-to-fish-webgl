@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Extra Labels_sv
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: sv
+  m_SharedData: {fileID: 11400000, guid: 15a15f5ce0d7dad438878e9e82a39467, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 13746393088
+    m_Localized: Skärpa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16779126067200
+    m_Localized: Upp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16823489220608
+    m_Localized: Vänster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16856720691200
+    m_Localized: Höger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16897468354560
+    m_Localized: Ner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16943060439040
+    m_Localized: Negativ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16982876966912
+    m_Localized: Positiv
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17428832145408
+    m_Localized: Väntar på inmatning...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21937234989056
+    m_Localized: Knapp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413193789440
+    m_Localized: Köttbit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24825348837376
+    m_Localized: Byt föremål
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38058826747904
+    m_Localized: t
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38117194682368
+    m_Localized: m
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38134177419264
+    m_Localized: s
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38381570052096
+    m_Localized: Skärmupplösning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52877269225472
+    m_Localized: Skrolla upp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52920734797824
+    m_Localized: Skrolla ner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 285459105796096
+    m_Localized: Tillämpa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53831062343680
+    m_Localized: Skrollhjul
+    m_Metadata:
+      m_Items: []
+  - m_Id: 281734836473856
+    m_Localized: 'Kunde inte gå med: Olika spelversioner'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342617595924480
+    m_Localized: Visa prickar för föremål
+    m_Metadata:
+      m_Items: []
+  - m_Id: 373258983133184
+    m_Localized: Stäng {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694893553692672
+    m_Localized: Kamera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702431045136384
+    m_Localized: Bossen lämnar om...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 761753506721792
+    m_Localized: Bossen lämnade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630278305730560
+    m_Localized: Endast inbjudna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630332928151552
+    m_Localized: Publik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3648836913942528
+    m_Localized: Kräver omstart för server
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652878016794624
+    m_Localized: Omvänd X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652892701052928
+    m_Localized: Omvänd Y
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

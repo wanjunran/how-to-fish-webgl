@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_es-MX
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: es-MX
+  m_SharedData: {fileID: 11400000, guid: a6b0b69a1f2361645a78b193b90d2d4e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: Cómo moverse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: Usa {0} para moverte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: Cómo mirar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: Usa {0} para mirar alrededor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: Cómo interactuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: Presiona {0} mientras miras un objeto para recogerlo. Intenta con una almeja.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: Cómo comer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: Para saciar tu hambre, tienes que comer. Puedes comerte a cualquier criatura si mantienes {0} mientras la sostienes. Inténtalo con una almeja.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: Cómo vender
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: Para ganar dinero, tienes que vender objetos. Toma una almeja, ve con el PNJ y mantén presionado {0} para arrojar la almeja a la boca del comerciante.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: Cómo comprar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: Ve a la tienda y presiona {0} para comprar una caña de pescar cangrejos. Así podrás atrapar criaturas más valiosas.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: Cómo pescar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: Mira hacia el agua y lanza el cebo hacia el océano con {0} para pescar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: Cómo matar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: Cuando una criatura muerda el cebo, debes enrollar la cuerda con {0}, y luego presionar {1} para soltar. Luego, desequipa lo que tengas con {2} y comienza a golpear con {0}.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: Cómo hablar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: Completa misiones de PNJ de la isla para avanzar. Examina a uno y presiona {0} para ver qué quieren.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: Excelente, completaste el tutorial. Ahora puedes hacer lo que gustes.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: Cómo pensar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: Podrías olvidar qué criaturas atrapaste ya. Presiona {0} para pensar.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: Cómo inspeccionar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: Para inspeccionar un objeto, presiona {0} mientras lo sostienes. Inténtalo con una criatura para conocer su valor.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

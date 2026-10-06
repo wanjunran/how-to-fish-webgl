@@ -1,0 +1,807 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NPC Labels_zh-TW
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: zh-TW
+  m_SharedData: {fileID: 11400000, guid: 0b10042bfac98894db904666807ebd73, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6662213632
+    m_Localized: 對話
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54046427271168
+    m_Localized: 拿取
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54116627337216
+    m_Localized: 打火機
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54213498982400
+    m_Localized: 有島嶼座標的隨身碟
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54739510841344
+    m_Localized: 船的鑰匙
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81550055657472
+    m_Localized: 呃，你好
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81663972954112
+    m_Localized: 你剛才是出船禍了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81871247069184
+    m_Localized: 嗯嗯好喔，我現在剛好需要幫忙。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81930336423936
+    m_Localized: 我在睡覺的時候，這個<color=#FFEF4D><b>腳長長的傢伙</color></b>會一直來偷我的啤酒
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82093876531200
+    m_Localized: 我已經一個禮拜沒睡了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82158628196352
+    m_Localized: 可以請你幫我把牠趕走嗎？拜託拜託
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82227385421824
+    m_Localized: 隨便拿個<color=#FFEF4D><b>空啤酒罐</color></b>出來，牠馬上就會上鉤了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82357429817344
+    m_Localized: 我這邊是有幾罐，可是裡面都還有酒就是了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82606181404672
+    m_Localized: 幫我拿<color=#FFEF4D><b>一罐</color></b>過來，我幫你倒空
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82703942242304
+    m_Localized: 買不起的話，抓幾隻螃蟹賣給我也可以
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82801275260928
+    m_Localized: 捕蟹竿拿起來就可以開工了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82976676859904
+    m_Localized: 太噁了啦，給你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83161104601088
+    m_Localized: 感恩，這個給你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83225633968128
+    m_Localized: 讚讚讚，給你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83303882903552
+    m_Localized: 把這個<color=#FFEF4D><b>空啤酒罐</color></b>裝在釣竿上
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84195684208640
+    m_Localized: 如果你贏了，我就拿我的<color=#FFEF4D><b>船</color></b>來跟你交換
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84399493828608
+    m_Localized: 反正我也用不到
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84463796703232
+    m_Localized: 之後我就可以爽爽喝爽爽過了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84517198581760
+    m_Localized: 開船的時候，記得把<color=#FFEF4D><b>雷達</color></b>打開
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84616054132736
+    m_Localized: 我這裡的這個可以給你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84935181946880
+    m_Localized: 好吃好吃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85059324956672
+    m_Localized: 好吃好吃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85143248785408
+    m_Localized: 來吧，<color=#FFEF4D><b>船的鑰匙</color></b>在這裡。想要找新島嶼的時候，記得要把雷達打開
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85361503588352
+    m_Localized: 鑰匙拿了就滾吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85414536368128
+    m_Localized: 我要來喝爽爽了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85790471835648
+    m_Localized: 嗯哼，該說的都說完了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85863683411968
+    m_Localized: 好了，工作工作，拜啦
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85938941808640
+    m_Localized: 嗯哼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86082663829504
+    m_Localized: 好吃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86182706368512
+    m_Localized: 啊，話說
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86279259246592
+    m_Localized: 我超愛螃蟹的啦
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86320959016960
+    m_Localized: 好吃好吃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86372007890944
+    m_Localized: 我要來抓螃蟹了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420935120801792
+    m_Localized: 哈囉
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420995262926848
+    m_Localized: 可以幫我個忙嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421041618374656
+    m_Localized: 我想要準備一頓特別的晚餐驚艷我老爸一下，可是他不準我碰槍
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421194010021888
+    m_Localized: 這裡附近有一隻<color=#FFEF4D><b>又大又好吃的魚</color></b>，沒槍的話處理不了，你可以幫我嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421367142502400
+    m_Localized: 牠超級愛吃<color=#FFEF4D><b>水蛭</color></b>，如果你可以幫我抓個幾隻過來，我可以幫你弄個誘餌
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421496939433984
+    m_Localized: 水蛭到處都有，你隨便走都看得到
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421662740271104
+    m_Localized: 嗯…謝啦
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421704255492096
+    m_Localized: 再幾隻，誘餌就完成了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421753421123584
+    m_Localized: 讚啦
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421802796470272
+    m_Localized: 好吃好吃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421838527746048
+    m_Localized: 嗯嗯嗯嗯嗯嗯嗯嗯
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422029922226176
+    m_Localized: 來吧，<color=#FFEF4D><b>槍</color></b>要記得帶啊，拳頭不管用的
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422903297953792
+    m_Localized: 如果你幫我找到牠的話，我之前有發現一座島，可以把<color=#FFEF4D><b>位置資訊</color></b>分享給你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423099348111360
+    m_Localized: 位置資訊分享給你之後，就會自動<color=#FFEF4D><b>顯示在你的地圖上面</color></b>了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423227211468800
+    m_Localized: 萬事拜託了，感恩
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423390374088704
+    m_Localized: 給你個好東西，可以幫你在地圖上找到<color=#FFEF4D><b>下一座島</color></b>的位置
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423701432061952
+    m_Localized: 現在可以用地圖來搜尋另一座島了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424172574035968
+    m_Localized: 噁爆了啦啦啦啦啦
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424223446749184
+    m_Localized: 你抓到的東西，我會開個好價錢買下來的
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424275997184000
+    m_Localized: 嗯嗯
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424310931542016
+    m_Localized: 去禮品店挑個禮物吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424428346888192
+    m_Localized: 呃…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424470780661760
+    m_Localized: 我什麼都吃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424909949456384
+    m_Localized: 噁爛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425008100364288
+    m_Localized: 噗噗噗
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425047040282624
+    m_Localized: 嗯～
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425069555306496
+    m_Localized: 哈啾
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425173376913408
+    m_Localized: 嗯～～啊～～
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425204075024384
+    m_Localized: 噁爛到爆了啦
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425625044733952
+    m_Localized: 噁噁噁
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425665897254912
+    m_Localized: 我本來想好好休息一下的，現在想游個泳都沒辦法
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425774320013312
+    m_Localized: 海裡面有一隻<color=#FFEF4D><b>超可怕的魚</color></b>，我整個人被嚇爛
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425851797196800
+    m_Localized: 可以請你幫我處理一下嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425902661521408
+    m_Localized: 我這裡有一些小零食可以讓你當誘餌，可是我有個小要求
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426008861298688
+    m_Localized: 給我個戰利品，讓我回去可以跟朋友炫耀一下
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426140730216448
+    m_Localized: 那種<color=#FFEF4D><b>瀕臨絕種的稀有生物</color></b>最讚了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426302928146432
+    m_Localized: 你看到就知道了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426445853249536
+    m_Localized: 嗯嗯嗯，謝啦。誘餌給你，萬事拜託了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427343753072640
+    m_Localized: 安安，在下火烤系小當家
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427397419192320
+    m_Localized: 我找了三五好友要來嚐個海味，尷尬的是海味現在還在海裡游
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427492277571584
+    m_Localized: 可以幫我弄個酷玩意，讓我一展廚藝嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427568391606272
+    m_Localized: 常言道：晚餐要美好，<color=#FFEF4D><b>鯊魚</color></b>不能少
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427626839232512
+    m_Localized: 幫我抓一隻鯊魚回來，我就讓你用我的爐子烤一些<color=#FFEF4D><b>你自己抓到的東西</color></b>來吃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427711400595456
+    m_Localized: 把東西烤了再賣，價錢也好看一點
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427834952208384
+    m_Localized: 啊喔，不小心被我吃了。來吧，打火機給你生火
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427978091220992
+    m_Localized: 接過打火機
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428033137266688
+    m_Localized: 火爐已生火
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428084962086912
+    m_Localized: 用火爐把抓到的東西烤一烤，可以用更高的價格賣出
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428145339092992
+    m_Localized: 火爐可以用了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428776917389312
+    m_Localized: 來吧，想要什麼就說一聲吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428869942857728
+    m_Localized: 嗯哼，好喔，我是可以給你我老家的<color=#FFEF4D><b>座標</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428983528804352
+    m_Localized: 有了座標，這裡結束之後你就可以脫離險境了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429062327193600
+    m_Localized: 讚啦，感恩。我老家的座標在這裡
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429365504069632
+    m_Localized: 現在可以用地圖找找看那座島
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429676247470080
+    m_Localized: 歡迎光臨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429777397305344
+    m_Localized: 東西買得好，渡假免煩惱
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429888487641088
+    m_Localized: 想玩飛盤？球類運動？放心，我們都有
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429947690242048
+    m_Localized: 想幫船升級一下？交給我們就對了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430009279401984
+    m_Localized: 要不要考慮來一台收音機，讓音樂陪你渡假？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430096915189760
+    m_Localized: 要槍的話，我們也有喔！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430142016540672
+    m_Localized: 有酷玩意想賣嗎？找我們就對了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430235213975552
+    m_Localized: 咱們下好離手，銀貨兩訖
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431287153807360
+    m_Localized: 呼呼，先祝你假期愉快
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431387955515392
+    m_Localized: 嗯
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431431949570048
+    m_Localized: 嗯嗯嗯…食物
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431477998833664
+    m_Localized: 好吃好吃好吃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431501973475328
+    m_Localized: 吃飽長高高
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431549616574464
+    m_Localized: 好喝好喝
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431574971142144
+    m_Localized: 嗯？什麼跟什麼？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431605803470848
+    m_Localized: 好吃好吃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431984423292928
+    m_Localized: 願者上鉤歡樂城，歡迎您大駕光臨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432080112144384
+    m_Localized: 沒看過你哎，你之前來過我們這裡嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432134969446400
+    m_Localized: 沒事，聽地頭蛇娓娓道來就是了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432194503397376
+    m_Localized: 看你身上有什麼，隨便挑一個出來放在轉盤桌上
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432333905285120
+    m_Localized: 然後選一個想要賭的顏色，遊戲就會開始了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432428646223872
+    m_Localized: 賭贏了，桌上的抵押物就能夠賣個更高的價錢
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432622834110464
+    m_Localized: 賭輸了呢，桌上的抵押物就都是我們的
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432701175320576
+    m_Localized: 那就先預祝賭博亨通，愈戰愈勇
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432857400561664
+    m_Localized: 那隻鳥還在嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432911301562368
+    m_Localized: 你沒看到嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432943568343040
+    m_Localized: 有一隻<color=#FFEF4D><b>超大的鳥</color></b>在那邊到處飛，島上的人都被嚇爛了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433023109124096
+    m_Localized: 那隻鳥出現之後，大家都不敢出門了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433114742083584
+    m_Localized: 如果有人帶<color=#FFEF4D><b>鮪魚</color></b>來，那隻鳥就會出現
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433223122898944
+    m_Localized: 那隻鳥對鮪魚的味道有反應，<color=#FFEF4D><b>放一隻在草地上</color></b>就對了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433311186505728
+    m_Localized: 這時候就只有<color=#FFEF4D><b>專業魔王誘餌</color></b>堪用了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433889987874816
+    m_Localized: 把那隻<color=#FFEF4D><b>鳥的頭</color></b>剁下來給我。看到鳥頭，大家才能安心
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434090685321216
+    m_Localized: 我之前看過一座酷酷的島，<color=#FFEF4D><b>座標</color></b>存在我的隨身碟上面，到時候可以直接給你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434531007549440
+    m_Localized: 謝啦，我來跟大家說我們安全了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435174065655808
+    m_Localized: 隨身碟給你，我來跟大家說我們安全了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435379519442944
+    m_Localized: 快點收下吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443520457986048
+    m_Localized: 願者上鉤歡樂城，歡迎您大駕光臨
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443596425220096
+    m_Localized: 我們家的老虎機有各種獎品可以解鎖
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444001943113728
+    m_Localized: 隨便丟一隻<color=#FFEF4D><b>真・潮系生物</color></b>或<color=#FFEF4D><b>魔王獎杯</color></b>到洞裡面，機器就會開始轉了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444269380325376
+    m_Localized: 記得要分享戰利品就是了。只有把東西丟到洞裡的人可以得到外觀
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444478231498752
+    m_Localized: 說明完畢，祝你百戰百勝
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444517112696832
+    m_Localized: 嘖嘖，我現在餓到可以吞下 600 條春捲啊
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444581440737280
+    m_Localized: 啊，你還在啊
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444785908862976
+    m_Localized: 你好，需要什麼呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444883258658816
+    m_Localized: 蛤？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444906302164992
+    m_Localized: 說大聲一點，我聽不到
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444978158981120
+    m_Localized: 煩死了，你就隨便買個東西就好了啦
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445032907231232
+    m_Localized: 謝謝
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445180517371904
+    m_Localized: 歡迎來到神槍手小舖
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445243469680640
+    m_Localized: 我們店裡的槍枝款式應有盡有
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445357462474752
+    m_Localized: 最近也剛好新進了一批配件
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445457282715648
+    m_Localized: 隨便看看，不用有壓力
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445558650654720
+    m_Localized: 有什麼可以賣給我們的話，我們這裡也會收
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445650417831936
+    m_Localized: 讚啦
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445687394816000
+    m_Localized: 謝謝
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445710081806336
+    m_Localized: 來，錢給你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446218225930240
+    m_Localized: 哈囉，不好意思
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447747326562304
+    m_Localized: 我們完成任務的時候就可以走了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454228843253760
+    m_Localized: 哈囉，不好意思
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454260141150208
+    m_Localized: 我們的任務內容，可以麻煩您告知一下那位科學家嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454364499628032
+    m_Localized: 不好一思，她在那璃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454417670819840
+    m_Localized: 我們就趁這個時候來裝備一下吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454499019345920
+    m_Localized: 我們這裡有各種武器和工具
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454568154058752
+    m_Localized: 應有盡有，任君挑選
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454611363778560
+    m_Localized: 有什麼想賣給我的話，我也可以收購
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454647212494848
+    m_Localized: 完畢
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454730767224832
+    m_Localized: 完畢
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454766502694912
+    m_Localized: 不好意思
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454809334927360
+    m_Localized: 讚喔
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454850141310976
+    m_Localized: 熟度完美
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454894819037184
+    m_Localized: 好吃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454923923312640
+    m_Localized: 謝謝
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454969381179392
+    m_Localized: 好呲好呲
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455000880402432
+    m_Localized: 我根本不喜歡吃魚
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455252588974080
+    m_Localized: 那個不好意思，想請問您是否是漁夫呢？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455365046652928
+    m_Localized: 我們現在剛好在進行一項研究任務，可是只靠我們自己沒辦法完成
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455419270615040
+    m_Localized: 我們需要有人來幫我們抓一條<color=#FFEF4D><b>大鯨魚</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455461192683520
+    m_Localized: 幫我找一些小型一點的<color=#FFEF4D><b>生物</color></b>，我來幫你弄成誘餌
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455554054574080
+    m_Localized: 打敗大鯨魚之後，記得一定要把牠<color=#FFEF4D><b>丟到火山裡面</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455624334331904
+    m_Localized: 這樣我們才能觀察牠在極熱狀況下的反應
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455687810928640
+    m_Localized: 可能會有一些意想不到的反應，你自己也要有心理準備
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455804467105792
+    m_Localized: '<color=#FFEF4D><b>打敗大鯨魚</color></b>的話，我們的研究材料就全部搜集完畢了'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455996067106816
+    m_Localized: 事成後，我們可以把船借給你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456054191771648
+    m_Localized: 船上有<color=#FFEF4D><b>本島的座標</color>，讓你可以安全回家
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456126010839040
+    m_Localized: 你一臉看起來就是在外漂流多年的樣子
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456167941296128
+    m_Localized: 大概就是這樣，上工上工
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456261805625344
+    m_Localized: 讚，再幾個就 OK 了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456311600402432
+    m_Localized: 讚喔
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456350632595456
+    m_Localized: 太完美了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456383964729344
+    m_Localized: 好吃
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456412515356672
+    m_Localized: 快了快了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456436292866048
+    m_Localized: 謝謝
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456481687818240
+    m_Localized: 大功告成，速速去收鯨吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457160535920640
+    m_Localized: 都 OK 了嗎？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457217314213888
+    m_Localized: 我們愈早結束愈早收工，萬事拜託了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457269168394240
+    m_Localized: 讚，船的鑰匙給你，快點回家吧
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457522932174848
+    m_Localized: 任務完成了
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457572198469632
+    m_Localized: 想要再挑戰一次也可以，只要先幫我搜集好製作誘餌的材料就好
+    m_Metadata:
+      m_Items: []
+  - m_Id: 475779793768448
+    m_Localized: 來，給你
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454831413317632
+    m_Localized: 把釣竿弄到手，就能釣到更讚的魚
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455008320671744
+    m_Localized: 切記：要釣東西的話，就一定要使用釣竿上面的<color=#FFEF4D><b>卷線器</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978330866962432
+    m_Localized: 話說你開始用槍的時候，我想看你炫個幾招<color=#FFEF4D><b>花式槍法</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978762100133888
+    m_Localized: 你用<color=#FFEF4D><b>花式槍法</color></b>擊落的每個目標，我都會補貼一點現金，愈炫愈好
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8382261860323328
+    m_Localized: '<color=#FFEF4D><b>煮熟</color></b>來吃也比較好吃'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

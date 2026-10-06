@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_de
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: a6b0b69a1f2361645a78b193b90d2d4e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: Bewegen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: Mit {0} bewegst du dich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: Umsehen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: Mit {0} siehst du dich um
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: Interagieren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: Drücke {0}, um einen Gegenstand aufzuheben. Versuch's mit einer Muschel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: Essen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: Wenn du Hunger hast, musst du etwas essen. Du kannst ein beliebiges Tier essen, indem du es festhältst und {0} gedrückt hältst. Versuch's mit einer Muschel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: Verkaufen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: Um Geld zu verdienen, musst du Gegenstände verkaufen. Schnapp dir eine Muschel, geh zum NPC und halte {0} gedrückt, um die Muschel in den Mund des Händlers zu werfen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: Kaufen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: Geh zum Laden und drücke {0}, um eine Krabbenangel zu kaufen. Dann kannst du noch wertvollere Tiere kaufen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: Angeln
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: Schau in Richtung Wasser und wirf mit {0} den Köder aus, um Fische zu fangen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: Töten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: Wenn ein Tier den Köder geschluckt hat, hol deinen Fang mit {0} ein und drücke {1}, um ihn fallen zu lassen. Lege dann mit {2} das ab, was du hältst, und schlage mit {0} zu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: Reden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: Schließe Quests von NPCs auf der Insel ab, um voranzukommen. Sieh einen NPC an und drücke {0}, um zu erfahren, was er will
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: Bravo, du hast das Tutorial abgeschlossen. Du kannst jetzt machen, was du willst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: Nachdenken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: Wenn du mal vergisst, welche Tiere du schon gefangen hast, könnte Nachdenken mit {0} helfen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: Untersuchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: Drücke {0}, um einen Gegenstand zu untersuchen, während du ihn hältst. Versuch's mit einem Tier, um seinen Wert herauszufinden
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

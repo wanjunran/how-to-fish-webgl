@@ -1,0 +1,807 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NPC Labels_sv
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: sv
+  m_SharedData: {fileID: 11400000, guid: 0b10042bfac98894db904666807ebd73, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6662213632
+    m_Localized: Prata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54046427271168
+    m_Localized: Ta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54116627337216
+    m_Localized: Tändare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54213498982400
+    m_Localized: Minne för koordinaterna till ö
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54739510841344
+    m_Localized: Båtnycklar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81550055657472
+    m_Localized: uh hej
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81663972954112
+    m_Localized: kraschade du precis här?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81871247069184
+    m_Localized: hursomhelst jag behöver hjälp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81930336423936
+    m_Localized: det finns en <color=#FFEF4D><b>långbent varelse</color></b> som stjäl min öl när jag sover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82093876531200
+    m_Localized: jag har varit vaken i en hel vecka nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82158628196352
+    m_Localized: kan du SNÄLLA ta bort den åt mig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82227385421824
+    m_Localized: jag gissar på att du kan fånga den om du sätter en <color=#FFEF4D><b>tom ölflaska</color></b> på betet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82357429817344
+    m_Localized: jag har några över här någonstans, men de är fulla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82606181404672
+    m_Localized: om du <color=#FFEF4D><b>hämtar en till mig</color></b> kan jag tömma den åt dig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82703942242304
+    m_Localized: om du inte har råd med det kan du alltid fånga några krabbor och sälja dem till mig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82801275260928
+    m_Localized: bara plocka upp krabbfiskespöt och börja fiska
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82976676859904
+    m_Localized: bluurgh här får du
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83161104601088
+    m_Localized: mmm tack, här får du
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83225633968128
+    m_Localized: sluurp, varsågod
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83303882903552
+    m_Localized: ta denna <color=#FFEF4D><b>tomma ölburken</color></b> och sätt på den på spöt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84195684208640
+    m_Localized: om du lyckas döda den kan jag byta min <color=#FFEF4D><b>båt</color></b> mot den
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84399493828608
+    m_Localized: jag har ingen användning för den ändå
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84463796703232
+    m_Localized: på det sättet kan du låta mig dricka ifred
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84517198581760
+    m_Localized: kom bara ihåg att använda <color=#FFEF4D><b>kartan</color></b> när du kör båten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84616054132736
+    m_Localized: du kan ta den bredvid mig om du vill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84935181946880
+    m_Localized: mums mums
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85059324956672
+    m_Localized: mums mums mums
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85143248785408
+    m_Localized: äntligen, här är <color=#FFEF4D><b>nycklarna till båten</color></b>, kom ihåg att använda kartan när du ska hitta andra öar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85361503588352
+    m_Localized: ta nycklarna och stick
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85414536368128
+    m_Localized: låt mig dricka min öl nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85790471835648
+    m_Localized: hursomhelst, det var allt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85863683411968
+    m_Localized: okej jag måste jobba igen nu, ses sen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85938941808640
+    m_Localized: hmm mhm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86082663829504
+    m_Localized: gott
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86182706368512
+    m_Localized: oo ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86279259246592
+    m_Localized: ja älskar krabbor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86320959016960
+    m_Localized: MUMS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86372007890944
+    m_Localized: jag måste skita
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420935120801792
+    m_Localized: hej
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420995262926848
+    m_Localized: kan du hjälpa mig med en grej?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421041618374656
+    m_Localized: jag skulle vilja överraska min far med en speciell middag, men han låter mig inte hantera vapen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421194010021888
+    m_Localized: det finns en <color=#FFEF4D><b>stor smaskig fisk</color></b> simmandes häromkring, men jag kan inte döda den utan ett vapen, kan du lösa det åt mig?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421367142502400
+    m_Localized: den gillar <color=#FFEF4D><b>blodiglar</color></b>, så om du kan skaffa några till mig kan jag göra ett bete utav dem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421496939433984
+    m_Localized: de kryper runt lite överallt på marken här
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421662740271104
+    m_Localized: mm tack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421704255492096
+    m_Localized: bara ett par till så är betet redo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421753421123584
+    m_Localized: den var god
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421802796470272
+    m_Localized: gott gott gott
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421838527746048
+    m_Localized: mmmmmmmmmmmmmmmmmmmm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422029922226176
+    m_Localized: här får du, var redo med ett <color=#FFEF4D><b>vapen</color></b>, att slåss mot denna med bara händerna är farligt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422903297953792
+    m_Localized: om du hittar den smaskiga fisken åt mig kan jag ge dig <color=#FFEF4D><b>koordinaterna</color></b> för en annan ö som jag hittat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423099348111360
+    m_Localized: jag tror den automatiskt <color=#FFEF4D><b>läggs till i din karta</color></b> när jag ger den till dig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423227211468800
+    m_Localized: men ge mig fisken först tack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423390374088704
+    m_Localized: här får du, du kan hitta den <color=#FFEF4D><b>nya ön</color></b> i kartan när du tar denna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423701432061952
+    m_Localized: du kan använda kartan för att hitta andra öar nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424172574035968
+    m_Localized: BLÖhrghh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424223446749184
+    m_Localized: jag ger dig ett bra pris för din fångst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424275997184000
+    m_Localized: hm mh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424310931542016
+    m_Localized: välj något från butiken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424428346888192
+    m_Localized: öghh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424470780661760
+    m_Localized: jag äter allt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424909949456384
+    m_Localized: bläh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425008100364288
+    m_Localized: ppfft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425047040282624
+    m_Localized: OM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425069555306496
+    m_Localized: atshoo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425173376913408
+    m_Localized: mlmmrr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425204075024384
+    m_Localized: äck ligt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425625044733952
+    m_Localized: ååhhh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425665897254912
+    m_Localized: jag tog lite ledigt från jobbet för att ta det lungt men kan inte ens simma nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425774320013312
+    m_Localized: det finns en <color=#FFEF4D><b>läskig fisk</color></b> i havet så jag är för rädd att gå i
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425851797196800
+    m_Localized: du skulle inte kunna ta bort den åt mig eller?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425902661521408
+    m_Localized: jag har lite tilltugg över som du kan använda som bete, men jag vill ha något för det
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426008861298688
+    m_Localized: kanske något att visa mina kollegor när jag kommer tillbaka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426140730216448
+    m_Localized: en av de <color=#FFEF4D><b>utrotningshotade varelserna</color></b> skulle vara koolt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426302928146432
+    m_Localized: du kommer nog se om den är utrotningshotad när du fångar den
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426445853249536
+    m_Localized: mm tack, gå och fånga den läskiga fisken med detta betet nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427343753072640
+    m_Localized: yo, jag är grillmästaren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427397419192320
+    m_Localized: jag ska ordna en fest senare med några kompisar men jag har inget att grilla för dem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427492277571584
+    m_Localized: skulle du kunna fånga något koolt som jag kan laga åt dem?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427568391606272
+    m_Localized: jag tror att en <color=#FFEF4D><b>haj</color></b> skulle passa bra idag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427626839232512
+    m_Localized: om du skaffar en åt mig kan jag låta dig <color=#FFEF4D><b>grilla din egna fångst</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427711400595456
+    m_Localized: på det sättet kan du tjäna mer pengar av grillade fiskar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427834952208384
+    m_Localized: oops jag åt den. aja här är tändaren, du kan tända grillen med den
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427978091220992
+    m_Localized: ta tändaren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428033137266688
+    m_Localized: grillen är startad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428084962086912
+    m_Localized: du kan använda grillen för att öka värdet av din fångst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428145339092992
+    m_Localized: varsågod och använd grillen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428776917389312
+    m_Localized: är det något du vill ha för det?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428869942857728
+    m_Localized: hmm okej jag kan väl ge dig <color=#FFEF4D><b>koordinaterna</color></b> där jag kommer ifrån
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428983528804352
+    m_Localized: på det sättet kan du lämna detta farliga stället efter du hjälper mig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429062327193600
+    m_Localized: åh tack så mycket, här är koordinaterna till där jag kommer ifrån
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429365504069632
+    m_Localized: du kan hitta ön på kartan nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429676247470080
+    m_Localized: välkommen till kiosken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429777397305344
+    m_Localized: vi har de perfekta sakerna för att göra din semester den bästa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429888487641088
+    m_Localized: ta en boll eller disk för att kasta runt om du vill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429947690242048
+    m_Localized: vi har också några uppgraderingar till din båt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430009279401984
+    m_Localized: eller så kanske du är intresserad av en radio så du kan lyssna på lite musik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430096915189760
+    m_Localized: vi har också vapen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430142016540672
+    m_Localized: om du har något intressant föremål att sälja kan jag köpa det
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430235213975552
+    m_Localized: bara kasta över föremålen till mig så får du pengarna för dem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431287153807360
+    m_Localized: det var allt, ha en trevlig semester
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431387955515392
+    m_Localized: mm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431431949570048
+    m_Localized: MM..MAT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431477998833664
+    m_Localized: om nom nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431501973475328
+    m_Localized: gott i magen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431549616574464
+    m_Localized: bra soppa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431574971142144
+    m_Localized: hmm vad var det
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431605803470848
+    m_Localized: gott gott gott
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431984423292928
+    m_Localized: välkommen till Lucky Bait Casino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432080112144384
+    m_Localized: du ser ny ut, har du varit här förut?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432134969446400
+    m_Localized: ifall att du inte har, låt mig berätta hur det går till
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432194503397376
+    m_Localized: du kan placera din insats på roulettebordet. vi tar emot alla föremål du har
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432333905285120
+    m_Localized: efter det kan du trycka på färgen du vill satsa på, sen kommer rouletten börja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432428646223872
+    m_Localized: om du vinner ökar föremålen som du lagt på bordet i värde så att de är värda mer när du säljer dem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432622834110464
+    m_Localized: men om du förlorar blir du av med hela din insats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432701175320576
+    m_Localized: lycka till
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432857400561664
+    m_Localized: är den fortfarande kvar?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432911301562368
+    m_Localized: har du inte sett den?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432943568343040
+    m_Localized: det är en <color=#FFEF4D><b>enorm fågel</color></b> som flyger runt och terroriserar ön
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433023109124096
+    m_Localized: ingen har vågat gå ut sedan fågeln kom hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433114742083584
+    m_Localized: varje gång någon kommer hit med lite <color=#FFEF4D><b>tonfisk</color></b> kommer fågeln tillbaka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433223122898944
+    m_Localized: jag tror att fågeln kan känna luften av den så länge <color=#FFEF4D><b>tonfisken ligger på gräset</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433311186505728
+    m_Localized: rätt säker på att det <color=#FFEF4D><b>professionella boss betet</color></b> är den som fångar tonfisken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433889987874816
+    m_Localized: om du ger mig <color=#FFEF4D><b>fågelns huvud</color></b> kan jag låta de andra veta att det är säkert att gå ut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434090685321216
+    m_Localized: jag kan till och med ge dig min sticka med <color=#FFEF4D><b>koordinaterna</color></b> till en kool ö jag såg på avstånd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434531007549440
+    m_Localized: tack, jag berättar för de andra att det är säkert att gå ut nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435174065655808
+    m_Localized: ta stickan så jag kan berätta för de andra att det är säkert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435379519442944
+    m_Localized: snälla ta den nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443520457986048
+    m_Localized: välkommen till Lucky Bait Casino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443596425220096
+    m_Localized: vår slotmaskin har många snygga utseenden att vinna till flera vapen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444001943113728
+    m_Localized: bara kasta en <color=#FFEF4D><b>frän varelse</color></b> eller en <color=#FFEF4D><b>boss-trofé</color></b> i hålet överst för att börja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444269380325376
+    m_Localized: kom bara ihåg att dela på varelserna, endast den som kastar in den fräna varelsen får vapenutseendet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444478231498752
+    m_Localized: det var allt, ha så kul
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444517112696832
+    m_Localized: åh jag skulle kunna käka typ 600 vårrullar just nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444581440737280
+    m_Localized: oj du var fortfarande kvar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444785908862976
+    m_Localized: hej, vad kan jag hjälpa dig med?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444883258658816
+    m_Localized: va?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444906302164992
+    m_Localized: prata högre, jag hör dig inte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444978158981120
+    m_Localized: gå och köp något istället bara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445032907231232
+    m_Localized: tack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445180517371904
+    m_Localized: hej och välkommen till min vapenaffär
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445243469680640
+    m_Localized: tror det eller ej men jag har ett stort utbud av vapen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445357462474752
+    m_Localized: köpte precis in några nya tillbehör också
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445457282715648
+    m_Localized: känn dig fri att titta runt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445558650654720
+    m_Localized: ah och jag köper också saker om du har något över
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445650417831936
+    m_Localized: snygg där
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445687394816000
+    m_Localized: tackar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445710081806336
+    m_Localized: här är pengarna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446218225930240
+    m_Localized: korpral hej korpral
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447747326562304
+    m_Localized: korpral när vi är färdiga med vårt uppdrag kan vi lämna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454228843253760
+    m_Localized: korpral hej korpral
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454260141150208
+    m_Localized: korpral kan du snälla prata med forskaren om vårt uppdrag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454364499628032
+    m_Localized: hon är där borta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454417670819840
+    m_Localized: under tiden föreslår jag att du skaffar lite försvar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454499019345920
+    m_Localized: jag har flera vapen och verktyg med mig korpral
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454568154058752
+    m_Localized: korpral du kan köpa vad du vill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454611363778560
+    m_Localized: jag kan också köpa av dig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454647212494848
+    m_Localized: över och ut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454730767224832
+    m_Localized: ut och över korpral
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454766502694912
+    m_Localized: korpral
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454809334927360
+    m_Localized: den var bra
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454850141310976
+    m_Localized: perfekt tillagad
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454894819037184
+    m_Localized: gott
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454923923312640
+    m_Localized: tackar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454969381179392
+    m_Localized: mumsfillibabba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455000880402432
+    m_Localized: jag gillar inte ens fisk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455252588974080
+    m_Localized: ursäkta mig, är du möjligtvis en fiskare?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455365046652928
+    m_Localized: vi är på ett uppdrag men kan inte avsluta det själva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455419270615040
+    m_Localized: vi behöver någon som kan fånga en <color=#FFEF4D><b>stor val</color></b> åt oss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455461192683520
+    m_Localized: ge mig några mindre <color=#FFEF4D><b>varelser</color></b> så att jag kan göra ett passande bete så du kan fånga den
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455554054574080
+    m_Localized: när du har dödat den måste du också <color=#FFEF4D><b>kasta i den döda valen i vulkanen</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455624334331904
+    m_Localized: på det sättet kan vi se hur den reagerar på extrem hetta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455687810928640
+    m_Localized: vi tror att detta kan göra något med besten så var redo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455804467105792
+    m_Localized: om du på något sätt <color=#FFEF4D><b>visar att du klarat det</color></b> har vi äntligen allt vi behöver
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455996067106816
+    m_Localized: som tack kan jag låta dig använda vår båt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456054191771648
+    m_Localized: den har <color=#FFEF4D><b>koordinaterna tillbaka till land</color></b> så att du kan komma hem igen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456126010839040
+    m_Localized: ser ut som att du varit borta ett tag så att säga
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456167941296128
+    m_Localized: aja, det var allt, börja jobba nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456261805625344
+    m_Localized: bra, bara ett par till
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456311600402432
+    m_Localized: den var god
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456350632595456
+    m_Localized: den var perfekt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456383964729344
+    m_Localized: mums
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456412515356672
+    m_Localized: nästan där
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456436292866048
+    m_Localized: tack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456481687818240
+    m_Localized: här får du, fånga valen nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457160535920640
+    m_Localized: är jobbet gjort?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457217314213888
+    m_Localized: jag vill bara få detta överstökat snälla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457269168394240
+    m_Localized: fantastiskt, här, ta nycklarna om du vill åka hem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457522932174848
+    m_Localized: du har klarat uppdraget
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457572198469632
+    m_Localized: om du vill kan du möta valen igen om du ger mig fler varelser för betet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 475779793768448
+    m_Localized: ta den
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454831413317632
+    m_Localized: skaffa fiskespöt för bättre fiskar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455008320671744
+    m_Localized: kom ihåg att du måsta <color=#FFEF4D><b>dra i linan</color></b> när du använder fiskespöt för att få napp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978330866962432
+    m_Localized: åh och när du skaffar ett skjutvapen vill jag se lite <color=#FFEF4D><b>trickskott</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978762100133888
+    m_Localized: jag slänger in lite extra stålar för varlser du dödar med ett snyggt <color=#FFEF4D><b>trickskott</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8382261860323328
+    m_Localized: de smakar också bättre när du äter dem <color=#FFEF4D><b>tillagade</color></b>
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

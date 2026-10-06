@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_fr
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: a6b0b69a1f2361645a78b193b90d2d4e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: Déplacement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: Utilisez {0} pour vous déplacer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: Observation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: Utilisez {0} pour observer votre environnement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: Interactions
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: Appuyez sur {0} tout en regardant un objet pour le ramasser. Essayez sur une palourde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: Nourriture
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: Pour soulager la faim, vous devez manger. Pour ce faire, maintenez {0} lorsque vous tenez une créature. Essayez sur une palourde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: Vente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: Pour gagner de l’argent, vous devez vendre des objets. Ramassez une palourde, allez voir le PNJ et maintenez {0} pour lancer la palourde dans la bouche du marchand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: Achat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: Rendez-vous à la boutique et achetez une canne à crabes en appuyant sur {0}. Vous pourrez ensuite attraper des créatures d’une plus grande valeur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: Pêche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: Regardez l’eau et lancez l’appât dans l’océan avec {0} pour attraper du poisson
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: Prise
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: Lorsqu’une créature a attrapé l’appât, ramenez-la avec {0}, puis appuyez sur {1} pour la lâcher. Ensuite, retirez votre équipement avec {2} et commencez à la matraquer à coups de poing avec {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: Conversations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: Terminez les quêtes des PNJ présents sur les îles pour avancer. Regardez un PNJ et appuyez sur {0} pour en savoir plus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: Bravo, vous avez terminé le tutoriel. Vous pouvez maintenant faire ce qu’il vous chante
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: Pensées
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: Vous pourriez oublier certaines créatures que vous avez déjà pêchées. Essayez de réfléchir en appuyant sur {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: Inspection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: Pour inspecter un objet, appuyez sur {0} lorsque vous l’avez en main. Essayez sur une créature pour découvrir sa valeur
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

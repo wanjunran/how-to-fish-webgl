@@ -1,0 +1,30 @@
+default:
+  area: SRP Foundation
+
+settings:
+  when:
+    path:
+      - ^.*CoreRenderPipelinePreferences?.*$
+      - ^.*CoreUtils?.*$
+      - ^.*ResourceReloader?.*$
+      - ^.*SceneRenderPipeline?.*$
+      - ^.*TextureCurve?.*$ 
+  area: SRP Settings
+
+xr:
+  when:
+    path:
+      - ^.*XRUtils?.*$
+  area: SRP XR
+
+camera:
+  when:
+    path:
+      - ^.*Camera?.*$
+  area: Camera
+
+tools:
+  when:
+    path:
+      - ^.*MeshGizmo?.*$
+  area: Graphics Tools

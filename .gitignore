@@ -1,0 +1,22 @@
+# Unity 生成目录（绝不能进仓库）
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+MemoryCaptures/
+*.utmp
+
+# IDE
+.vs/
+.idea/
+*.csproj
+*.sln
+*.user
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

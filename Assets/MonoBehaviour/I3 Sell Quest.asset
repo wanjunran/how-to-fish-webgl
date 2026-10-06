@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79f79baa68a44440685de84457223eca, type: 3}
+  m_Name: I3 Sell Quest
+  m_EditorClassIdentifier:
+  _questItems: []
+  _onlyCreatures: 0
+  _totalItems: 1
+  _interactableMesh: {fileID: 0}
+  _baitToReceive: {fileID: 0}
+  _type: 1
+  _islandToUnlock: 0
+  _linesLocalized:
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 429676247470080
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 429777397305344
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 429888487641088
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 429947690242048
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 430009279401984
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 430096915189760
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 430142016540672
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 430235213975552
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 431287153807360
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _onItemReceivedLinesLocalized:
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 431387955515392
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 431431949570048
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 431477998833664
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 431501973475328
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 431549616574464
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 431574971142144
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:777951a60c7315042809ad273cc48c5a
+    m_TableEntryReference:
+      m_KeyId: 431605803470848
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _onQuestCompletedLinesLocalized: []
+  _holdingItemLinesLocalized: []
+  _alreadyCompletedLinesLocalized: []
+  references:
+    version: 2
+    RefIds: []

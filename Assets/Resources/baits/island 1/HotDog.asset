@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d45fceec317a42238cbaccadf3ff2c, type: 3}
+  m_Name: HotDog
+  m_EditorClassIdentifier:
+  _nameLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:a2fb6c2a7ccc9b145aa3cd1df802bdbb
+    m_TableEntryReference:
+      m_KeyId: 1533629789982720
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _descriptionLocalized:
+    m_TableReference:
+      m_TableCollectionName: GUID:a2fb6c2a7ccc9b145aa3cd1df802bdbb
+    m_TableEntryReference:
+      m_KeyId: 3291869334818816
+      m_Key:
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _name: Hot Dog
+  _description: Catches bigger crustasians
+  _mesh: {fileID: 4300000, guid: 886447748023ec7489a35a9e19501d3f, type: 2}
+  _meshForNpc: {fileID: 0}
+  _cost: 1
+  _lostOnBaitChance: 40
+  _catchTimeMinMax: {x: 1, y: 3}
+  _requireReelingToCatch: 0
+  _hookPoint: {x: 0, y: -0.1, z: 0}
+  inventoryMeshPos: {x: -0.1, y: -0.1, z: 0}
+  _inventoryRot: {x: -36, y: 40, z: -140}
+  inventoryMeshScale: 5
+  _itemWeights:
+  - fishable: {fileID: 11400000, guid: 16971fac4aa8c7f48a36f8043a122dea, type: 2}
+    _weight: 10
+  - fishable: {fileID: 11400000, guid: c709ba2e2518b3a4b9b7e71ab9aa0098, type: 2}
+    _weight: 3
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Killscore Labels_it
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: it
+  m_SharedData: {fileID: 11400000, guid: 2e69b0e39d5890448801ae3b1cc82b8d, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 96034443264
+    m_Localized: 360
+    m_Metadata:
+      m_Items: []
+  - m_Id: 177374580736
+    m_Localized: Senza mirino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 687435501568
+    m_Localized: Mira istantanea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 758537342976
+    m_Localized: Colpo a distanza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1082044010496
+    m_Localized: Colpo alla testa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1134514753536
+    m_Localized: Combattimento aereo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1206866497536
+    m_Localized: Minaccia aerea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1275401424896
+    m_Localized: Pesca al volo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1360751316992
+    m_Localized: Colpo da novellino
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1491072536576
+    m_Localized: Colpo letale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1686380302336
+    m_Localized: Doppia uccisione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1726347825152
+    m_Localized: Tripla uccisione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1769368801280
+    m_Localized: Quadrupla uccisione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1801690107904
+    m_Localized: Quintupla uccisione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2729721810944
+    m_Localized: Pluri-uccisione
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2777788534784
+    m_Localized: Era ora
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2807245131776
+    m_Localized: Specie a rischio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2856997965824
+    m_Localized: Opportunista
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2897351364608
+    m_Localized: Bruciapelo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2932751290368
+    m_Localized: Sì ma stai calmo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2974270705664
+    m_Localized: Ultimo proiettile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3007141466112
+    m_Localized: Eccezionale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334752579670016
+    m_Localized: 'Hai ucciso:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 334780551483392
+    m_Localized: Mortiplicatore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010849860374528
+    m_Localized: Mischia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1010879283417088
+    m_Localized: Esplosione
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

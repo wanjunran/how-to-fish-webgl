@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451916751ce4b24628c8dee1ba51a92b, type: 3}
+  m_Name: U2 Swamp Man
+  m_EditorClassIdentifier:
+  _defaultUnlocked: 0
+  _hatMesh: {fileID: 4300000, guid: a287f22fa35d58644a1492b29f93d23a, type: 2}
+  _accessoryMesh: {fileID: 4300000, guid: bf7918fa7ee05904ca1fde782d285cf2, type: 2}
+  outfitMesh: {fileID: 4300000, guid: e312872b5f5c0cc4eb5b302b5a7e2814, type: 2}

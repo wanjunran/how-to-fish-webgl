@@ -1,0 +1,202 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 925a66ba88a42ac69cd04f2e0b336f75, type: 3}
+  m_Name: Brass Knuckles Skins
+  m_EditorClassIdentifier:
+  _skins:
+  - _name: Default
+    _rarity: 0
+    _useSkin: 0
+    _isRainbowSkin: 0
+    _colorOffset: {x: 0, y: 0}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0, y: 0}
+    _skinNoiseScale: 0
+    _noiseRotation: 0
+    _uvRotation: 0
+    _skinUVScale: {x: 0, y: 0}
+    _metallicMetallicness: 0
+    _metallicSmoothness: 0
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Camouflage
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 1.12, y: -0.06}
+    _colorOffset2: {x: 0, y: 0.96}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0.5, y: 0.5}
+    _skinNoiseScale: 84
+    _noiseRotation: 0
+    _uvRotation: 0
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 0.02
+    _metallicSmoothness: 0.02
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Wood
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: -5.24, y: 10.6}
+    _colorOffset2: {x: 0, y: 1.95}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0.4, y: 0.75}
+    _skinNoiseScale: 43.3
+    _noiseRotation: 0
+    _uvRotation: 90
+    _skinUVScale: {x: 7, y: 1}
+    _metallicMetallicness: 0.02
+    _metallicSmoothness: 0.02
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Emerald
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: -4.82, y: 4.21}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 0
+    _noiseType: 2
+    _skinSmoothStep: {x: 0.4, y: 0.61}
+    _skinNoiseScale: 3.08
+    _noiseRotation: 0
+    _uvRotation: -138.13
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 1
+    _metallicSmoothness: 0.4
+    _plasticMetallicness: 1
+    _plasticSmoothness: 0.4
+  - _name: Polka
+    _rarity: 1
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: -1.18, y: 0.27}
+    _colorOffset2: {x: 2.96, y: 4.1}
+    _skinAffects: 0
+    _noiseType: 1
+    _skinSmoothStep: {x: 0, y: 1}
+    _skinNoiseScale: 4
+    _noiseRotation: 0
+    _uvRotation: 45
+    _skinUVScale: {x: 15, y: 0.1}
+    _metallicMetallicness: 0
+    _metallicSmoothness: 0
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Hazard
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 0.06, y: 0.27}
+    _colorOffset2: {x: 0, y: 0.34}
+    _skinAffects: 0
+    _noiseType: 1
+    _skinSmoothStep: {x: 0.3, y: 0.3}
+    _skinNoiseScale: 50
+    _noiseRotation: 0
+    _uvRotation: 45
+    _skinUVScale: {x: 0.001, y: 1}
+    _metallicMetallicness: 0
+    _metallicSmoothness: 0
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Gold
+    _rarity: 3
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 5.08, y: 0.28}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 0
+    _noiseType: 1
+    _skinSmoothStep: {x: -0.18, y: 1}
+    _skinNoiseScale: 0.8
+    _noiseRotation: 0
+    _uvRotation: -89.44
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 1
+    _metallicSmoothness: 0.6
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Chess
+    _rarity: 1
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: 0, y: 1.74}
+    _colorOffset2: {x: 0, y: 0.45}
+    _skinAffects: 0
+    _noiseType: 1
+    _skinSmoothStep: {x: 0.35, y: 1.05}
+    _skinNoiseScale: 24.36
+    _noiseRotation: 0
+    _uvRotation: 45
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 0.02
+    _metallicSmoothness: 0.02
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Ruby
+    _rarity: 2
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: -6.19, y: 4.25}
+    _colorOffset2: {x: 0, y: 0}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0, y: 1}
+    _skinNoiseScale: 3.06
+    _noiseRotation: 0
+    _uvRotation: -118.83
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 1
+    _metallicSmoothness: 0.4
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Rainbow
+    _rarity: 3
+    _useSkin: 1
+    _isRainbowSkin: 1
+    _colorOffset: {x: 27, y: -1.16}
+    _colorOffset2: {x: 8.82, y: 0.44}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0, y: 1}
+    _skinNoiseScale: 0.83
+    _noiseRotation: 0
+    _uvRotation: -118.83
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 0
+    _metallicSmoothness: 0
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0
+  - _name: Diamond
+    _rarity: 3
+    _useSkin: 1
+    _isRainbowSkin: 0
+    _colorOffset: {x: -3.65, y: 4.02}
+    _colorOffset2: {x: 0, y: 2.01}
+    _skinAffects: 0
+    _noiseType: 0
+    _skinSmoothStep: {x: 0, y: 1}
+    _skinNoiseScale: 17.18
+    _noiseRotation: 0
+    _uvRotation: -8.18
+    _skinUVScale: {x: 1, y: 1}
+    _metallicMetallicness: 1
+    _metallicSmoothness: 0.5
+    _plasticMetallicness: 0
+    _plasticSmoothness: 0

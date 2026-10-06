@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_ru
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ru
+  m_SharedData: {fileID: 11400000, guid: a6b0b69a1f2361645a78b193b90d2d4e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: Как двигаться
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: Используйте {0}, чтобы передвигаться
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: Как смотреть
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: Используйте {0}, чтобы осматриваться
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: Как делать всякое
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: Нажмите {0}, глядя на предмет, чтобы подобрать его. Попробуйте сделать это с мидией
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: Как есть
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: Чтобы утолить голод, нужно поесть. Вы можете съесть любое существо, удерживая {0}, пока держите его в руках. Попробуйте сделать это с мидией
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: Как продавать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: Чтобы заработать деньги, нужно продавать предметы. Возьмите мидию, подойдите к персонажу и удерживайте {0}, чтобы бросить мидию ему в рот
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: Как покупать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: Отправьтесь в магазин и купите удочку на краба, нажав {0}. Сделав это, вы сможете ловить более ценных существ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: Как рыбачить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: Посмотрите на воду и забросьте приманку в океан с помощью {0}, чтобы поймать существо
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: Как убивать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: Когда существо клюнет на приманку, вытащите его с помощью {0}, а затем нажмите {1}, чтобы отпустить его. После этого уберите то, что вы держите в руках, нажав {2}, и начните бить кулаками, нажимая {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: Как говорить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: Выполняйте задания персонажей на острове, чтобы двигаться по сюжету. Посмотрите на персонажа и нажмите {0}, чтобы узнать, что ему нужно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: Отлично, вы прошли обучение. Теперь вы можете делать всё, что захотите
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: Как думать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: Вы можете забыть, каких существ вы уже поймали. Попробуйте подумать, нажав {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: Как осматривать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: Чтобы осмотреть предмет, нажмите {0}, держа его в руках. Попробуйте сделать это с существом, чтобы узнать его стоимость
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82c9386ba3954c43ae5c166b73715e0d, type: 3}
+  m_Name: Gunlmpact
+  m_EditorClassIdentifier:
+  _clips:
+  - {fileID: 8300000, guid: 0e91147fc83fdc044ae0691c99835097, type: 3}
+  - {fileID: 8300000, guid: b133ee7ef32862049b5284f8b89cc672, type: 3}
+  - {fileID: 8300000, guid: 22146f253fd878342a0d1728bb6ec020, type: 3}
+  _minVelToPlayClips:
+  - 1
+  - 5
+  - 10
+  _velForMaxVol: 15
+  _maxVol: 1
+  _minVol: 0.2
+  _minDelay: 0.15

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -299433217, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Player Labels Shared Data
+  m_EditorClassIdentifier:
+  m_TableCollectionName: Player Labels
+  m_TableCollectionNameGuidString: 2bccb6dc3bdafc041a125260ede7109a
+  m_Entries:
+  - m_Id: 7505268736
+    m_Key: player.warning
+    m_Metadata:
+      m_Items: []
+  - m_Id: 118708850688
+    m_Key: player.cantProgress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 332651909120
+    m_Key: player.whatHaveICaught
+    m_Metadata:
+      m_Items: []
+  - m_Id: 71293791195136
+    m_Key: player.extraInventorySlot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 500237266931712
+    m_Key: player.newCreatureCaught
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3372479931830272
+    m_Key: player.youAreDead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3372914465918976
+    m_Key: player.cantRespawn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3374238083403776
+    m_Key: player.friendsCanRevive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3378622573924352
+    m_Key: player.respawn
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8744106305720418381
+  references:
+    version: 2
+    RefIds:
+    - rid: 8744106305720418381
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1784275276822

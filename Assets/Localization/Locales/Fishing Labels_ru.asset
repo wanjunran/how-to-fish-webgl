@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Fishing Labels_ru
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ru
+  m_SharedData: {fileID: 11400000, guid: af7670f7f9cef4d48bad6bfc9af28d17, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 1277389524992
+    m_Localized: Отпустить существо {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1356275994624
+    m_Localized: Потянуть удочку (удерживайте {0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1522550788096
+    m_Localized: Забросить (отпустите {0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2505989246976
+    m_Localized: Намотать леску (удерживайте/нажимайте {0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2665037254656
+    m_Localized: Намотать леску (удерживайте/нажимайте {0}) | Отпустить существо {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3708898856960
+    m_Localized: Отмотать леску (удерживайте {0})
+    m_Metadata:
+      m_Items: []
+  - m_Id: 364734592929792
+    m_Localized: Исчезающий вид
+    m_Metadata:
+      m_Items: []
+  - m_Id: 983238841028608
+    m_Localized: Существо поймано!
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Steam Table_en
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d2577980f3077b7498396cc5ea205550, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 7551406080
+    m_Localized: Steam Relay Ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 101193437184
+    m_Localized: Waiting for Steam...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 114493575168
+    m_Localized: Connecting to Steam...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 134856921088
+    m_Localized: Reconnecting to Steam...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 156595998720
+    m_Localized: Connection lost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 174954467328
+    m_Localized: Connection failed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 196311863296
+    m_Localized: Steam Relay Unavailable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 222941499392
+    m_Localized: Checking Steam Relay...
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

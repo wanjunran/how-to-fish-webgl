@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1575395517, guid: c88ab7b37c4f350242674d2efd621c19, type: 3}
+  m_Name: URP-HighFidelity-Renderer
+  m_EditorClassIdentifier:
+  debugShaders:
+    debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
+    hdrDebugViewPS: {fileID: 4800000, guid: 573620ae32aec764abd4d728906d2587, type: 3}
+  probeVolumeResources:
+    probeVolumeDebugShader: {fileID: 0}
+    probeVolumeFragmentationDebugShader: {fileID: 0}
+    probeVolumeOffsetDebugShader: {fileID: 0}
+    probeVolumeSamplingDebugShader: {fileID: 0}
+    probeSamplingDebugMesh: {fileID: 0}
+    probeSamplingDebugTexture: {fileID: 0}
+    probeVolumeBlendStatesCS: {fileID: 0}
+  m_RendererFeatures:
+  - {fileID: 11400000, guid: c636b4a9b7ac2884d9b4fb3f33b77c0d, type: 2}
+  - {fileID: 11400000, guid: 43f4bb900d4c62a4b944d7049f33831a, type: 2}
+  - {fileID: 11400000, guid: 4b3a5ee00c3c02c45bd346d48bb1834c, type: 2}
+  - {fileID: 11400000, guid: d307709b07892cc43aa51d5764c72ed2, type: 2}
+  - {fileID: 11400000, guid: cb7879941e6e27c44a3cffc2f95d44a2, type: 2}
+  - {fileID: 11400000, guid: 0ebbbf9b06e8f3c44828db9097b7bd4d, type: 2}
+  - {fileID: 11400000, guid: f18bb814863a5d94ea3e7bad5fef05b9, type: 2}
+  - {fileID: 11400000, guid: 868368e73ea46cb488db2524750e016c, type: 2}
+  - {fileID: 11400000, guid: 17631fd624334ee43861e4f202e5bdcd, type: 2}
+  - {fileID: 11400000, guid: 06613fecd14cfd240a90f4277a59a614, type: 2}
+  - {fileID: 11400000, guid: 473df0a66495357488a1459eacd83fb5, type: 2}
+  m_RendererFeatureMap: adc0de57c6d2eee5e53d237c11c745240502aa8150e3b0076a35efeef0bc68790fbcd2bc6369c3c71835169298f466994286c7e097c5c699dc0b861917869cd999645eaee6888565276869bf7607fe31557b5e5a20a45d0e
+  m_UseNativeRenderPass: 0
+  xrSystemData: {fileID: 0}
+  postProcessData: {fileID: 11400000, guid: b606b3c3c504a1044b14930ca141e2b5, type: 2}
+  m_AssetVersion: 3
+  m_PrepassLayerMask:
+    serializedVersion: 2
+    m_Bits: 250544111
+  m_OpaqueLayerMask:
+    serializedVersion: 2
+    m_Bits: 250544111
+  m_TransparentLayerMask:
+    serializedVersion: 2
+    m_Bits: 235864047
+  m_DefaultStencilState:
+    overrideStencilState: 0
+    stencilReference: 15
+    stencilCompareFunction: 8
+    passOperation: 2
+    failOperation: 0
+    zFailOperation: 0
+  m_ShadowTransparentReceive: 1
+  m_RenderingMode: 0
+  m_DepthPrimingMode: 0
+  m_CopyDepthMode: 0
+  m_DepthAttachmentFormat: 0
+  m_DepthTextureFormat: 0
+  m_AccurateGbufferNormals: 0
+  m_IntermediateTextureMode: 1

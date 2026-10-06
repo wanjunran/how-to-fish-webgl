@@ -1,0 +1,651 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Item Labels_de
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 3d3b57a959995b04e8c31a8136a612d5, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 16543993856
+    m_Localized: (Krass)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 517595549696
+    m_Localized: Gegenstand zuerst ablegen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1074867556352
+    m_Localized: Sturmgewehr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1256535445504
+    m_Localized: Miesball
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397812187136
+    m_Localized: Bier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1440275320832
+    m_Localized: Schlagring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1604490711040
+    m_Localized: Krabbenangel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1700359917568
+    m_Localized: Dynamit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1755171082240
+    m_Localized: Angel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1833763950592
+    m_Localized: Wurfscheibe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1918321119232
+    m_Localized: Messer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2001888432128
+    m_Localized: Radargerät
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2061577572352
+    m_Localized: Pistole
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2125578457088
+    m_Localized: Radio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2198542569472
+    m_Localized: Schrotflinte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2265022287872
+    m_Localized: Maschinenpistole
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2319141392384
+    m_Localized: Scharfschützengewehr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2558585819136
+    m_Localized: Schneeball
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2793194213376
+    m_Localized: Kaiserfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2919820251136
+    m_Localized: Anglerfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3094898888704
+    m_Localized: Barsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3400911114240
+    m_Localized: Blobfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3487762567168
+    m_Localized: Blauer Sonnenbarsch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3901354496000
+    m_Localized: Fisch im Glas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4022288863232
+    m_Localized: Wels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4084528140288
+    m_Localized: Muschel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4144091451392
+    m_Localized: Clownfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4213171638272
+    m_Localized: Kabeljau
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4305442131968
+    m_Localized: Taschenkrebs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4358051287040
+    m_Localized: Krassflosser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4451802370048
+    m_Localized: Aal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4503895625728
+    m_Localized: Fliegender Fisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4570647973888
+    m_Localized: Schuppenfuß-Schnecke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756732465152
+    m_Localized: Knochenhecht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4878249840640
+    m_Localized: Grundel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4952019259392
+    m_Localized: Goldfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5012891193344
+    m_Localized: Heilbutt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5111486697472
+    m_Localized: Egel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5182122971136
+    m_Localized: Hummer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5235017338880
+    m_Localized: Makrele
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5332526518272
+    m_Localized: Hornhecht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5613381308416
+    m_Localized: Riemenfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5705463058432
+    m_Localized: Papageienfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6025832386560
+    m_Localized: Zander
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7383742500864
+    m_Localized: Hecht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7444769624064
+    m_Localized: Piranha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7517343666176
+    m_Localized: Roter Schnapper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7692686544896
+    m_Localized: Lachs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7754799992832
+    m_Localized: Seeigel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7821640421376
+    m_Localized: Möwe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7968906629120
+    m_Localized: Seepferdchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8022753103872
+    m_Localized: Raubglaswels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8279654223872
+    m_Localized: Garnele
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8336688369664
+    m_Localized: Steinfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8397388337152
+    m_Localized: Zwergbärbling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8622110756864
+    m_Localized: Tigersalmler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8700179337216
+    m_Localized: Drückerfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8798422519808
+    m_Localized: Voxelfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8910662094848
+    m_Localized: Gelbbrauner Kofferfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9004824219648
+    m_Localized: Albatros
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9060998533120
+    m_Localized: Blauhai
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9125917970432
+    m_Localized: Grönlandwal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9245774401536
+    m_Localized: Der alte Hecht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9401873813504
+    m_Localized: Riesen-Piranha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9471960633344
+    m_Localized: Koboldhai
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9624083845120
+    m_Localized: Mutierter Grönlandwal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9726227730432
+    m_Localized: Kugelfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9790161506304
+    m_Localized: Seespinne
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853273198592
+    m_Localized: Mondfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9947020087296
+    m_Localized: Thunfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10032218984448
+    m_Localized: Albatroskopf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10092432412672
+    m_Localized: Riesen-Piranha-Skelett
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10272070258688
+    m_Localized: Kugelfischflosse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10429339881472
+    m_Localized: Seespinnenpanzer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10533899685888
+    m_Localized: Walflosse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11671877275648
+    m_Localized: Leere Bierdose
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11769382260736
+    m_Localized: Anfänger-Bossköder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11915486646272
+    m_Localized: Anfänger-Köder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11994754797568
+    m_Localized: Egel-Köder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12079676870656
+    m_Localized: Karotte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12135154929664
+    m_Localized: Standard-Bossköder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12269896945664
+    m_Localized: Standard-Köder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12358149296128
+    m_Localized: Profi-Bossköder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12527846641664
+    m_Localized: Profi-Köder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12624521154560
+    m_Localized: Fischeimer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12704154210304
+    m_Localized: Forschungs-Bossköder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12876342972416
+    m_Localized: Forschungs-Köder
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14071937716224
+    m_Localized: Schiffsradar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16484916613120
+    m_Localized: Bereits gekauft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20829980676096
+    m_Localized: Kompensator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21003675193344
+    m_Localized: Erweitertes Magazin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21707294855168
+    m_Localized: Visiereinrichtung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413609025536
+    m_Localized: Laservisier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23487277780992
+    m_Localized: Leuchtpunktvisier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23593548861440
+    m_Localized: Scharfschützen-Zielfernrohr
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23718690115584
+    m_Localized: Schalldämpfer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35635374673920
+    m_Localized: Moderat verringerter Rückstoß
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36427158605824
+    m_Localized: Erhöhte Munitionsmenge im Magazin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36631865806848
+    m_Localized: Entfernt an Waffe angebrachte Visiere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36777357824000
+    m_Localized: Zeigt, was die Waffe anvisiert; erleichtert das Schießen aus der Hüfte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37000025034752
+    m_Localized: Erleichtert Treffer, während du zielst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37211061440512
+    m_Localized: Erleichtert Distanztreffer, während du zielst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37343916019712
+    m_Localized: Erheblich verringerter Rückstoß
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38419088101376
+    m_Localized: Nicht anbringbar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38503880151040
+    m_Localized: Distanzwaffe ausrüsten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38906973736960
+    m_Localized: Wert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39035646595072
+    m_Localized: Durchgaren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40700424572928
+    m_Localized: Nahkampfwaffe ausrüsten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51375519649792
+    m_Localized: Schärfen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51811857289216
+    m_Localized: Schadenserhöhung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51930019221504
+    m_Localized: Max.-Stufe für diese Insel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55632947924992
+    m_Localized: Kugeln verbessern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 55678741336064
+    m_Localized: Kugelschadenserhöhung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91764200919040
+    m_Localized: Großer Motor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 91838939222016
+    m_Localized: Doppelmotor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099514359926784
+    m_Localized: Schaden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099545099980800
+    m_Localized: Munition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1099588062236672
+    m_Localized: Aufsätze
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1483887722713088
+    m_Localized: Questgegenstand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1533629789982720
+    m_Localized: Hotdog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1536930950500352
+    m_Localized: Felsenkrabbe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828526547881984
+    m_Localized: Fahren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828554834268160
+    m_Localized: Fahren nicht möglich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828599990145024
+    m_Localized: Kein Schlüssel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1828643153727488
+    m_Localized: Zurück zum Festland
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830646902771712
+    m_Localized: Tiere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1830821041885184
+    m_Localized: Krasse Tiere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186154683748352
+    m_Localized: Zum Spielen <color=#FFEF4D><b>krasses Tier</color></b> einwerfen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186243099676672
+    m_Localized: dreht …
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186429616181248
+    m_Localized: Preise für
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291237806854144
+    m_Localized: Zum Fangen des Krustentier-Bosses
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291869334818816
+    m_Localized: Köder für größere Krustentiere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3291948657496064
+    m_Localized: Köder für Anfänger-Minibosse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292204136747008
+    m_Localized: Köder für Anfänger-Fische
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3292316321796096
+    m_Localized: Köder für Boss von Insel 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293021463990272
+    m_Localized: Köder für Boss von Insel 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293207191965696
+    m_Localized: Köder für Standard-Minibosse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293390399164416
+    m_Localized: Köder für Standard-Fische
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293514412150784
+    m_Localized: Köder für Profi-Minibosse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293643345055744
+    m_Localized: Köder für Profi-Fische
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293763109212160
+    m_Localized: Köder für großen Boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3293878242856960
+    m_Localized: Köder für Forschungs-Minibosse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3294053837393920
+    m_Localized: Köder für Forschungs-Fische
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3322076229881856
+    m_Localized: Gewicht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616357117153280
+    m_Localized: Radargerät
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3984920650797056
+    m_Localized: Boot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4754946219659264
+    m_Localized: Bing Bong
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755687046991872
+    m_Localized: Seestern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4755941158899712
+    m_Localized: Schwamm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4756916259082240
+    m_Localized: Tintenfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758365198176256
+    m_Localized: Manta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758665606811648
+    m_Localized: Hammerhai
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4758953906491392
+    m_Localized: Narwal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4759131669483520
+    m_Localized: Assel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4762162721017856
+    m_Localized: Einsiedlerkrebs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764482083049472
+    m_Localized: Segelfisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4764811897950208
+    m_Localized: Auster
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

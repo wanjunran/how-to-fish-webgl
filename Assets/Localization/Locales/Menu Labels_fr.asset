@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Menu Labels_fr
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: d6fafc7872dc8fe4d854f1b8803164bc, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 145510453248
+    m_Localized: Héberger une partie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 540202848256
+    m_Localized: Rejoindre une partie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 611896086528
+    m_Localized: Personnage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 662856880128
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 712303529984
+    m_Localized: Crédits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 825704927232
+    m_Localized: Quitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4535533260800
+    m_Localized: Rejoindre le Discord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4734813032448
+    m_Localized: Version
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6814114074624
+    m_Localized: Nouvelle partie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7015633604608
+    m_Localized: Nom du fichier de sauvegarde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7610180390912
+    m_Localized: Type de session
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7789121982464
+    m_Localized: Créer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37245739945984
+    m_Localized: Multijoueur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37324198596608
+    m_Localized: Joueur solo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39184305311744
+    m_Localized: Charger une partie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39423271587840
+    m_Localized: Info de sauvegarde
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39599050674176
+    m_Localized: Nom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39755464658944
+    m_Localized: Dernière partie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39959710486528
+    m_Localized: Durée de la partie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40071824232448
+    m_Localized: Île
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40212325027840
+    m_Localized: Supprimer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40331548119040
+    m_Localized: Charger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40489782431744
+    m_Localized: Supprimer la sauvegarde ?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40707345174528
+    m_Localized: Oui
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40755344789504
+    m_Localized: Non
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40935997657088
+    m_Localized: Retour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41700023685120
+    m_Localized: Identifiant session
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41873382658048
+    m_Localized: Rejoindre avec un identifiant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42034817224704
+    m_Localized: Trouver des amis Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42733596659712
+    m_Localized: Personnalisation du personnage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42928711487488
+    m_Localized: Peau
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43025155313664
+    m_Localized: Couvre-chef
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43107774713856
+    m_Localized: Tenue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43263270146048
+    m_Localized: Accessoire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44845541969920
+    m_Localized: Couleur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46104130965504
+    m_Localized: Réinitialiser la sélection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46266576359424
+    m_Localized: Choix aléatoire dans la sélection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46447279558656
+    m_Localized: Réinitialiser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46522399543296
+    m_Localized: Choix aléatoire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47508979535872
+    m_Localized: Conception
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47642547146752
+    m_Localized: Programmation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47748591734784
+    m_Localized: Graphismes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47903944560640
+    m_Localized: Musique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50236178911232
+    m_Localized: Passer…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50502492049408
+    m_Localized: Merci d’avoir joué !
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3931751522586624
+    m_Localized: How to Fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3952311279374336
+    m_Localized: Saisir le nom de la partie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3953281396723712
+    m_Localized: Saisir du texte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5068142029656064
+    m_Localized: Haricot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121082929369088
+    m_Localized: Difficulté
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121140584271872
+    m_Localized: Facile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121160876314624
+    m_Localized: Par défaut
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121201640755200
+    m_Localized: Difficile
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

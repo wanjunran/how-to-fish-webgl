@@ -1,0 +1,807 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: NPC Labels_ja
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: 0b10042bfac98894db904666807ebd73, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6662213632
+    m_Localized: 会話する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54046427271168
+    m_Localized: 受け取る
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54116627337216
+    m_Localized: ライター
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54213498982400
+    m_Localized: 島の座標が記録されたUSB
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54739510841344
+    m_Localized: ボートのカギ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81550055657472
+    m_Localized: あー、こんにちは
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81663972954112
+    m_Localized: もしかして、君遭難してここに着いたばかりなのかい？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81871247069184
+    m_Localized: まあいいや…ちょっと手を貸してほしいんだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 81930336423936
+    m_Localized: 寝てる間に、この<color=#FFEF4D><b>足長の生き物</color></b>が俺のビールを盗むんでね…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82093876531200
+    m_Localized: おかげでこっちは1週間寝不足だよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82158628196352
+    m_Localized: 頼むから、こいつをどうにかしてくれないか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82227385421824
+    m_Localized: '<color=#FFEF4D><b>空のビール缶</color></b>で騙せば、怒って捕まえやすくなるはずだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82357429817344
+    m_Localized: こっちにも予備のものがあるが、全部中身入りでね
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82606181404672
+    m_Localized: '<color=#FFEF4D><b>それを1個持ってきてくれれば</color></b>空にしてやるぞ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82703942242304
+    m_Localized: お金が足りないんなら、カニを捕まえてきな！俺が買ってやるからよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82801275260928
+    m_Localized: カニ専用の釣竿があるから、使ってみな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 82976676859904
+    m_Localized: ゲェェェップ。ほら、受け取ってくれ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83161104601088
+    m_Localized: ん〜なかなか。ありがとな。報酬を受け取ってくれ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83225633968128
+    m_Localized: グビグビッ！ほら、これをやるよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 83303882903552
+    m_Localized: '<color=#FFEF4D><b>この空のビール缶を</color></b>をロッドに着けるんだ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84195684208640
+    m_Localized: もし倒せたら、俺の<color=#FFEF4D><b>船</color></b>と交換してやるよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84399493828608
+    m_Localized: もう今は使わないし
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84463796703232
+    m_Localized: そうすれば俺も静かに酒が楽しめるしな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84517198581760
+    m_Localized: 船に乗っている時は、<color=#FFEF4D><b>探知機</color></b>を必ず使うんだぞ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84616054132736
+    m_Localized: 俺の隣にあるやつを使えばいい
+    m_Metadata:
+      m_Items: []
+  - m_Id: 84935181946880
+    m_Localized: うまいっ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85059324956672
+    m_Localized: うまっ！うまっ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85143248785408
+    m_Localized: やっとか！さ、これが俺の<color=#FFEF4D><b>船のカギ</color></b>だ。新しい島を探す時は、必ず探知機を使えよ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85361503588352
+    m_Localized: ほら、カギを受け取ったらもう行きな！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85414536368128
+    m_Localized: 俺はゆっくりひとり酒を楽しむとするよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85790471835648
+    m_Localized: とにかく、そんな感じだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85863683411968
+    m_Localized: よし、じゃあ仕事に戻らないと。またあとでな！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 85938941808640
+    m_Localized: ん〜〜
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86082663829504
+    m_Localized: うま！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86182706368512
+    m_Localized: やっぱりこれだな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86279259246592
+    m_Localized: カニ最高！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86320959016960
+    m_Localized: うまうま！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 86372007890944
+    m_Localized: カニを捕まえないと
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420935120801792
+    m_Localized: こんにちは
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420995262926848
+    m_Localized: ちょっと協力してくれない？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421041618374656
+    m_Localized: 父さんの誕生日にサプライズで特別なディナーを用意したいんだけど、銃を使うなって言われてるんだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421194010021888
+    m_Localized: この辺にいる<color=#FFEF4D><b>大きくて美味しそうな魚</color></b>を仕留めるには、どうしても銃が必要みたいで…君、代わりに獲ってきてくれないかな？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421367142502400
+    m_Localized: あの魚、<color=#FFEF4D><b>ヒル</color></b>が大好物なんだ。持ってきてくれれば釣り用のエサにしてあげるよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421496939433984
+    m_Localized: そこら中の地面にいるから、探してみて
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421662740271104
+    m_Localized: ありがとー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421704255492096
+    m_Localized: あと数匹あればエサができるよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421753421123584
+    m_Localized: いいね！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421802796470272
+    m_Localized: うまーい！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421838527746048
+    m_Localized: ん〜〜〜
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422029922226176
+    m_Localized: はい！<color=#FFEF4D><b>銃</color></b>は必ず持っていってね。素手で戦うのは危険すぎるからさ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422903297953792
+    m_Localized: あのおいしい獲物を持ってきてくれたら、お礼に僕が見つけた島の<color=#FFEF4D><b>場所</color></b>を教えてあげるよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423099348111360
+    m_Localized: 場所を共有したら、自動的に<color=#FFEF4D><b>君のマップにも追加される</color></b>と思う
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423227211468800
+    m_Localized: とりあえず先にディナーの食材をよろしくね！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423390374088704
+    m_Localized: じゃあ約束のお礼。マップ上で<color=#FFEF4D><b>次の島</color></b>を探してみて
+    m_Metadata:
+      m_Items: []
+  - m_Id: 423701432061952
+    m_Localized: これでマップを使って次の島が見つけられるはずだよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424172574035968
+    m_Localized: ゲェェ〜ップ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424223446749184
+    m_Localized: あんたの捕まえたもの、いい値段で買ってやるよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424275997184000
+    m_Localized: うんうん
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424310931542016
+    m_Localized: おみやげ屋から何か選びな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424428346888192
+    m_Localized: あーー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424470780661760
+    m_Localized: 好き嫌いはないから
+    m_Metadata:
+      m_Items: []
+  - m_Id: 424909949456384
+    m_Localized: もぐもぐ…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425008100364288
+    m_Localized: ふう…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425047040282624
+    m_Localized: もっもっもっ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425069555306496
+    m_Localized: ハァァックショーーン！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425173376913408
+    m_Localized: むぐもむもぐ…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425204075024384
+    m_Localized: おえっ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425625044733952
+    m_Localized: んあ〜〜
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425665897254912
+    m_Localized: せっかくリラックスしようと仕事休んできたけど…泳げないなんてあんまりだ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425774320013312
+    m_Localized: 海には<color=#FFEF4D><b>おっかない魚</color></b>がいるせいで、とてもじゃないけど水に入れないよ…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425851797196800
+    m_Localized: なあ、ちょっと駆除してきてくれないか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 425902661521408
+    m_Localized: エサになりそうなおやつを渡すからさ、代わりに何か持ってきてほしいんだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426008861298688
+    m_Localized: 職場のみんなに見せびらかせる何か…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426140730216448
+    m_Localized: そうだな、あの<color=#FFEF4D><b>絶滅危惧種の生き物</color></b>とか！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426302928146432
+    m_Localized: どれかって？そりゃ、見ればわかるよ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 426445853249536
+    m_Localized: おお、ありがとな。じゃあこれをエサにして、あのおっかない魚を捕まえてくれ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427343753072640
+    m_Localized: グリルマスターとは俺のことよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427397419192320
+    m_Localized: あとで友達とBBQパーティーを開くんだけど、実は…肝心の食材がないんだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427492277571584
+    m_Localized: そこで、パーティーが盛り上がるようなクールな食材をゲットしてくれない？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427568391606272
+    m_Localized: そう、<color=#FFEF4D><b>サメ</color></b>なんて今夜のご馳走にぴったりだ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427626839232512
+    m_Localized: 1匹捕まえてくれれば、俺のグリルで<color=#FFEF4D><b>自分の獲物を調理させてあげるよ</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427711400595456
+    m_Localized: 調理された食材を売れば、もっとお金が稼げるぞ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427834952208384
+    m_Localized: おっと、食べちゃった。ほら、ライターを渡しておくよ。グリルの着火に使えるから
+    m_Metadata:
+      m_Items: []
+  - m_Id: 427978091220992
+    m_Localized: ライターを受け取って
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428033137266688
+    m_Localized: グリルに火がついたぞ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428084962086912
+    m_Localized: グリルを使って獲物を調理すれば、もっと高値で売れるんだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428145339092992
+    m_Localized: グリルを使ってみてくれよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428776917389312
+    m_Localized: 代わりに欲しいものはないか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428869942857728
+    m_Localized: うーん、わかった。俺が前にいた場所の<color=#FFEF4D><b>座標</color></b>を渡すよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 428983528804352
+    m_Localized: そしたら、助けてくれた後に、この危険な島から出られるからね
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429062327193600
+    m_Localized: 助かったよ、ありがとう！ほらこれ、俺の住んでた島の座標だよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429365504069632
+    m_Localized: これでマップを使って島を見つけられるはず
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429676247470080
+    m_Localized: ショップへようこそ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429777397305344
+    m_Localized: あなたが最高のバケーションを過ごすためにぴったりのアイテムを取り揃えております！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429888487641088
+    m_Localized: こちらにあるボールやディスクはご自由に投げてください
+    m_Metadata:
+      m_Items: []
+  - m_Id: 429947690242048
+    m_Localized: 船のアップグレードもございます
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430009279401984
+    m_Localized: ラジオや音楽を楽しみたいという場合もお知らせください
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430096915189760
+    m_Localized: 銃などの武器もありますよ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430142016540672
+    m_Localized: 変わったアイテムの売却もいつでも受け付けております！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 430235213975552
+    m_Localized: 売りたいものを投げてくれれば、すぐお金をお渡しします
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431287153807360
+    m_Localized: サービスの説明は以上です。よいバケーションをお過ごしください！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431387955515392
+    m_Localized: ん〜〜！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431431949570048
+    m_Localized: うーん、なかなかのお味
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431477998833664
+    m_Localized: ぱく…もぐもぐ…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431501973475328
+    m_Localized: 胃に染み渡るおいしさ…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431549616574464
+    m_Localized: いいスープですね
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431574971142144
+    m_Localized: ふむ…今のは何でしょうか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431605803470848
+    m_Localized: んまい！んまい！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 431984423292928
+    m_Localized: ラッキー・ベイト・カジノへようこそ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432080112144384
+    m_Localized: 見かけない方ですが、初めてのご利用ですか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432134969446400
+    m_Localized: 初めてであれば、ご利用方法を説明します
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432194503397376
+    m_Localized: ルーレットテーブルにベットを置いてください。手持ちのアイテムであれば何でも賭けることができます
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432333905285120
+    m_Localized: 次にベットしたい色を選択したら、ゲームが開始されます
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432428646223872
+    m_Localized: 勝てばテーブル上に置いたアイテムの価値が上がります
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432622834110464
+    m_Localized: ですが、負ければベットしたものをすべて失ってしまいます
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432701175320576
+    m_Localized: では、グッドラック！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432857400561664
+    m_Localized: まだそこにいる？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432911301562368
+    m_Localized: え、見たことない？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 432943568343040
+    m_Localized: この島で、<color=#FFEF4D><b>巨大な鳥</color></b>が悪さしてまわってるんだよ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433023109124096
+    m_Localized: あいつがきてから、みんな怖がって外に出られずにいる
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433114742083584
+    m_Localized: あの鳥は、誰かが<color=#FFEF4D><b>マグロ</color></b>を持って島にやってくるたびに戻ってくるんだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433223122898944
+    m_Localized: あいつは鼻がよくきくからな。<color=#FFEF4D><b>地面に魚を置けば</color></b>すぐ飛んでくるぞ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433311186505728
+    m_Localized: 捕まえるには<color=#FFEF4D><b>プロ級ボス用ルアー</color></b>ぐらいじゃないと無理かもな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 433889987874816
+    m_Localized: '<color=#FFEF4D><b>鳥の頭</color></b>を持ってきてくれれば、他のみんなにもここは安全だって知らせてやれる'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434090685321216
+    m_Localized: お礼といっちゃ何だけど、前にいい感じの島を見かけたから、その<color=#FFEF4D><b>座標</color></b>が入ったUSBをあげるよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434531007549440
+    m_Localized: ありがとう！さっそくみんなに安全だって伝えに行かなきゃ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435174065655808
+    m_Localized: USBを受け取ってくれたら、すぐにみんなの所へ行ってくるよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 435379519442944
+    m_Localized: ほら、早く受け取って！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443520457986048
+    m_Localized: ラッキー・ベイト・カジノへようこそ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 443596425220096
+    m_Localized: このスロットマシーンには、アンロックできるスキンが多数あります
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444001943113728
+    m_Localized: '<color=#FFEF4D><b>クールな獲物</color></b>やボストロフィーを上の穴へ放り込んだら、ゲームが開始されます'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444269380325376
+    m_Localized: それと、戦利品はシェアすること。穴へアイテムを放り込んだ人がスキンを獲得できます
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444478231498752
+    m_Localized: 説明は以上です。それではお楽しみください！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444517112696832
+    m_Localized: はぁ…今なら春巻き600個食べられそう…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444581440737280
+    m_Localized: ああ、君まだいたの？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444785908862976
+    m_Localized: いらっしゃい。今日は何かお探しで？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444883258658816
+    m_Localized: なんて？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444906302164992
+    m_Localized: 声が小さすぎて聞こえないんだけど
+    m_Metadata:
+      m_Items: []
+  - m_Id: 444978158981120
+    m_Localized: とりあえず、何か買っていってくれる？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445032907231232
+    m_Localized: まいどあり
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445180517371904
+    m_Localized: いらっしゃいませ、銃専門店へようこそ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445243469680640
+    m_Localized: 一見小さく見えるけどね、うちは幅広い品揃えを売りにしてんのよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445357462474752
+    m_Localized: 新しいアタッチメントも仕入れたばかりなんだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445457282715648
+    m_Localized: どうぞ自由に見てって
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445558650654720
+    m_Localized: それと、アイテムの買取もやってるからね
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445650417831936
+    m_Localized: いい品じゃないの
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445687394816000
+    m_Localized: ありがとね
+    m_Metadata:
+      m_Items: []
+  - m_Id: 445710081806336
+    m_Localized: はい、お代金
+    m_Metadata:
+      m_Items: []
+  - m_Id: 446218225930240
+    m_Localized: お疲れ様であります！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 447747326562304
+    m_Localized: 任務が終わり次第帰還できるであります！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454228843253760
+    m_Localized: お疲れ様であります
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454260141150208
+    m_Localized: 隊長、任務の件について科学者殿とお話しいただけますでしょうか！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454364499628032
+    m_Localized: 科学者殿なら、あちらであります！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454417670819840
+    m_Localized: その間に、装備を整えておくことをおすすめするであります
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454499019345920
+    m_Localized: 各種武器と装備をご用意しております！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454568154058752
+    m_Localized: 隊長、お好きな装備をご購入いただけます
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454611363778560
+    m_Localized: 不要な装備の買い取りも可能であります
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454647212494848
+    m_Localized: 以上であります！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454730767224832
+    m_Localized: 以上であります！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454766502694912
+    m_Localized: 隊長
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454809334927360
+    m_Localized: さすがであります
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454850141310976
+    m_Localized: 完璧な焼き加減であります！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454894819037184
+    m_Localized: うまっ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454923923312640
+    m_Localized: ありがとうございます
+    m_Metadata:
+      m_Items: []
+  - m_Id: 454969381179392
+    m_Localized: 感激するうまさ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455000880402432
+    m_Localized: 魚は苦手なのですが…
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455252588974080
+    m_Localized: 失礼。もしかして君は漁師か？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455365046652928
+    m_Localized: 実は研究任務の真っ最中でな、遂行にあたって漁師の協力が必要なのだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455419270615040
+    m_Localized: '<color=#FFEF4D><b>大型のクジラ</color></b>を捕獲できる方を探している'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455461192683520
+    m_Localized: 小さい<color=#FFEF4D><b>獲物</color></b>を持ってきてくれれば、クジラに適したエサを用意しよう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455554054574080
+    m_Localized: クジラを倒したら、<color=#FFEF4D><b>火山に放り込んでくれ</color></b>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455624334331904
+    m_Localized: 超高熱に対する反応を観測するためだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455687810928640
+    m_Localized: 何らかの変化が起こる可能性があるので、十分に警戒するように
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455804467105792
+    m_Localized: '<color=#FFEF4D><b>討伐を証明できれば</color></b>、我々の調査は完了だ'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455996067106816
+    m_Localized: 謝礼として、我々の船を使用する許可を与えよう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456054191771648
+    m_Localized: 帰還できるよう、<color=#FFEF4D><b>本土の座標</color></b>も入力済みだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456126010839040
+    m_Localized: 長らく帰郷していないんだろう？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456167941296128
+    m_Localized: 説明は以上だ。頼んだぞ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456261805625344
+    m_Localized: 素晴らしい！あと数匹で足りるはずだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456311600402432
+    m_Localized: よくやった
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456350632595456
+    m_Localized: 素晴らしい！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456383964729344
+    m_Localized: うまいぞ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456412515356672
+    m_Localized: もう少しだ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456436292866048
+    m_Localized: 感謝する
+    m_Metadata:
+      m_Items: []
+  - m_Id: 456481687818240
+    m_Localized: さあ、受け取ってくれ。クジラの捕獲は任せたぞ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457160535920640
+    m_Localized: 任務は無事遂行できたか？
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457217314213888
+    m_Localized: こちらも任務を終わらせたいんだ、頼むよ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457269168394240
+    m_Localized: よし。故郷へ戻るなら、この鍵を受け取ってくれ。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457522932174848
+    m_Localized: これで任務完了だ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 457572198469632
+    m_Localized: エサ用の獲物を持ってくれば、何度でも挑戦できるぞ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 475779793768448
+    m_Localized: さあ、受け取ってくれ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1454831413317632
+    m_Localized: より高いレベルの魚を狙うなら、釣竿を手に入れよう
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1455008320671744
+    m_Localized: 獲物を釣りたいなら釣竿についてる<color=#FFEF4D><b>リール</color></b>を駆使するんだ。よく覚えておきな
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978330866962432
+    m_Localized: それと、銃を手に入れたら<color=#FFEF4D><b>トリックショット</color></b>を決めてみせてくれよ！
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2978762100133888
+    m_Localized: '<color=#FFEF4D><b>トリックショット</color></b>で獲物を釣れたら、難易度に応じて報酬を上げてやるよ！'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8382261860323328
+    m_Localized: '<color=#FFEF4D><b>調理して</color></b>食べるともっと美味いぞ'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

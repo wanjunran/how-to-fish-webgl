@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Extra Labels_de
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 15a15f5ce0d7dad438878e9e82a39467, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 38058826747904
+    m_Localized: Std.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38117194682368
+    m_Localized: Min.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38134177419264
+    m_Localized: Sek.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52920734797824
+    m_Localized: '[Herunterscrollen]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52877269225472
+    m_Localized: '[Hochscrollen]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53831062343680
+    m_Localized: '[Mausrad]'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13746393088
+    m_Localized: Schärfe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16779126067200
+    m_Localized: Hoch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16823489220608
+    m_Localized: Links
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16856720691200
+    m_Localized: Rechts
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16897468354560
+    m_Localized: Runter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16943060439040
+    m_Localized: Zurückschalten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16982876966912
+    m_Localized: Weiterschalten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17428832145408
+    m_Localized: Warten auf Eingabe...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21937234989056
+    m_Localized: Befehl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413193789440
+    m_Localized: Stück Fleisch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24825348837376
+    m_Localized: Inventarplatz wechseln
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38381570052096
+    m_Localized: Bildschirm-Auflösung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 281734836473856
+    m_Localized: 'Verbindung getrennt: Abweichende Versionen'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 285459105796096
+    m_Localized: Anwenden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342617595924480
+    m_Localized: Item-Punkte anzeigen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 373258983133184
+    m_Localized: Schließen {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694893553692672
+    m_Localized: Fotokamera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702431045136384
+    m_Localized: Boss verschwindet in...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 761753506721792
+    m_Localized: Boss ist verschwunden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630278305730560
+    m_Localized: Nur Einladung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630332928151552
+    m_Localized: Öffentlich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3648836913942528
+    m_Localized: Serverneustart erforderlich
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652878016794624
+    m_Localized: X-Achse invertieren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652892701052928
+    m_Localized: Y-Achse invertieren
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

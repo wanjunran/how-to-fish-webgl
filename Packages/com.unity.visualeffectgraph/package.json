@@ -1,0 +1,6 @@
+{
+  "name": "com.unity.visualeffectgraph",
+  "version": "17.4.0",
+  "displayName": "Visual Effect Graph (shaders only)",
+  "dependencies": {}
+}

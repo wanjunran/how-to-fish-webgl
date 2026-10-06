@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_sv
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: sv
+  m_SharedData: {fileID: 11400000, guid: a6b0b69a1f2361645a78b193b90d2d4e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: Hur Man Går
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: Använd {0} för att gå
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: Hur Man Kollar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: Använd {0} för att se dig omkring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: Hur Man Interagerar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: Tryck {0} när du kollar på ett föremål för att plocka upp det. Försök en gång på en mussla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: Hur Man Äter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: För att få tillbaka hunger måste du äta. Du kan äta alla varelser genom att hålla ner {0} medans du håller i varelsen. Testa det på en mussla
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: Hur Man Säljer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: För att tjäna pengar måste du sälja föremål. Hämta en mussla, gå till NPCn och håll ner {0} för att kasta in föremålet i munnen på den
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: Hur Man Köper
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: Gå till affären och köp ett krabbfiskespö genom att trycka på {0} för att fånga bättre varelser
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: Hur Man Fiskar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: Kolla mot havet och veva ner betet i havet med {0} för att fånga en varelse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: Hur Man Dödar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: När du har en varelse på betet, dra in den med {0}, och tryck sen {1} för att släppa den. Sen ta bort fiskespöt med {2} och börja slå den med {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: Hur Man Pratar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: För att komma vidare i spelet måste du klara av uppdrag av NPCer på ön. Testa att prata med en genom att trycka {0} när du kollar på den för att få reda på vad den vill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: Bra jobbat, du är nu klar med handledningen. Du kan du göra vad du vill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: Hur Man Tänker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: Du kanske glömmer av vilka varelser du har fångat. Testa att tänka genom att trycka {0}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: Hur Man Inspekterar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: For att inspektera ett föremål, tryck {0} medans du håller i det. Testa på en varelse för att få reda på värdet av den
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels_zh-CN
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: zh-CN
+  m_SharedData: {fileID: 11400000, guid: a6b0b69a1f2361645a78b193b90d2d4e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 468417335296
+    m_Localized: 如何移动
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Localized: 使用{0}四处移动。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Localized: 如何观察
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Localized: 使用{0}四处观察。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Localized: 如何交互
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Localized: 当观察物品时，按下{0}即可拾取。快试试吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Localized: 如何进食
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Localized: 你必须进食才能填饱肚子。当持握动物时，长按{0}即可食用它。先拿一只肉蚌试一试吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Localized: 如何贩卖
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Localized: 你必须卖出鱼获才能赚钱。捡起一只肉蚌，去找小岛角色，长按{0}将肉蚌扔进店主的嘴里。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Localized: 如何购买
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Localized: 前往商店，按{0}购买一支钓蟹竿。有了它，你就能捕获更有价值的动物了。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Localized: 如何钓鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Localized: 面向海洋，用{0}将鱼饵投入水中即可钓鱼。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Localized: 如何杀鱼
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Localized: 当有猎物咬钩时，用{0}将其拉上岸，随后按下{1}使其松口。你需要先用{2}卸下手中的装备，然后用{0}击打猎物。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Localized: 如何交谈
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Localized: 完成小岛上各个角色交代的任务。面对角色时按下{0}，看看他们都需要你做些什么。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Localized: 干得好！你已经完成了教程，现在尽情游戏吧。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Localized: 如何思考
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Localized: 你可能已经忘记了自己曾经捕获了些什么，按下{0}即可回溯。
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Localized: 如何检视
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Localized: 在持握物品时按下{0}即可检视它。先拿一只动物试试，看看它值多少钱吧。
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Credits Labels_ja
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ja
+  m_SharedData: {fileID: 11400000, guid: 3f62bf69d82634b47b316de70bb4b970, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 191417110528
+    m_Localized: ゲームデザイン
+    m_Metadata:
+      m_Items: []
+  - m_Id: 289177948160
+    m_Localized: プログラミング
+    m_Metadata:
+      m_Items: []
+  - m_Id: 346463752192
+    m_Localized: ミュージック
+    m_Metadata:
+      m_Items: []
+  - m_Id: 365409423360
+    m_Localized: 効果音
+    m_Metadata:
+      m_Items: []
+  - m_Id: 397508431872
+    m_Localized: スペシャルサンクス
+    m_Metadata:
+      m_Items: []
+  - m_Id: 422359683072
+    m_Localized: ローカライズ
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2186400059392
+    m_Localized: スタジオディレクター
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2363785564160
+    m_Localized: ローカライズマネージャー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2477635751936
+    m_Localized: 翻訳
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2540386734080
+    m_Localized: 翻訳チェック
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2627842166784
+    m_Localized: ローカライズQA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3021947359232
+    m_Localized: LQAマネージャー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3126909816832
+    m_Localized: LQAプロジェクトマネージャー
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3278638764032
+    m_Localized: リードテスター
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3467835428864
+    m_Localized: テスター
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4522996486144
+    m_Localized: プレイテスト
+    m_Metadata:
+      m_Items: []
+  - m_Id: 244781600559104
+    m_Localized: Discordメンバーの方々
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -299433217, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Extra Labels Shared Data
+  m_EditorClassIdentifier:
+  m_TableCollectionName: Extra Labels
+  m_TableCollectionNameGuidString: a0c614ac89f5b6442bb4a171cfec3b28
+  m_Entries:
+  - m_Id: 13746393088
+    m_Key: extra.sharpness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16779126067200
+    m_Key: extra.upDirection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16823489220608
+    m_Key: extra.leftDirection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16856720691200
+    m_Key: extra.rightDirection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16897468354560
+    m_Key: extra.downDirection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16943060439040
+    m_Key: extra.negativeBinding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16982876966912
+    m_Key: extra.positiveBinding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 17428832145408
+    m_Key: extra.waitingForInput
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21937234989056
+    m_Key: extra.binding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23413193789440
+    m_Key: extra.meatChunk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24825348837376
+    m_Key: extra.changeInventorySLot
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38058826747904
+    m_Key: extra.hoursShortened
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38117194682368
+    m_Key: extra.minutesShortened
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38134177419264
+    m_Key: extra.secondsShortened
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38381570052096
+    m_Key: extra.screenResolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52877269225472
+    m_Key: extra.scrollUp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 52920734797824
+    m_Key: extra.scrollDown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53831062343680
+    m_Key: extra.scrollWheel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 281734836473856
+    m_Key: extra.versionMismatch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 285459105796096
+    m_Key: extra.apply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342617595924480
+    m_Key: extra.itemDots
+    m_Metadata:
+      m_Items: []
+  - m_Id: 373258983133184
+    m_Key: extra.close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 694893553692672
+    m_Key: extra.Camera
+    m_Metadata:
+      m_Items: []
+  - m_Id: 702431045136384
+    m_Key: extra.bossLeaving
+    m_Metadata:
+      m_Items: []
+  - m_Id: 761753506721792
+    m_Key: extra.bossLeft
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630278305730560
+    m_Key: extra.inviteOnly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3630332928151552
+    m_Key: extra.public
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3648836913942528
+    m_Key: extra.requiresRestart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652878016794624
+    m_Key: extra.invertHorizontal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3652892701052928
+    m_Key: extra.invertVertical
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2116460105669804116
+  references:
+    version: 2
+    RefIds:
+    - rid: 2116460105669804116
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1786538811030

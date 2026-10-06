@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -299433217, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Tutorial Labels Shared Data
+  m_EditorClassIdentifier:
+  m_TableCollectionName: Tutorial Labels
+  m_TableCollectionNameGuidString: 12b8b93292de64249b7eb258ee6f215d
+  m_Entries:
+  - m_Id: 468417335296
+    m_Key: tutorial.movementTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 840628260864
+    m_Key: tutorial.movementDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11425424166912
+    m_Key: tutorial.lookTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11501731139584
+    m_Key: tutorial.lookDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11606257389568
+    m_Key: tutorial.pickingUpTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11665631956992
+    m_Key: tutorial.pickingUpDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11983094632448
+    m_Key: tutorial.eatingTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12033615024128
+    m_Key: tutorial.eatingDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12559287144448
+    m_Key: tutorial.sellingTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12615385960448
+    m_Key: tutorial.sellingDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13093985406976
+    m_Key: tutorial.buyingTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13151384457216
+    m_Key: tutorial.buyingDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13829691494400
+    m_Key: tutorial.fishingTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13887153459200
+    m_Key: tutorial.fishingDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16702143811584
+    m_Key: tutorial.killingTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16764735410176
+    m_Key: tutorial.killingDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19296991924224
+    m_Key: tutorial.talkingTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19347520704512
+    m_Key: tutorial.talkingDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 19682171637760
+    m_Key: tutorial.onFinishedTalkingDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375435319398400
+    m_Key: tutorial.thinkTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 375486284386304
+    m_Key: tutorial.thinkDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194092836081664
+    m_Key: tutorial.inspectTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2194499327053824
+    m_Key: tutorial.inspectDescription
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8744106374231490638
+  references:
+    version: 2
+    RefIds:
+    - rid: 8744106374231490638
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1784539519272

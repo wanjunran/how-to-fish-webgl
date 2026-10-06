@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BettingBox
+  m_Shader: {fileID: 4800000, guid: e21b15f6aab0f3545a3608633a3f1bdd, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties:
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+      unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: {}
+    m_Floats:
+      _Alpha_Clip: 0.001
+      _Alpha_Multiplier: 0
+      _Alpha_Smoothness: 1
+      _Alpha_Speed: 2
+      _Emission_Multiplier: 0.56
+      _HeightPixelation: 30
+      _Noise_Scale: 0
+      _Pixelation: 3
+      _QueueControl: 0
+      _QueueOffset: 0
+      _WaveDensity: 5
+      _WidthPixelation: 5
+    m_Colors:
+      _AlphaMap: {r: 2.9, g: 3.1, b: 0, a: 0}
+      _Base_Color: {r: 2.9960785, g: 1.2111806, b: 0, a: 1}
+      _Base_Color_backup: {r: 2.9960785, g: 1.2111806, b: 0, a: 1}
+      _Emission: {r: 8, g: 2.6768622, b: 0, a: 1}
+      _Pixelation: {r: 10, g: 10, b: 0, a: 0}
+      _Smoothstep: {r: 0, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 0

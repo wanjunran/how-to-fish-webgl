@@ -1,0 +1,698 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 330670497, guid: a7c8ed169960a6d09f38393641221f85, type: 3}
+  m_Name: InputActions
+  m_EditorClassIdentifier:
+  m_ActionMaps:
+  - m_Name: Player
+    m_Id: 553ac8ce-59cb-41a8-b70f-e2feceb3b208
+    m_Asset: {fileID: 11400000}
+    m_Actions:
+    - m_Name: PlayerMove
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 8e3dae20-9ba7-4fce-ac70-506f3992227e
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 1
+    - m_Name: PlayerLook
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 349c7bb5-fe61-4dde-80ab-e32c25cfb563
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 1
+    - m_Name: PlayerLeftClick
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 9dfce198-ba65-4a67-8ce0-4314c98176f6
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: PlayerRightClick
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: bdc53f99-79ef-4660-9768-c55ca029b022
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: PlayerJump
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 853b6747-52d4-4c9e-8728-b2f5e3e4a4a1
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: PlayerSprint
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 71adbb1f-b07a-4f59-a64b-557b7ccfb664
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: PlayerCrouch
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 05bcc738-73c3-4b78-92b9-1071a5bc5d65
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: PlayerPickUp
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 5ca95325-d7cf-43be-9770-f640af0dad8b
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: PlayerDrop
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 951e7ce8-61d6-4d8e-bc36-224d1f1aece6
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: PlayerTab
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: bbbcaf4b-316f-4af3-99d9-6f1453fc1af7
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: PlayerChangeSkin
+      m_Type: 0
+      m_ExpectedControlType:
+      m_Id: e40b2485-c435-4c49-a307-d4a871b7f892
+      m_Processors: Normalize(min=-1,max=1)
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 1
+    - m_Name: ChangeBait
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 1c9c7f14-cbcb-4499-9fd6-edc88b4ec845
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Inventory1
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 34ec5051-add2-4d56-9456-f91411c12d85
+      m_Processors: Scale(factor=0)
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Inventory2
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 920a7cc0-2260-43be-9978-28f28f69f825
+      m_Processors: Scale
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Inventory3
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: b7c69db7-ae13-425d-afc4-2c97457ffadc
+      m_Processors: Scale(factor=2)
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Inventory4
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 55b2a28b-2189-4c3b-8ff1-90c6567c7598
+      m_Processors: Scale(factor=3)
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Inventory5
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: cb083216-dcb6-482c-8610-9aee0bc02e8a
+      m_Processors: Scale(factor=4)
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Inventory6
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 48e2a938-2a9f-429d-a286-a23b39b2853b
+      m_Processors: Scale(factor=5)
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Inventory7
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 0c9186de-bc1c-4f5d-8e41-1dd49aeaf7fd
+      m_Processors: Scale(factor=6)
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Inventory8
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: b9b9cde4-8bad-4033-9b1a-05480e3c00b5
+      m_Processors: Scale(factor=7)
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Inventory9
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: ab37c77f-be34-4911-b141-ddd2911b6e2c
+      m_Processors: Scale(factor=8)
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: InventoryScroll
+      m_Type: 0
+      m_ExpectedControlType: Axis
+      m_Id: ffbde01d-bcba-48d0-9966-6303d1b47672
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 1
+    - m_Name: InventoryNone
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 63970a2e-5f55-430f-ab2c-85c1d862c647
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: WeaponReload
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: fb35245a-c48d-4735-b537-3a72d6736415
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: WeaponInspect
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: 5c59c803-b4ba-40d4-b6ed-7db01916aac3
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: PushToTalk
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: b9a8d210-736c-40ed-99a4-4b0c2a1123bd
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Skip
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: afd62d57-3ffc-4782-a9a8-e0d46329c289
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Pause
+      m_Type: 1
+      m_ExpectedControlType:
+      m_Id: df59ea12-9826-4c4e-883c-b3593d6f2aa2
+      m_Processors:
+      m_Interactions:
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Bindings:
+    - m_Name: 2D Vector
+      m_Id: c692fd01-7d62-4d89-bcfd-069b6046bad7
+      m_Path: 2DVector(mode=2)
+      m_Interactions:
+      m_Processors:
+      m_Groups:
+      m_Action: PlayerMove
+      m_Flags: 4
+    - m_Name: Up
+      m_Id: 360febf0-e7ce-4f5d-b181-2b534347b8ee
+      m_Path: '<Keyboard>/w'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerMove
+      m_Flags: 8
+    - m_Name: Down
+      m_Id: ea837c7c-d40b-4b10-9ba9-b3bde09bd6dd
+      m_Path: '<Keyboard>/s'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerMove
+      m_Flags: 8
+    - m_Name: Left
+      m_Id: 5355000d-04c4-4daf-9f9e-e7f309f86a44
+      m_Path: '<Keyboard>/a'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerMove
+      m_Flags: 8
+    - m_Name: Right
+      m_Id: 4e29f0d4-59f2-4d58-a9f4-ecd50b62a348
+      m_Path: '<Keyboard>/d'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerMove
+      m_Flags: 8
+    - m_Name:
+      m_Id: e3a107f2-251c-479c-869e-0c5c7d79ef26
+      m_Path: '<Gamepad>/leftStick'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PlayerMove
+      m_Flags: 0
+    - m_Name:
+      m_Id: 774c9f11-c336-4cf0-a203-bdac20a5e977
+      m_Path: '<Mouse>/delta'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerLook
+      m_Flags: 0
+    - m_Name:
+      m_Id: 353d6a9b-ff2e-4a4a-a11a-8f48c7c86fdf
+      m_Path: '<Gamepad>/rightStick'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PlayerLook
+      m_Flags: 0
+    - m_Name:
+      m_Id: 26d30fe0-c06c-46f0-afc8-9133dc2b29c6
+      m_Path: '<Mouse>/leftButton'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerLeftClick
+      m_Flags: 0
+    - m_Name:
+      m_Id: 051c161c-68ce-4ebe-aef8-f9849c64d9a2
+      m_Path: '<Gamepad>/rightTrigger'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PlayerLeftClick
+      m_Flags: 0
+    - m_Name:
+      m_Id: 1e5ef031-c4b4-4afe-a9c6-e44743d5a317
+      m_Path: '<Mouse>/rightButton'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerRightClick
+      m_Flags: 0
+    - m_Name:
+      m_Id: f16e9dec-54bd-4501-bd81-c142afbf2819
+      m_Path: '<Gamepad>/leftTrigger'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PlayerRightClick
+      m_Flags: 0
+    - m_Name:
+      m_Id: 74890845-559d-458b-a0ff-7c13c3110b7b
+      m_Path: '<Keyboard>/space'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerJump
+      m_Flags: 0
+    - m_Name:
+      m_Id: 64707674-206e-4e0d-8243-b98d2ce7b09a
+      m_Path: '<Gamepad>/buttonSouth'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PlayerJump
+      m_Flags: 0
+    - m_Name:
+      m_Id: 14df502b-fdd2-4dd5-bf62-7f12bf340db3
+      m_Path: '<Keyboard>/leftShift'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerSprint
+      m_Flags: 0
+    - m_Name:
+      m_Id: d7dbf38d-465e-41fb-b129-c68aabe3acc8
+      m_Path: '<Gamepad>/leftStickPress'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PlayerSprint
+      m_Flags: 0
+    - m_Name:
+      m_Id: 6e6dc83b-ebc8-4cf2-8967-d9ff5f051713
+      m_Path: '<Keyboard>/e'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerPickUp
+      m_Flags: 0
+    - m_Name:
+      m_Id: 994f82cb-15d1-40b8-a7e1-f1d640413606
+      m_Path: '<Gamepad>/buttonWest'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PlayerPickUp
+      m_Flags: 0
+    - m_Name:
+      m_Id: 898c44b6-20ad-4892-84e6-2922805fee98
+      m_Path: '<Keyboard>/1'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: Inventory1
+      m_Flags: 0
+    - m_Name:
+      m_Id: 624341e9-0fd2-4960-aa31-13e62543cfae
+      m_Path: '<Keyboard>/tab'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerTab
+      m_Flags: 0
+    - m_Name:
+      m_Id: bc90ad05-ca53-42e4-b28b-19170c1e06ed
+      m_Path: '<Gamepad>/select'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PlayerTab
+      m_Flags: 0
+    - m_Name: 1D Axis
+      m_Id: 14c3aeaa-e42e-4eca-8a33-15604c41b3f4
+      m_Path: 1DAxis
+      m_Interactions:
+      m_Processors:
+      m_Groups:
+      m_Action: PlayerChangeSkin
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: ccafc817-c6bc-43b0-aa5c-c0817187577f
+      m_Path: '<Keyboard>/z'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerChangeSkin
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 04756b2c-9f13-402c-bf75-3fb17a2068cc
+      m_Path: '<Keyboard>/c'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerChangeSkin
+      m_Flags: 8
+    - m_Name:
+      m_Id: ffe2545e-18b8-415b-8ff2-37a6612865a5
+      m_Path: '<Gamepad>/dpad/right'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PlayerChangeSkin
+      m_Flags: 0
+    - m_Name:
+      m_Id: 65d5c452-3859-4161-b009-700ffb0a9961
+      m_Path: '<Keyboard>/b'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: ChangeBait
+      m_Flags: 0
+    - m_Name:
+      m_Id: 34bc5617-e6ca-4be9-b098-b177d45e961a
+      m_Path: '<Gamepad>/rightStickPress'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: ChangeBait
+      m_Flags: 0
+    - m_Name:
+      m_Id: 5445835d-db50-403a-a106-fff56ecfdc3d
+      m_Path: '<Keyboard>/x'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: InventoryNone
+      m_Flags: 0
+    - m_Name:
+      m_Id: 1c285b70-bbf4-4285-99e0-aa741700f66e
+      m_Path: '<Gamepad>/dpad/down'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: InventoryNone
+      m_Flags: 0
+    - m_Name:
+      m_Id: 68ed2215-771c-4036-bdb4-17c2525d2309
+      m_Path: '<Keyboard>/2'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: Inventory2
+      m_Flags: 0
+    - m_Name:
+      m_Id: 15050d72-55d5-4e47-9ac3-6b65bd9ba2b1
+      m_Path: '<Keyboard>/3'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: Inventory3
+      m_Flags: 0
+    - m_Name:
+      m_Id: 42a8d466-cc6a-444b-b0e5-9fe5e648214d
+      m_Path: '<Keyboard>/4'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: Inventory4
+      m_Flags: 0
+    - m_Name:
+      m_Id: 11410153-1195-4093-b610-d313b1ff9bb3
+      m_Path: '<Keyboard>/5'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: Inventory5
+      m_Flags: 0
+    - m_Name:
+      m_Id: a6dc1899-9707-4588-ab11-29f4ba647dae
+      m_Path: '<Keyboard>/6'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: Inventory6
+      m_Flags: 0
+    - m_Name:
+      m_Id: 5a1a215d-a1b5-4a57-b3ee-f691a6f9cee2
+      m_Path: '<Keyboard>/7'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: Inventory7
+      m_Flags: 0
+    - m_Name:
+      m_Id: d6e5139a-6411-442d-9f09-69cb5aa67fd8
+      m_Path: '<Keyboard>/8'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: Inventory8
+      m_Flags: 0
+    - m_Name:
+      m_Id: 199d4ec9-3288-46c6-86c1-6380a1c7bc80
+      m_Path: '<Keyboard>/9'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: Inventory9
+      m_Flags: 0
+    - m_Name:
+      m_Id: 0e264ed3-f20d-45a5-a30e-1b4d01448798
+      m_Path: '<Mouse>/scroll/down'
+      m_Interactions:
+      m_Processors: Invert
+      m_Groups: ;Keyboard
+      m_Action: InventoryScroll
+      m_Flags: 0
+    - m_Name:
+      m_Id: 1233f3e1-c0f1-42a6-a8fa-6d9afb0e11a2
+      m_Path: '<Mouse>/scroll/up'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: InventoryScroll
+      m_Flags: 0
+    - m_Name:
+      m_Id: 5f1c1719-e323-4c90-82d3-f965f0c62550
+      m_Path: '<Gamepad>/rightShoulder'
+      m_Interactions:
+      m_Processors: Invert
+      m_Groups: ;Controller
+      m_Action: InventoryScroll
+      m_Flags: 0
+    - m_Name:
+      m_Id: 6ccba49b-5123-46dc-9fa3-87be172c28e6
+      m_Path: '<Gamepad>/leftShoulder'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: InventoryScroll
+      m_Flags: 0
+    - m_Name:
+      m_Id: cc22c83e-aa49-4592-8982-3d6884eaade6
+      m_Path: '<Keyboard>/q'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerDrop
+      m_Flags: 0
+    - m_Name:
+      m_Id: d73f6478-4aad-4d4c-9124-e69a02e45149
+      m_Path: '<Gamepad>/buttonNorth'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PlayerDrop
+      m_Flags: 0
+    - m_Name:
+      m_Id: 2a31dec0-0211-4b77-ba27-f93cbeca91f4
+      m_Path: '<Keyboard>/r'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: WeaponReload
+      m_Flags: 0
+    - m_Name:
+      m_Id: fc5a64ac-553f-4db3-9219-cfb7a2b47bd9
+      m_Path: '<Gamepad>/buttonWest'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: WeaponReload
+      m_Flags: 0
+    - m_Name:
+      m_Id: 594a32bf-5b14-477a-aad1-eea38a9f7950
+      m_Path: '<Keyboard>/f'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: WeaponInspect
+      m_Flags: 0
+    - m_Name:
+      m_Id: 8dfae8d0-9081-462d-9d49-6446f30d3cf0
+      m_Path: '<Gamepad>/dpad/up'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: WeaponInspect
+      m_Flags: 0
+    - m_Name:
+      m_Id: 75c208eb-6a3b-468f-8492-ef2677f69c56
+      m_Path: '<Keyboard>/v'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PushToTalk
+      m_Flags: 0
+    - m_Name:
+      m_Id: b3cab2d2-8a99-4f5c-ac1b-538e112438f9
+      m_Path: '<Gamepad>/dpad/left'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PushToTalk
+      m_Flags: 0
+    - m_Name:
+      m_Id: 519baccf-3750-49a7-a15d-24567a27a700
+      m_Path: '<Keyboard>/leftCtrl'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: PlayerCrouch
+      m_Flags: 0
+    - m_Name:
+      m_Id: 5cd50661-cc7a-49b3-a953-b5ef9ec24022
+      m_Path: '<Gamepad>/buttonEast'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: PlayerCrouch
+      m_Flags: 0
+    - m_Name:
+      m_Id: 838336f5-ecd3-4e2a-b8ad-c6ada10a1336
+      m_Path: '<Keyboard>/space'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: Skip
+      m_Flags: 0
+    - m_Name:
+      m_Id: e7bdf359-c60e-4688-9fe8-db8420a07886
+      m_Path: '<Gamepad>/buttonSouth'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: Skip
+      m_Flags: 0
+    - m_Name:
+      m_Id: 419ecfc7-2bae-4db0-bf96-cb21212b8e1d
+      m_Path: '<Keyboard>/escape'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Keyboard
+      m_Action: Pause
+      m_Flags: 0
+    - m_Name:
+      m_Id: 1bd1a68b-3cbc-4e5a-8512-e36cb36edeb0
+      m_Path: '<Gamepad>/start'
+      m_Interactions:
+      m_Processors:
+      m_Groups: ;Controller
+      m_Action: Pause
+      m_Flags: 0
+  m_ControlSchemes:
+  - m_Name: Controller
+    m_BindingGroup: Controller
+    m_DeviceRequirements:
+    - m_ControlPath: '<Gamepad>'
+      m_Flags: 0
+  - m_Name: Keyboard
+    m_BindingGroup: Keyboard
+    m_DeviceRequirements:
+    - m_ControlPath: '<Keyboard>'
+      m_Flags: 0
+    - m_ControlPath: '<Mouse>'
+      m_Flags: 0
+  m_IsProjectWide: 0

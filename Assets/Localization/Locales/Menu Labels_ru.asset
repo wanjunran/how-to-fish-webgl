@@ -1,0 +1,235 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Menu Labels_ru
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ru
+  m_SharedData: {fileID: 11400000, guid: d6fafc7872dc8fe4d854f1b8803164bc, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 145510453248
+    m_Localized: Создать игру
+    m_Metadata:
+      m_Items: []
+  - m_Id: 540202848256
+    m_Localized: Войти в игру
+    m_Metadata:
+      m_Items: []
+  - m_Id: 611896086528
+    m_Localized: Персонаж
+    m_Metadata:
+      m_Items: []
+  - m_Id: 662856880128
+    m_Localized: Настройки
+    m_Metadata:
+      m_Items: []
+  - m_Id: 712303529984
+    m_Localized: Создатели
+    m_Metadata:
+      m_Items: []
+  - m_Id: 825704927232
+    m_Localized: Выход
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4535533260800
+    m_Localized: Присоединиться к Discord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4734813032448
+    m_Localized: Версия
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6814114074624
+    m_Localized: Новая игра
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7015633604608
+    m_Localized: Название файла сохранения
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7610180390912
+    m_Localized: Тип сеанса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7789121982464
+    m_Localized: Создать
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37245739945984
+    m_Localized: Много игроков
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37324198596608
+    m_Localized: Один игрок
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39184305311744
+    m_Localized: Загрузить игру
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39423271587840
+    m_Localized: Информация о сохранении
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39599050674176
+    m_Localized: Название
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39755464658944
+    m_Localized: Последняя игра
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39959710486528
+    m_Localized: Время игры
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40071824232448
+    m_Localized: Остров
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40212325027840
+    m_Localized: Удалить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40331548119040
+    m_Localized: Загрузить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40489782431744
+    m_Localized: Удалить сохранение?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40707345174528
+    m_Localized: Да
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40755344789504
+    m_Localized: Нет
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40935997657088
+    m_Localized: Назад
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41700023685120
+    m_Localized: ID сеанса
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41873382658048
+    m_Localized: Войти по ID
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42034817224704
+    m_Localized: Поиск друзей по Steam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42733596659712
+    m_Localized: Настройка персонажа
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42928711487488
+    m_Localized: Кожа
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43025155313664
+    m_Localized: Голова
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43107774713856
+    m_Localized: Одежда
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43263270146048
+    m_Localized: Аксессуар
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44845541969920
+    m_Localized: Цвет
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46104130965504
+    m_Localized: Сбросить (выбранное)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46266576359424
+    m_Localized: Случайно (выбранное)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46447279558656
+    m_Localized: Сбросить
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46522399543296
+    m_Localized: Случайно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47508979535872
+    m_Localized: Дизайн игры
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47642547146752
+    m_Localized: Программирование
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47748591734784
+    m_Localized: Графика
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47903944560640
+    m_Localized: Музыка
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50236178911232
+    m_Localized: Пропуск...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 50502492049408
+    m_Localized: Спасибо за игру!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3931751522586624
+    m_Localized: "How to\nFish"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3952311279374336
+    m_Localized: Введите название игры
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3953281396723712
+    m_Localized: Введите текст
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5068142029656064
+    m_Localized: Боб
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121082929369088
+    m_Localized: Сложность
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121140584271872
+    m_Localized: Легко
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121160876314624
+    m_Localized: Обычно
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14121201640755200
+    m_Localized: Сложно
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
