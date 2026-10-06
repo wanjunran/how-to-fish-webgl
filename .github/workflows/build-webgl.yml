@@ -814,17 +814,23 @@ jobs:
             await core.summary.addRaw(body).write();
             core.info('验证摘要已写入 step summary');
 
-      # 把 CI 的诊断报告提交回仓库。
-      #
-      # 为什么需要这条通路：artifacts 下载**需要认证**，而本地只有匿名
-      # curl —— 实测 403（API 限流）/ 000（连接被拒），三种取法全试过：
-      #   1. run 页面 HTML：注解是懒加载的，初始 HTML 里没有
-      #   2. .../annotations_partial：需要登录，匿名拿不到
-      #   3. api.github.com/check-runs：匿名可用，但配额很快耗尽
-      # 结果就是「CI 跑完了，但我看不到它查到了什么」—— 前面几轮白等。
-      #
-      # 提交回仓库这条最笨也最可靠：本地 git pull 就有，不需要任何认证。
-      # 只提交报告（文本），不动 Assets —— 构建产物和源码都不碰。
+# 把 CI 的诊断报告**和验证截图**提交回仓库。
+          #
+          # 为什么需要这条通路：artifacts 下载**需要认证**，而本地只有匿名
+          # curl —— 实测 403（API 限流）/ 000（连接被拒），三种取法全试过：
+          #   1. run 页面 HTML：注解是懒加载的，初始 HTML 里没有
+          #   2. .../annotations_partial：需要登录，匿名拿不到
+          #   3. api.github.com/check-runs：匿名可用，但配额很快耗尽
+          # 结果就是「CI 跑完了，但我看不到它查到了什么」—— 前面几轮白等。
+          #
+          # 提交回仓库这条最笨也最可靠：本地 git pull 就有，不需要任何认证。
+          # 截图也一起提交，因为**画面到底对不对**只能看图判断，
+          # 文字报告说不清「哪里是洋红、哪里是纯白」。图很小（~60KB），
+          # 且只留最近一份，成本可接受。
+          #
+          # 注意 branches只列了 main —— 所以推 ci-diagnostics 不会再次触发
+          # 本 workflow，不存在死循环。
+          # 只提交报告与图，不动 Assets —— 构建产物和源码都不碰。
       - name: Commit diagnostics report
         if: always()
         run: |
@@ -921,9 +927,35 @@ jobs:
 
           git config user.name  "ci-bot"
           git config user.email "ci-bot@users.noreply.github.com"
+          # 截图放在 ci-screenshots/ 而不是工作区根目录：后者已被 .gitignore
+          # 忽略（verify-evidence/ 那些是CI 中间产物），而且同名文件在
+          # 两个分支上会互相覆盖。
+          mkdir -p docs/ci-screenshots
+          SHOTS=""
+          for s in verify_loaded.png verify_settled.png; do
+            if [ -f "$s" ]; then
+              cp "$s" "docs/ci-screenshots/$s"
+              SHOTS="$SHOTS $s"
+            fi
+          done
+          # 洋红统计单独抽出来写成一个可 grep 的小文件：报告正文里那行
+          # 混在 markdown 表格里不好找，而这个数字就是「画面对不对」的判据。
+          MAGENTA=""
+          if [ -f verify-evidence/magenta.txt ]; then
+            cp verify-evidence/magenta.txt docs/ci-screenshots/magenta.txt
+            MAGENTA=" magenta.txt"
+          fi
+
           git add -f "$OUT" docs/ci-reports 2>/dev/null
+          [ -n "$SHOTS$MAGENTA" ] && git add -f docs/ci-screenshots 2>/dev/null
+          # **不要**在这里 `exit 0`。上一版有个
+          #   if (git diff --cached --quiet); then echo 报告无变化; exit 0; fi
+          # 看着是「无变化就别白跑一趟」，实际后果是：**报告已经写好了，
+          # 却因为另一件事无变化而被丢掉**。上一轮就是这样 —— 报告步骤
+          # 明明跑完了，ci-diagnostics 分支却还是上一轮的提交，
+          # 于是「CI 到底查到了什么」又变成只能猜。
           if git diff --cached --quiet; then
-            echo "报告无变化，跳过提交"
+            echo "报告与截图均无变化，跳过提交"
             exit 0
           fi
           # 不 push 失败就当没有 —— 诊断通路不该影响构建结论

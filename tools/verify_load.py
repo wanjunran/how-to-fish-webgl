@@ -286,6 +286,7 @@ def main() -> int:
             #（排除纯白/纯灰）。Unity 的错误洋红是 (255,0,255) 一族。
             try:
                 from PIL import Image
+                lines = []
                 for name in ("verify_loaded.png", "verify_settled.png"):
                     src = f"/tmp/{name}"
                     if not os.path.exists(src):
@@ -305,10 +306,20 @@ def main() -> int:
                     summary.write(
                         f"- `{name}` 洋红像素：**{hit}** / {n} = **{pct:.3f}%**"
                         f"{'（样本 ' + ', '.join(rows) + '）' if rows else ''}\n")
+                    lines.append(
+                        f"{name}: {hit}/{n} = {pct:.3f}%"
+                        f"{'  样本 ' + ', '.join(rows) if rows else ''}")
                     if pct >= 0.5:
                         errs.append(
                             f"{name} 有 {pct:.3f}% 洋红像素 —— 至少一个 shader "
                             f"编译失败（Unity 不让构建失败，只渲洋红）")
+                # 单独落盘：报告正文里那行混在 markdown 表格里不好 grep，
+                # 而这个数字就是「画面对不对」的唯一量化判据。
+                if lines:
+                    os.makedirs("verify-evidence", exist_ok=True)
+                    with open("verify-evidence/magenta.txt", "w",
+                              encoding="utf-8") as f:
+                        f.write("\n".join(lines) + "\n")
             except ImportError:
                 say("洋红统计跳过：环境无 PIL")
             except Exception as e:
