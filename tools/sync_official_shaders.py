@@ -55,6 +55,28 @@ if os.environ.get("HTF_ROOT"):
 SHADER_NAME = re.compile(r'^\s*Shader\s+"([^"]+)"', re.MULTILINE)
 STUB_MARKER = "DummyShaderTextExporter"
 
+# URP / core 包自带 shader 的命名前缀。用于离线推断「覆盖目标是谁」。
+#
+# 这里必须有**存在性断言**：判据漏一个前缀，结论就从「60 个能覆盖」
+# 变成「只有 7 个能覆盖」，而表面上只是多打几行名字 —— 判据失效的输出
+# 和正常输出长得一模一样，这个坑本项目已经踩过好几次。
+#
+# 判据只能用来**回答「目标是谁」**，回答「覆盖会不会成功」必须由 CI 里
+# 带 PackageCache 的完整路径实测（include 是否齐全那里才知道）。
+PACKAGE_PREFIXES = (
+    "Universal Render Pipeline/",
+    "Shader Graphs/",
+    "Hidden/Shader Graph/",
+    "Hidden/Core/",
+    "Hidden/CoreSRP/",
+    "Hidden/Universal Render Pipeline/",
+    "Hidden/TerrainEngine/Details/UniversalPipeline/",
+    "Hidden/TerrainEngine/",
+    "Skybox/",
+    "UI/",
+)
+assert all(p.endswith("/") for p in PACKAGE_PREFIXES), "前缀必须以 / 结尾，否则前缀匹配本身就没有意义"
+
 # 结果落盘路径：CI 会把它并进诊断报告提交回仓库，这样「覆盖到底有没有生效」
 # 不再只能靠猜 —— 上一轮就是因为没有这个文件，报告里只有 core 包的路径，
 # universal 包缺席这件事完全看不出来。
@@ -144,6 +166,61 @@ def missing_includes(src: str, cache_dir: str) -> list[str]:
     return missing
 
 
+def _list_targets_offline() -> int:
+    """离线推断覆盖目标：没有 PackageCache 时也能算出「应该覆盖谁」。
+
+    判据是**官方 URP / core 包的 shader 命名规则**——包内 shader 一律以
+    这几个前缀开头：
+      `Universal Render Pipeline/`、`Universal Render Pipeline/`（Hidden）、
+      `Shader Graphs/`、`Hidden/Shader Graph/`、`Hidden/Core/`、
+      `Hidden/CoreSRP/`、`Hidden/TerrainEngine/Details/UniversalPipeline/`
+
+    这里踩过一次：`Hidden/` 前缀最初漏在判据外，于是 59 个空壳被判成
+    "游戏自研、官方包里不会有"，而实际上
+    `Hidden/Universal Render Pipeline/Bloom`、`Hidden/Core/...`
+    全都是 URP 包自带 shader。判据漏一个前缀，结论就整个反过来，
+    而表面上只多打了几行名字。
+
+    必须说清楚这个模式**不能证明什么**：它只按名字推断候选，没验证包内
+    真有对应源码、也没验证 include 是否齐全。所以它用来回答「目标是谁」，
+    不用来回答「覆盖会不会成功」—— 后者必须由 CI 里带 PackageCache 的
+    完整路径来答。把两件事分开，是为了避免又出现「名字对上了就算成功」。
+    """
+    if not os.path.isdir(ASSETS_SHADER):
+        print(f"::error::找不到 {ASSETS_SHADER}")
+        return 1
+    print(f"\n空壳总数扫描中：{ASSETS_SHADER}\n")
+    candidates, other_stub = [], []
+    all_stub = 0
+    for f in sorted(os.listdir(ASSETS_SHADER)):
+        if not f.endswith(".shader"):
+            continue
+        p = os.path.join(ASSETS_SHADER, f)
+        if not is_stub(p):
+            continue
+        all_stub += 1
+        name = shader_name(p)
+        if name and any(name.startswith(pre) for pre in PACKAGE_PREFIXES):
+            candidates.append((name, f))
+        else:
+            other_stub.append(name or f)
+
+    print(f"空壳共 {all_stub} 个，其中按官方命名规则命中候选 {len(candidates)} 个")
+    print("\n### 覆盖候选（URP / core 包自带 shader）")
+    for name, f in candidates:
+        print(f"  {name:52s} <- {f}")
+    print(f"\n### 不是候选（游戏自研，官方包里不会有）{len(other_stub)} 个")
+    print("     这些只能靠重建带分支的 shader 来修，补 pragma 无效。")
+    print("     前 12 个：")
+    for n in other_stub[:12]:
+        print(f"  - {n}")
+    if len(other_stub) > 12:
+        print(f"  ... 另 {len(other_stub) - 12} 个")
+    print("\n注意：本模式只回答「目标是谁」，**不能**回答「覆盖会不会成功」。")
+    print("      include 是否齐全必须由带 PackageCache 的 CI 实测。")
+    return 0
+
+
 def main() -> int:
     # 所有 print 同时落盘。做法是最后统一写一遍：把 stdout 重定向到
     # 内存缓冲，再既打印又写文件 —— 避免在每个分支里手动写两次，
@@ -165,7 +242,17 @@ def main() -> int:
 
 
 def _run() -> int:
+    # `--list-targets`：只算「哪些空壳能靠官方源码覆盖」，不碰文件。
+    #
+    # 为什么需要这个模式：没有 Library/PackageCache 时整个脚本原本直接
+    # 早退，于是「覆盖目标是谁」这个问题**只有 CI 能回答** —— 而 CI 一轮
+    # 好几十分钟，目标清单却从没被人看过一眼。加了这个模式，候选清单能
+    # 在本地/评审里先算出来，也能对着已有的 CI 输出交叉核对。
+    list_targets = "--list-targets" in sys.argv
     if not os.path.isdir(PACKAGE_CACHE):
+        if list_targets:
+            print("未找到 PackageCache —— 下面按**官方命名规则**推断覆盖目标。")
+            return _list_targets_offline()
         print(f"跳过：未找到 {PACKAGE_CACHE}（Library 缓存未命中）")
         # 「跳过」和「覆盖成功」在 CI 里都是 exit 0，从外面看一模一样。
         # 而事实上 Unity 装的是**编译后**的 shader 包，官方 .shader 源码
