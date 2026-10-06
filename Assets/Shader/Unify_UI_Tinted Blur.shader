@@ -16,6 +16,14 @@ Shader "Unify/UI/Tinted Blur" {
 
 		Pass
 		{
+			Stencil
+			{
+				Ref [_Stencil]
+				Comp [_StencilComp]
+				WriteMask [_StencilWriteMask]
+				ReadMask [_StencilReadMask]
+			}
+			ColorMask [_ColorMask]
 			HLSLPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
