@@ -111,6 +111,29 @@ def check_one(path):
         if re.search(pat, body, re.M):
             issues.append(f"GLSL 残留 {lbl}")
 
+    # fragment shader 必须有且仅有一个 location 0 的输出语义。
+    #
+    # 没有 SV_Target 语义输出的 frag 什么都不渲染（画面直接空掉），而多于
+    # 一个则是 MRT —— GLES 3.0 没有多渲染目标。这两条都是"能编译但画面
+    # 错"的类型，光看未声明标识符抓不到。
+    sigs = re.findall(r"frag\s*\([^)]*\)\s*(?::\s*(SV_\w+))?", raw)
+    if sigs:
+        sig = sigs[0]
+        if not sig:
+            issues.append("frag 没有 SV_Target 语义（不会渲染任何东西）")
+        elif sig != "SV_Target0":
+            issues.append(f"frag 输出语义是 {sig}，应为 SV_Target0")
+
+    # 括号平衡（花括号在全文件层面查过了，这里补圆/方括号 —— 只截
+    # HLSLPROGRAM 段，所以是 HLSL 自己的括号，必须在这一段内平衡）
+    hl = re.search(r"HLSLPROGRAM(.*?)ENDHLSL", raw, re.S)
+    if hl:
+        h = strip(hl.group(1))
+        for o, c, lbl in (("(", ")", "圆括号"), ("[", "]", "方括号")):
+            if h.count(o) != h.count(c):
+                issues.append(
+                    f"HLSL 段{lbl}不平衡 {h.count(o)} vs {h.count(c)}")
+
     return name, issues
 
 
