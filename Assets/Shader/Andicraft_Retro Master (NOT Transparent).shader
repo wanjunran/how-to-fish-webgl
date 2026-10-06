@@ -68,6 +68,7 @@ _VertexLightSmoothness ("Smoothness [!_VCOLSMOOTHNESS]", Range(0, 1)) = 0.5
         Pass
         {
             Name "Forward"
+            Cull Off
 
 
             HLSLPROGRAM

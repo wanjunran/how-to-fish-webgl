@@ -39,6 +39,9 @@ _PlasticSmoothness ("PlasticSmoothness", Range(0, 1)) = 0
         Pass
         {
             Name "Forward"
+            ZWrite On
+            Cull Back
+            // RenderType: Opaque
 
 
             HLSLPROGRAM

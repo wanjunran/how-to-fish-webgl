@@ -40,6 +40,10 @@ _Normal_Strength ("Normal Strength", Range(0, 1)) = 0.2
         Pass
         {
             Name "Forward"
+            Blend SrcAlpha OneMinusSrcAlpha
+            ZWrite Off
+            Cull Back
+            // RenderType: Transparent
 
 
             HLSLPROGRAM

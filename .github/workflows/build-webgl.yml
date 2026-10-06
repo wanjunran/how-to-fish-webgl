@@ -7,6 +7,12 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+# 诊断报告那一步要往 ci-diagnostics 分支提交。
+# 注意 branches 只列了 main —— 所以推 ci-diagnostics 不会再次触发本
+# workflow，不存在死循环。
+permissions:
+  contents: write
+
 jobs:
   build-webgl:
     name: Build WebGL
@@ -725,6 +731,84 @@ jobs:
             catch (e) { body = '（读不到验证摘要：' + e.message + '）'; }
             await core.summary.addRaw(body).write();
             core.info('验证摘要已写入 step summary');
+
+      # 把 CI 的诊断报告提交回仓库。
+      #
+      # 为什么需要这条通路：artifacts 下载**需要认证**，而本地只有匿名
+      # curl —— 实测 403（API 限流）/ 000（连接被拒），三种取法全试过：
+      #   1. run 页面 HTML：注解是懒加载的，初始 HTML 里没有
+      #   2. .../annotations_partial：需要登录，匿名拿不到
+      #   3. api.github.com/check-runs：匿名可用，但配额很快耗尽
+      # 结果就是「CI 跑完了，但我看不到它查到了什么」—— 前面几轮白等。
+      #
+      # 提交回仓库这条最笨也最可靠：本地 git pull 就有，不需要任何认证。
+      # 只提交报告（文本），不动 Assets —— 构建产物和源码都不碰。
+      - name: Commit diagnostics report
+        if: always()
+        run: |
+          set +e
+          mkdir -p docs/ci-reports
+          STAMP=$(date -u +%Y%m%d-%H%M%S)
+          OUT="docs/ci-reports/run-${GITHUB_RUN_ID}-${STAMP}.md"
+
+          {
+            echo "# CI 诊断报告 run ${GITHUB_RUN_ID}"
+            echo
+            echo "- commit: \`${GITHUB_SHA}\`"
+            echo "- 时间: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            echo "- run: https://github.com/wanjunran/how-to-fish-webgl/actions/runs/${GITHUB_RUN_ID}"
+            echo
+            echo "## shader 编译错误"
+            echo
+            if [ -s verify-evidence/shader-errors.txt ]; then
+              echo '```'
+              head -40 verify-evidence/shader-errors.txt
+              echo '```'
+            else
+              echo "（无记录。注意：这不等于「干净」—— 可能根本没扫到日志，"
+              echo "看下面 Unity 日志一节。）"
+            fi
+            echo
+            echo "## Unity 日志"
+            echo
+            if [ -f verify-evidence/Editor.log ]; then
+              echo "大小 $(wc -c < verify-evidence/Editor.log) 字节"
+              echo
+              echo '```'
+              grep -a -E "Shader (error|warning) in|error in '" | head -30
+              echo '```'
+            else
+              echo "**没找到 Unity Editor.log** —— shader 结论无依据。"
+            fi
+            echo
+            echo "## URP 里的 APV / SSBO 门控"
+            echo
+            if [ -s verify-evidence/urp-apv-guards.txt ]; then
+              echo '```'
+              head -60 verify-evidence/urp-apv-guards.txt
+              echo '```'
+            else
+              echo "（无记录 —— PackageCache 里大概率没有 .shader 源码，"
+              echo "Unity 装的是编译产物。）"
+            fi
+          } > "$OUT"
+
+          # 上限保护：报告只留最近 12 份，别把仓库撑大
+          ls -1t docs/ci-reports/*.md 2>/dev/null | tail -n +13 \
+            | while read -r old; do rm -f "$old"; done
+
+          git config user.name  "ci-bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+          git add -f "$OUT" docs/ci-reports 2>/dev/null
+          if git diff --cached --quiet; then
+            echo "报告无变化，跳过提交"
+            exit 0
+          fi
+          # 不 push 失败就当没有 —— 诊断通路不该影响构建结论
+          git commit -q -m "ci: 诊断报告 run ${GITHUB_RUN_ID}" \
+            || echo "::warning::报告提交失败（不影响构建结论）"
+          git push origin HEAD:refs/heads/ci-diagnostics \
+            || echo "::warning::报告推送失败（不影响构建结论）"
 
       - name: Upload WebGL build
         if: always()

@@ -43,6 +43,10 @@ _BurntColor ("BurntColor", Vector) = (0,0,0,1)
         Pass
         {
             Name "Forward"
+            Blend SrcAlpha OneMinusSrcAlpha
+            ZWrite Off
+            Cull Back
+            // RenderType: Transparent
 
 
             HLSLPROGRAM

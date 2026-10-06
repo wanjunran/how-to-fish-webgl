@@ -17,6 +17,9 @@ Shader "Shader Graphs/LineShader"
         Pass
         {
             Name "Forward"
+            ZWrite On
+            Cull Back
+            // RenderType: Opaque
 
 
             HLSLPROGRAM

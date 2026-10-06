@@ -44,6 +44,9 @@ _MoveNoiseScale ("MoveNoiseScale", Float) = 0
         Pass
         {
             Name "Forward"
+            ZWrite On
+            Cull Back
+            // RenderType: Opaque
 
 
             HLSLPROGRAM

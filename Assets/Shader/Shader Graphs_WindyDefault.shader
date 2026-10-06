@@ -33,6 +33,9 @@ _Normal_Scale ("Normal Scale", Float) = 1
         Pass
         {
             Name "Forward"
+            ZWrite On
+            Cull Back
+            // RenderType: Opaque
 
 
             HLSLPROGRAM

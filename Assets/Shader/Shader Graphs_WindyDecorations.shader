@@ -30,6 +30,9 @@ _Noise_Remap ("Noise Remap", Vector) = (0.9,1,0,0)
         Pass
         {
             Name "Forward"
+            ZWrite On
+            Cull Back
+            // RenderType: Opaque
 
 
             HLSLPROGRAM
