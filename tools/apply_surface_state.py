@@ -107,11 +107,21 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
-    # guid -> (shader 名, 路径)，只用本流水线恢复的 shader
+    # guid -> (shader 名, 路径)
+    #
+    # 这里**不能**排除 AssetRipper 空壳。原实现写着
+    # 「含 HLSLPROGRAM 且非空壳」，于是 Universal Render Pipeline/Lit
+    # 空壳从来没被处理 —— 而它被 59 个材质引用，其中 11 个是透明的
+    # （水面 / WaterParticle / WaterParticleWhite / SpitParticle），
+    # 空壳的 Pass 里没有任何 Blend/ZWrite/Cull 块，
+    # 于是「该透明的东西渲成不透明」，且不产生一行日志。
+    #
+    # 空壳有完整的 Properties（含 _SrcBlend/_DstBlend/_ZWrite/_Cull），
+    # 缺的只是 Pass 里的渲染状态块 —— 那正是本脚本要补的东西。
     by_guid = {}
     for p in glob.glob(os.path.join(SHADER_DIR, "*.shader")):
         raw = open(p, encoding="utf-8", errors="replace").read()
-        if "HLSLPROGRAM" not in raw or "DummyShaderTextExporter" in raw:
+        if "HLSLPROGRAM" not in raw:
             continue
         g = guid_of_meta(p)
         if g:
@@ -161,9 +171,18 @@ def main() -> int:
             continue
 
         raw = open(spath, encoding="utf-8", errors="replace").read()
-        m = re.search(r'(Name "Forward"\n)', raw)
+        # 插入锚点：渲染状态块必须排在 Pass 的 `{` 之后、HLSLPROGRAM 之前。
+        #
+        # 两种形态都要认：
+        #   本流水线恢复的产物 -> `    Name "Forward"\n{`
+        #   AssetRipper 空壳   -> `Pass\n{`（**没有 Name 标记**）
+        # 之前只认 Name 那种，于是空壳全部报「找不到锚点，跳过」——
+        # 又是一个静默跳过（输出里只是多一行提示，容易被当成正常）。
+        m = re.search(r'(Name "Forward"\n)', raw) or \
+            re.search(r'(^[ \t]*Pass[ \t]*\n[ \t]*\{\n)', raw, re.M)
         if not m:
-            print(f"!! {sname}: 找不到 'Name \"Forward\"'，跳过")
+            print(f"!! {sname}: 找不到 Pass 锚点，跳过")
+            skipped += 1
             continue
         block = "\n".join(lines) + "\n"
         if block.strip() and block in raw:

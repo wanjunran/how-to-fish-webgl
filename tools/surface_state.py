@@ -174,11 +174,23 @@ def main() -> int:
     a = ap.parse_args()
 
     shader_dir = os.path.join(ROOT, "Assets", "Shader")
-    # shader 名 -> 路径（只用本流水线恢复的：含 HLSLPROGRAM 且非空壳）
+    # shader 名 -> 路径。
+    #
+    # 之前这里写的是「含 HLSLPROGRAM 且**非**空壳」，把 AssetRipper 空壳
+    # 整个排除在外了。后果很直接：Universal Render Pipeline/Lit 空壳
+    # 从来没被处理过，而它被 **59 个材质**引用，其中 **11 个材质
+    # _Surface=1（透明）+ _ZWrite=0 + _DstBlend=10（AlphaBlend）**——
+    # 水面、WaterParticle、WaterParticleWhite、SpitParticle 全在内。
+    # 空壳的 Pass 里没有任何 Blend/ZWrite/Cull 块，于是这些设置
+    # 声明了 Properties 却没有任何 Pass 读它，**该透明的东西渲成不透明**，
+    # 且不产生一行日志。
+    #
+    # 所以这里必须**包含**空壳：它们有完整的 Properties（含全部渲染状态
+    # 属性），缺的只是 Pass 里的渲染状态块 —— 而那正是本脚本要补的。
     by_guid: dict[str, tuple[str, str]] = {}
     for p in glob.glob(os.path.join(shader_dir, "*.shader")):
         raw = open(p, encoding="utf-8", errors="replace").read()
-        if "HLSLPROGRAM" not in raw or "DummyShaderTextExporter" in raw:
+        if "HLSLPROGRAM" not in raw:
             continue
         g = guid_of_meta(p)
         if g:

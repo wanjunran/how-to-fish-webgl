@@ -3,8 +3,7 @@
 Why this exists
 ---------------
 AssetRipper writes every shader it cannot decompile as a
-``DummyShaderTextExporter`` stub (a pass that returns solid white). 106 of the
-project's shaders are such stubs. Most of them, however, are not the game's
+``DummyShaderTextExporter`` stub. Most of them, however, are not the game's
 own work: they are Unity/URP package shaders (Lit, Unlit, post-processing,
 utils...). The real source for those sits in the package cache that Unity
 restores from Packages/manifest.json, at exactly the version the project asks
@@ -16,6 +15,19 @@ at the stub's GUID) keeps resolving once the stub gains real content.
 
 Game-authored Shader Graph shaders have no source anywhere in the build and
 are reported as unmatched; they are not touched.
+
+The preflight check (why copying blindly is dangerous)
+-----------------------------------------------------
+Official package shaders are not self-contained: ``URP/Lit.shader`` pulls in
+a dozen ``#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/
+*.hlsl"`` files. If any of those cannot be resolved, the shader fails to compile
+-- and a shader that fails to compile is rendered **magenta** while Unity still
+exits 0. Copying the official source over a *working* stub would therefore be a
+regression, not a fix.
+
+So before copying, every ``#include`` in the candidate file is resolved against
+the package cache (both ``Packages/...`` form and cache-relative form). If any
+include is missing, that file is **skipped and reported** rather than copied.
 """
 from __future__ import annotations
 
@@ -28,6 +40,17 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ASSETS_SHADER = os.path.join(ROOT, "Assets", "Shader")
 PACKAGE_CACHE = os.path.join(ROOT, "Library", "PackageCache")
+
+# 两个路径都允许用环境变量改写，理由是**可测**：
+# ROOT 由 __file__ 推导，把脚本复制到临时目录跑就会指向那个临时目录，
+# 于是想验证「缺 include 时不覆盖」这条分支时根本没法构造场景
+# （唯一能跑出来的分支是「没找到 PackageCache，跳过」——
+# 而那条分支根本碰不到新加的预检逻辑，等于没测）。
+# 有了覆盖，测试才能真正走到预检。
+if os.environ.get("HTF_ROOT"):
+    ROOT = os.environ["HTF_ROOT"]
+    ASSETS_SHADER = os.path.join(ROOT, "Assets", "Shader")
+    PACKAGE_CACHE = os.path.join(ROOT, "Library", "PackageCache")
 
 SHADER_NAME = re.compile(r'^\s*Shader\s+"([^"]+)"', re.MULTILINE)
 STUB_MARKER = "DummyShaderTextExporter"
@@ -55,6 +78,49 @@ def is_stub(path: str) -> bool:
             return STUB_MARKER in f.read(65536)
     except OSError:
         return False
+
+
+INCLUDE = re.compile(r'^\s*#include\s+"([^"]+)"', re.M)
+
+
+def missing_includes(src: str, cache_dir: str) -> list[str]:
+    """列出在包缓存里解析不到的 `#include`。
+
+    只认包内绝对路径形式（``Packages/<pkg>/...``）与包内相对形式
+    （同目录下的 ``Foo.hlsl``）。这两种是 Unity 解析 URP 包内 shader
+    时实际用的写法 —— URP 的 Lit.shader 全部用 ``Packages/...`` 绝对形式。
+
+    为什么要逐个解析而不是「文件存在就复制」：官方 shader 依赖同包内的
+    .hlsl，这些.hlsl 又 include 更多的 .hlsl。只检查第一层会漏掉
+    「Lit.hlsl 在，但 LitInput.hlsl 不在」这种。所以这里**递归**展开，
+    把每一层都查一遍。
+    """
+    cache_dir = os.path.abspath(cache_dir)
+    seen: set[str] = set()
+    missing: list[str] = []
+    queue = [src]
+    while queue:
+        cur = queue.pop()
+        try:
+            with open(cur, encoding="utf-8", errors="replace") as f:
+                text = f.read()
+        except OSError:
+            continue
+        cur_dir = os.path.dirname(os.path.abspath(cur))
+        for inc in INCLUDE.findall(text):
+            if inc in seen:
+                continue
+            seen.add(inc)
+            # Packages/... -> Library/PackageCache/...
+            cand = os.path.join(cache_dir, inc[len("Packages/"):]) \
+                if inc.startswith("Packages/") else None
+            if cand is None or not os.path.isfile(cand):
+                cand = os.path.normpath(os.path.join(cur_dir, inc))
+            if os.path.isfile(cand):
+                queue.append(cand)
+            else:
+                missing.append(f"{os.path.relpath(cur, cache_dir)} -> {inc}")
+    return missing
 
 
 def main() -> int:
@@ -118,6 +184,7 @@ def _run() -> int:
 
     replaced: list[str] = []
     missing: list[str] = []
+    blocked: list[tuple[str, list[str]]] = []
     for stub in stubs:
         name = shader_name(stub)
         if name is None:
@@ -126,12 +193,28 @@ def _run() -> int:
         if src is None:
             missing.append(name)
             continue
+        # 预检：include 解析不全就别覆盖。
+        # 覆盖一个编译不过的官方 shader =洋红，而洋红比现在的
+        # 「纯色空壳」更显眼、更难定位。所以宁可保持原样并报出来。
+        bad = missing_includes(src, PACKAGE_CACHE)
+        if bad:
+            blocked.append((name, bad))
+            continue
         shutil.copyfile(src, stub)
         replaced.append(name)
 
     print(f"\n已用官方源码覆盖：{len(replaced)}")
     for n in replaced:
         print(f"  + {n}")
+    if blocked:
+        print(f"\n有 include 解析不全、**未覆盖**（覆盖会导致编译失败 -> 洋红）："
+              f"{len(blocked)}")
+        for n, bad in blocked:
+            print(f"  ! {n}")
+            for b in bad[:5]:
+                print(f"      缺: {b}")
+            if len(bad) > 5:
+                print(f"      ... 另 {len(bad) - 5} 个")
     print(f"\n包内无对应（游戏自定义，保持原样）：{len(missing)}")
     for n in missing:
         print(f"  - {n}")
