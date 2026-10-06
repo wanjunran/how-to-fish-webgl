@@ -262,7 +262,23 @@ public class ButtonManager : MonoBehaviour
 
 	private int _activeResolutionIndex = -1;
 
+	// 原版默认 true（走 Steam 联机）。WebGL 下改为 false：
+	//
+	// Steamworks.NET 底层调 steam_api64.dll，浏览器里既加载不了也没这份
+	// 原生库，于是启动后卡在 Logo 页的「Steam Relay Status」上，
+	// 右下角显示 Disconnected，进不了任何游戏场景 —— 画面根本无从验收。
+	//
+	// 项目里已有 WebGLSteamStub.cs（480 行桩实现）把85 处 Steam API
+	// 调用全部接住，所以关掉 Steam 之后游戏逻辑能正常往下走，不需要联网。
+	// 单玩家入口本来就是靠 !_useSteam 显示的（见 _createSingleplayerText
+	// / _singleplayerText 的 SetActive 调用），改成 false 就自动出现了。
+	//
+	// **只在 WebGL 下改**，编辑器与桌面版行为保持原样。
+#if UNITY_WEBGL && !UNITY_EDITOR
+	private bool _useSteam = false;
+#else
 	private bool _useSteam = true;
+#endif
 
 	private Difficulty _selectedDifficulty = Difficulty.Default;
 
