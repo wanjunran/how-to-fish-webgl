@@ -120,6 +120,15 @@ jobs:
           python3 tools/check_lightmode.py 2>&1 \
             | tee verify-evidence/lightmode.txt \
                   docs/ci-evidence/lightmode.txt
+          # workflow 自身合法性检查（回归网，见下面报告节的说明）。
+          # 这步能跑起来就说明文件已经合法，所以它的作用不是"首次门禁"
+          # —— 文件非法时 run 在分配 runner 前就挂了，这段代码根本不会执行。
+          # 它防的是「未来某次机械替换又把某个 `- name:` 行吃掉」，
+          # 也就是 run #118 那种形态。
+          python3 tools/check_workflow_yaml.py \
+            --expect-steps build-webgl=20 2>&1 \
+            | tee verify-evidence/workflow-yaml.txt \
+                  docs/ci-evidence/workflow-yaml.txt
           # 天空盒链路：碧海蓝天是用户最想看到的东西，而它是唯一一个
           # 在启动场景里、不依赖任何游戏内逻辑就能出结果的渲染产物 ——
           # 所以最适合当「渲染管线通没通」的探针。查的是数据完整性
@@ -440,17 +449,24 @@ jobs:
           # 产物里没有可用的 .data/.wasm，表现是「构建绿了但页面加载失败」，
           # 跟 shader 洋红毫无关系。两类混在一起就会只看见自己期待的那个。
           #
-          # 具体要盯的是类型不存在的错误（CS0246）。目前有一个待确认的疑点：
-          # ConnectionManager.SetTransport() 调用 `_multipass.SetClientTransport<UnityTransport>()`，
-          # 而 `UnityTransport` 这个类型在**整个仓库里搜不到定义**
-          # （FishNet 源码树里没有 UTP 目录，连 .meta 都没有；备份的
-          # FishNet.Runtime.dll 里这个字符串出现 0 次，而 Tugboat 出现 50 次）。
-          # 也就是说那行代码依赖一个不存在的类型 —— 但历史 CI 日志里
-          # `error CS` 计数是 0，两者矛盾。
+          # 具体要盯的是类型不存在的错误（CS0246）。
           #
-          # **这个矛盾必须由数据回答，不能靠推断。** 所以这里把 C# 错误
-          # 单独落盘成文件，不 exit 1（还要继续取证），并在报告里显式
-          # 点名查这个疑点。
+          # 这里曾有一个「`UnityTransport` 类型丢失」的疑点，**已查清并推翻**。
+          # 当时只看了 FishNet 源码树（`Transports/` 下只有 `Multipass/`
+          # 和 `Tugboat/`，备份的 FishNet.Runtime.dll 里该字符串 0 次），
+          # 于是判成「该换成 Tugboat」。**错在漏看了 `Assets/Plugins/`**：
+          # `Assets/Plugins/FishyUnityTransport.dll`（39424 bytes）的 strings
+          # 实测含 `FishNet.Transporting.UTP|UnityTransport`、
+          # `WebSocketNetworkInterface`、`m_UseWebSockets`，以及官方 doc 字符串
+          # "...Set to true to communicate with WebSocket." —— 它由托管 dll
+          # 提供，且带 WebSocket 支持。换成 Tugboat 会引入**真 bug**：后者走
+          # UDP（NetManager.Socket.cs 直接 using System.Net.Sockets），浏览器
+          # 没有 UDP API。
+          #
+          # 所以这一项现在的定位是**回归验证**：类型既然在 dll 里，构建日志里
+          # 不该再出现它的 CS 报错。出现了才说明 dll 没进编译或名字又对不上。
+          # 判据仍由数据回答，不靠推断 —— 所以 C# 错误单独落盘成文件，
+          # 不 exit 1（还要继续取证），并在报告里显式点名。
           CS_HITS=$(grep -ah -E \
             "error CS[0-9]{4}|Compilation failed|Scripts have compiler errors" \
             $LOGS 2>/dev/null | sort -u | cut -c1-260)
@@ -1113,6 +1129,7 @@ jobs:
           done
           exit 0
 
+      - name: Publish verification verdict
         if: always()
         uses: actions/github-script@v7
         with:
@@ -1269,6 +1286,43 @@ jobs:
               echo "只代表点击步骤没产出结果。"
             fi
             echo
+            echo "## workflow 自身结构（这一节能出现，就说明它已经合法）"
+            echo
+            echo "**run #118–#124 连续 7 次秒挂、0 个 job。** 原因不在runner、"
+            echo "不在配额、不在 LFS —— 是我插入新步骤时把上一条"
+            echo "\`- name: Publish verification verdict\` 连同名带内容一起删了，"
+            echo "它的 \`if:\` 变成上一个 \`run:\` 步骤的第二个 \`if\`："
+            echo
+            echo '```'
+            echo "重复键 'if'  (Line: 1116): 'if' is already defined"
+            echo "               (Line: 1117): Unexpected value 'uses'"
+            echo "               (Line: 1118): Unexpected value 'with'"
+            echo '```'
+            echo
+            echo "后果不是某一步失败，是**整个 run 在分配 runner 之前就挂了**："
+            echo "\`run_started_at == created_at\`、\`/jobs\` 返回 \`total_count: 0\`。"
+            echo "因此那7 个 run **没有产生任何日志** —— 上面每一节「无记录」"
+            echo "都不是检查失败，是检查从没跑过。"
+            echo
+            echo "本地校验之所以没抓到：\`bash -n\` 只验 shell 片段；"
+            echo "**PyYAML 默认模式按设计就允许重复键**（后者静默覆盖），"
+            echo "\`safe_load\` 照样成功，只是步骤数从 20 变成 19。"
+            echo "工具报成功、实际已经错了 —— 这是最难的一种失效。"
+            echo
+            echo "修法是换一个拒绝重复键的解析器，见tools/check_workflow_yaml.py。"
+            echo "**注意这一节的定位是回归网，不是首次门禁**：文件非法时"
+            echo "run 压根不会启动，这段代码不会执行。它防的是后续机械替换"
+            echo "再吃掉一次 \`- name:\` 行。"
+            echo
+            if [ -s verify-evidence/workflow-yaml.txt ]; then
+              echo '```'
+              cat verify-evidence/workflow-yaml.txt
+              echo '```'
+            else
+              echo "**无记录** —— 这一节为空**不代表**结构没问题，"
+              echo "只代表检查没跑或没输出。"
+            fi
+            echo
             echo "## 证据管线自检"
             echo
             echo "查的不是内容对不对，而是**证据有没有真的能被人看到**。"
@@ -1277,6 +1331,8 @@ jobs:
             echo "C# 扫描写进被 gitignore 的目录 / 修了 2 处漏了 10 处）——"
             echo "第七次是上一轮自己加的证据：产出对了、提交了，"
             echo "但报告里一处引用都没有，同样等于没做。"
+            echo "**第八次最严重**：被校验的workflow 自己是非法的，"
+            echo "run 在分配 runner 之前就挂了，证据**从来没被产出过**。"
             echo
             if [ -s verify-evidence/evidence-pipeline.txt ]; then
               echo '```'
@@ -1323,10 +1379,27 @@ jobs:
             echo "这一节是专门为**一个存疑的 CS0246** 建的："
             echo "`ConnectionManager.SetTransport()` 调用"
             echo "`_multipass.SetClientTransport<UnityTransport>()`，"
-            echo "而 `UnityTransport` 这个类型在整个仓库里搜不到定义"
-            echo "（FishNet 源码树没有 UTP 目录；备份 dll 里该字符串 0 次，"
-            echo "而 Tugboat 50 次）。但历史 CI 日志 `error CS` 计数是 0，矛盾。"
-            echo "**这个矛盾只能由数据回答。**"
+            echo "而 `UnityTransport` 在 FishNet **源码树**里搜不到定义"
+            echo "（`Transports/` 下只有 `Multipass/` 和 `Tugboat/`）——"
+            echo "当时据此判定「类型丢失，应换成 Tugboat」。"
+            echo
+            echo "**那个判定是错的，错在只看了源码树。** 实测"
+            echo "`Assets/Plugins/FishyUnityTransport.dll`（39424 bytes）里"
+            echo "含 `FishNet.Transporting.UTP|UnityTransport`、"
+            echo "`WebSocketNetworkInterface`、`m_UseWebSockets`，以及官方 doc"
+            echo "字符串 "...Set to true to communicate with WebSocket." ——"
+            echo "即它由托管 dll 提供，且**带 WebSocket 支持**，是 WebGL 上"
+            echo "唯一走得通的传输层。Tugboat 走 UDP（NetManager.Socket.cs"
+            echo "直接 using System.Net.Sockets），浏览器没有 UDP API。"
+            echo
+            echo "而那个 CS0234 也不是「缺引用」：round 18 装入"
+            echo "`com.unity.transport` 后它自带同名 asmdef，"
+            echo "`Assets/Plugins/Unity.Networking.Transport.dll` 成了第二个"
+            echo "同名程序集，编译器把类型解析到了错的那个 —— **错误信息"
+            echo "完全不提另一方**，所以读起来像引用丢了。改名后已解决。"
+            echo
+            echo "**这一节现在是回归验证**：类型既然在 dll 里，构建日志里"
+            echo "不该再出现它的 CS 报错。判据仍由数据回答。"
             echo
             if [ -s docs/ci-evidence/cs-errors.txt ]; then
               echo '```'
@@ -1511,7 +1584,8 @@ jobs:
                  shader-errors.txt official-shader-sync.txt \
                  mat-shader-props.txt shader-keywords.txt \
                  dangling-refs.txt lightmode.txt skybox.txt urp-apv-guards.txt \
-                 ingame-layout.txt ingame-click.txt evidence-pipeline.txt"
+                 ingame-layout.txt ingame-click.txt evidence-pipeline.txt \
+                 workflow-yaml.txt"
           for n in $CI_EV; do
             f="docs/ci-evidence/$n"
             [ -f "$f" ] && git add -f "$f" 2>/dev/null
