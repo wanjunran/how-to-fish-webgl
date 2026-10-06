@@ -1,0 +1,16 @@
+== Game.unity
+   相机 &2683: Skybox
+   相机 &2684: Skybox
+   天空盒材质: Assets/Material/SkyboxTesting.mat
+     shader: Assets/Shader/Shader Graphs_SkyboxShader.shader  [Shader Graphs/SkyboxShader]
+     target=3.0  Pass数=1  空壳=False
+     颜色字段: 9 个
+
+说明：
+  - Game.unity: 2/2 个相机 ClearFlags=1(Skybox)
+  - 天空盒颜色字段 9 个: _TopDayColor, _BottomDayColor, _TopColor, _BottomColor, _DayColor ...
+  - 天空盒材质贴图数 0（0 是正常的 —— 程序化渐变天空盒不贴图；但若原版本该有贴图而这里 0，说明 AssetRipper 没导出）
+
+天空盒链路数据完整。
+**但这不等于画面里就有天空** —— 若截图仍纯黑，原因在shader 运行时或没进到渲染天空盒的相机，
+判决权在 CI 的 shader 错误扫描和截图上，不在本脚本。

@@ -1,0 +1,3 @@
+.github/workflows/build-webgl.yml: job 'build-webgl' 21 步（符合期望 21）
+.github/workflows/extract-guids.yml: job 'extract-guids' 3 步
+workflow 结构合法：2 个文件，0 个非法。

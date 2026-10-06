@@ -1,0 +1,32 @@
+本仓库资产 guid: 3519
+悬空引用: 58
+  包内 / Unity 内置（靠重装包解析，正常）: 58
+  疑似游戏自有资产丢失: 0
+
+### 包内 / 内置（**不是缺陷**，AssetRipper 不导出包内资产）
+  e9620f8c3430…  被 224 个文件引用
+  d3e719b59ab7…  被  58 个文件引用
+  57c9a3e5193e…  被  48 个文件引用
+  a7c8ed169960…  被  35 个文件引用
+  71c1514a6bd2…  被  29 个文件引用
+  f4688fdb7df0…  被  22 个文件引用
+  1bb1838fe8be…  被  16 个文件引用
+  97269afb30aa…  被  16 个文件引用
+  5be51871efa6…  被  15 个文件引用
+  56eb0353ae6e…  被  13 个文件引用
+  a79441f348de…  被  12 个文件引用
+  0777d029ed3d…  被  11 个文件引用
+  ... 另 46 个
+
+### 疑似真的丢失：无
+这一节为空**不代表引用都对**，只代表没有落入「疑似」分类。
+
+### 插件 DLL 引用情况
+  Assets/Plugins/FishyUnityTransport               d8db7e6e61692c478fb9733936ad93bb被引用    2 次
+  Assets/Plugins/Unified.Universal.Blur            490754a642a66baec2900e84ab6bdd67被引用    1 次
+  Assets/Plugins/Newtonsoft.Json                   e63744a55a356f07c2753641296e1f92被引用    0 次  <- 零引用
+  Assets/FishNet/Runtime/Plugins/CodeAnalysis/FishNet.CodeAnalysis.Analyzers 1907658b89c1bbe42a0063df40b7ca24被引用    0 次  <- 零引用
+  Assets/FishNet/Runtime/Plugins/CodeAnalysis/FishNet.CodeAnalysis 620557a5e202e644cb322b8fcc9422ea被引用    0 次  <- 零引用
+
+  零引用但**未发现身份漂移** —— 多半是纯托管库（只需 using，不需要资产引用），属正常。
+  注意：本节只覆盖 Assets/**；打包进 asmdef 或 由代码动态加载的 DLL 不在其中。

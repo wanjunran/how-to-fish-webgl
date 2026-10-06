@@ -1,0 +1,77 @@
+Assets/Shader 下107 个 shader（空壳 66，非空壳 41）
+  已有 LightMode tag: 0
+  缺 tag 且消费 URP 光照数据（应补 UniversalForward）: 20
+  缺 tag 但不消费 URP 光照数据（unlit，应保持不动）: 21
+
+### 缺 UniversalForward —— 落到 SRPDefaultUnlit 则光照 uniform 不被赋值
+    （这些量不是「默认 0」，是**没人赋值**；结果是漫反射/高光/附加光全退化为 0）
+! Shader Graphs_BoatShader.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_CharacterShader.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_CookableGlassShader.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_DefaultMoving.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_DefaultParticle.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_DefaultShader.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_FlagShader.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_GlassShader.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_Grass.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_LaserSight.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_LavaShader.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_LavaballShader.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_LevelShader.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_LineShader.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_WindyDecorations.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_WindyDefault.shader
+    消费 10 个: _MainLightPosition, _MainLightColor, _MainLightShadowParams, _AdditionalLightsCount, _AdditionalLightsPosition …   Pass 数 1
+! Shader Graphs_WaterShader.shader
+    消费 9 个: _MainLightPosition, _MainLightColor, _AdditionalLightsCount, _AdditionalLightsPosition, _AdditionalLightsColor …   Pass 数 1
+! Andicraft_Retro Master (NOT Transparent).shader
+    消费 4 个: _MainLightColor, _AdditionalLightsCount, _AdditionalLightsColor, unity_LightData   Pass 数 1
+! Shader Graphs_CloudSphereShader.shader
+    消费 1 个: _MainLightPosition   Pass 数 1
+! Shader Graphs_SkyboxShader.shader
+    消费 1 个: _MainLightPosition   Pass 数 1
+::warning::以上 20 个需要补 LightMode。**本脚本只报不改** —— 补tag 涉及插入位置判断（如 `Pass [_StencilOp]` 的 stencil 分支），且改对改错在简单材质上看不出来。
+
+### 不消费 URP 光照数据 —— 保持不动
+    UI / 轮廓 / Blur / TMP 这类本来就是 unlit 性质。给它们挂 UniversalForward 是行为改动，不是移植修复。
+  Custom_DepthMaskShader.shader                        Pass 数 1
+  Shader Graphs_BettingBoxShader.shader                Pass 数 1
+  Shader Graphs_MapBackground.shader                   Pass 数 1
+  Shader Graphs_MapLine.shader                         Pass 数 1
+  Shader Graphs_MapObject.shader                       Pass 数 1
+  Shader Graphs_Outline Shader.shader                  Pass 数 1
+  Shader Graphs_OutlineBackgroundShader.shader         Pass 数 1
+  Shader Graphs_RedDot.shader                          Pass 数 1
+  Shader Graphs_SlotMachineBackground.shader           Pass 数 1
+  Shader Graphs_SniperAim.shader                       Pass 数 1
+  Shader Graphs_ThinkingShader.shader                  Pass 数 1
+  Shader Graphs_UI.shader                              Pass 数 1
+  Shader Graphs_UIBlur.shader                          Pass 数 1
+  Shader Graphs_UnderwaterShader.shader                Pass 数 1
+  Shader Graphs_VignetteShader.shader                  Pass 数 1
+  Skybox-Procedural.shader                             Pass 数 1
+  TextMeshPro_Distance Field.shader                    Pass 数 2
+  TextMeshPro_Mobile_Distance Field Overlay.shader     Pass 数 2
+  TextMeshPro_Mobile_Distance Field.shader             Pass 数 2
+  TextMeshPro_Sprite.shader                            Pass 数 2
+  Unify_Internal_Blur.shader                           Pass 数 1
+
+### 附：Pass 数量（本脚本不判，只列事实）
+  多 Pass 的 shader: 4 个 —— TextMeshPro_Distance Field.shader, TextMeshPro_Mobile_Distance Field Overlay.shader, TextMeshPro_Mobile_Distance Field.shader, TextMeshPro_Sprite.shader
+  单 Pass 的 shader: 37 个。**单 Pass 不等于错** —— 缺 ShadowCaster / DepthOnly 会影响阴影与深度预通道，
+  但那是 B 类（重建带分支的多 Pass shader），与 LightMode 是两个独立问题，不要用本节结论去推它。

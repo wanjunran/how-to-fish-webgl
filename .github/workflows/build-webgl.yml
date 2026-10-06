@@ -60,6 +60,7 @@ jobs:
       # 版本来自 Library/PackageCache，与 Packages/manifest.json 声明的完全一致，
       # 不需要在网上猜版本；缓存未命中时脚本自行跳过，构建照常进行。
       - name: Restore official shader sources
+        continue-on-error: true
         run: |
           mkdir -p verify-evidence
           # 先自检 include 门禁，再真正跑覆盖。
@@ -203,7 +204,7 @@ jobs:
           # 它防的是「未来某次机械替换又把某个 `- name:` 行吃掉」，
           # 也就是 run #118 那种形态。
           python3 tools/check_workflow_yaml.py \
-            --expect-steps build-webgl=20 2>&1 \
+            --expect-steps build-webgl=21 2>&1 \
             | tee verify-evidence/workflow-yaml.txt \
                   docs/ci-evidence/workflow-yaml.txt
           # 天空盒链路：碧海蓝天是用户最想看到的东西，而它是唯一一个
@@ -248,8 +249,30 @@ jobs:
       # 注意：personal 授权会占用一个 Personal seat，v6 会在 build 结束
       # （含失败/取消）时自动归还。若频繁失败导致 seat 被泄漏，
       # 到 https://id.unity.com 手动释放。
+      #
+      # `continue-on-error: true` —— 这个开关是 #127 教会我的。
+      #
+      # #127 的步骤序列是：第 5 步（门禁自检）failure ->
+      # `Build WebGL` 被**跳过** -> 构建根本没跑 ->
+      # 后面 14 个带 `if: always()` 的步骤全部"成功"，
+      # 但它们读到的是 actions/cache 里**上一轮的旧截图**。
+      #
+      # 于是报告里 14 节写着「无记录」或旧数据，
+      # 而 run 结论是 failure，日志里一句「构建被跳过」都没有 ——
+      # 看着像「跑了但什么都没查到」，实际是**根本没跑**。
+      #
+      # 判据的教训和门禁那次一模一样：**「成功」不等于「做了」。
+      # `if: always()` 只保证步骤会执行，不保证它执行时有真实输入。
+      # 缺输入的「成功」比失败更坏 —— 失败会让人去查，
+      # 假成功会让人把结论写进报告然后当真。
+      #
+      # 真正的修复不是让构建硬扛所有失败，而是**别让前置诊断
+      # 决定构建能不能跑**：构建失败要照常报 failure，
+      # 但它不能因为前面某个检查步骤红了就自动被跳过。
       - name: Build WebGL
+        id: build_webgl
         uses: game-ci/unity-builder@v6
+        continue-on-error: true
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
@@ -741,11 +764,41 @@ jobs:
       #   xvfb-run                 没有 X server，Chrome 连 GL 后端都起不来
       #   --use-angle=swiftshader  软件实现 WebGL2（runner 无 GPU）
       #   --enable-unsafe-swiftshader  新版 Chrome 默认禁用软件 WebGL
+      #
+      # ---- 先把上一轮的产物删掉 ----
+      #
+      # #127 教会我的第二件事：这个 step 有 `if: always()`，而
+      # `Build WebGL` 被前一步的 failure 跳过了，于是 index.html
+      # 其实是 actions/cache 里**上一轮的**。脚本照常跑完、
+      # 照常截图、照常报 success —— 14 个步骤全绿，
+      # 而实际上**这一轮什么都没构建**。
+      #
+      # `if: always()` 保证的是「会执行」，不是「执行时有真实输入」。
+      # 输入是上一轮的旧产物时，它照样绿。
+      # 判据和结论之间隔着的前提，本身必须被检查。
+      #
+      # 所以在验证之前先清空：产物要么是本轮的，要么不存在。
+      # 不存在时下面那几段会如实写「无产物，本轮未构建」，
+      # 那才是真的结论。
       - name: Verify the build actually loads
         if: always()
         run: |
           set +e
           echo "### 产物实跑验证 ###" >> "$GITHUB_STEP_SUMMARY"
+
+          # 只在**本轮确实没构建**时才清。Build 成功时产物是新写的，
+          # 删掉就白干一轮；但 Build 被跳过时它一定是旧的
+          # （cache 恢复的是整个 build 目录）。
+          # 用 Build 步骤的结论判断，比看文件时间戳可靠：
+          # 时间戳会因 cache 恢复而变新，结论不会撒谎。
+          if [ "${{ steps.build_webgl.outcome }}" != "success" ]; then
+            if [ -d build/WebGL ]; then
+              echo "::warning::Build WebGL 未成功（outcome=${{ steps.build_webgl.outcome }}）"
+              echo "::warning::清掉上一轮遗留的 build/WebGL —— "
+              echo "::warning::留着它会让本轮验证拿旧产物冒充新产物并报成功。"
+              rm -rf build/WebGL
+            fi
+          fi
 
           if [ ! -f build/WebGL/index.html ]; then
             echo "**无 build/WebGL/index.html，跳过。**" >> "$GITHUB_STEP_SUMMARY"
@@ -1206,6 +1259,36 @@ jobs:
           done
           exit 0
 
+      # `Build WebGL` 挂了 `continue-on-error`（为了不被前置诊断跳过），
+      # 代价是**构建真失败时 run 不会自动变红**。这一步把账补回来：
+      # 只在构建确实没成功时 exit 1，让红色回到它该在的地方。
+      #
+      # 不放在 `if: failure()` 上——那会漏掉「被跳过」的情况，
+      # 而 #127 恰恰就是被跳过：outcome=skipped，
+      # 既不是 success 也不是 failure，只有显式比 outcome 才抓得到。
+      - name: Fail if the build did not succeed
+        if: always()
+        run: |
+          set +e
+          OUT="${{ steps.build_webgl.outcome }}"
+          CON="${{ steps.build_webgl.conclusion }}"
+          echo "Build WebGL: outcome=$OUT conclusion=$CON"
+          if [ "$OUT" = "success" ]; then
+            echo "构建成功。"
+            exit 0
+          fi
+          if [ "$OUT" = "skipped" ]; then
+            echo "::error::构建被**跳过**（不是失败）—— 前面某个步骤红了，"
+            echo "::error::而 Build 没有 if: always()，于是它没跑。"
+            echo "::error::本轮没有任何新产物，后续所有验证都是空的。"
+            echo "::error::用 job 页面的步骤结论找出第一个红的步骤。"
+            exit 1
+          fi
+          echo "::error::构建失败（outcome=$OUT conclusion=$CON）——"
+          echo "::error::上面的诊断证据仍然有效：它们回答的是"
+          echo "::error::「为什么坏」，而构建日志回答「报了什么错」。"
+          exit 1
+
       - name: Publish verification verdict
         if: always()
         uses: actions/github-script@v7
@@ -1249,6 +1332,32 @@ jobs:
             echo "- commit: \`${GITHUB_SHA}\`"
             echo "- 时间: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
             echo "- run: https://github.com/wanjunran/how-to-fish-webgl/actions/runs/${GITHUB_RUN_ID}"
+            echo
+            # ---- 本轮到底构建了没有 ----
+            #
+            # 这一行是 #126/#127 两次空报告的直接教训。
+            # 两次报告里十几节写着「无记录」，而根因是
+            # **Build WebGL 被前置步骤的失败跳过了**——
+            # 后面 14 个带 `if: always()` 的步骤照跑不误，
+            # 读到的是 actions/cache 里上一轮的旧截图，
+            # 于是全部报success。
+            #
+            # 「无记录」被读成「跑了但没查到」，
+            # 实际是「根本没跑」。两者的修法完全不同，
+            # 所以必须在报告第一屏就把这件事说清楚，
+            # 而不是让读者从十几节「无记录」里自己推断。
+            BW_OUT="${{ steps.build_webgl.outcome }}"
+            if [ "$BW_OUT" = "success" ]; then
+              echo "- **本轮构建: 成功**（下面的证据全部来自本轮产物）"
+            else
+              echo "- **本轮构建: 未成功（outcome=\`${BW_OUT}\`）**"
+              echo "  —— 报告里凡是依赖产物的节（洋红 / 点击验收 /"
+              echo "  Unity 日志 / shader 编译错误）**全部无效**，"
+              echo "  它们要么没跑，要么读到的是缓存里的旧产物。"
+              echo "  只有不依赖产物的节（workflow 自检 / 证据管线自检 /"
+              echo "  PackageCache 清单）仍然可信。"
+              echo "  根因在 job 页面的步骤结论里找第一个红色的步骤。"
+            fi
             echo
             # 覆盖判决放**第二屏、紧跟洋红**：这两行是本报告里唯二
             # 能回答「画面为什么现在这样」的判据，而它们各自都曾经

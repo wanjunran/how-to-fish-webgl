@@ -1,0 +1,57 @@
+扫描 154 个材质
+
+A 类：材质勾了但 shader 没声明的 keyword（51 处）
+     —— 这些 keyword 被 Unity 静默忽略，材质被当成基础变体渲染
+     注意：**补 #pragma shader_feature 修不了这个**。实测这些 keyword
+     在对应 shader 正文里出现次数是 0 —— HLSLcc 反编译时已把分支求值
+     烧死成直线代码，补了声明也没有分支消费它。详见本文件 docstring。
+     **但先看官方覆盖有没有生效**：覆盖成功的话 shader 就不是空壳了，
+     官方 Lit 自带 _SURFACE_TYPE_TRANSPARENT / _ALPHAPREMULTIPLY_ON 的
+     分支，这份清单会自行缩小。判据是 official-shader-sync.txt 里的
+     「### 判决：覆盖」行 —— 未生效/未执行时，下面这份只能当参考。
+  Andicraft/Retro Master (NOT Transparent)
+      _LIGHTINGTYPE_PIXEL                  1 个材质勾了它
+      _TEXTUREFILTERING_NEAREST            1 个材质勾了它
+  Shader Graphs/BoatShader
+      _SKIN_AFFECTS_EVERYTHING             1 个材质勾了它
+      _SKIN_TYPE_GRADIENT_NOISE            1 个材质勾了它
+  Shader Graphs/CookableGlassShader
+      _SURFACE_TYPE_TRANSPARENT            1 个材质勾了它
+  Shader Graphs/DefaultMoving
+      _SKIN_AFFECTS_ONLY_METALLIC          1 个材质勾了它
+      _SKIN_TYPE_GRADIENT_NOISE            1 个材质勾了它
+  Shader Graphs/GlassShader
+      _SURFACE_TYPE_TRANSPARENT            1 个材质勾了它
+  Universal Render Pipeline/Lit
+      _ALPHAPREMULTIPLY_ON                11 个材质勾了它
+      _SURFACE_TYPE_TRANSPARENT           11 个材质勾了它
+      _EMISSION                            4 个材质勾了它
+      _ALPHATEST_ON                        3 个材质勾了它
+      _RECEIVE_SHADOWS_OFF                 2 个材质勾了它
+      _OCCLUSIONMAP                        1 个材质勾了它
+      _SKIN_AFFECTS_ONLY_METALLIC          1 个材质勾了它
+      _SKIN_TYPE_GRADIENT_NOISE            1 个材质勾了它
+  Universal Render Pipeline/Particles/Lit
+      _COLORADDSUBDIFF_ON                  3 个材质勾了它
+      _RECEIVE_SHADOWS_OFF                 3 个材质勾了它
+      _EMISSION                            2 个材质勾了它
+  Universal Render Pipeline/Unlit
+      _SURFACE_TYPE_TRANSPARENT            1 个材质勾了它
+
+B 类：原版是多变体 / 多 Pass，当前只还原了一个（24 个 shader）
+     —— 一行 pragma 补不回这个，需要重建变体
+  BoatShader                           原版 6 个 Pass，当前只有 1 个
+  CharacterShader                      原版 6 个 Pass，当前只有 1 个
+  CookableGlassShader                  原版 6 个 Pass，当前只有 1 个
+  DefaultMoving                        原版 6 个 Pass，当前只有 1 个
+  FlagShader                           原版 6 个 Pass，当前只有 1 个
+  GlassShader                          原版 6 个 Pass，当前只有 1 个
+  LavaShader                           原版 6 个 Pass，当前只有 1 个
+  LavaballShader                       原版 6 个 Pass，当前只有 1 个
+  LevelShader                          原版 6 个 Pass，当前只有 1 个
+  LineShader                           原版 6 个 Pass，当前只有 1 个
+  WaterShader                          原版 6 个 Pass，当前只有 1 个
+  WindyDecorations                     原版 6 个 Pass，当前只有 1 个
+  WindyDefault                         原版 6 个 Pass，当前只有 1 个
+  DefaultParticle                      原版 5 个 Pass，当前只有 1 个
+  DefaultShader                        原版 5 个 Pass，当前只有 1 个

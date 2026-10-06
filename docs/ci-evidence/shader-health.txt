@@ -1,0 +1,48 @@
+=== shader 资产健康度 ===
+Assets/Shader 共 107 个 shader
+  A: Dummy 桩（只有骨架，Properties 空）: 66
+  B: 属性完整但只有 1 个 Pass（无真实 HLSL）: 15
+  极短（<400 字节）: 0
+  C: 有真实 HLSL    : 26
+
+=== Pass 数分布 ===
+  1 个 Pass: 103 个 shader
+  2 个 Pass: 4 个 shader
+  参考：原版 URP/Lit 类至少 5–6 个（Forward/ShadowCaster/DepthOnly/Meta/DepthNormals/MotionVectors）
+
+=== LightMode ===
+  有内容但无 LightMode tag: 26 个（URP 会归为 SRPDefaultUnlit，光照 uniform 无人赋值）
+
+=== 按材质实际引用数加权（这是真正重要的口径）===
+  扫描了 176 个 .mat/.unity，总引用 154 次
+    dummy     86 次   55.8%
+    full      45 次   29.2%
+    props-only   23 次   14.9%
+  **渲不出东西的占比 70.8%（109/154）**
+
+=== 引用最多的 shader ===
+    引用  类别           属性  名称
+    59  dummy        25  Universal Render Pipeline_Lit.shader
+    10  full         66  TextMeshPro_Distance Field.shader
+     7  full         36  TextMeshPro_Mobile_Distance Field.shader
+     5  dummy         4  Shader Graphs_URPDecal.shader
+     4  props-only   11  Shader Graphs_CharacterShader.shader
+     4  full          4  Shader Graphs_DefaultParticle.shader
+     3  props-only   14  Shader Graphs_LavaballShader.shader
+     3  dummy        19  Universal Render Pipeline_Particles_Lit.shader
+     3  props-only   10  Shader Graphs_Grass.shader
+     3  full         36  TextMeshPro_Mobile_Distance Field Overlay.shader
+     2  props-only   13  Shader Graphs_WindyDefault.shader
+     2  props-only   15  Shader Graphs_CloudSphereShader.shader
+
+=== 判决 ===
+  **首要原因：「渲不出东西的 shader」占材质引用数 70.8%。**
+     含两类：
+       A Dummy 桩 86 次 —— 有 //DummyShaderTextExporter 标记
+       B 只有 1 个 Pass 23 次 —— 无标记、无 LightMode
+     注意 A 类里有**混合形态**：Universal Render Pipeline/Lit
+     标记是桩、但 25 个属性齐全，看着像「有内容」，
+     实际 HLSL 是桩 —— 而它被 59 个材质引用。
+     LightMode 缺失只影响 26 个，补它救不了这两类：
+     它们没有光照代码可以接收 uniform。
+  修复顺序：官方源码覆盖 → 多 Pass 重建 → LightMode 补 tag。

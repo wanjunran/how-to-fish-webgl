@@ -1,0 +1,28 @@
+== 证据管线自检：16 份关键证据
+
+文件                                           落点出现     报告引用      被忽略
+----------------------------------------------------------------------
+official-shader-sync.txt                        1        是        否
+cs-errors.txt                                   4        是        否
+unitytransport-check.txt                        3        是        否
+shader-errors.txt                               1        是        否
+build-logs-scan.txt                             1        是        否
+mat-shader-props.txt                            1        是        否
+shader-keywords.txt                             1        是        否
+dangling-refs.txt                               1        是        否
+lightmode.txt                                   1        是        否
+skybox.txt                                      1        是        否
+urp-apv-guards.txt                              1        是        否
+ingame-layout.txt                               1        是        否
+ingame-click.txt                                1        是        否
+workflow-yaml.txt                               1        是        否
+shader-health.txt                               1        是        否
+include-gate-test.txt                           2        是        否
+
+全部证据都能送到人眼前。
+
+本脚本只管「证据有没有被看见」，**不管内容对不对** ——
+内容判据是各检查器自己的事（check_* / sync_*）。
+「被忽略=否」只说明没命中现有 ignore 规则，不代表一定提交了：
+提交那一步是白名单式 `git add -f`，漏列同样会静默失败，
+那一环由 CI 里暂存区断言负责。
