@@ -67,6 +67,36 @@ HLSLcc 反编译产物的**文件名本身就编码了变体维度**，例如 De
 两个侧面。要真正修，得重建带分支的 shader（用官方 URP / Shader Graph
 源码重新导出），不是加 pragma。
 
+## 但 A 类有个前提常被忽略：官方覆盖成功即自动消失
+
+上面说的「补 pragma 是空转」，有个例外容易被漏掉 ——
+**如果那个 shader 根本不是空壳、而是官方源码，缺口就不存在**。
+
+实测 11 个透明 URP/Lit 材质（WaterParticle / SpitParticle /
+WaterParticleWhite / Transparent 等，就是画面里那片碧海）：
+
+    m_ValidKeywords 里确实勾了 _SURFACE_TYPE_TRANSPARENT（11/11）
+    也勾了 _ALPHAPREMULTIPLY_ON（11/11）、_ALPHATEST_ON（3/11）
+    同时 _Surface=1、_ZWrite=0，字段一应俱全
+
+也就是说**材质侧的信号完全正确，缺的只是 shader 侧有谁来消费它**。
+官方 `Universal Render Pipeline/Lit` 自带 `_SURFACE_TYPE_TRANSPARENT`
+和 `_ALPHAPREMULTIPLY_ON` 的分支；一旦 `sync_official_shaders.py`
+用它覆盖空壳，11 处 A 类缺口和「该透明的地方渲成不透明」会**同时**
+解决，不需要重建任何 shader。
+
+推论（有先后顺序，不能颠倒）：
+
+1. 先让官方覆盖生效 —— 判决看 `official-shader-sync.txt` 的
+   `### 判决：覆盖`行。`未生效` / `未执行` 时，下面这份 A 类清单
+   只能当**参考**，因为它的前提（shader 是空壳）本身就不成立了。
+2. 覆盖生效后重跑本脚本，A 类应当显著缩小。**如果覆盖生效了 A 类
+   数量却没降**，说明材质用的不是官方那个变体路径，需要重新判读 ——
+   这时「A 类没修好」和「覆盖其实没生效」是两回事，别混。
+
+这也是为什么本脚本只判定、不修改：改的前提是先证明覆盖没生效，
+而那个证据在另一个脚本的输出里。
+
 这一节若被删掉，下一个人会照着docstring 里「可以用一行 pragma 修」
 去改，然后发现画面没变，白跑一轮。
 
@@ -216,6 +246,10 @@ def main() -> int:
             print("     注意：**补 #pragma shader_feature 修不了这个**。实测这些 keyword")
             print("     在对应 shader 正文里出现次数是 0 —— HLSLcc 反编译时已把分支求值")
             print("     烧死成直线代码，补了声明也没有分支消费它。详见本文件 docstring。")
+            print("     **但先看官方覆盖有没有生效**：覆盖成功的话 shader 就不是空壳了，")
+            print("     官方 Lit 自带 _SURFACE_TYPE_TRANSPARENT / _ALPHAPREMULTIPLY_ON 的")
+            print("     分支，这份清单会自行缩小。判据是 official-shader-sync.txt 里的")
+            print("     「### 判决：覆盖」行 —— 未生效/未执行时，下面这份只能当参考。")
             for sname, ks in sorted(a_class.items()):
                 print(f"  {sname}")
                 for k, c in sorted(ks.items(), key=lambda x: -x[1]):
