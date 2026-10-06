@@ -3,23 +3,24 @@ Shader "Shader Graphs/Grass"
     Properties
     {
 
-	_Color ("Color", Vector) = (0.3803922,0.454902,0.282353,1)
-	_TopColor ("TopColor", Vector) = (0.5882353,0.6235294,0.2980392,1)
-	_Smoothness ("Smoothness", Float) = 0
-	[NoScaleOffset] _Texture ("Texture", 2D) = "white" {}
-	_WindColorMulti ("WindColorMulti", Float) = 0.5
-	_WindSpeed ("WindSpeed", Float) = 3.2
-	_WindSpeed2 ("WindSpeed2", Float) = 1
-	_WindStrength ("WindStrength", Float) = 0.15
-	_WindDensity ("WindDensity", Float) = 0.2
-	[NoScaleOffset] _Noise_Map ("Noise Map", 2D) = "white" {}
-	_Noise_Map_Scale ("Noise Map Scale", Vector) = (0.04,0.02,0,0)
-	_Noise_Remap ("Noise Remap", Vector) = (0.9,1,0,0)
-	[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
-	[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
-	[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
+
+_Color ("Color", Vector) = (0.3803922,0.454902,0.282353,1)
+_TopColor ("TopColor", Vector) = (0.5882353,0.6235294,0.2980392,1)
+_Smoothness ("Smoothness", Float) = 0
+[NoScaleOffset] _Texture ("Texture", 2D) = "white" {}
+_WindColorMulti ("WindColorMulti", Float) = 0.5
+_WindSpeed ("WindSpeed", Float) = 3.2
+_WindSpeed2 ("WindSpeed2", Float) = 1
+_WindStrength ("WindStrength", Float) = 0.15
+_WindDensity ("WindDensity", Float) = 0.2
+[NoScaleOffset] _Noise_Map ("Noise Map", 2D) = "white" {}
+_Noise_Map_Scale ("Noise Map Scale", Vector) = (0.04,0.02,0,0)
+_Noise_Remap ("Noise Remap", Vector) = (0.9,1,0,0)
+[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
+[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
+[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
     }
     SubShader
     {
@@ -67,10 +68,10 @@ Shader "Shader Graphs/Grass"
             SAMPLER(sampler__Texture_t1);
             TEXTURECUBE(_Texture_t2);
             SAMPLER(sampler__Texture_t2);
-            TEXTURE2D(_Texture_t3);
-            SAMPLER(sampler__Texture_t3);
-            TEXTURE2D(_Texture_t4);
-            SAMPLER(sampler__Texture_t4);
+            TEXTURE2D(_Texture);
+            SAMPLER(sampler__Texture);
+            TEXTURE2D(_Noise_Map);
+            SAMPLER(sampler__Noise_Map);
             TEXTURE2D(_Texture_t5);
             SAMPLER(sampler__Texture_t5);
             TEXTURE2D(_Texture_t6);
@@ -683,8 +684,8 @@ Shader "Shader Graphs/Grass"
     u_xlat41 = u_xlat41 * _pad976.x;
     u_xlat61 = _Smoothness;
     u_xlat61 = clamp(u_xlat61, 0.0, 1.0);
-    u_xlat4.xyz = _g_texture(_Texture_t3, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
-    u_xlat5 = _g_texture(_Texture_t4, input.vs_INTERP0.xy, _GlobalMipBias.x);
+    u_xlat4.xyz = _g_texture(_Texture, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
+    u_xlat5 = _g_texture(_Noise_Map, input.vs_INTERP0.xy, _GlobalMipBias.x);
     u_xlat5.xyz = u_xlat5.xyz + float3(-0.5, -0.5, -0.5);
     u_xlat62 = dot(u_xlat2.xyz, u_xlat5.xyz);
     u_xlat62 = u_xlat62 + 0.5;

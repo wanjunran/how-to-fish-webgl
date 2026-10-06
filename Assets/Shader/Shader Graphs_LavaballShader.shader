@@ -3,28 +3,29 @@ Shader "Shader Graphs/LavaballShader"
     Properties
     {
 
-	_Color_Speed ("Color Speed", Vector) = (0,0,0,0)
-	_Color_Speed_2 ("Color Speed 2", Vector) = (0,0,0,0)
-	_Noise_Scale_2 ("Noise Scale 2", Float) = 0
-	_WorldPositionNoiseMulti ("WorldPositionNoiseMulti", Float) = 0.1
-	[HDR] _DeepColor ("Color 1", Vector) = (1,0.3686275,0,1)
-	[HDR] Color_93e06cd551a5449091bcde90b46765a0 ("Color 2", Vector) = (1,0.3686275,0,1)
-	_Pixelate ("Pixelate", Float) = 5
-	_Noise_Scale ("Noise Scale", Float) = 1
-	_Color_Smoothstep ("Color Smoothstep", Vector) = (0,1,0,0)
-	Vector1_6269b1025b26473ca8bc61634f34b537 ("Smoothness", Range(0, 1)) = 0.95
-	Vector1_1 ("Metallic", Range(0, 1)) = 0.95
-	_Vertex_Speed ("Vertex Speed", Vector) = (0,0,0,0)
-	_Vertex_Height ("Vertex Height", Float) = 1
-	_Vertex_Noise_Scale ("Vertex Noise Scale", Float) = 0
-	[NoScaleOffset] _Normal_Bumps_Map ("Normal Bumps Map", 2D) = "white" {}
-	_Normal_Bumps_Strength ("Normal Bumps Strength", Range(0, 1)) = 0.2
-	_Normal_Bumps_Scale ("Normal Bumps Scale", Vector) = (1,2,0,0)
-	[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
-	[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
-	[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
+
+_Color_Speed ("Color Speed", Vector) = (0,0,0,0)
+_Color_Speed_2 ("Color Speed 2", Vector) = (0,0,0,0)
+_Noise_Scale_2 ("Noise Scale 2", Float) = 0
+_WorldPositionNoiseMulti ("WorldPositionNoiseMulti", Float) = 0.1
+[HDR] _DeepColor ("Color 1", Vector) = (1,0.3686275,0,1)
+[HDR] Color_93e06cd551a5449091bcde90b46765a0 ("Color 2", Vector) = (1,0.3686275,0,1)
+_Pixelate ("Pixelate", Float) = 5
+_Noise_Scale ("Noise Scale", Float) = 1
+_Color_Smoothstep ("Color Smoothstep", Vector) = (0,1,0,0)
+Vector1_6269b1025b26473ca8bc61634f34b537 ("Smoothness", Range(0, 1)) = 0.95
+Vector1_1 ("Metallic", Range(0, 1)) = 0.95
+_Vertex_Speed ("Vertex Speed", Vector) = (0,0,0,0)
+_Vertex_Height ("Vertex Height", Float) = 1
+_Vertex_Noise_Scale ("Vertex Noise Scale", Float) = 0
+[NoScaleOffset] _Normal_Bumps_Map ("Normal Bumps Map", 2D) = "white" {}
+_Normal_Bumps_Strength ("Normal Bumps Strength", Range(0, 1)) = 0.2
+_Normal_Bumps_Scale ("Normal Bumps Scale", Vector) = (1,2,0,0)
+[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
+[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
+[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
     }
     SubShader
     {
@@ -72,8 +73,8 @@ Shader "Shader Graphs/LavaballShader"
             SAMPLER(sampler__Texture_t1);
             TEXTURECUBE(_Texture_t2);
             SAMPLER(sampler__Texture_t2);
-            TEXTURE2D(_Texture_t3);
-            SAMPLER(sampler__Texture_t3);
+            TEXTURE2D(_Normal_Bumps_Map);
+            SAMPLER(sampler__Normal_Bumps_Map);
             TEXTURE2D(_Texture_t4);
             SAMPLER(sampler__Texture_t4);
             TEXTURE2D(_Texture_t5);
@@ -690,7 +691,7 @@ Shader "Shader Graphs/LavaballShader"
     u_xlat67 = u_xlat67 * _pad976.x;
     u_xlat4.xy = float2(Vector1_1, Vector1_6269b1025b26473ca8bc61634f34b537);
     u_xlat4.xy = clamp(u_xlat4.xy, 0.0, 1.0);
-    u_xlat5.xyz = _g_texture(_Texture_t3, input.vs_INTERP0.xy, _pad64.x).xyz;
+    u_xlat5.xyz = _g_texture(_Normal_Bumps_Map, input.vs_INTERP0.xy, _pad64.x).xyz;
     u_xlat6 = _g_texture(_Texture_t4, input.vs_INTERP0.xy, _pad64.x);
     u_xlat6.xyz = u_xlat6.xyz + float3(-0.5, -0.5, -0.5);
     u_xlat68 = dot(u_xlat22.xyz, u_xlat6.xyz);

@@ -3,37 +3,38 @@ Shader "Shader Graphs/DefaultShader"
     Properties
     {
 
-	[NoScaleOffset] _Colors ("Colors", 2D) = "white" {}
-	_Emission ("Emission", Float) = 0
-	_MetallicAngleSmoothStep ("MetallicAngleSmoothStep", Vector) = (0.4,0.75,0,0)
-	[NoScaleOffset] _Normal_Map ("Normal Map", 2D) = "white" {}
-	_Normal_Strength ("Normal Strength", Range(0, 1)) = 1
-	_Normal_Scale ("Normal Scale", Float) = 0.2
-	_Cookness ("Cookness", Range(0, 2)) = 0
-	_CookColor ("CookColor", Vector) = (1,0.4874805,0,1)
-	_BurntColor ("BurntColor", Vector) = (0,0,0,1)
-	_Cooked_Normal_Strength ("Cooked Normal Strength", Range(0, 2)) = 0.7
-	[ToggleUI] _Use_Skin ("Use Skin", Float) = 0
-	[ToggleUI] _Rainbow_Skin ("Rainbow Skin", Float) = 0
-	[KeywordEnum(Gradient Noise, Checkerboard, Voronoi)] _SKIN_TYPE ("Skin Type", Float) = 0
-	[KeywordEnum(Only Metallic, Only Metallic Noise, Everything)] _SKIN_AFFECTS ("Skin Affects", Float) = 0
-	_Metallic_Cutoff ("Metallic Cutoff", Range(0, 1)) = 0.5
-	_Color_Offset ("Color Offset", Vector) = (0,0,0,0)
-	_Color_Offset_2 ("Color Offset 2", Vector) = (0,0,0,0)
-	_Skin_Smooth_Step ("Skin Smooth Step", Vector) = (0.5,0.5,0,0)
-	_Skin_Noise_Scale ("Skin Noise Scale", Float) = 10
-	_Noise_Rotation ("Noise Rotation", Float) = 45
-	_UV_Rotation ("UV Rotation", Float) = 0
-	_Skin_UV_Scale ("Skin UV Scale", Vector) = (1,1,0,0)
-	_MetallicMetallicness ("MetallicMetallicness", Range(0, 1)) = 0
-	_MetallicSmoothness ("MetallicSmoothness", Range(0, 1)) = 0
-	_PlasticMetallicness ("PlasticMetallicness", Range(0, 1)) = 0
-	_PlasticSmoothness ("PlasticSmoothness", Range(0, 1)) = 0
-	[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
-	[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
-	[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
+
+[NoScaleOffset] _Colors ("Colors", 2D) = "white" {}
+_Emission ("Emission", Float) = 0
+_MetallicAngleSmoothStep ("MetallicAngleSmoothStep", Vector) = (0.4,0.75,0,0)
+[NoScaleOffset] _Normal_Map ("Normal Map", 2D) = "white" {}
+_Normal_Strength ("Normal Strength", Range(0, 1)) = 1
+_Normal_Scale ("Normal Scale", Float) = 0.2
+_Cookness ("Cookness", Range(0, 2)) = 0
+_CookColor ("CookColor", Vector) = (1,0.4874805,0,1)
+_BurntColor ("BurntColor", Vector) = (0,0,0,1)
+_Cooked_Normal_Strength ("Cooked Normal Strength", Range(0, 2)) = 0.7
+[ToggleUI] _Use_Skin ("Use Skin", Float) = 0
+[ToggleUI] _Rainbow_Skin ("Rainbow Skin", Float) = 0
+[KeywordEnum(Gradient Noise, Checkerboard, Voronoi)] _SKIN_TYPE ("Skin Type", Float) = 0
+[KeywordEnum(Only Metallic, Only Metallic Noise, Everything)] _SKIN_AFFECTS ("Skin Affects", Float) = 0
+_Metallic_Cutoff ("Metallic Cutoff", Range(0, 1)) = 0.5
+_Color_Offset ("Color Offset", Vector) = (0,0,0,0)
+_Color_Offset_2 ("Color Offset 2", Vector) = (0,0,0,0)
+_Skin_Smooth_Step ("Skin Smooth Step", Vector) = (0.5,0.5,0,0)
+_Skin_Noise_Scale ("Skin Noise Scale", Float) = 10
+_Noise_Rotation ("Noise Rotation", Float) = 45
+_UV_Rotation ("UV Rotation", Float) = 0
+_Skin_UV_Scale ("Skin UV Scale", Vector) = (1,1,0,0)
+_MetallicMetallicness ("MetallicMetallicness", Range(0, 1)) = 0
+_MetallicSmoothness ("MetallicSmoothness", Range(0, 1)) = 0
+_PlasticMetallicness ("PlasticMetallicness", Range(0, 1)) = 0
+_PlasticSmoothness ("PlasticSmoothness", Range(0, 1)) = 0
+[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
+[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
+[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
     }
     SubShader
     {
@@ -81,10 +82,10 @@ Shader "Shader Graphs/DefaultShader"
             SAMPLER(sampler__Texture_t1);
             TEXTURECUBE(_Texture_t2);
             SAMPLER(sampler__Texture_t2);
-            TEXTURE2D(_Texture_t3);
-            SAMPLER(sampler__Texture_t3);
-            TEXTURE2D(_Texture_t4);
-            SAMPLER(sampler__Texture_t4);
+            TEXTURE2D(_Colors);
+            SAMPLER(sampler__Colors);
+            TEXTURE2D(_Normal_Map);
+            SAMPLER(sampler__Normal_Map);
             TEXTURE2D(_Texture_t5);
             SAMPLER(sampler__Texture_t5);
             TEXTURE2D(_Texture_t6);
@@ -530,8 +531,8 @@ Shader "Shader Graphs/DefaultShader"
     u_xlat66 = (-u_xlat66) + (-_pad352.y);
     u_xlat66 = max(u_xlat66, 0.0);
     u_xlat66 = u_xlat66 * _pad976.x;
-    u_xlat6.xyz = _g_texture(_Texture_t3, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
-    u_xlat7 = _g_texture(_Texture_t4, input.vs_INTERP0.xy, _GlobalMipBias.x);
+    u_xlat6.xyz = _g_texture(_Colors, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
+    u_xlat7 = _g_texture(_Normal_Map, input.vs_INTERP0.xy, _GlobalMipBias.x);
     u_xlat7.xyz = u_xlat7.xyz + float3(-0.5, -0.5, -0.5);
     u_xlat68 = dot(u_xlat3.xyz, u_xlat7.xyz);
     u_xlat68 = u_xlat68 + 0.5;

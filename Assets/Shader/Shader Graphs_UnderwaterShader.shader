@@ -3,18 +3,19 @@ Shader "Shader Graphs/UnderwaterShader"
     Properties
     {
 
-	[HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
-	_UnderwaterColor ("UnderwaterColor", Vector) = (1,1,1,1)
-	_Distortion1 ("Distortion1", Range(0, 1)) = 0.1
-	_Distortion2 ("Distortion2", Range(0, 1)) = 0.1
-	_WaveScale1 ("WaveScale1", Float) = 1
-	_WaveScale2 ("WaveScale2", Float) = 1
-	_WaveSpeed1 ("WaveSpeed1", Vector) = (0,0,0,0)
-	_WaveSpeed2 ("WaveSpeed2", Vector) = (0,0,0,0)
-	[HideInInspector] White ("Color", Vector) = (1,1,1,1)
-	[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
+
+[HideInInspector] [NoScaleOffset] _MainTex ("_MainTex", 2D) = "white" {}
+_UnderwaterColor ("UnderwaterColor", Vector) = (1,1,1,1)
+_Distortion1 ("Distortion1", Range(0, 1)) = 0.1
+_Distortion2 ("Distortion2", Range(0, 1)) = 0.1
+_WaveScale1 ("WaveScale1", Float) = 1
+_WaveScale2 ("WaveScale2", Float) = 1
+_WaveSpeed1 ("WaveSpeed1", Vector) = (0,0,0,0)
+_WaveSpeed2 ("WaveSpeed2", Vector) = (0,0,0,0)
+[HideInInspector] White ("Color", Vector) = (1,1,1,1)
+[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
     }
     SubShader
     {
@@ -56,8 +57,8 @@ Shader "Shader Graphs/UnderwaterShader"
 #define _g_zcmpLod(tex, uv, lod) \
     ((tex).SampleCmpLevelZero(sampler##tex, float3(uv, lod)))
 
-            TEXTURE2D(_Texture_t0);
-            SAMPLER(sampler__Texture_t0);
+            TEXTURE2D(_MainTex);
+            SAMPLER(sampler__MainTex);
 
             float4x4 unity_MatrixVP;
             float4 _RendererColor;
@@ -276,7 +277,7 @@ Shader "Shader Graphs/UnderwaterShader"
     u_xlat7.x = min(u_xlat7.x, 1.0);
     u_xlat7.x = (-u_xlat7.x) + 1.0;
     u_xlat0.xy = u_xlat7.xx * u_xlat0.xx + input.vs_INTERP0.xy;
-    u_xlat0 = _g_texture(_Texture_t0, u_xlat0.xy, _GlobalMipBias.x);
+    u_xlat0 = _g_texture(_MainTex, u_xlat0.xy, _GlobalMipBias.x);
     u_xlat0.xyz = u_xlat0.xyz * _UnderwaterColor.xyz;
     u_xlat0.w = 1.0;
     __SV_TARGET0 = u_xlat0 * input.vs_INTERP1;

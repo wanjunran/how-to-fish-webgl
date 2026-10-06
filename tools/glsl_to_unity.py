@@ -511,6 +511,23 @@ def build(shader_name, vs_glsl, ps_glsl, props_txt, tex_alias, tags,
     vs_body = _apply_zcmp(vs_body, zmap)
     ps_body = _apply_zcmp(ps_body, zmap)
 
+    # 纹理改名同样要在正文里做。只改 TEXTURE2D() 声明是不够的 ——
+    # 正文里 _g_texture(_Texture_t3, uv) 还指着旧名，编译期报未声明。
+    # 用词边界替换，避免 _Texture_t3 命中 _Texture_t30 的前缀。
+    #
+    # 放在 _apply_zcmp 之后：这两个都是「改名字」而不是「改结构」，
+    # 顺序无关，但放在最后可以保证不破坏前面任何一步的结果。
+    if tex_alias:
+        pat = re.compile(r"\b(" + "|".join(
+            re.escape(k) for k in sorted(tex_alias, key=len, reverse=True))
+            + r")\b")
+
+        def _retag(m):
+            return tex_alias[m.group(1)]
+
+        vs_body = pat.sub(_retag, vs_body)
+        ps_body = pat.sub(_retag, ps_body)
+
     def _trans_for(body_txt):
         return "".join(
             f"            float4x4 _t{n} = transpose({n});\n"

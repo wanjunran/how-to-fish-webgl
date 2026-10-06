@@ -3,26 +3,27 @@ Shader "Shader Graphs/WindyDefault"
     Properties
     {
 
-	[NoScaleOffset] _Texture ("Texture", 2D) = "white" {}
-	_Smoothness ("Smoothness", Float) = 0
-	_Metallic ("Metallic", Float) = 0
-	_WindFromOrigoSmoothstep ("WindFromOrigoSmoothstep", Vector) = (0,1,0,0)
-	_WindSpeed ("WindSpeed", Float) = 2.8
-	_WindSpeed2 ("WindSpeed2", Float) = 0.5
-	_WindScale ("WindScale", Float) = 0.15
-	_WindDensity ("WindDensity", Float) = 0.2
-	_NormalInfluence ("NormalInfluence", Float) = 2
-	_SSSPower ("SSSPower", Float) = 1.5
-	_SSSIntensity ("SSSIntensity", Float) = 2
-	_Thickness ("Thickness", Float) = 1
-	[NoScaleOffset] _Normal_Map ("Normal Map", 2D) = "white" {}
-	_Normal_Strength ("Normal Strength", Range(0, 1)) = 0.146
-	_Normal_Scale ("Normal Scale", Float) = 1
-	[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
-	[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
-	[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
+
+[NoScaleOffset] _Texture ("Texture", 2D) = "white" {}
+_Smoothness ("Smoothness", Float) = 0
+_Metallic ("Metallic", Float) = 0
+_WindFromOrigoSmoothstep ("WindFromOrigoSmoothstep", Vector) = (0,1,0,0)
+_WindSpeed ("WindSpeed", Float) = 2.8
+_WindSpeed2 ("WindSpeed2", Float) = 0.5
+_WindScale ("WindScale", Float) = 0.15
+_WindDensity ("WindDensity", Float) = 0.2
+_NormalInfluence ("NormalInfluence", Float) = 2
+_SSSPower ("SSSPower", Float) = 1.5
+_SSSIntensity ("SSSIntensity", Float) = 2
+_Thickness ("Thickness", Float) = 1
+[NoScaleOffset] _Normal_Map ("Normal Map", 2D) = "white" {}
+_Normal_Strength ("Normal Strength", Range(0, 1)) = 0.146
+_Normal_Scale ("Normal Scale", Float) = 1
+[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
+[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
+[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
     }
     SubShader
     {
@@ -70,10 +71,10 @@ Shader "Shader Graphs/WindyDefault"
             SAMPLER(sampler__Texture_t1);
             TEXTURECUBE(_Texture_t2);
             SAMPLER(sampler__Texture_t2);
-            TEXTURE2D(_Texture_t3);
-            SAMPLER(sampler__Texture_t3);
-            TEXTURE2D(_Texture_t4);
-            SAMPLER(sampler__Texture_t4);
+            TEXTURE2D(_Texture);
+            SAMPLER(sampler__Texture);
+            TEXTURE2D(_Normal_Map);
+            SAMPLER(sampler__Normal_Map);
             TEXTURE2D(_Texture_t5);
             SAMPLER(sampler__Texture_t5);
             TEXTURE2D(_Texture_t6);
@@ -566,8 +567,8 @@ Shader "Shader Graphs/WindyDefault"
     u_xlat64 = clamp(u_xlat64, 0.0, 1.0);
     u_xlat65 = _Smoothness;
     u_xlat65 = clamp(u_xlat65, 0.0, 1.0);
-    u_xlat4.xyz = _g_texture(_Texture_t3, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
-    u_xlat5 = _g_texture(_Texture_t4, input.vs_INTERP0.xy, _GlobalMipBias.x);
+    u_xlat4.xyz = _g_texture(_Texture, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
+    u_xlat5 = _g_texture(_Normal_Map, input.vs_INTERP0.xy, _GlobalMipBias.x);
     u_xlat5.xyz = u_xlat5.xyz + float3(-0.5, -0.5, -0.5);
     u_xlat66 = dot(u_xlat2.xyz, u_xlat5.xyz);
     u_xlat66 = u_xlat66 + 0.5;

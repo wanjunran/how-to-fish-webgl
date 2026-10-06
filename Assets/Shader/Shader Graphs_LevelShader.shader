@@ -3,16 +3,17 @@ Shader "Shader Graphs/LevelShader"
     Properties
     {
 
-	[NoScaleOffset] _Colors ("Colors", 2D) = "white" {}
-	_Emission ("Emission", Float) = 0
-	[NoScaleOffset] _Normal_Map ("Normal Map", 2D) = "white" {}
-	_Normal_Strength ("Normal Strength", Range(0, 1)) = 1
-	_Normal_Scale ("Normal Scale", Float) = 0.2
-	[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
-	[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
-	[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
-	[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
+
+[NoScaleOffset] _Colors ("Colors", 2D) = "white" {}
+_Emission ("Emission", Float) = 0
+[NoScaleOffset] _Normal_Map ("Normal Map", 2D) = "white" {}
+_Normal_Strength ("Normal Strength", Range(0, 1)) = 1
+_Normal_Scale ("Normal Scale", Float) = 0.2
+[HideInInspector] _QueueOffset ("_QueueOffset", Float) = 0
+[HideInInspector] _QueueControl ("_QueueControl", Float) = -1
+[HideInInspector] [NoScaleOffset] unity_Lightmaps ("unity_Lightmaps", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_LightmapsInd ("unity_LightmapsInd", 2DArray) = "" {}
+[HideInInspector] [NoScaleOffset] unity_ShadowMasks ("unity_ShadowMasks", 2DArray) = "" {}
     }
     SubShader
     {
@@ -60,10 +61,10 @@ Shader "Shader Graphs/LevelShader"
             SAMPLER(sampler__Texture_t1);
             TEXTURECUBE(_Texture_t2);
             SAMPLER(sampler__Texture_t2);
-            TEXTURE2D(_Texture_t3);
-            SAMPLER(sampler__Texture_t3);
-            TEXTURE2D(_Texture_t4);
-            SAMPLER(sampler__Texture_t4);
+            TEXTURE2D(_Colors);
+            SAMPLER(sampler__Colors);
+            TEXTURE2D(_Normal_Map);
+            SAMPLER(sampler__Normal_Map);
             TEXTURE2D(_Texture_t5);
             SAMPLER(sampler__Texture_t5);
             TEXTURE2D(_Texture_t6);
@@ -354,8 +355,8 @@ Shader "Shader Graphs/LevelShader"
     u_xlat64 = u_xlat64 * _pad976.x;
     u_xlat65 = input.vs_INTERP8.x;
     u_xlat65 = clamp(u_xlat65, 0.0, 1.0);
-    u_xlat4.xyz = _g_texture(_Texture_t3, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
-    u_xlat5 = _g_texture(_Texture_t4, input.vs_INTERP0.xy, _GlobalMipBias.x);
+    u_xlat4.xyz = _g_texture(_Colors, input.vs_INTERP0.xy, _GlobalMipBias.x).xyz;
+    u_xlat5 = _g_texture(_Normal_Map, input.vs_INTERP0.xy, _GlobalMipBias.x);
     u_xlat5.xyz = u_xlat5.xyz + float3(-0.5, -0.5, -0.5);
     u_xlat66 = dot(u_xlat0.xyz, u_xlat5.xyz);
     u_xlat66 = u_xlat66 + 0.5;
