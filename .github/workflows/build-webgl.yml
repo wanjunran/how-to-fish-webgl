@@ -979,7 +979,58 @@ jobs:
             /tmp/verify_settled.png 2>&1 | tee -a verify-evidence/magenta-run.log
           exit 0
 
-      - name: Publish verification verdict
+      #点进单玩家模式再截一张 —— 这才是「用户能玩到」的验收。
+      #
+      # 背景（这个归因纠正过）：之前所有截图都停在启动 Logo 页，
+      # 我一直当成「进不了场景」。查代码后发现是**归因错了**：
+      #   MainMenuManager.Start() -> DelayedMainMenu() -> ToggleMenu(true)
+      # ToggleMenu 只打开 _menuStuff、播音乐、显示 UI，**不切场景**。
+      # 游戏就停在主菜单等点击，这是设计如此。而 verify_load.py
+      # 只加载+截图，**从不点击**，所以没人点那个按钮。
+      #
+      # 按钮路径在数据上是通的（全部来自 Game.unity，不是推测）：
+      #   SingleplayerButton(&1710) IsActive=1
+      #   Button(&5185) m_Interactable=1，m_CallState=2
+      #   m_OnClick -> ButtonManager.CreateLocalLobbyButton
+      # 而 CreateLocalLobbyButton 走 CreateOfflineLobby()，纯本地不碰 Steam。
+      #
+      # 用 `if: always()`：主场景加载失败时这一步大概率也点不动，
+      # 但**那正是最需要知道「点得动吗」的时候** —— 这条链要是
+      # 本身是断的，排查方向完全不同。
+      - name: Click into singleplayer and capture
+        if: always()
+        run: |
+          set +e
+          mkdir -p verify-evidence
+          # http.server 是上一步起的；它可能已经随那一步结束而没了。
+          # 这里自己起一个，不依赖上一步的进程还在不在。
+          if ! curl -s -o /dev/null --max-time 5 http://127.0.0.1:8123/; then
+            if [ -f build/WebGL/index.html ]; then
+              python3 -m http.server 8124 --directory build/WebGL \
+                > /tmp/srv2.log 2>&1 &
+              sleep 3
+              URL=http://127.0.0.1:8124/
+              echo "上一步的 8123 没了，自己起8124"
+            else
+              echo "::warning::没有 build/WebGL/index.html —— 跳过点击验收。"
+              echo "这一节为空**不代表**点不进游戏，只代表没有可点的产物。"
+              exit 0
+            fi
+          else
+            URL=http://127.0.0.1:8123/
+          fi
+          # 布局坐标先单独打一遍：即使浏览器那步挂了，坐标也留在日志里，
+          # 「按钮在屏幕哪儿」这件事不需要渲染就能回答。
+          /tmp/venv/bin/python tools/verify_ingame.py --url "$URL" \
+            --layout-only 2>&1 | tee verify-evidence/ingame-layout.txt
+          /tmp/venv/bin/python tools/verify_ingame.py --url "$URL" \
+            --shots /tmp 2>&1 | tee verify-evidence/ingame-click.txt
+          for s in ingame_before.png ingame_after.png; do
+            [ -f "/tmp/$s" ] && cp -f "/tmp/$s" verify-evidence/ \
+              && echo "已留证: $s"
+          done
+          exit 0
+
         if: always()
         uses: actions/github-script@v7
         with:
@@ -1213,6 +1264,19 @@ jobs:
           mkdir -p docs/ci-screenshots
           SHOTS=""
           for s in verify_loaded.png verify_settled.png; do
+            if [ -f "$s" ]; then
+              cp "$s" "docs/ci-screenshots/$s"
+              SHOTS="$SHOTS $s"
+            fi
+          done
+          # 点击前/后两张。它们才是「能不能玩」的直接证据 ——
+          # 前两张只证明引擎活着。
+          # 注意 verify_ingame.py 把截图写在 /tmp（和verify_load.py 一致），
+          # 而这里读的是工作区根目录，所以先复制过来再收。
+          for s in ingame_before.png ingame_after.png; do
+            if [ -f "/tmp/$s" ] && [ ! -f "$s" ]; then
+              cp -f "/tmp/$s" "$s"
+            fi
             if [ -f "$s" ]; then
               cp "$s" "docs/ci-screenshots/$s"
               SHOTS="$SHOTS $s"
