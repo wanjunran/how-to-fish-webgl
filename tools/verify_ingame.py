@@ -328,7 +328,36 @@ def main() -> int:
             f"（canvas 盒子 x={box['x']:.0f} y={box['y']:.0f} "
             f"{box['w']:.0f}x{box['h']:.0f}）")
 
-        pg.mouse.move(tx, ty)
+        # ---- 点击前先查「悬停副作用」 ----
+        #
+        # 场景里有这么两个按钮（实测自 Game.unity）：
+        #   PrevVisibilityButton / NextVisibilityButton
+        #   绑的是 EventTrigger 的 **PointerEnter**（m_Mode: 6）
+        #   -> ChangeMultiplayerMode(bool)
+        #
+        # 而 ChangeMultiplayerMode 里有一个三态循环会把 _useSteam
+        # **改回 true**（ButtonManager.cs 第 777 / 791 行）。也就是说
+        # **鼠标只是扫过那个面板，联机模式就被切回去了**，单玩家入口
+        # 可能随之消失 —— 而那正是我们要点的入口。
+        #
+        # 这两个按钮在 NewGameHolder 里，SingleplayerButton 在
+        # DevLayout 里，两者坐标不重叠，所以直接点不会踩到。但
+        # Playwright 的 mouse.move 是一次「瞬移」，中间路径不产生
+        # 悬停事件，风险其实很低；可一旦坐标算偏了、或者将来布局
+        # 变了，「点不中」会被误判成「按钮不可用」，排查成本很高。
+        #
+        # 所以这里**把鼠标从起点直接移到目标，不走中间路径**，
+        # 并在点击前后各截一张 —— 如果 after 出现面板切换，
+        # 两张图能立刻看出来。
+        #
+        # 注意这条防护**只能降低风险、不能消除**：真要彻底解决，得
+        # 让 ButtonManager 在 WebGL 下无视 ChangeMultiplayerMode
+        # （它本来就是给玩家在主菜单里切联机/单人的 UI），
+        # 那样连真实玩家用鼠标扫过都不会改 _useSteam。
+        say("从画布左上角直接移到目标（不走中间路径，避免悬停触发）")
+        pg.mouse.move(box["x"] + 2, box["y"] + 2)
+        time.sleep(0.2)
+        pg.mouse.move(tx, ty, steps=1)
         time.sleep(0.4)
         pg.mouse.down()
         time.sleep(0.12)

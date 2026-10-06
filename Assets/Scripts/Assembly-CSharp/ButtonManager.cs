@@ -759,6 +759,26 @@ public class ButtonManager : MonoBehaviour
 		ConnectionManager.Instance.JoinOfflineLobby();
 	}
 
+	//注意：这两个可见性按钮绑的不是 onClick，而是 EventTrigger 的
+	// **PointerEnter**（场景里 m_Mode: 6）—— 也就是**鼠标扫过就触发**，
+	// 不需要点击。
+	//
+	// 而下面这个三态循环里有两个分支会把 _useSteam **改回 true**
+	//（`else { _useSteam = true; }` 和最后一个 else）。于是：
+	//主菜单里鼠标扫过 NewGameHolder 那个面板，联机模式就被切回去了，
+	//  单玩家入口（_createSingleplayerText，恰好是靠 !_useSteam 显示的）
+	// 随之消失。
+	//
+	// 对真实玩家来说这只是「鼠标不小心扫过就切换了模式」；
+	// 对 WebGL 移植来说更糟：我们把 _useSteam 固定成false 才走得通本地路径
+	//（见上面 _useSteam 的定义），一旦被这里改回 true，
+	// CreateLocalLobbyButton -> CreateOfflineLobby 这条纯本地的路
+	// 就不是玩家看到的那条了。
+	//
+	// **没有直接改成 if (false)**：那会让这两个按钮彻底没反应，
+	// 是行为改动而不是移植修复，得由你决定。CI 的 verify_ingame.py
+	// 已经用「不走中间路径 + 前后各截一张图」把风险压到最低，
+	// 但那只降低风险、不消除它。
 	public void ChangeMultiplayerMode(bool toNext)
 	{
 		if (toNext)
