@@ -83,6 +83,10 @@ jobs:
           # 这类失败 Unity 静默丢弃，日志里一个字都没有，只能靠比对发现。
           python3 tools/check_mat_shader_props.py 2>&1 \
             | tee verify-evidence/mat-shader-props.txt
+          # keyword 检查：报「材质勾了 keyword 但 shader 没声明 shader_feature」
+          # 以及「原版多 Pass 但当前只有 1 个」。同样是静默失效。
+          python3 tools/check_shader_keywords.py 2>&1 \
+            | tee verify-evidence/shader-keywords.txt
 
       # 使用 game-ci/unity-builder v6 —— 这是首个内置 `personal` 授权策略的版本。
       #
@@ -890,6 +894,16 @@ jobs:
             if [ -s verify-evidence/mat-shader-props.txt ]; then
               echo '```'
               head -60 verify-evidence/mat-shader-props.txt
+              echo '```'
+            else
+              echo "（无记录）"
+            fi
+            echo
+            echo "## keyword 错配（材质勾了但 shader 没声明 shader_feature）"
+            echo
+            if [ -s verify-evidence/shader-keywords.txt ]; then
+              echo '```'
+              head -60 verify-evidence/shader-keywords.txt
               echo '```'
             else
               echo "（无记录）"
