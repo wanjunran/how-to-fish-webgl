@@ -218,6 +218,51 @@ def _run() -> int:
     print(f"\n包内无对应（游戏自定义，保持原样）：{len(missing)}")
     for n in missing:
         print(f"  - {n}")
+
+    # ---- 覆盖后的验收 ----
+    #
+    # 「复制成功」不等于「问题解决」。这一步按**具体判据**检查覆盖后的
+    # 文件是不是真的具备原版该有的东西，避免脚本一路报成功而画面没变。
+    #
+    # 判据来自实测：URP/Lit 空壳的 Pass 里没有任何渲染状态块（Blend /
+    # ZWrite / Cull 全无），而它的 59 个材质里有 11 个是透明的
+    # （_Surface=1 / _ZWrite=0 / _DstBlend=10），水面、WaterParticle、
+    # WaterParticleWhite、SpitParticle 全在内 —— 也就是「该透明的地方
+    # 渲成不透明」，且不产生一行日志。
+    #
+    # 官方 Lit.shader 带完整 Tags（Queue / RenderType）和多 Pass，能一并
+    # 解决这些。所以覆盖后必须验一遍：Queue 在不在、渲染状态在不在。
+    print("\n### 覆盖后验收（关键判据）")
+    for name in replaced:
+        stub = None
+        for p in stubs:
+            if shader_name(p) == name:
+                stub = p
+                break
+        if not stub:
+            continue
+        with open(stub, encoding="utf-8", errors="replace") as f:
+            now = f.read()
+        has_queue = '"Queue"' in now
+        has_rt = '"RenderType"' in now
+        has_blend = bool(re.search(r"^[ \t]*Blend[ \t]+\w", now, re.M))
+        has_zwrite = bool(re.search(r"^[ \t]*ZWrite[ \t]+\w", now, re.M))
+        passes = len(re.findall(r"^[ \t]*Pass[ \t]*(?:\{|$)", now, re.M))
+        flags = []
+        if not has_queue:
+            flags.append("缺 Queue")
+        if not has_rt:
+            flags.append("缺 RenderType")
+        if not has_blend:
+            flags.append("缺 Blend 状态")
+        if not has_zwrite:
+            flags.append("缺 ZWrite 状态")
+        mark = "OK" if not flags else "; ".join(flags)
+        print(f"  {name}: Queue={'Y' if has_queue else 'N'} "
+              f"RenderType={'Y' if has_rt else 'N'} "
+              f"Blend={'Y' if has_blend else 'N'} "
+              f"ZWrite={'Y' if has_zwrite else 'N'} "
+              f"Pass数={passes}  -> {mark}")
     return 0
 
 
