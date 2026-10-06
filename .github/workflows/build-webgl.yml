@@ -92,23 +92,33 @@ jobs:
             | tee -a verify-evidence/fix-stub-basemap.txt
           # 材质/属性错配检查：报「材质设了但 shader 没声明」的属性。
           # 这类失败 Unity 静默丢弃，日志里一个字都没有，只能靠比对发现。
+          #
+          # **每个检查都写两份**：verify-evidence/（被 .gitignore 忽略，
+          # 只在本步骤内用）和 docs/ci-evidence/（会提交到ci-diagnostics，
+          # 下一轮的我才读得到）。之前只写前者，等于每次跑完这些检查
+          # 的结论都随构建机一起销毁 —— 而它们恰恰是耗时最长的部分。
+          mkdir -p docs/ci-evidence
           python3 tools/check_mat_shader_props.py 2>&1 \
-            | tee verify-evidence/mat-shader-props.txt
+            | tee verify-evidence/mat-shader-props.txt \
+                  docs/ci-evidence/mat-shader-props.txt
           # keyword 检查：报「材质勾了 keyword 但 shader 没声明 shader_feature」
           # 以及「原版多 Pass 但当前只有 1 个」。同样是静默失效。
           python3 tools/check_shader_keywords.py 2>&1 \
-            | tee verify-evidence/shader-keywords.txt
+            | tee verify-evidence/shader-keywords.txt \
+                  docs/ci-evidence/shader-keywords.txt
           # 悬空引用检查：把「包内资产没导出」（正常）和「游戏自有资产丢失」
           # （真问题）分开。这个分流很重要 —— 判据若只判「找不到就是坏」，
           # 59 个正常项会淹掉真信号；若只判「都是正常」，真丢了没人知道。
           python3 tools/check_dangling_refs.py 2>&1 \
-            | tee verify-evidence/dangling-refs.txt
+            | tee verify-evidence/dangling-refs.txt \
+                  docs/ci-evidence/dangling-refs.txt
           # 天空盒链路：碧海蓝天是用户最想看到的东西，而它是唯一一个
           # 在启动场景里、不依赖任何游戏内逻辑就能出结果的渲染产物 ——
           # 所以最适合当「渲染管线通没通」的探针。查的是数据完整性
           # （材质/颜色/相机 ClearFlags/pragma target），不是画面观感。
           python3 tools/check_skybox.py 2>&1 \
-            | tee verify-evidence/skybox.txt
+            | tee verify-evidence/skybox.txt \
+                  docs/ci-evidence/skybox.txt
 
       # 使用 game-ci/unity-builder v6 —— 这是首个内置 `personal` 授权策略的版本。
       #
@@ -570,7 +580,8 @@ jobs:
             echo "### 3. 全包内含StructuredBuffer 的 APV 相关文件（兜底：不限定文件名）"
             grep -rl "StructuredBuffer" $CANDIDATES --include="*.hlsl" 2>/dev/null \
               | grep -i -E "probevolume|apv|adaptiv" | sed "s|^|  |" | head -20
-          } | tee verify-evidence/urp-apv-guards.txt > /tmp/apv.txt
+          } | tee verify-evidence/urp-apv-guards.txt \
+                  docs/ci-evidence/urp-apv-guards.txt > /tmp/apv.txt
 
           N=$(wc -l < /tmp/apv.txt)
           echo "APV/SSBO 相关行数: $N"
@@ -1069,9 +1080,11 @@ jobs:
           # 布局坐标先单独打一遍：即使浏览器那步挂了，坐标也留在日志里，
           # 「按钮在屏幕哪儿」这件事不需要渲染就能回答。
           /tmp/venv/bin/python tools/verify_ingame.py --url "$URL" \
-            --layout-only 2>&1 | tee verify-evidence/ingame-layout.txt
+            --layout-only 2>&1 | tee verify-evidence/ingame-layout.txt \
+                                 docs/ci-evidence/ingame-layout.txt
           /tmp/venv/bin/python tools/verify_ingame.py --url "$URL" \
-            --shots /tmp 2>&1 | tee verify-evidence/ingame-click.txt
+            --shots /tmp 2>&1 | tee verify-evidence/ingame-click.txt \
+                               docs/ci-evidence/ingame-click.txt
           for s in ingame_before.png ingame_after.png; do
             [ -f "/tmp/$s" ] && cp -f "/tmp/$s" verify-evidence/ \
               && echo "已留证: $s"
@@ -1372,31 +1385,71 @@ jobs:
           # 「算出来但没人看」的证据的落点 —— 漏了它就等于扫描没做。
           # 用 -f是因为 docs/ 下别的东西可能被 ignore 规则扫到，
           # 这里只挑明确的几份文件，不整目录 add。
-          for f in docs/ci-evidence/cs-errors.txt \
-                   docs/ci-evidence/unitytransport-check.txt \
-                   docs/ci-evidence/build-logs-scan.txt \
-                   docs/ci-evidence/shader-errors.txt \
-                   docs/ci-evidence/official-shader-sync.txt; do
+          # 白名单式add（不用 git add -A：工作区里有 build/ Library/
+          # 这些绝不能进仓库的东西）。docs/ci-evidence/ 里的每份都是
+          # 「算出来但没人看」的证据的落点 —— 漏一份就等于那个检查没做。
+          # -f是因为 docs/ 下别的东西可能被ignore 规则扫到，
+          # 这里只挑明确列出的文件，不整目录 add。
+          CI_EV="cs-errors.txt unitytransport-check.txt build-logs-scan.txt \
+                 shader-errors.txt official-shader-sync.txt \
+                 mat-shader-props.txt shader-keywords.txt \
+                 dangling-refs.txt skybox.txt urp-apv-guards.txt \
+                 ingame-layout.txt ingame-click.txt"
+          for n in $CI_EV; do
+            f="docs/ci-evidence/$n"
             [ -f "$f" ] && git add -f "$f" 2>/dev/null
           done
-          # 防回归断言：**提交后立刻核对提交里真的有这些文件**。
+          # 防回归断言：**add 之后立刻核对暂存区**。
           #
-          # 为什么必须查：前面所有 add 用的都是 `2>/dev/null` —— 静默失败。
+          # 为什么必须查：上面所有 add 都带 `2>/dev/null` —— 静默失败。
           # 路径打错、文件没生成、.gitignore 命中，都不会让这一步失败，
           # 而下一轮的我看到的是「文件不在」却已经无从判断是
           # 「CI 没产出」还是「add 漏了」。这两者的排查方向完全不同。
           #
-          # git show --stat 对着 HEAD 检查，比检查暂存区更可靠：
-          # 它验证的是**真的进了提交**，而不是「打算进」。
-          sleep 1
-          STAGED=$(git diff --cached --name-only | tr '\n' ' ')
-          echo "暂存内容: $STAGED"
-          for f in "$OUT" docs/ci-evidence/cs-errors.txt; do
+          # 用暂存区而不是 `git show --stat HEAD`：后者要等 commit，
+          # 而这条断言的目的就是在 commit **之前**发现问题。
+          # commit 之后再看，只能知道「提交里没有」，已经追不出原因。
+          #
+          # **三态分开报，不合并成一句「就位/不就位」。**
+          # 「没生成」和「生成了但没进去」是两种故障，混在一起报就等于
+          # 把「检查没跑」和「检查跑了但结果丢了」当成同一件事 ——
+          # 这正是本项目反复踩的那类失效。现在分别列出，好让人一眼看出
+          # 缺的是哪一类。
+          STAGED=" $(git diff --cached --name-only | tr '\n' ' ') "
+          NOT_STAGED=""; NOT_GENERATED=""; EMPTY=""
+          for n in $CI_EV; do
             case "$STAGED" in
-              *"$f"*) : ;;
-              *) echo "::warning::$f 不在暂存区 —— 证据可能没提交上去" ;;
+              *" docs/ci-evidence/$n "*) : ;;
+              *)
+                if [ -f "docs/ci-evidence/$n" ]; then
+                  NOT_STAGED="$NOT_STAGED $n"
+                else
+                  NOT_GENERATED="$NOT_GENERATED $n"
+                fi
+                ;;
             esac
+            # 空文件单独拎出来：git 会老老实实提交 0 字节的文件，
+            # 而「存在但空」往往意味着那个检查跑了却什么都没输出 ——
+            # 提交上去看起来「有」，实际还是等于没有。
+            if [ -f "docs/ci-evidence/$n" ] && [ ! -s "docs/ci-evidence/$n" ]; then
+              EMPTY="$EMPTY $n"
+            fi
           done
+          echo "证据落盘统计：共 ${#CI_EV} 类"
+          if [ -n "$NOT_STAGED" ]; then
+            echo "::warning::**生成了但没进暂存区**（路径/ignore 问题）：$NOT_STAGED"
+          fi
+          if [ -n "$NOT_GENERATED" ]; then
+            echo "::warning::**压根没生成**（对应检查步骤没跑到，或脚本失败）：$NOT_GENERATED"
+            echo "::warning::这**不代表那些检查通过了** —— 只代表没拿到输出。"
+          fi
+          if [ -n "$EMPTY" ]; then
+            echo "::warning::**存在但是空的**：$EMPTY"
+            echo "::warning::空文件会被正常提交，看着像「有」，其实等于没有。"
+          fi
+          if [ -z "$NOT_STAGED$NOT_GENERATED$EMPTY" ]; then
+            echo "证据暂存检查：全部 $CI_EV 已生成、非空且已暂存"
+          fi
           # **不要**在这里 `exit 0`。上一版有个
           #   if (git diff --cached --quiet); then echo 报告无变化; exit 0; fi
           # 看着是「无变化就别白跑一趟」，实际后果是：**报告已经写好了，
