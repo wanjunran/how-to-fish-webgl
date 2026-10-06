@@ -126,19 +126,66 @@ def is_stub(path: str) -> bool:
 INCLUDE = re.compile(r'^\s*#include\s+"([^"]+)"', re.M)
 
 
-def missing_includes(src: str, cache_dir: str) -> list[str]:
+def build_pkg_index(cache_dir: str) -> dict[str, str]:
+    """扫描 PackageCache，建 `包名 -> 实际目录` 的映射。
+
+    **这个映射是必须的，不是优化。** Library/PackageCache 里的目录名带
+    **版本哈希后缀**：
+
+        com.unity.render-pipelines.core@789199009d13/
+        com.unity.render-pipelines.universal@366bb53b7d8b/
+
+    而 shader 里的 include 写的是**不带后缀**的逻辑路径：
+
+        #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
+
+    所以不能把 `Packages/<pkg>/...` 直接拼到 cache_dir 后面 ——
+    少了 `@789199009d13`，于是每个 include 都判成「缺」，45 个官方
+    shader 全部被拒绝覆盖，官方源码明明就在那里。
+
+    踩这个坑的代价特别大：预检按设计是为了**阻止**坏覆盖，判错方向却是
+    「全都别覆盖」，于是修复全程静默失效 —— 报告里写「已用官方源码覆盖：0」，
+    而流程一路绿灯。包在不在、源码能不能用，本该是最容易确认的事。
+
+    同名包多版本共存时选排序后的第一个，并在这里留下记录 ——
+    静默挑一个而不说出来，就又是一次「判据失效但看起来正常」。
+    """
+    idx: dict[str, str] = {}
+    try:
+        entries = sorted(os.listdir(cache_dir))
+    except OSError:
+        return idx
+    for name in entries:
+        full = os.path.join(cache_dir, name)
+        if not os.path.isdir(full):
+            continue
+        base = name.split("@", 1)[0]
+        if base not in idx:
+            idx[base] = full
+        elif os.path.isfile(os.path.join(idx[base], "package.json")):
+            pass          # 已有带 package.json 的，更可信
+        else:
+            idx[base] = full
+    return idx
+
+
+def missing_includes(src: str, cache_dir: str,
+                     pkg_index: dict[str, str] | None = None) -> list[str]:
     """列出在包缓存里解析不到的 `#include`。
 
-    只认包内绝对路径形式（``Packages/<pkg>/...``）与包内相对形式
-    （同目录下的 ``Foo.hlsl``）。这两种是 Unity 解析 URP 包内 shader
-    时实际用的写法 —— URP 的 Lit.shader 全部用 ``Packages/...`` 绝对形式。
+    认三种写法，都是 URP/core 包内 shader 实际在用的：
+      - ``Packages/<pkg>/<path>``  绝对逻辑路径（要补版本后缀）
+      - ``<同名文件>``               同目录 / 同包内的相对引用
+      - ``UnityCG.cginc``           core 包的传统名（无路径形式）
 
     为什么要逐个解析而不是「文件存在就复制」：官方 shader 依赖同包内的
-    .hlsl，这些.hlsl 又 include 更多的 .hlsl。只检查第一层会漏掉
+    .hlsl，这些 .hlsl 又 include 更多的 .hlsl。只检查第一层会漏掉
     「Lit.hlsl 在，但 LitInput.hlsl 不在」这种。所以这里**递归**展开，
     把每一层都查一遍。
     """
     cache_dir = os.path.abspath(cache_dir)
+    if pkg_index is None:
+        pkg_index = build_pkg_index(cache_dir)
     seen: set[str] = set()
     missing: list[str] = []
     queue = [src]
@@ -154,13 +201,33 @@ def missing_includes(src: str, cache_dir: str) -> list[str]:
             if inc in seen:
                 continue
             seen.add(inc)
-            # Packages/... -> Library/PackageCache/...
-            cand = os.path.join(cache_dir, inc[len("Packages/"):]) \
-                if inc.startswith("Packages/") else None
-            if cand is None or not os.path.isfile(cand):
-                cand = os.path.normpath(os.path.join(cur_dir, inc))
-            if os.path.isfile(cand):
-                queue.append(cand)
+            found = None
+            # 1) Packages/<pkg>/<rest>：先查原样（无后缀的老布局），
+            #    再按 pkg_index 补版本后缀 —— 真实 PackageCache 用后者。
+            if inc.startswith("Packages/"):
+                rel = inc[len("Packages/"):]
+                head, _, tail = rel.partition("/")
+                cands = [os.path.join(cache_dir, rel)]
+                if head in pkg_index and tail:
+                    cands.append(os.path.join(pkg_index[head], tail))
+                found = next((c for c in cands if os.path.isfile(c)), None)
+            if found is None:
+                # 2) 相对当前目录
+                found = os.path.normpath(os.path.join(cur_dir, inc))
+                if not os.path.isfile(found):
+                    found = None
+            if found is None:
+                # 3) 无路径形式（UnityCG.cginc 之类）：在包目录里按
+                #    文件名找一份存在的。这条只是兜底，找不到就报缺。
+                for base in pkg_index.values():
+                    for dirpath, _dirs, files in os.walk(base):
+                        if os.path.basename(inc) in files:
+                            found = os.path.join(dirpath, os.path.basename(inc))
+                            break
+                    if found:
+                        break
+            if found:
+                queue.append(found)
             else:
                 missing.append(f"{os.path.relpath(cur, cache_dir)} -> {inc}")
     return missing
@@ -270,7 +337,18 @@ def _run() -> int:
         name = shader_name(path)
         if name and name not in by_name:
             by_name[name] = path
+    # 包名 -> 真实目录（含 @版本后缀）。include 预检全靠它，
+    # 少了它会把每个 `Packages/<pkg>/...` 都判成缺 —— 上一轮就是这么
+    # 把 45 个官方 shader 全部误判掉、覆盖数变成 0 的。
+    pkg_index = build_pkg_index(PACKAGE_CACHE)
     print(f"包内可用 shader：{len(by_name)}")
+    print(f"包目录（名字带 @版本，include 要按这个匹配）：{len(pkg_index)}")
+    for base in sorted(pkg_index):
+        d = os.path.relpath(pkg_index[base], PACKAGE_CACHE)
+        n = len(glob.glob(os.path.join(pkg_index[base], "**", "*.shader"),
+                          recursive=True))
+        mark = "" if n else "  <- 无 .shader 源码"
+        print(f"  {base}  ({n} 个 .shader)  -> {d}{mark}")
     if not by_name:
         # 同理：包里一个 .shader 都没有，说明这个缓存恢复的是编译产物。
         print("::warning::Library/PackageCache 里没有任何 .shader 源码 —— "
@@ -304,7 +382,7 @@ def _run() -> int:
         # 预检：include 解析不全就别覆盖。
         # 覆盖一个编译不过的官方 shader =洋红，而洋红比现在的
         # 「纯色空壳」更显眼、更难定位。所以宁可保持原样并报出来。
-        bad = missing_includes(src, PACKAGE_CACHE)
+        bad = missing_includes(src, PACKAGE_CACHE, pkg_index)
         if bad:
             blocked.append((name, bad))
             continue
